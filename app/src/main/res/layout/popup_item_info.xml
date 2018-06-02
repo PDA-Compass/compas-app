@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.afterday.compass.MainActivity"
+    android:background="@drawable/popup_background"
+    android:keepScreenOn="true">
+
+    <ImageButton
+        android:id="@+id/close"
+        app:layout_widthPercent="8.86945659%"
+        app:layout_heightPercent="12.592592593%"
+        app:layout_marginLeftPercent="91.13054341%"
+        app:layout_marginTopPercent="0%"
+        android:background="@drawable/popup_close" />
+
+    <ImageView
+        android:id="@+id/item_image"
+        app:layout_widthPercent="20%"
+        app:layout_heightPercent="50%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="22%"
+        android:scaleType="centerCrop"
+        android:background="@color/whiteTransparent"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        app:layout_widthPercent="80%"
+        app:layout_heightPercent="15%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="10%"
+        android:text="Hello world"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        />
+
+    <LinearLayout
+        android:id="@+id/effect_holder"
+        android:orientation="horizontal"
+        app:layout_heightPercent="18%"
+        app:layout_marginLeftPercent="35%"
+        app:layout_marginTopPercent="25%"
+        app:layout_widthPercent="55%" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_alignLeft="@+id/effect_holder"
+        android:layout_alignStart="@+id/effect_holder"
+        android:layout_below="@+id/close"
+        android:layout_marginTop="11dp"
+        android:text="Hello world"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_heightPercent="30%"
+        app:layout_marginLeftPercent="0%"
+        app:layout_marginTopPercent="30%"
+        app:layout_widthPercent="55%" />
+
+    <Button
+        android:id="@+id/drop"
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="75%"
+        android:text="@string/popup_drop"
+        android:background="@drawable/popup_button"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/use"
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="50%"
+        app:layout_marginTopPercent="75%"
+        android:text="@string/popup_use"
+        android:background="@drawable/popup_button"
+        android:textColor="#ffffff"
+        />
+
+</android.support.percent.PercentRelativeLayout>

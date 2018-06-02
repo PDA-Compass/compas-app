@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PDA Compass</string>
+
+    <!-- Drugs -->
+    <string name="item_bandage">Bandage</string>
+    <string name="desc_bandage">Instant health restore 10%</string>
+    <string name="item_medkit">Medkit</string>
+    <string name="desc_medkit">Instant health restore 20%</string>
+    <string name="item_army_medkit">Army Medkit</string>
+    <string name="desc_army_medkit">Instant health restore 20%</string>
+    <string name="item_vinca">Vinca</string>
+    <string name="desc_vinca">Instant health restore 40%, removes 1 Sv of obtained radiation</string>
+    <string name="item_scientific_medkit">Scientific Medkit</string>
+    <string name="desc_scientific_medkit">Instant health restore 50%, removes 3 Sv of obtained radiation</string>
+    <string name="item_vodka">Vodka Cossacks</string>
+    <string name="desc_vodka">Removes 1 Sv of obtained radiation, drops 10% of health</string>
+    <string name="item_antirad">Anti-rad</string>
+    <string name="desc_antirad">Removes 7 Sv of obtained radiation, drops 20% of health</string>
+    <string name="item_anabiotic">Anabiotic</string>
+    <string name="desc_anabiotic">Eleminates emission effect, drops 30% of health</string>
+
+    <!-- Boosters -->
+    <string name="item_b190">B190 Radioprotectant</string>
+    <string name="desc_b190">Eliminates radiation effect for 1 minute</string>
+    <string name="item_psyblock">Psy-block</string>
+    <string name="desc_psyblock">Eliminates mental effect for 1 minute</string>
+    <string name="item_ip2">IP2 antidote</string>
+    <string name="desc_ip2">Eliminates anomaly effect for 1 minute</string>
+    <string name="item_hercules">Hercules</string>
+    <string name="desc_hercules">Health restores 50% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="item_energy_drink">Energy Drink Stalker</string>
+    <string name="desc_energy_drink">Health restores 100% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="item_green_svoboda">Green Svoboda serum</string>
+    <string name="desc_green_svoboda">Radiation obtains 90% slower for 2 hours</string>
+    <string name="item_yellow_svoboda">Yellow Svoboda serum</string>
+    <string name="desc_yellow_svoboda">Mental strength 90% lower for 2 hours</string>
+
+    <!-- Upgrades -->
+    <string name="item_optics">Optics</string>
+    <string name="desc_optics">Unlocked: any optics for any weapon.</string>
+    <string name="item_collimator">Collimator</string>
+    <string name="desc_collimator">Unlocked: any collimator for any weapon.</string>
+    <string name="item_night_vision">Night Vision</string>
+    <string name="desc_night_vision">Unlocked: any night vision device or optics for any weapon.</string>
+    <string name="item_walkie_talkie">Walkie Talkie</string>
+    <string name="desc_walkie_talkie">Unlocked: any portable radio station.</string>
+    <string name="item_grenade_launcher">Grenade launcher</string>
+    <string name="desc_grenade_launcher">Unlocked: any fittable or not grenade launcher.</string>
+
+    <!-- Quest items -->
+    <string name="item_dead_rat">Dead rat</string>
+    <string name="desc_dead_rat">Quest: No meaning, no expirience. Just dead rat.</string>
+    <string name="item_bread">White bread</string>
+    <string name="desc_bread">Quest: 1 expirience point.</string>
+    <string name="item_sausage">Sausage</string>
+    <string name="desc_sausage">Quest: 2 expirience points.</string>
+    <string name="item_canned_meat">Canned meat</string>
+    <string name="desc_canned_meat">Quest: 3 expirience points.</string>
+    <string name="item_red_devil">Shitty energy drink</string>
+    <string name="desc_red_devil">Quest: 4 expirience points.</string>
+    <string name="item_gasoline">Gasoline canister</string>
+    <string name="desc_gasoline">Quest: 10 expirience points.</string>
+    <string name="item_guitar">Old guitar</string>
+    <string name="desc_guitar">Quest: 20 expirience points.</string>
+    <string name="item_instruments">Tool box</string>
+    <string name="desc_instruments">Quest: 30 expirience points.</string>
+    <string name="item_psionic_device">Unknown device</string>
+    <string name="desc_psionic_device">Quest: 40 expirience points.</string>
+    <string name="item_gauss_gun">Broken weapon</string>
+    <string name="desc_gauss_gun">Quest: 50 expirience points.</string>
+
+    <!-- Suits -->
+    <string name="item_leather_jacket">Leather jacket</string>
+    <string name="desc_leather_jacket">Radiation obtains 10% slower for 1 hour of any damage</string>
+    <string name="item_merc_suit">Merc suit</string>
+    <string name="desc_merc_suit">Radiation obtains 20% slower, anomaly effect 10% less for 1 hour of any damage</string>
+    <string name="item_stalker_suit">Stalker suit</string>
+    <string name="desc_stalker_suit">Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less for 2 hours of any damage</string>
+    <string name="item_seva_suit">SEVA suit</string>
+    <string name="desc_seva_suit">Radiation obtains 50% slower, anomaly effect 40% less, mental effect 30% less for 2 hours of any damage</string>
+    <string name="item_exoskeleton">Exoskeleton</string>
+    <string name="desc_exoskeleton">Health restores 100% faster in clear locations, when less than 1 Sv of radiation is obtained, radiation obtains 30% slower, anomaly effect 40% less, mental effect 20% less for 2 hours of any damage</string>
+    <string name="item_ssp99">SSP-99 Ecologist</string>
+    <string name="desc_ssp99">Radiation obtains 80% slower, anomaly effect 60% less, mental effect 40% less for 1 hour of any damage</string>
+
+    <!-- Fraction suits -->
+    <string name="item_monolith_suit">Monolith suit</string>
+    <string name="desc_monolith_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, resist to mental 100%</string>
+    <string name="item_bandit_suit">Bandit suit</string>
+    <string name="desc_bandit_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="item_duty_suit">Duty suit</string>
+    <string name="desc_duty_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="item_freedom_suit">Freedom suit</string>
+    <string name="desc_freedom_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="item_berill_suit">Berill suit</string>
+    <string name="desc_berill_suit">Fractional: Worn off after 3 hours of any damage. Health restores 200% faster in clear locations, when less than 1 Sv of radiation is obtained. Radiation obtain, anomaly and mental 20% less</string>
+    <string name="item_clearsky_suit">Clear Sky suit</string>
+    <string name="desc_clearsky_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+
+    <!-- Artefacts -->
+    <string name="item_jellyfish">Jellyfish</string>
+    <string name="desc_jellyfish">Health restores 50% faster in clear locations, when obtained les than 1 Sv of radiation. Gives 1 point of expirience.</string>
+    <string name="item_stone_flower">Stone Flower</string>
+    <string name="desc_stone_flower">Распространённый артефакт. Увеличивает сопротивляемость к менталу на 20%, но текущая радиация действует на 20% сильнее. Даёт 5 очков опыта.</string>
+    <string name="item_droplets">Droplets</string>
+    <string name="desc_droplets">Очень распространённый артефакт. Снижает текущее воздействие радиации на 10%. Даёт 2 очка опыта.</string>
+    <string name="item_eye">Eye</string>
+    <string name="desc_eye">Очень распространённый артефакт. Ускоряет восстановление здоровья в чистых локациях на 100%, если накоплено меньше 1 Зиверта радиации. Даёт 2 очка опыта.</string>
+    <string name="item_night_star">Night Star</string>
+    <string name="desc_night_star">Редкий артефакт. Увеличивает сопротивляемость к менталу на 60%, но текущая радиация действует на 60% сильнее. Даёт 15 очков опыта.</string>
+    <string name="item_kolobok">Kolobok</string>
+    <string name="desc_kolobok">Распространённый артефакт. Ускоряет восстановление здоровья в чистых локациях на 200%, если накоплено меньше 1 Зиверта радиации. Даёт 5 очков опыта.</string>
+    <string name="item_thorn">Thorn</string>
+    <string name="desc_thorn">Редкий артефакт. Снижает текущее воздействие радиации на 50%, но увеличивает силу аномалийи и ментала на 25%. Даёт 10 очков опыта.</string>
+    <string name="item_fireball">Fireball</string>
+    <string name="desc_fireball">Довольно редкий артефакт. Снижает текущее воздействие радиации на 30%. Даёт 10 очков опыта.</string>
+    <string name="item_bubble">Bubble</string>
+    <string name="desc_bubble">Распространённый артефакт. Снижает текущее воздействие радиации на 20%. Даёт 5 очков опыта.</string>
+    <string name="item_mamas_beads">Mamas Beads</string>
+    <string name="desc_mamas_beads">Редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 400%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость телекинезу Бюрера 90%. Даёт 10 очков опыта.</string>
+    <string name="item_moonlight">Moonlight</string>
+    <string name="desc_moonlight">Довольно редкий артефакт. Увеличивает сопротивляемость к аномалиям на 50%, но текущая радиация действует на 20% сильнее. Даёт 10 очков опыта.</string>
+    <string name="item_spring">Spring</string>
+    <string name="desc_spring">Распространённый артефакт. Увеличивает сопротивляемость к аномалиям на 25%, но текущая радиация действует на 10% сильнее. Даёт 5 очков опыта.</string>
+    <string name="item_pellicle">Pellicle</string>
+    <string name="desc_pellicle">Довольно редкий артефакт. Увеличивает сопротивляемость к менталу на 40%, но текущая радиация действует на 40% сильнее. Даёт 10 очков опыта.</string>
+    <string name="item_mica">Mica</string>
+    <string name="desc_mica">Очень редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 500%, даёт сопротивляемость Контролёру и Бюреру 90%, но повышает восприимчивость к радиации, аномалиям и менталу на 25%. Даёт 20 очков опыта.</string>
+    <string name="item_compass">Compass</string>
+    <string name="desc_compass">Самый редкий артефакт. Аномалии обнаруживаются, но не могут причинить вреда, ментальное излучение действует на 60% слабее, но текущая радиация сильнее на 100%. Даёт 30 очков опыта.</string>
+    <string name="item_crystal">Crystal</string>
+    <string name="desc_crystal">Довольно редкий артефакт. Снижает текущее воздействие радиации на 40%. Даёт 10 очков опыта.</string>
+    <string name="item_goldfish">Goldfish</string>
+    <string name="desc_goldfish">Достаточно редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 300%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость ментальному излучению Контролёра 90%. Даёт 10 очков опыта.</string>
+    <string name="item_altered_insulator">Altered Insulator</string>
+    <string name="desc_altered_insulator">Средне радиоактивный артефакт. Излучает 7 Зиверт радиации в час, пока находится в инвентаре.</string>
+    <string name="item_shell">Shell</string>
+    <string name="desc_shell">Слабо радиоактивный артефакт. Излучает 1 Зиверт радиации в час, пока находится в инвентаре.</string>
+    <string name="item_black_energy">Black energy</string>
+    <string name="desc_black_energy">Очень радиоактивный артефакт. Излучает 15 Зиверт радиации в час, пока находится в инвентаре.</string>
+
+    <!-- Log messages -->
+    <string name="message_revive">You are revived</string>
+    <string name="message_suicide">You are dying</string>
+    <string name="message_dead">You are dead</string>
+    <string name="message_abducted">You are captive now</string>
+    <string name="message_received_item">You got %1$s</string>
+    <string name="message_used_item">You used %1$s</string>
+    <string name="message_dropped_item">You dropped %1$s</string>
+    <string name="message_anomaly_hit">Anomaly hits you!</string>
+    <string name="message_mental_hit">Mental hits you!</string>
+    <string name="message_mental_trans">You are transmutating…</string>
+    <string name="message_mental_zombified">You are zombie now!</string>
+    <string name="message_burer_hit">Burer hits you!</string>
+    <string name="message_controller_hit">Controller hits you!</string>
+    <string name="message_controller_trans">You going under control…</string>
+    <string name="message_controller_undercontrol">You are under control now!</string>
+    <string name="message_emission_approaching">Emission is approaching! Seek for cover!</string>
+    <string name="message_emission_started">Emission is started!</string>
+    <string name="message_emission_ended">Emission is ended! You are safe now!</string>
+    <string name="message_emission_fake">Emission is not confirmed. Fake alarm…</string>
+    <string name="message_arena_approaching">Arena is approaching! Keep armistice!</string>
+    <string name="message_arena_started">Arena is started! Show all what you can!</string>
+    <string name="message_arena_ended">Arena is ended! Be careful!</string>
+    <string name="message_emission_only">This drugs is usable only under Emission!</string>
+    <string name="message_artifact_full">You cant use more artefacts. Drop some of them!</string>
+    <string name="message_exp_gained">You got %1$s expirience points</string>
+    <string name="message_level_up">PDA is upgraded. New functionality is available!</string>
+    <string name="message_compass_enabled">Compass is enabled</string>
+    <string name="message_compass_disabled">Compass is disabled</string>
+
+    <!-- Interface -->
+    <string name="popup_suicide">Confirm suicide?</string>
+    <string name="popup_yes">Yes</string>
+    <string name="popup_no">No</string>
+    <string name="popup_drop">Drop</string>
+    <string name="popup_use">Use</string>
+
+    <!-- Fake -->
+    <string name="toast_cant_use_dead">You are dead, you cant do this…</string>
+    <string name="toast_cant_use_artefact">You cant use artefact. Is already active</string>
+    <string name="toast_inventory_full">Inventory is full. Drop something</string>
+
+</resources>

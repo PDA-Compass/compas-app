@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.afterday.compass.MainActivity"
+    android:background="@drawable/popup_background"
+    android:keepScreenOn="true">
+
+    <ImageButton
+        android:id="@+id/close"
+        app:layout_widthPercent="8.86945659%"
+        app:layout_heightPercent="12.592592593%"
+        app:layout_marginLeftPercent="91.13054341%"
+        app:layout_marginTopPercent="0%"
+        android:background="@drawable/popup_close" />
+
+    <GridView
+        android:id="@+id/inventory_grid"
+        app:layout_widthPercent="80%"
+        app:layout_heightPercent="90%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="5%"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
+
+</android.support.percent.PercentRelativeLayout>
