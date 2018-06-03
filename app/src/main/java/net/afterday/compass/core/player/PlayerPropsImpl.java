@@ -2,7 +2,10 @@ package net.afterday.compass.core.player;
 
 import android.util.Log;
 
+import com.google.gson.JsonObject;
+
 import net.afterday.compass.core.influences.Influence;
+import net.afterday.compass.core.serialization.Jsonable;
 
 /**
  * Created by spaka on 4/18/2018.
@@ -12,13 +15,13 @@ public class PlayerPropsImpl implements PlayerProps
 {
     public static final int LEVEL_XP = 50;
     private static final String TAG = "PlayerPropsImpl";
-    private Player.STATE mState;
-    private double mRadiation;
-    private double mRadiationImpact;
-    private double mHealth;
-    private double mBoosterPercents = 0;
-    private double mArmorPercents = 0;
-    private double[] mImpacts;
+    private Player.STATE state;
+    private double radiation;
+    private double radiationImpact;
+    private double health;
+    private double boosterPercents = 0;
+    private double armorPercents = 0;
+    private double[] impacts;
     private boolean burerHit;
     private boolean controllerHit;
     private boolean anomalyHit;
@@ -26,41 +29,46 @@ public class PlayerPropsImpl implements PlayerProps
     private boolean hasHealthInstant,
                     hasRadiationInstant;
     private int xpPoints;
+    private JsonObject o;
 
     public PlayerPropsImpl(Player.STATE state)
     {
-        //Log.d(TAG, "---------- State: " + state);
-        mState = state;
+        this.state = state;
     }
 
     public PlayerPropsImpl(PlayerProps pProps)
     {
-        mState = pProps.getState();
-        mRadiation = pProps.getRadiation();
-        mHealth = pProps.getHealth();
-        mBoosterPercents = pProps.getBoosterPercents();
-        mArmorPercents = pProps.getArmorPercents();
+        state = pProps.getState();
+        radiation = pProps.getRadiation();
+        health = pProps.getHealth();
+        boosterPercents = pProps.getBoosterPercents();
+        armorPercents = pProps.getArmorPercents();
         xpPoints = pProps.getXpPoints();
         hasHealthInstant = pProps.hasHealthInstant();
         hasRadiationInstant = pProps.hasRadiationInstant();
+    }
+    
+    public PlayerPropsImpl(Jsonable jsonable)
+    {
+        
     }
 
     @Override
     public double getHealth()
     {
-        return mHealth;
+        return health;
     }
 
     @Override
     public double getRadiation()
     {
-        return mRadiation;
+        return radiation;
     }
 
     @Override
     public double getArtefactImpact()
     {
-        return mImpacts[Influence.ARTEFACT];
+        return impacts[Influence.ARTEFACT];
     }
 
     @Override
@@ -84,15 +92,15 @@ public class PlayerPropsImpl implements PlayerProps
     @Override
     public double getRadiationImpact()
     {
-        return mImpacts[Influence.RADIATION];
+        return impacts[Influence.RADIATION];
     }
 
     @Override
     public double getHealthImpact()
     {
-        if (mImpacts != null && mImpacts.length >= Influence.HEALTH)
+        if (impacts != null && impacts.length >= Influence.HEALTH)
         {
-            return mImpacts[Influence.HEALTH];
+            return impacts[Influence.HEALTH];
         }
         return 0d;
     }
@@ -100,51 +108,51 @@ public class PlayerPropsImpl implements PlayerProps
     @Override
     public double getControllerImpact()
     {
-        return mImpacts[Influence.CONTROLLER];
+        return impacts[Influence.CONTROLLER];
     }
 
     @Override
     public double getBurerImpact()
     {
-        return mImpacts[Influence.BURER];
+        return impacts[Influence.BURER];
     }
 
     @Override
     public double getMentalImpact()
     {
-        return mImpacts[Influence.MENTAL];
+        return impacts[Influence.MENTAL];
     }
 
     @Override
     public double getAnomalyImpact()
     {
-        return mImpacts[Influence.ANOMALY];
+        return impacts[Influence.ANOMALY];
     }
 
     @Override
     public double getBoosterPercents()
     {
         //return 100;
-        return mBoosterPercents;
+        return boosterPercents;
     }
 
     @Override
     public double getArmorPercents()
     {
         //return 100;
-        return mArmorPercents;
+        return armorPercents;
     }
 
     @Override
     public void addHealth(double health)
     {
-        setHealth(mHealth + health);
+        setHealth(this.health + health);
     }
 
     @Override
     public void addRadiation(double radiation)
     {
-        setRadiation(mRadiation + radiation);
+        setRadiation(this.radiation + radiation);
     }
 
     @Override
@@ -176,37 +184,37 @@ public class PlayerPropsImpl implements PlayerProps
     @Override
     public void subtractHealth(double health)
     {
-        setHealth(mHealth - health);
+        setHealth(this.health - health);
     }
 
     @Override
     public void subtractRadiation(double radiation)
     {
-        setRadiation(mRadiation - radiation);
+        setRadiation(this.radiation - radiation);
     }
 
     @Override
     public void setBoosterPercents(double percents)
     {
-        mBoosterPercents = normalize(percents);
+        boosterPercents = normalize(percents);
     }
 
     @Override
     public void setArmorPercents(double percents)
     {
-        mArmorPercents = normalize(percents);
+        armorPercents = normalize(percents);
     }
 
     @Override
     public Player.STATE getState()
     {
-        return mState;
+        return state;
     }
 
     @Override
     public void setState(Player.STATE state)
     {
-        mState = state;
+        this.state = state;
     }
 
     private int calcLevel(int xp)
@@ -225,7 +233,7 @@ public class PlayerPropsImpl implements PlayerProps
             health = 0;
         }
         //Log.d(TAG, "setHealth: " + health);
-        mHealth = health;
+        this.health = health;
     }
 
     public void setRadiation(double radiation)
@@ -238,7 +246,7 @@ public class PlayerPropsImpl implements PlayerProps
         {
             radiation = 0;
         }
-        mRadiation = radiation;
+        this.radiation = radiation;
     }
 
     public void setAnomalyHit(boolean anomalyHit)
@@ -248,12 +256,12 @@ public class PlayerPropsImpl implements PlayerProps
 
     public void setRadiationImpact(double radiationImpact)
     {
-        mRadiationImpact = radiationImpact;
+        this.radiationImpact = radiationImpact;
     }
 
     public void setImpacts(double[] influences)
     {
-        mImpacts = influences;
+        impacts = influences;
     }
 
     private double normalize(double number)
@@ -339,10 +347,10 @@ public class PlayerPropsImpl implements PlayerProps
     public String toString()
     {
         String str = "Player props:\n";
-        str += "Radiation: " + mRadiation + ",\n";
-        str += "RadiationImpact: " + mRadiationImpact + ",\n";
-        str += "Health: " + mHealth + ",\n";
-        str += "State: " + mState.toString();
+        str += "Radiation: " + radiation + ",\n";
+        str += "RadiationImpact: " + radiationImpact + ",\n";
+        str += "Health: " + health + ",\n";
+        str += "State: " + state.toString();
         return str;
     }
 
@@ -351,9 +359,9 @@ public class PlayerPropsImpl implements PlayerProps
     {
         int max = 0;
         int index = -1;
-        for(int i = 0; i < mImpacts.length; i++)
+        for(int i = 0; i < impacts.length; i++)
         {
-            if(mImpacts[i] > max)
+            if(impacts[i] > max)
             {
                 index = i;
             }
@@ -361,4 +369,9 @@ public class PlayerPropsImpl implements PlayerProps
         return index;
     }
 
+    @Override
+    public JsonObject toJson()
+    {
+        return null;
+    }
 }

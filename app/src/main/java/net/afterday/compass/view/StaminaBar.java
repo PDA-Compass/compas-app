@@ -79,7 +79,6 @@ public class StaminaBar extends View
 
     public void setPercents(double percents)
     {
-        Log.d(TAG, "Percents: " + percents);
         if(mPercentage == percents)
         {
             return;

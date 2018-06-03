@@ -344,9 +344,6 @@ public class Effects
             }
             int to = Math.max(1000, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
             artefactSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playArtefact());
-        }else
-        {
-            playUnknown(playerProps);
         }
     }
 

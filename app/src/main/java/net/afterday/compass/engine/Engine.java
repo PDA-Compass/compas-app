@@ -2,6 +2,8 @@ package net.afterday.compass.engine;
 
 import android.util.Log;
 
+import com.google.gson.JsonObject;
+
 import net.afterday.compass.core.Controls;
 import net.afterday.compass.core.CountDown;
 import net.afterday.compass.core.Game;
@@ -9,11 +11,12 @@ import net.afterday.compass.core.GameImpl;
 import net.afterday.compass.core.events.PlayerEventsListener;
 import net.afterday.compass.core.gameState.Frame;
 import net.afterday.compass.core.gameState.State;
-import net.afterday.compass.core.influences.Influence;
 import net.afterday.compass.core.influences.InfluencesPack;
 import net.afterday.compass.core.inventory.items.Events.ItemAdded;
 import net.afterday.compass.core.player.Impacts;
 import net.afterday.compass.core.player.Player;
+import net.afterday.compass.core.serialization.Jsonable;
+import net.afterday.compass.core.serialization.Serializer;
 import net.afterday.compass.core.userActions.UserActionsPack;
 import net.afterday.compass.devices.DeviceProvider;
 import net.afterday.compass.effects.Effects;
@@ -24,11 +27,9 @@ import net.afterday.compass.engine.influences.InfluenceProvider;
 import net.afterday.compass.engine.influences.InfluenceProviderImpl;
 import net.afterday.compass.engine.threading.Threads;
 import net.afterday.compass.persistency.PersistencyProvider;
-import net.afterday.compass.persistency.items.ItemsPersistency;
 import net.afterday.compass.sensors.SensorsProvider;
 import net.afterday.compass.serialization.SharedPrefsSerializer;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -44,16 +45,17 @@ import io.reactivex.subjects.Subject;
  * Created by Justas Spakauskas on 1/28/2018.
  */
 
-public class Engine
+public class Engine implements Jsonable
 {
     public static final int TICK_MILLISECONDS = 1000;
+    private static final String COUNTDOWN = "COUNTDOWN";
     private static final String TAG = "Engine";
     private static final int NUMBER_OF_CPUS = 4; //TODO: nustatyti branduoliu skaiciu
-    private static final int SEC30 = 3 * 10;
-    private static final int MIN1 = 6 * 10;
-    private static final int MIN5 = 30 * 10;
-    private static final int MIN30 = 180 * 10;
-    private static final int MIN60 = 360 * 10;
+    private static final int SEC30 = 30;
+    private static final int MIN1 = 60;
+    private static final int MIN5 = 60 * 5;
+    private static final int MIN30 = 60 * 30;
+    private static final int MIN60 = 60 * 60;
 
     private static final String START = "Start";
 
@@ -89,6 +91,8 @@ public class Engine
     private Effects effects;
     private Controls controls;
     private CountDown countDown;
+    private Serializer serializer;
+    private JsonObject o;
 
     private Engine()
     {
@@ -141,11 +145,6 @@ public class Engine
         return framesStream;
     }
 
-    public Observable<CounterEvent> getCounterEventsStream()
-    {
-        return null;
-    }
-
     public ItemEventsBus getItemEventsBus()
     {
         return itemEventsBus;
@@ -154,19 +153,51 @@ public class Engine
     //TODO: padaryti krovima is persistencies asinchronisku
     private Game initializeGame()
     {
-        game = new GameImpl(controls, persistencyProvider, SharedPrefsSerializer.instance());
+        serializer = SharedPrefsSerializer.instance();
+        game = new GameImpl(controls, persistencyProvider, serializer);
         game.getPlayer().addPlayerEventsListener(new PlayerEventsListenerImpl());
         playerLevel.onNext(game.getPlayer().getPlayerProps().getLevel());
-        currentPlayerState.onNext(game.getPlayer().getPlayerProps().getState());
+        Player.STATE ps = game.getPlayer().getPlayerProps().getState();
+        Jsonable jso = serializer.deserialize(COUNTDOWN);
+        long left = -1;
+        if(jso != null)
+        {
+            o = jso.toJson();
+            if(o.has("left"))
+            {
+                left = o.get("left").getAsLong();
+            }
+        }else
+        {
+            o = new JsonObject();
+            o.addProperty("left", left);
+        }
+        currentPlayerState.onNext(ps);
+        if(left > 0)
+        {
+            countdownStarted.onNext(System.currentTimeMillis() - (getWaitTimeForState(ps) - left) * 1000);
+            ((Subject<Long>)secondsLeft).onNext(left);
+        }
+        secondsLeft.skip(1).subscribe((s) -> {
+            if(s % 5 == 0 || s == -1)
+            {
+                o.addProperty("left", s);
+                serializer.serialize(COUNTDOWN, this);
+            }
+        });
+
         influenceProvider = new InfluenceProviderImpl(sensorsProvider, this.persistencyProvider.getInfluencesPersistency());
         influencesStream = influenceProvider.getInfluenceStream();
-
         effects = new Effects(deviceProvider);
         effects.setPlayerStatesStream(currentPlayerState);
         effects.setPlayerLevelStream(playerLevel);
         effects.setImpactsStatesStream(impactsStatesStream);
-
         return game;
+    }
+
+    private void setupInitialTimer()
+    {
+
     }
 
     private void startGame(Game game)
@@ -193,36 +224,7 @@ public class Engine
             framesStream.onNext(game.useItem(r));
         });
         setupSuicides();
-        //Consumer<Long> updater = (i) -> ((Subject<Long>)secondsLeft).onNext(MIN5 - i);
-        //Observable<Long> controlledCountDown = currentPlayerState.filter((ps) -> ps == Player.STATE.DEAD_CONTROLLER).switchMap((ps) -> gameRunning).withLatestFrom(countdownStarted, (g, s) -> (System.currentTimeMillis() - s) / 1000);//.filter((t) -> t < 10000).subscribe((r) -> Log.d(TAG, "WOOOOOOOORKS " + r / 1000));
-        //Consumer<Long> updater5Min = makeUpdater(MIN5);
-//        Observable<Long> deadControllerCountDown = makeCountDownFor(Player.STATE.W_CONTROLLED);
-//
-//        countUntil(deadControllerCountDown, MIN5, true).doOnNext((t) -> Log.d(TAG, "1. W_CONTROLLED: " + t)).subscribe((t) -> ((Subject<Long>)secondsLeft).onNext(MIN5 - t));
-//        countUntil(deadControllerCountDown, MIN5, false).doOnNext((t) -> Log.d(TAG, "2. W_CONTROLLED: " + t)).subscribe((t) -> {game.getPlayer().setState(Player.STATE.CONTROLLED);});
-//
-//        Observable<Long> controlledCoundDown = makeCountDownFor(Player.STATE.CONTROLLED);
-//        countUntil(controlledCoundDown, MINS60, true).doOnNext((t) -> Log.d(TAG, "1. ----CONTROLLED: " + t)).subscribe((t) -> ((Subject<Long>)secondsLeft).onNext(MINS60 - t));
-//        countUntil(controlledCoundDown, MINS60, false).doOnNext((t) -> Log.d(TAG, "1. ----CONTROLLED: " + t)).subscribe((t) -> {game.getPlayer().setState(Player.STATE.DEAD_CONTROLLER);});
-//
-//        Observable<Long> wMentalled = makeCountDownFor(Player.STATE.W_MENTALLED);
-//        countUntil(wMentalled, MIN5, true).subscribe((t) -> ((Subject<Long>)secondsLeft).onNext(MIN5 - t));
-//        countUntil(wMentalled, MIN5, false).subscribe((t) -> {((Subject<Long>)secondsLeft).onNext((long)-1); game.getPlayer().setState(Player.STATE.MENTALLED);});
-//
-//        Observable<Long> mentalled = makeCountDownFor(Player.STATE.MENTALLED);
-//        countUntil(mentalled, MINS60, true).subscribe((t) -> ((Subject<Long>)secondsLeft).onNext(MINS60 - t));
-//        countUntil(mentalled, MINS60, false)
-//                .subscribe((t) -> {
-//                                    ((Subject<Long>)secondsLeft).onNext((long)-1);
-//                                    game.getPlayer().setState(Player.STATE.DEAD_MENTAL);
-//        });
-
         Disposable stateTimers = setupStateTimers();
-
-        //countUntil(cou)
-//                deadControllerCountDown.filter((t) -> t <= MIN5).subscribe((t) -> ((Subject<Long>)secondsLeft).onNext(MIN5 - t));
-//        deadControllerCountDown.filter((t) -> t > MIN5).subscribe((t) -> {countdownStarted.onNext(System.currentTimeMillis()); currentPlayerState.onNext(Player.STATE.CONTROLLED);});
-//        Observable<Long> controlledCountDown = makeCountDownFor(Player.STATE.CONTROLLED);
 
         Frame frame = game.start();
         acceptsInfluences.onNext(true);
@@ -232,13 +234,13 @@ public class Engine
     private Disposable setupStateTimers()
     {
         CompositeDisposable cd = new CompositeDisposable();
-        cd.add(makeCountDownForStates(Player.STATE.W_CONTROLLED, SEC30, Player.STATE.CONTROLLED, MIN1, Player.STATE.DEAD_CONTROLLER));
-        cd.add(makeCountDownForStates(Player.STATE.W_MENTALLED, SEC30, Player.STATE.MENTALLED, MIN1, Player.STATE.DEAD_MENTAL));
-        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ANOMALY, SEC30, Player.STATE.DEAD_ANOMALY));
-        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_BURER, SEC30, Player.STATE.DEAD_BURER));
-        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_RADIATION, SEC30, Player.STATE.DEAD_RADIATION));
-        cd.add(makeCountDownForStates(Player.STATE.W_ABDUCTED, SEC30, Player.STATE.DEAD_BURER));
-        cd.add(makeCountDownForStates(Player.STATE.ABDUCTED, MIN1, Player.STATE.ALIVE));
+        cd.add(makeCountDownForStates(Player.STATE.W_CONTROLLED, MIN5, Player.STATE.CONTROLLED, MIN30, Player.STATE.DEAD_CONTROLLER));
+        cd.add(makeCountDownForStates(Player.STATE.W_MENTALLED, MIN5, Player.STATE.MENTALLED, MIN30, Player.STATE.DEAD_MENTAL));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ANOMALY, MIN5, Player.STATE.DEAD_ANOMALY));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_BURER, MIN5, Player.STATE.DEAD_BURER));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_RADIATION, MIN5, Player.STATE.DEAD_RADIATION));
+        cd.add(makeCountDownForStates(Player.STATE.W_ABDUCTED, MIN5, Player.STATE.DEAD_BURER));
+        cd.add(makeCountDownForStates(Player.STATE.ABDUCTED, MIN5, Player.STATE.ALIVE));
         return cd;
     }
 
@@ -385,6 +387,12 @@ public class Engine
         return playerLevel;
     }
 
+    @Override
+    public JsonObject toJson()
+    {
+        return o;
+    }
+
     private class ControlsImpl implements Controls
     {
 
@@ -409,6 +417,15 @@ public class Engine
         }
     }
 
+    private long getWaitTimeForState(Player.STATE ps)
+    {
+        switch (ps)
+        {
+            case W_DEAD_BURER: return MIN5;
+        }
+        return MIN5;
+    }
+
     private class CountDownImpl implements CountDown
     {
         @Override
@@ -431,10 +448,6 @@ public class Engine
         public void onPlayerStateChanged(Player.STATE oldState, Player.STATE newState)
         {
             Log.d(TAG, "onPlayerStateChanged " + newState);
-//            if(newState == Player.STATE.HEALING)
-//            {
-//                currentPlayerState.onNext(newState);
-//            }
             if(newState == Player.STATE.W_DEAD_BURER)
             {
                 countdownStarted.onNext(System.currentTimeMillis());

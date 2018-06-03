@@ -1,10 +1,12 @@
 package net.afterday.compass.core.player;
 
+import net.afterday.compass.core.serialization.Jsonable;
+
 /**
  * Created by spaka on 4/20/2018.
  */
 
-public interface PlayerProps
+public interface PlayerProps extends Jsonable
 {
     double getHealth();
     double getRadiation();

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 import net.afterday.compass.core.inventory.items.Item;
+import net.afterday.compass.core.player.Player;
 import net.afterday.compass.core.player.PlayerProps;
 import net.afterday.compass.core.serialization.Jsonable;
 import net.afterday.compass.core.serialization.Serializer;
@@ -48,7 +49,6 @@ public class InventoryImpl implements Inventory
         this.itemsByLevel = makeItems(persistency.getItemsAddeWithLevel());
         artifacts[Item.RADIATION_EMMITER] = 0;
 
-        Jsonable inv = getInventory();
         inventoryItems = deserializeItems();
         Jsonable io = deserializeInventory();
         JsonObject o;
@@ -473,16 +473,6 @@ public class InventoryImpl implements Inventory
         return o;
     }
 
-    private Jsonable getInventory()
-    {
-        return serializer.deserialize(INVENTORY);
-    }
-
-//    private List<Jsonable> getInventoryItems()
-//    {
-//        return serializer.deserializeList(INVENTORY_ITEMS);
-//    }
-
     private List<Item> deserializeItems()
     {
         List<Item> items = new ArrayList<>();
@@ -518,4 +508,5 @@ public class InventoryImpl implements Inventory
     {
         return serializer.deserialize(INVENTORY);
     }
+
 }

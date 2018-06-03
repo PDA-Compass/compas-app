@@ -18,16 +18,13 @@ import java.util.Map;
 
 public class GameImpl implements Game
 {
-    private int mLevel = 0;
-    private long mLastInfls = 0;
     private PlayerImpl mPlayer;
     private Controls controls;
 
     public GameImpl(Controls controls, PersistencyProvider persistencyProvider, Serializer serializer)
     {
         this.controls = controls;
-        mLastInfls = System.currentTimeMillis();
-        mPlayer = new PlayerImpl(new InventoryImpl(persistencyProvider.getItemsPersistency(), serializer));
+        mPlayer = new PlayerImpl(new InventoryImpl(persistencyProvider.getItemsPersistency(), serializer), serializer);
     }
 
     @Override
@@ -39,10 +36,6 @@ public class GameImpl implements Game
 
     public Frame acceptInfluences(InfluencesPack influencesPack)
     {
-//        long now = System.currentTimeMillis();
-//        long delta = now - mLastInfls;
-//
-//        mLastInfls = now;
         return mPlayer.acceptInfluences(influencesPack);
     }
 

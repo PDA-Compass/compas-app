@@ -10,8 +10,6 @@ import java.util.List;
 
 public interface Serializer
 {
-    String INVENTORY = "inventory";
-    String PLAYER = "player";
     void serialize(String key, Jsonable object);
     void serialize(String key, String id, Jsonable object);
     void remove(String key, String id);

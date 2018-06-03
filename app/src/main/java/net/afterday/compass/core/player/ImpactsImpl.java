@@ -5,6 +5,7 @@ import android.util.Log;
 import net.afterday.compass.core.influences.Influence;
 import net.afterday.compass.core.influences.InfluencesPack;
 import net.afterday.compass.core.inventory.items.Item;
+import net.afterday.compass.core.serialization.Serializer;
 import net.afterday.compass.util.Convert;
 
 /**
@@ -13,6 +14,7 @@ import net.afterday.compass.util.Convert;
 
 public class ImpactsImpl implements Impacts
 {
+    private static final String PLAYER_PROPS = "playerProps";
     private static final String TAG = "ImpactsImpl";
     private InfluencesPack inflPack;
     private static final int MINUTE = 60 * 1000;
@@ -34,23 +36,19 @@ public class ImpactsImpl implements Impacts
     private long accumulatedMental = 0;
     private long controllerLastHit = 0;
     private long burerLastHit = 0;
-    private long now;
-    private Player.STATE currentState;
 
-    public ImpactsImpl(PlayerProps playerProps)
+    public ImpactsImpl(PlayerProps playerProps, Serializer serializer)
     {
         newProps = (PlayerPropsImpl) playerProps;
-        now = System.currentTimeMillis();
     }
 
-    public void prepare(InfluencesPack inflPack, long delta, long now)
+    public void prepare(InfluencesPack inflPack, long delta)
     {
         if(inflPack.influencedBy(Influence.HEALTH) && newProps.getState().getCode() == Player.DEAD)
         {
             newProps.setState(Player.STATE.ALIVE);
         }
         this.inflPack = inflPack;
-        this.now = now;
         oldProps = newProps;
         newProps = new PlayerPropsImpl(oldProps);
         mImpacts = inflPack.getInfluences();

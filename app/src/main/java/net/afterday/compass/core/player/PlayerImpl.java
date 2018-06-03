@@ -2,6 +2,8 @@ package net.afterday.compass.core.player;
 
 import android.util.Log;
 
+import com.google.gson.JsonObject;
+
 import net.afterday.compass.core.events.PlayerEventsListener;
 import net.afterday.compass.core.gameState.Frame;
 import net.afterday.compass.core.gameState.FrameImpl;
@@ -10,6 +12,8 @@ import net.afterday.compass.core.inventory.Inventory;
 
 import net.afterday.compass.core.inventory.items.Events.ItemAdded;
 import net.afterday.compass.core.inventory.items.Item;
+import net.afterday.compass.core.serialization.Jsonable;
+import net.afterday.compass.core.serialization.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,7 @@ import java.util.List;
 public class PlayerImpl implements Player
 {
     private static final String TAG = "PlayerImpl";
+    private static final String PLAYER = "player";
     private long mLastInfls = System.currentTimeMillis();
     private PlayerProps mPlayerProps;
     private Inventory mInventory;
@@ -29,17 +34,61 @@ public class PlayerImpl implements Player
     private Impacts.STATE impactsState;
     private static final long MINUTE = 60 * 1000;
     private List<PlayerEventsListener> playerEventsListeners = new ArrayList<>();
-    public PlayerImpl(Inventory inventory)
+    private Serializer serializer;
+    private double hBefore;
+    private double rBefore;
+    private JsonObject o;
+    public PlayerImpl(Inventory inventory, Serializer serializer)
     {
-        playerState = STATE.ALIVE;
+        this.serializer = serializer;
+        Jsonable jso = serializer.deserialize(PLAYER);
+        double health = 0;
+        double rad = 0;
+        int xp = 0;
+        playerState = STATE.DEAD_BURER;
+        if(jso != null)
+        {
+            o = jso.toJson();
+            if(o.has("health"))
+            {
+                health = o.get("health").getAsDouble();
+            }
+            if(o.has("radiation"))
+            {
+                rad = o.get("radiation").getAsDouble();
+            }
+            if(o.has("state"))
+            {
+                //String str = o.get("state").getAsString();
+                playerState = stateFromString(o.get("state").getAsString());
+            }
+            if(o.has("xpPoints"))
+            {
+                rad = o.get("radiation").getAsDouble();
+            }
+            if(o.has("xpPoints"))
+            {
+                xp = o.get("xpPoints").getAsInt();
+            }
+        }else
+        {
+            o = new JsonObject();
+            o.addProperty("health", health);
+            o.addProperty("radiation", rad);
+            o.addProperty("state", playerState.toString());
+            o.addProperty("xpPoints", xp);
+        }
+        hBefore = health;
+        rBefore = rad;
         mPlayerProps = new PlayerPropsImpl(playerState);
-        ((PlayerPropsImpl)mPlayerProps).setHealth(100d);
-        ((PlayerPropsImpl)mPlayerProps).setRadiation(0d);
+        ((PlayerPropsImpl)mPlayerProps).setHealth(health);
+        ((PlayerPropsImpl)mPlayerProps).setRadiation(rad);
+        ((PlayerPropsImpl)mPlayerProps).setXpPoints(xp);
         mInventory = inventory;
-        this.impacts = new ImpactsImpl(mPlayerProps);
+        this.impacts = new ImpactsImpl(mPlayerProps, serializer);
     }
 
-    public Frame acceptInfluences(InfluencesPack inflPack, long delta, long now)
+    public Frame acceptInfluences(InfluencesPack inflPack, long delta)
     {
 //        long now = System.currentTimeMillis();
 //        //long delta = now - mLastInfls;
@@ -49,7 +98,7 @@ public class PlayerImpl implements Player
 //        {
 //            boolean breakPoint = true;
 //        }
-        impacts.prepare(inflPack, delta, now);
+        impacts.prepare(inflPack, delta);
         //Log.e(TAG,"!!!!!!!!!!!!!!!! acceptInfluences 1 " + Thread.currentThread().getName() + " -- " + impacts);
         impacts.artifactsImpact(mInventory.getArtifacts());
         if(mInventory.hasActiveBooster())
@@ -93,14 +142,35 @@ public class PlayerImpl implements Player
 
     private Frame makeFrame(ImpactsImpl impacts)
     {
+        boolean dirty = false;
         mPlayerProps = impacts.getPlayerProps();
         Player.STATE ps = mPlayerProps.getState();
+        if(ps != playerState)
+        {
+            o.addProperty("state", ps.toString());
+            dirty = true;
+        }
+        if(mPlayerProps.getRadiation() != rBefore)
+        {
+            rBefore = mPlayerProps.getRadiation();
+            o.addProperty("rad", rBefore);
+            dirty = true;
+        }
+        if(mPlayerProps.getHealth() != hBefore)
+        {
+            hBefore = mPlayerProps.getHealth();
+            o.addProperty("health", hBefore);
+            dirty = true;
+        }
+        if(dirty)
+        {
+            serializer.serialize(PLAYER, this);
+        }
         validateState(playerState, ps);
         Impacts.STATE is = impacts.getState();
         validateImpactsState(impactsState, is);
         playerState = ps;
         impactsState = is;
-        mPlayerProps.setState(ps);
         return new FrameImpl(mPlayerProps);
     }
 
@@ -122,10 +192,6 @@ public class PlayerImpl implements Player
         {
             return;
         }
-        if(prevState == STATE.ABDUCTED && newState == STATE.DEAD_BURER)
-        {
-            //mPlayerProps = mPlayerProps;
-        }
         for(PlayerEventsListener l : playerEventsListeners)
         {
             l.onPlayerStateChanged(prevState, newState);
@@ -143,7 +209,7 @@ public class PlayerImpl implements Player
         long now = System.currentTimeMillis();
         long delta = now - mLastInfls;
         mLastInfls = now;
-        return acceptInfluences(inflPack, delta, now);
+        return acceptInfluences(inflPack, delta);
 //        if(inflPack.influencedBy(Influence.HEALTH))
 //        {
 //            mIsSafe = true;
@@ -191,6 +257,8 @@ public class PlayerImpl implements Player
             e.setLevel(mPlayerProps.getLevel());
             e.setLevelChanged(changed);
             mInventory.setPlayerLevel(e.getLevel());
+            o.addProperty("xpPoints", mPlayerProps.getXpPoints());
+            serializer.serialize(PLAYER, this);
             for(PlayerEventsListener pli : playerEventsListeners)
             {
                 if(changed)
@@ -235,24 +303,53 @@ public class PlayerImpl implements Player
     @Override
     public Frame setState(STATE state)
     {
+
         Log.e(TAG, "-*-*-*-*-*-*-*setState: " + state);
-        if(state == STATE.DEAD_BURER)
-        {
-            boolean t = true; //breakpoint
-        }
         this.getPlayerProps().setState(state);
         if(state.getCode() == Player.DEAD)
         {
             ((PlayerPropsImpl)mPlayerProps).setHealth(0);
+            o.addProperty("health", 0);
         }
         validateState(this.playerState, state);
         this.playerState = state;
+        o.addProperty("state", state.toString());
+        serializer.serialize(PLAYER, this);
         return new FrameImpl(mPlayerProps);
     }
 
     public PlayerProps getProps()
     {
         return mPlayerProps;
+    }
+
+    private Player.STATE stateFromString(String s)
+    {
+        switch (s)
+        {
+            case "ALIVE": return Player.STATE.ALIVE;
+            case "DEAD_CONTROLLER": return Player.STATE.DEAD_CONTROLLER;
+            case "DEAD_ANOMALY": return Player.STATE.DEAD_ANOMALY;
+            case "DEAD_RADIATION": return Player.STATE.DEAD_RADIATION;
+            case "DEAD_BURER": return Player.STATE.DEAD_BURER;
+            case "DEAD_MENTAL": return Player.STATE.DEAD_MENTAL;
+            case "CONTROLLED": return Player.STATE.CONTROLLED;
+            case "MENTALLED": return Player.STATE.MENTALLED;
+            case "W_MENTALLED": return Player.STATE.W_MENTALLED;
+            case "W_CONTROLLED": return Player.STATE.W_CONTROLLED;
+            case "W_DEAD_BURER": return Player.STATE.W_DEAD_BURER;
+            case "W_DEAD_RADIATION": return Player.STATE.W_DEAD_RADIATION;
+            case "W_DEAD_ANOMALY": return Player.STATE.W_DEAD_ANOMALY;
+            case "W_ABDUCTED": return Player.STATE.W_ABDUCTED;
+            case "ABDUCTED": return Player.STATE.ABDUCTED;
+        }
+        return Player.STATE.DEAD_BURER;
+    }
+
+    @Override
+    public JsonObject toJson()
+    {
+        return o;
     }
 
     private static class ItemAddedEvent implements ItemAdded

@@ -27,8 +27,6 @@ public class SharedPrefsSerializer implements Serializer
     {
         this.context = context;
         prefs = new HashMap<>();
-//        prefs.put(INVENTORY, context.getSharedPreferences(INVENTORY, Context.MODE_PRIVATE));
-//        prefs.put(PLAYER, context.getSharedPreferences(PLAYER, Context.MODE_PRIVATE));
     }
 
     public static SharedPrefsSerializer instance(Context context)
@@ -57,6 +55,7 @@ public class SharedPrefsSerializer implements Serializer
     {
         getSp(key).edit().putString(id, object.toJson().toString()).apply();
     }
+
 
     @Override
     public void remove(String key, String id)

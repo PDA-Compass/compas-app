@@ -4,12 +4,13 @@ import net.afterday.compass.core.events.PlayerEventsListener;
 import net.afterday.compass.core.gameState.Frame;
 import net.afterday.compass.core.inventory.Inventory;
 import net.afterday.compass.core.inventory.items.Item;
+import net.afterday.compass.core.serialization.Jsonable;
 
 /**
  * Created by spaka on 4/18/2018.
  */
 
-public interface Player
+public interface Player extends Jsonable
 {
     static final int ALIVE = 1;
     //static final int HEALING = 2;
@@ -70,21 +71,21 @@ public interface Player
             String ps = "PlayerState: ";
             switch (this)
             {
-                case ALIVE: return ps + "ALIVE";
-                case DEAD_CONTROLLER: return ps + "DEAD_CONTROLLER";
-                case DEAD_ANOMALY: return ps + "DEAD_ANOMALY";
-                case DEAD_RADIATION: return ps + "DEAD_RADIATION";
-                case DEAD_BURER: return ps + "DEAD_BURER";
-                case DEAD_MENTAL: return ps + "DEAD_MENTAL";
-                case CONTROLLED: return ps + "CONTROLLED";
-                case MENTALLED: return ps + "MENTALLED";
-                case W_MENTALLED: return ps + "W_MENTALLED";
-                case W_CONTROLLED: return ps + "W_CONTROLLED";
-                case W_DEAD_BURER: return ps + "W_DEAD_BURER";
-                case W_DEAD_RADIATION: return ps + "W_DEAD_RADIATION";
-                case W_DEAD_ANOMALY: return ps + "W_DEAD_ANOMALY";
-                case W_ABDUCTED: return ps + "W_ABDUCTED";
-                case ABDUCTED: return ps + "ABDUCTED";
+                case ALIVE: return "ALIVE";
+                case DEAD_CONTROLLER: return "DEAD_CONTROLLER";
+                case DEAD_ANOMALY: return "DEAD_ANOMALY";
+                case DEAD_RADIATION: return "DEAD_RADIATION";
+                case DEAD_BURER: return "DEAD_BURER";
+                case DEAD_MENTAL: return "DEAD_MENTAL";
+                case CONTROLLED: return "CONTROLLED";
+                case MENTALLED: return "MENTALLED";
+                case W_MENTALLED: return "W_MENTALLED";
+                case W_CONTROLLED: return "W_CONTROLLED";
+                case W_DEAD_BURER: return "W_DEAD_BURER";
+                case W_DEAD_RADIATION: return "W_DEAD_RADIATION";
+                case W_DEAD_ANOMALY: return "W_DEAD_ANOMALY";
+                case W_ABDUCTED: return "W_ABDUCTED";
+                case ABDUCTED: return "ABDUCTED";
             }
             return "Unknown player state!";
         }
