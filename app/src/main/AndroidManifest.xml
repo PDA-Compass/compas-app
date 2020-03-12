@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.afterday.compas">
+    package="net.afterday.compas.app">
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -26,7 +26,7 @@
         android:name=".StalkerApp"
         android:largeHeap="true"
         android:permission="">
-        <activity android:name="net.afterday.compas.MainActivity"
+        <activity android:name="net.afterday.compas.app.MainActivity"
             android:configChanges="keyboardHidden|screenSize"
             android:label="PDA Compass v.1813 GM">
             <intent-filter>
@@ -34,13 +34,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="net.afterday.compas.HiddenActivity"
+        <activity android:name="net.afterday.compas.app.HiddenActivity"
             android:label="HiddenActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoDisplay"
             android:screenOrientation="reverseLandscape">
         </activity>
-        <service android:name="net.afterday.compas.LocalMainService">
+        <service android:name="net.afterday.compas.app.LocalMainService">
             <intent-filter android:icon="@mipmap/ic_launcher">
                 <action android:name="android.net.wifi.SCAN_RESULTS">
                 </action>
@@ -56,10 +56,6 @@
                 <action android:name="ServiceControlls"></action>
             </intent-filter>
         </receiver>
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="334a8225ed7cef5df63ef4c9488a130072c04ca6" />
     </application>
-
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

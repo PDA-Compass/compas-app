@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="0dp"
-    android:layout_margin="0dp"
-    tools:context="net.afterday.compas.MainActivity"
-    android:keepScreenOn="true">
+                                               xmlns:app="http://schemas.android.com/apk/res-auto"
+                                               xmlns:tools="http://schemas.android.com/tools"
+                                               android:id="@+id/activity_main"
+                                               android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:padding="0dp"
+                                               android:layout_margin="0dp"
+                                               tools:context="net.afterday.compas.MainActivity"
+                                               android:keepScreenOn="true" tools:ignore="MissingDefaultResource">
     <net.afterday.compas.view.Compass
         android:id="@+id/compass"
         app:layout_widthPercent="52.8125%"

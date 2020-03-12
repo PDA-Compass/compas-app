@@ -4,21 +4,21 @@
 
     <!-- Drugs -->
     <string name="item_bandage">Bandage</string>
-    <string name="desc_bandage">Instant health restore 10%</string>
+    <string name="desc_bandage">Instant health restore 10%%</string>
     <string name="item_medkit">Medkit</string>
-    <string name="desc_medkit">Instant health restore 20%</string>
+    <string name="desc_medkit">Instant health restore 20%%</string>
     <string name="item_army_medkit">Army Medkit</string>
-    <string name="desc_army_medkit">Instant health restore 20%</string>
+    <string name="desc_army_medkit">Instant health restore 20%%</string>
     <string name="item_vinca">Vinca</string>
-    <string name="desc_vinca">Instant health restore 40%, removes 1 Sv of obtained radiation</string>
+    <string name="desc_vinca">Instant health restore 40%%, removes 1 Sv of obtained radiation</string>
     <string name="item_scientific_medkit">Scientific Medkit</string>
-    <string name="desc_scientific_medkit">Instant health restore 50%, removes 3 Sv of obtained radiation</string>
+    <string name="desc_scientific_medkit">Instant health restore 50%%, removes 3 Sv of obtained radiation</string>
     <string name="item_vodka">Vodka Cossacks</string>
-    <string name="desc_vodka">Removes 1 Sv of obtained radiation, drops 10% of health</string>
+    <string name="desc_vodka">Removes 1 Sv of obtained radiation, drops 10%% of health</string>
     <string name="item_antirad">Anti-rad</string>
-    <string name="desc_antirad">Removes 7 Sv of obtained radiation, drops 20% of health</string>
+    <string name="desc_antirad">Removes 7 Sv of obtained radiation, drops 20%% of health</string>
     <string name="item_anabiotic">Anabiotic</string>
-    <string name="desc_anabiotic">Eleminates emission effect, drops 30% of health</string>
+    <string name="desc_anabiotic">Eleminates emission effect, drops 30%% of health</string>
 
     <!-- Boosters -->
     <string name="item_b190">B190 Radioprotectant</string>
@@ -28,13 +28,13 @@
     <string name="item_ip2">IP2 antidote</string>
     <string name="desc_ip2">Eliminates anomaly effect for 1 minute</string>
     <string name="item_hercules">Hercules</string>
-    <string name="desc_hercules">Health restores 50% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="desc_hercules">Health restores 50%% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
     <string name="item_energy_drink">Energy Drink Stalker</string>
-    <string name="desc_energy_drink">Health restores 100% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="desc_energy_drink">Health restores 100%% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
     <string name="item_green_svoboda">Green Svoboda serum</string>
-    <string name="desc_green_svoboda">Radiation obtains 90% slower for 2 hours</string>
+    <string name="desc_green_svoboda">Radiation obtains 90%% slower for 2 hours</string>
     <string name="item_yellow_svoboda">Yellow Svoboda serum</string>
-    <string name="desc_yellow_svoboda">Mental strength 90% lower for 2 hours</string>
+    <string name="desc_yellow_svoboda">Mental strength 90%% lower for 2 hours</string>
 
     <!-- Upgrades -->
     <string name="item_binocl">Binoculars</string>
@@ -52,15 +52,15 @@
 
     <!-- Devices -->
     <string name="item_shlem1">Psionic helmet Mark 1</string>
-    <string name="desc_shlem1">Mental strength 99% lower, Controller is 30% weaker for 30 minutes.</string>
+    <string name="desc_shlem1">Mental strength 99%% lower, Controller is 30% weaker for 30 minutes.</string>
     <string name="item_shlem2">Psionic helmet Mark 2</string>
-    <string name="desc_shlem2">Mental strength 99% lower, Call of monolith strength 99% weaker, Controller is 60% weaker for 1 hour.</string>
+    <string name="desc_shlem2">Mental strength 99%% lower, Call of monolith strength 99% weaker, Controller is 60%% weaker for 1 hour.</string>
     <string name="item_respirator">Respirator</string>
-    <string name="desc_respirator">Radiation obtains 40% slower for 30 minutes.</string>
+    <string name="desc_respirator">Radiation obtains 40%% slower for 30 minutes.</string>
     <string name="item_gasmask">Gasmask</string>
-    <string name="desc_gasmask">Radiation obtains 60% slower for 1 hour.</string>
+    <string name="desc_gasmask">Radiation obtains 60%% slower for 1 hour.</string>
     <string name="item_szd">Rebreather</string>
-    <string name="desc_szd">Radiation obtains 90% slower for 2 hours.</string>
+    <string name="desc_szd">Radiation obtains 90%% slower for 2 hours.</string>
 
     <!-- Weapons -->
     <string name="item_knife">Battle knife</string>
@@ -146,65 +146,65 @@
 
     <!-- Suits -->
     <string name="item_leather_jacket">Leather jacket</string>
-    <string name="desc_leather_jacket">Radiation obtains 10% slower for 1 hour of any damage</string>
+    <string name="desc_leather_jacket">Radiation obtains 10%% slower for 1 hour of any damage</string>
     <string name="item_stalker_suit">Stalker suit</string>
-    <string name="desc_stalker_suit">Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less for 2 hours of any damage</string>
+    <string name="desc_stalker_suit">Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10%% less for 2 hours of any damage</string>
     <string name="item_seva_suit">SEVA suit</string>
-    <string name="desc_seva_suit">Radiation obtains 50% slower, anomaly effect 40% less, mental effect 30% less for 2 hours of any damage</string>
+    <string name="desc_seva_suit">Radiation obtains 50%% slower, anomaly effect 40%% less, mental effect 30%% less for 2 hours of any damage</string>
     <string name="item_exoskeleton">Exoskeleton</string>
-    <string name="desc_exoskeleton">Health restores 100% faster in clear locations, when less than 1 Sv of radiation is obtained, radiation obtains 30% slower, anomaly effect 40% less, mental effect 20% less for 2 hours of any damage</string>
+    <string name="desc_exoskeleton">Health restores 100%% faster in clear locations, when less than 1 Sv of radiation is obtained, radiation obtains 30%% slower, anomaly effect 40%% less, mental effect 20%% less for 2 hours of any damage</string>
     <string name="item_ssp99">SSP-99 Ecologist</string>
-    <string name="desc_ssp99">Radiation obtains 80% slower, anomaly effect 60% less, mental effect 40% less for 1 hour of any damage</string>
+    <string name="desc_ssp99">Radiation obtains 80%% slower, anomaly effect 60%% less, mental effect 40%% less for 1 hour of any damage</string>
 
     <!-- Fraction suits -->
     <string name="item_merc_suit">Merc suit</string>
-    <string name="desc_merc_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_merc_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10% less</string>
     <string name="item_monolith_suit">Monolith suit</string>
-    <string name="desc_monolith_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, resist to mental 99%</string>
+    <string name="desc_monolith_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, resist to mental 99%</string>
     <string name="item_bandit_suit">Bandit suit</string>
-    <string name="desc_bandit_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_bandit_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10% less</string>
     <string name="item_duty_suit">Duty suit</string>
-    <string name="desc_duty_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_duty_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10% less</string>
     <string name="item_freedom_suit">Freedom suit</string>
-    <string name="desc_freedom_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_freedom_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10% less</string>
     <string name="item_berill_suit">Berill suit</string>
-    <string name="desc_berill_suit">Fractional: Worn off after 3 hours of any damage. Health restores 200% faster in clear locations, when less than 1 Sv of radiation is obtained. Radiation obtain, anomaly and mental 20% less</string>
+    <string name="desc_berill_suit">Fractional: Worn off after 3 hours of any damage. Health restores 200%% faster in clear locations, when less than 1 Sv of radiation is obtained. Radiation obtain, anomaly and mental 20%% less</string>
     <string name="item_clearsky_suit">Clear Sky suit</string>
-    <string name="desc_clearsky_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_clearsky_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30%% slower, anomaly effect 20%% less, mental effect 10%% less</string>
 
     <!-- Artefacts -->
     <string name="item_jellyfish">Jellyfish</string>
-    <string name="desc_jellyfish">Health restores 50% faster in clear locations, when obtained les than 1 Sv of radiation. Gives 1 point of expirience.</string>
+    <string name="desc_jellyfish">Health restores 50%% faster in clear locations, when obtained les than 1 Sv of radiation. Gives 1 point of expirience.</string>
     <string name="item_stone_flower">Stone Flower</string>
     <string name="desc_stone_flower">Mental effect 20% less, but radiation obtains 20% faster. Gives 5 points of expirience.</string>
     <string name="item_droplets">Droplets</string>
-    <string name="desc_droplets">Radiation obtains 10% slower. Gives 2 points of expirience.</string>
+    <string name="desc_droplets">Radiation obtains 10%% slower. Gives 2 points of expirience.</string>
     <string name="item_eye">Eye</string>
-    <string name="desc_eye">Health restores 100% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 2 points of expirience.</string>
+    <string name="desc_eye">Health restores 100%% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 2 points of expirience.</string>
     <string name="item_night_star">Night Star</string>
     <string name="desc_night_star">Mental effect 60% less, but radiation obtains 60% faster. Gives 15 points of expirience.</string>
     <string name="item_kolobok">Kolobok</string>
-    <string name="desc_kolobok">Health restores 200% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 5 points of expirience.</string>
+    <string name="desc_kolobok">Health restores 200%% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 5 points of expirience.</string>
     <string name="item_thorn">Thorn</string>
     <string name="desc_thorn">Radiation obtains 50% slower, anomaly and mental effect 25% more. Gives 10 points of expirience.</string>
     <string name="item_fireball">Fireball</string>
-    <string name="desc_fireball">Radiation obtains 30% slower. Gives 10 points of expirience.</string>
+    <string name="desc_fireball">Radiation obtains 30%% slower. Gives 10 points of expirience.</string>
     <string name="item_bubble">Bubble</string>
-    <string name="desc_bubble">Radiation obtains 20% slower. Gives 5 points of expirience.</string>
+    <string name="desc_bubble">Radiation obtains 20%% slower. Gives 5 points of expirience.</string>
     <string name="item_mamas_beads">Mamas Beads</string>
     <string name="desc_mamas_beads">Health restores 400% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Burer telekinetic attack 90%. Gives 15 points of expirience.</string>
     <string name="item_moonlight">Moonlight</string>
-    <string name="desc_moonlight">Resist to anomaly effect 50%, but radiation obtains 20% faster. Gives 10 points of expirience.</string>
+    <string name="desc_moonlight">Resist to anomaly effect 50%%, but radiation obtains 20%% faster. Gives 10 points of expirience.</string>
     <string name="item_spring">Spring</string>
-    <string name="desc_spring">Resist to anomaly effect 25%, but radiation obtains 10% faster. Gives 5 points of expirience.</string>
+    <string name="desc_spring">Resist to anomaly effect 25%%, but radiation obtains 10%% faster. Gives 5 points of expirience.</string>
     <string name="item_pellicle">Pellicle</string>
     <string name="desc_pellicle">Mental effect 40% less, but radiation obtains 40% faster. Gives 10 points of expirience.</string>
     <string name="item_mica">Mica</string>
-    <string name="desc_mica">Health restores 500% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Burer and Controller distant attacks 90%. but radiation, anomaly  and mental 25% strongest. Gives 20 points of expirience.</string>
+    <string name="desc_mica">Health restores 500%% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Burer and Controller distant attacks 90%%. but radiation, anomaly  and mental 25%% strongest. Gives 20 points of expirience.</string>
     <string name="item_compass">Compass</string>
     <string name="desc_compass">Anomalies is detectable, but can\'t hurt, Mental effect 60% less, but radiation obtains 100% faster. Gives 30 points of expirience.</string>
     <string name="item_crystal">Crystal</string>
-    <string name="desc_crystal">Radiation obtains 40% slower. Gives 10 points of expirience.</string>
+    <string name="desc_crystal">Radiation obtains 40%% slower. Gives 10 points of expirience.</string>
     <string name="item_goldfish">Goldfish</string>
     <string name="desc_goldfish">Health restores 300% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Controller psionic attack 90%. Gives 15 points of expirience.</string>
     <string name="item_altered_insulator">Altered Insulator</string>

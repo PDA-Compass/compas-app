@@ -1,0 +1,41 @@
+package net.afterday.compas.engine.devices.sound;
+
+public interface Sound {
+    void playRadClick();
+    void playGlassBreak();
+    void playBulbBreak();
+    void playLevelUp();
+    void playHealing();
+    void stopHealing();
+    void playAnomalyClick();
+    void playMental();
+    void playAnomalyDeath();
+    void playEmissionWarning();
+    void playEmissionStarts();
+    void playEmissionHit();
+    void playEmissionPeriodical();
+    void playEmissionEnds();
+    void playCompassOn();
+    void playCompassOff();
+    void playInventoryOpen();
+    void playInventoryDrop();
+    void playInventoryUse();
+    void playInventoryClose();
+    void playPdaOn();
+    void playPdaOff();
+    void playPdaWake();
+    void playWTimer();
+    void playDeath();
+    void playTransmutating();
+    void playAbducted();
+    void playZombify();
+    void playControlled();
+    void playController();
+    void playBurer();
+    void playMentalHit();
+    void playMonolithHit();
+    void playItemScanned();
+    void playArtefact();
+    void playControllerPresence();
+    void playBurerPresence();
+}
