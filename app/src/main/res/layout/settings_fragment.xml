@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.afterday.compas.MainActivity"
+    android:keepScreenOn="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="247dp"
+        android:layout_centerInParent="false"
+        android:background="@drawable/popup_background"
+        android:padding="20dp"
+        app:layout_heightPercent="90%"
+        app:layout_marginBottomPercent="1%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginRightPercent="5%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="99%">
+
+        <TextView
+            android:id="@+id/s_vibro"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:text="@string/tray_vibro"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Switch
+            android:id="@+id/vibroSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/settings_row_h"
+            app:layout_constraintLeft_toRightOf="@id/s_vibro" />
+
+        <TextView
+            android:id="@+id/s_compass"
+            android:layout_width="140dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/tray_compass"
+            app:layout_constraintTop_toBottomOf="@id/s_vibro"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Switch
+            android:id="@+id/compassSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/settings_row_h"
+            android:layout_marginTop="@dimen/settings_row_gap"
+            app:layout_constraintLeft_toRightOf="@id/s_compass"
+            app:layout_constraintTop_toBottomOf="@id/vibroSwitch" />
+
+        <TextView
+            android:id="@+id/s_orientation"
+            android:layout_width="@dimen/settings_title_w"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/tray_orientation"
+            app:layout_constraintTop_toBottomOf="@id/s_compass"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <RadioGroup
+            android:id="@+id/orientation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/settings_row_gap"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/s_orientation"
+            app:layout_constraintTop_toBottomOf="@id/compassSwitch">
+
+            <RadioButton
+                android:id="@+id/orientationPort"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/settings_row_h"
+                android:text="@string/tray_portrait" />
+
+            <RadioButton
+                android:id="@+id/orientationLand"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/settings_row_h"
+                android:text="@string/tray_landscape" />
+        </RadioGroup>
+
+    </android.support.constraint.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_marginLeftPercent="87%"
+        app:layout_marginTopPercent="7%"
+        android:background="@drawable/popup_close"
+        android:contentDescription="TODO" />
+
+</android.support.percent.PercentRelativeLayout>

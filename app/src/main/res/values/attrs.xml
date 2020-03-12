@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Bar">
+        <attr name="image" format="reference">
+        </attr>
+        <attr name="offset_left" format="integer"></attr>
+        <attr name="offset_bottom" format="integer"></attr>
+        <attr name="scale_height" format="integer"></attr>
+        <attr name="scale_width" format="integer"></attr>
+        <attr name="measurement" format="enum">
+            <enum name="vertical" value="0"></enum>
+            <enum name="horizontal" value="1"></enum>
+        </attr>
+        <attr name="scale_color" format="color"></attr>
+    </declare-styleable>
+</resources>

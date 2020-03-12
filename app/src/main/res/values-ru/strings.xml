@@ -31,12 +31,14 @@
     <string name="desc_hercules">Каша - пища наша, хоть и жидкая. Ускоряет восстановление здоровья в чистых локациях на 50%, если накоплено меньше 1 Зиверта радиации. Действует полчаса.</string>
     <string name="item_energy_drink">Энергетик Сталкер</string>
     <string name="desc_energy_drink">Весьма живительный напиток. Ускоряет восстановление здоровья в чистых локациях на 100%, если накоплено меньше 1 Зиверта радиации. Действует полчаса.</string>
-    <string name="item_green_svoboda">Настойка Свободы Радвинок</string>
+    <string name="item_green_svoboda">Настойка Радвинок</string>
     <string name="desc_green_svoboda">Забористая хрень ядовито-зелёного цвета. На вкус дрянь, но на 2 часа снижает воздействие текущей радиации на 90%</string>
-    <string name="item_yellow_svoboda">Настойка Свободы Менвинок</string>
+    <string name="item_yellow_svoboda">Настойка Менвинок</string>
     <string name="desc_yellow_svoboda">Забористая хрень ядовито-жёлтого цвета. Отвратная, но на 2 часа снижает воздействие ментального излучения на 90%</string>
 
     <!-- Апгрейды -->
+    <string name="item_binocl">Бинокль</string>
+    <string name="desc_binocl">Разблокировано: бинокль или монокль любого типа.</string>
     <string name="item_optics">Оптический прицел</string>
     <string name="desc_optics">Разблокировано: оптический прицел для всех видов оружия.</string>
     <string name="item_collimator">Коллиматор</string>
@@ -48,33 +50,103 @@
     <string name="item_grenade_launcher">Гранатомёт</string>
     <string name="desc_grenade_launcher">Разблокировано: подствольный или отдельный гранатомёт любого типа.</string>
 
-    <!-- Квестовые предметы -->
+    <!-- Фильтры -->
+    <string name="item_shlem1">Пси-шлем M1</string>
+    <string name="desc_shlem1">Даёт защиту от воздействия ментала 99% и Контролёра 30%. Работает 30 минут.</string>
+    <string name="item_shlem2">Пси-шлем M2</string>
+    <string name="desc_shlem2">Даёт защиту от воздействия ментала 100%, Зова Монолита 99% и Контролёра 60%. Работает 1 час.</string>
+    <string name="item_respirator">Респиратор</string>
+    <string name="desc_respirator">Даёт защиту от текущей радиации на 40%. Работает 30 минут.</string>
+    <string name="item_gasmask">Противогаз</string>
+    <string name="desc_gasmask">Даёт защиту от текущей радиации на 60%. Работает 1 час.</string>
+    <string name="item_szd">Система замкнутого дыхания</string>
+    <string name="desc_szd">Даёт защиту от текущей радиации 90%. Работает 2 часа.</string>
+
+    <!-- Оружие -->
+    <string name="item_knife">Боевой нож</string>
+    <string name="desc_knife">Остро, больно, молодёжно. В ноже патроны никогда не кончаются.</string>
+    <string name="item_pistol">Пистолет</string>
+    <string name="desc_pistol">Пистолет или револьвер любой модели. Подходят только пистолетные 9мм патроны.</string>
+    <string name="item_shotgun">Дробовик</string>
+    <string name="desc_shotgun">Дробовик или обрез любой модели. Подходит только картечь 12 калибра.</string>
+    <string name="item_submachinegun">Пистолет-пулемёт</string>
+    <string name="desc_submachinegun">Пистолет-пулемёт любой модели. Подходят только пистолетные 9мм патроны.</string>
+    <string name="item_ak">Автомат типа АК</string>
+    <string name="desc_ak">Автомат АК любой модели. Подходят только 5.45мм патроны восточного блока.</string>
+    <string name="item_m4">Автомат типа НАТО</string>
+    <string name="desc_m4">Автомат НАТО любой модели. Подходят только 5.56мм блока НАТО.</string>
+    <string name="item_val">Вал (Винторез)</string>
+    <string name="desc_val">Бесшумная винтовка (или автомат) в комплекте с прицелом к ней. Подходят только специальные 9мм патроны.</string>
+    <string name="item_sniper">Снайперская винтовка</string>
+    <string name="desc_sniper">Снайперская винтовка в комплекте с прицелом к ней, любой модели. Подходят только 7.62мм универсальные патроны.</string>
+    <string name="item_machinegun">Пулемёт</string>
+    <string name="desc_machinegun">Пулемёт любой модели. Подходят только 7.62мм универсальные патроны.</string>
+    <string name="item_gauss_gun">Гаусс пушка</string>
+    <string name="desc_gauss_gun">Гаусс пушка любой модели. Подходят только гаусс-патроны.</string>
+
+    <!-- Боеприпасы -->
+    <string name="item_9mm">9мм патроны</string>
+    <string name="desc_9mm">Заряжаются в любой тип пистолетов и револьверов. 1 очко опыта.</string>
+    <string name="item_12cal">Картечь 12 калибра</string>
+    <string name="desc_12cal">Заряжаются в любой тип дробовиков и ружей. 1 очко опыта.</string>
+    <string name="item_545ak">Патроны 5.45 AK</string>
+    <string name="desc_545ak">Заряжаются в оружие Восточного блока. 1 очко опыта.</string>
+    <string name="item_556nato">Патроны 5.56 НАТО</string>
+    <string name="desc_556nato">Заряжаются в оружие блока НАТО. 1 очко опыта.</string>
+    <string name="item_9val">Патроны 9мм специальные</string>
+    <string name="desc_9val">Заряжаются в бесшумные винтовки Вал или Винторез. 1 очко опыта.</string>
+    <string name="item_762">Патроны 7.62 универсальные</string>
+    <string name="desc_762">Для оружия с более крупным калибром, в основном снайперских винтовок и пулемётов. 1 очко опыта.</string>
+    <string name="item_atom">Гаусс-патроны</string>
+    <string name="desc_atom">Атомные боеприпасы для Гаусс-пушек любого типа. Могут быть радиоактивными. 10 очков опыта.</string>
+    <string name="item_bigbk">Ящик с боеприпасами</string>
+    <string name="desc_bigbk">Много всего разного на усмотрение командира. 20 очков опыта.</string>
+    <string name="item_f1">Граната Ф1</string>
+    <string name="desc_f1">Осколочная классика. Хороша против человеков. 2 очка опыта.</string>
+    <string name="item_limonka">Лимонка</string>
+    <string name="desc_limonka">Старый добрый фугас, применим в любых непонятных ситуациях. 2 очка опыта.</string>
+    <string name="item_incend">Зажигательная граната</string>
+    <string name="desc_incend">Хороша для подхода к делу с огоньком. 2 очка опыта.</string>
+    <string name="item_podgren">Выстрел для гранатомёта</string>
+    <string name="desc_podgren">Достанет врага далеко и по баллистической траектории. 3 очка опыта.</string>
+
+    <!-- Еда -->
     <string name="item_dead_rat">Дохлая крыса</string>
-    <string name="desc_dead_rat">Квест: непонятно для чего ты её таскаешь. Ни толку, ни опыта.</string>
+    <string name="desc_dead_rat">Непонятно для чего ты её таскаешь. Ни толку, ни опыта. Травануться разве что.</string>
     <string name="item_bread">Батон</string>
-    <string name="desc_bread">Квест: эх, хреновые нынче батоны стали делать. 1 очко опыта.</string>
+    <string name="desc_bread">Эх, хреновые нынче батоны стали делать. Но с голодухи нормально. 1 очко опыта.</string>
     <string name="item_sausage">Палка колбасы</string>
-    <string name="desc_sausage">Квест: ливер, ничем не лучше хренового батона. 2 очка опыта.</string>
+    <string name="desc_sausage">Ливер, ничем не лучше хренового батона. Но есть можно. 2 очка опыта.</string>
     <string name="item_canned_meat">Банка тушёнки</string>
-    <string name="desc_canned_meat">Квест: обычная жестяная консерва. Походу, снорк или кровосос. 3 очка опыта.</string>
+    <string name="desc_canned_meat">Обычная жестяная консерва. Походу, снорк или кровосос. Вполне съедобно. 3 очка опыта.</string>
     <string name="item_red_devil">Левый энергетик</string>
-    <string name="desc_red_devil">Квест: красное пойло без обещанного стимулирующего эффекта. Ценится у любителей кока-колы. 4 очка опыта.</string>
+    <string name="desc_red_devil">Красное пойло с непонятным побочным эффектом. Ценится у любителей кока-колы. 4 очка опыта.</string>
+    <string name="item_doktorskaja">Докторская</string>
+    <string name="desc_doktorskaja">Прилично, вкусно, оздоровляюще. 5 очков опыта.</string>
+    <string name="item_delikates">Деликатес</string>
+    <string name="desc_delikates">Закатанное в железо произведение кулинарного искусства. 6 очков опыта.</string>
+
+    <!-- Квестовые предметы -->
+    <string name="item_garmoshka">Губная гармошка</string>
+    <string name="desc_garmoshka">Квест: вечер у костра с этой штукой делает его немного немецким. 4 очка опыта.</string>
+    <string name="item_bag">Спальный мешок</string>
+    <string name="desc_bag">Квест: старый армейский спальник. 5 очков опыта.</string>
     <string name="item_gasoline">Канистра бензина</string>
     <string name="desc_gasoline">Квест: низкооктановое фуфло. Феррари на таком точно не поедет. 10 очков опыта.</string>
+    <string name="item_maps">Старая карта</string>
+    <string name="desc_maps">Квест: неясно что на ней, неясно куда ведёт, неясно кому нужна. Надо разобраться. 15 очков опыта.</string>
     <string name="item_guitar">Потрёпанная гитара</string>
     <string name="desc_guitar">Квест: верная подруга любого сталкера. Поможет скоротать время у костра. 20 очков опыта.</string>
     <string name="item_instruments">Ящик с инструментами</string>
     <string name="desc_instruments">Квест: гаечные ключи и отвёртки. Кому то это явно нужно. 30 очков опыта.</string>
     <string name="item_psionic_device">Непонятный прибор</string>
     <string name="desc_psionic_device">Квест: фигня с крутилками и тумблерами. Яйцеголовые явно заценят. 40 очков опыта.</string>
-    <string name="item_gauss_gun">Сломанное изделие</string>
-    <string name="desc_gauss_gun">Квест: внешне похоже на оружие. Не работает от слова никак. 50 очков опыта.</string>
+    <string name="item_pda">ПДА с важной информацией</string>
+    <string name="desc_pda">Квест: Дорогая вещь, и инфа дорогая. 50 очков опыта.</string>
 
     <!-- Костюмы -->
     <string name="item_leather_jacket">Кожаная куртка</string>
     <string name="desc_leather_jacket">Минимальная защита, обычно используемая новичками. Изнашивается за час воздействия любой из угроз. Снижает текущее воздействие радиации на 10%</string>
-    <string name="item_merc_suit">Комбез наёмника</string>
-    <string name="desc_merc_suit">Широко используемый комбез. Изнашивается за час воздействия любой из угроз. Снижает текущее воздействие радиации на 20%, аномалий - на 10%</string>
     <string name="item_stalker_suit">Комбез сталкера Заря</string>
     <string name="desc_stalker_suit">Мечта любого сталкера. Изнашивается за 2 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
     <string name="item_seva_suit">Комбинезон СЕВА</string>
@@ -85,15 +157,17 @@
     <string name="desc_ssp99">Комбез учёных. Изнашивается за час воздействия любой из угроз. Снижает текущее воздействие радиации на 80%, аномалий - на 60%, ментала - на 40%</string>
 
     <!-- Фракционные костюмы -->
+    <string name="item_merc_suit">Комбез наёмника</string>
+    <string name="desc_merc_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
     <string name="item_monolith_suit">Комбез Монолита</string>
-    <string name="desc_monolith_suit">Фракционный:  Изнашивается за 3 часа воздействия любой из угроз. Радиация накапливается на 30% медленнее, сила аномалий на 20% слабее, сопротивление ментальному излучению 100%</string>
+    <string name="desc_monolith_suit">Фракционный:  Изнашивается за 3 часа воздействия любой из угроз. Радиация накапливается на 30% медленнее, сила аномалий на 20% слабее, сопротивление ментальному излучению 99%</string>
     <string name="item_bandit_suit">Плащ бандита</string>
     <string name="desc_bandit_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
     <string name="item_duty_suit">Комбез Долга</string>
     <string name="desc_duty_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
     <string name="item_freedom_suit">Комбез Свободы</string>
     <string name="desc_freedom_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
-    <string name="item_berill_suit">Костюм Берилл</string>
+    <string name="item_berill_suit">Бронекостюм Берилл</string>
     <string name="desc_berill_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Ускоряет восстановление здоровья в чистых локациях на 200%, если накоплено меньше 1 Зиверта радиации. Снижает текущее воздействие радиации, аномалий и ментала на 20%</string>
     <string name="item_clearsky_suit">Комбез Чистого Неба</string>
     <string name="desc_clearsky_suit">Фракционный: Изнашивается за 3 часа воздействия любой из угроз. Снижает текущее воздействие радиации на 30%, аномалий - на 20%, ментала - на 10%</string>
@@ -112,13 +186,13 @@
     <string name="item_kolobok">Колобок</string>
     <string name="desc_kolobok">Распространённый артефакт. Ускоряет восстановление здоровья в чистых локациях на 200%, если накоплено меньше 1 Зиверта радиации. Даёт 5 очков опыта.</string>
     <string name="item_thorn">Колючка</string>
-    <string name="desc_thorn">Редкий артефакт. Снижает текущее воздействие радиации на 50%, но увеличивает силу аномалийи и ментала на 25%. Даёт 10 очков опыта.</string>
+    <string name="desc_thorn">Редкий артефакт. Снижает текущее воздействие радиации на 50%, но увеличивает силу аномалий и ментала на 25%. Даёт 10 очков опыта.</string>
     <string name="item_fireball">Огненный шар</string>
     <string name="desc_fireball">Довольно редкий артефакт. Снижает текущее воздействие радиации на 30%. Даёт 10 очков опыта.</string>
     <string name="item_bubble">Пузырь</string>
     <string name="desc_bubble">Распространённый артефакт. Снижает текущее воздействие радиации на 20%. Даёт 5 очков опыта.</string>
     <string name="item_mamas_beads">Мамины бусы</string>
-    <string name="desc_mamas_beads">Редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 400%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость телекинезу Бюрера 90%. Даёт 10 очков опыта.</string>
+    <string name="desc_mamas_beads">Редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 400%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость телекинезу Бюрера 90%. Даёт 15 очков опыта.</string>
     <string name="item_moonlight">Лунный свет</string>
     <string name="desc_moonlight">Довольно редкий артефакт. Увеличивает сопротивляемость к аномалиям на 50%, но текущая радиация действует на 20% сильнее. Даёт 10 очков опыта.</string>
     <string name="item_spring">Пружина</string>
@@ -126,49 +200,76 @@
     <string name="item_pellicle">Плёнка</string>
     <string name="desc_pellicle">Довольно редкий артефакт. Увеличивает сопротивляемость к менталу на 40%, но текущая радиация действует на 40% сильнее. Даёт 10 очков опыта.</string>
     <string name="item_mica">Слюда</string>
-    <string name="desc_mica">Очень редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 500%, даёт сопротивляемость Контролёру и Бюреру 90%, но повышает восприимчивость к радиации, аномалиям и менталу на 25%. Даёт 20 очков опыта.</string>
+    <string name="desc_mica">Очень редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 500%, если накоплено меньше 1 Зиверта радиации, даёт сопротивляемость Контролёру и Бюреру 90%, но повышает восприимчивость к радиации, аномалиям и менталу на 25%. Даёт 20 очков опыта.</string>
     <string name="item_compass">Компас</string>
     <string name="desc_compass">Самый редкий артефакт. Аномалии обнаруживаются, но не могут причинить вреда, ментальное излучение действует на 60% слабее, но текущая радиация сильнее на 100%. Даёт 30 очков опыта.</string>
     <string name="item_crystal">Кристалл</string>
     <string name="desc_crystal">Довольно редкий артефакт. Снижает текущее воздействие радиации на 40%. Даёт 10 очков опыта.</string>
     <string name="item_goldfish">Золотая рыбка</string>
-    <string name="desc_goldfish">Достаточно редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 300%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость ментальному излучению Контролёра 90%. Даёт 10 очков опыта.</string>
+    <string name="desc_goldfish">Достаточно редкий артефакт. Ускоряет восстановление здоровья в чистых локациях на 300%, если накоплено меньше 1 Зиверта радиации, и даёт сопротивляемость ментальному излучению Контролёра 90%. Даёт 15 очков опыта.</string>
     <string name="item_altered_insulator">Радиоактивный изолятор</string>
     <string name="desc_altered_insulator">Средне радиоактивный артефакт. Излучает 7 Зиверт радиации в час, пока находится в инвентаре.</string>
     <string name="item_shell">Пустышка</string>
     <string name="desc_shell">Слабо радиоактивный артефакт. Излучает 1 Зиверт радиации в час, пока находится в инвентаре.</string>
     <string name="item_black_energy">Чёрная энергия</string>
-    <string name="desc_black_energy">Очень радиоактивный артефакт. Излучает 15 Зиверт радиации в час, пока находится в инвентаре.</string>
+    <string name="desc_black_energy">Очень радиоактивный артефакт. Излучает 14 Зиверт радиации в час, пока находится в инвентаре.</string>
+
+    <!-- Калибровка -->
+    <string name="item_calibrating_10">Калибровочный набор 10</string>
+    <string name="desc_calibrating_10">Инструменты для высокоточной калибровки позволяют уменьшить чувствительность ПДА к угрозам на 10 процентов. Занимают 1 слот для артефактов.</string>
+    <string name="item_calibrating_25">Калибровочный набор 25</string>
+    <string name="desc_calibrating_25">Инструменты для точной калибровки позволяют уменьшить чувствительность ПДА к угрозам на 25 процентов. Занимают 1 слот для артефактов.</string>
+    <string name="item_calibrating_50">Калибровочный набор 50</string>
+    <string name="desc_calibrating_50">Инструменты для тонкой калибровки позволяют уменьшить чувствительность ПДА к угрозам на 50 процентов. Занимают 1 слот для артефактов.</string>
+    <string name="item_calibrating_75">Калибровочный набор 75</string>
+    <string name="desc_calibrating_75">Инструменты для грубой калибровки позволяют уменьшить чувствительность ПДА к угрозам на 75 процентов. Занимают 1 слот для артефактов.</string>
 
     <!-- Сообщения лога -->
-    <string name="message_revive">Ты возрождён</string>
-    <string name="message_suicide">Ты умираешь</string>
-    <string name="message_dead">Ты умер</string>
-    <string name="message_abducted">Ты попал в плен</string>
-    <string name="message_received_item">Ты получил %1$s</string>
-    <string name="message_used_item">Ты использовал %1$s</string>
-    <string name="message_dropped_item">Ты выбросил %1$s</string>
-    <string name="message_anomaly_hit">Ты получил удар аномалии!</string>
-    <string name="message_mental_hit">Ты получил удар ментала!</string>
+    <string name="message_revive">Ты снова В СТРОЮ!</string>
+    <string name="message_suicide">Ты умираешь…</string>
+    <string name="message_dead">ТЫ МЁРТВ!</string>
+    <string name="message_dead_radiation">РАДИАЦИЯ ДОКОНАЛА ТЕБЯ!</string>
+    <string name="message_dead_anomaly">ТЕБЯ РАЗОРВАЛО АНОМАЛИЕЙ!</string>
+    <string name="message_dead_mental">ТВОЙ МОЗГ ВЫЖЖЕН МЕНТАЛОМ!</string>
+    <string name="message_dead_burer">БЮРЕР ПРИКОНЧИЛ ТЕБЯ!</string>
+    <string name="message_dead_controller">КОНТРОЛЁР ОТПУСТИЛ ТЕБЯ!</string>
+    <string name="message_abducted">Ты попал в ПЛЕН!</string>
+    <string name="message_abducted_end">Ты снова СВОБОДЕН!</string>
+    <string name="message_received_item">Получено: %s</string>
+    <string name="message_used_item">Использовано: %s</string>
+    <string name="message_dropped_item">Выброшено: %s</string>
+    <string name="message_anomaly_hit">Удар АНОМАЛИИ!</string>
+    <string name="message_mental_hit">Удар МЕНТАЛА!</string>
+    <string name="message_monolit_call">МОНОЛИТ ЗОВЁТ ТЕБЯ!</string>
     <string name="message_mental_trans">Ты превращаешься в зомби…</string>
-    <string name="message_mental_zombified">Ты зомби!</string>
-    <string name="message_burer_hit">Ты получил удар Бюрера!</string>
-    <string name="message_controller_hit">Ты получил удар Контролёра!</string>
+    <string name="message_mental_zombified">Ты ЗОМБИ!</string>
+    <string name="message_burer_hit">Удар БЮРЕРА!</string>
+    <string name="message_controller_hit">Удар КОНТРОЛЁРА!</string>
     <string name="message_controller_trans">Ты попадаешь под контроль…</string>
-    <string name="message_controller_undercontrol">Ты под контролем!</string>
-    <string name="message_emission_approaching">Приближается Выброс! Ищи укрытие!</string>
-    <string name="message_emission_started">Выброс начался!</string>
-    <string name="message_emission_ended">Выброс закончился! Ты в безопасности!</string>
+    <string name="message_controller_undercontrol">Ты ПОД КОНТРОЛЕМ!</string>
+    <string name="message_emission_approaching">Приближается ВЫБРОС! Ищи укрытие!</string>
+    <string name="message_emission_started">ВЫБРОС НАЧАЛСЯ!</string>
+    <string name="message_emission_hit">Тебя накрыло ВЫБРОСОМ!</string>
+    <string name="message_dead_emission">ВЫБРОС ДОБИЛ ТЕБЯ!</string>
+    <string name="message_emission_ended">Выброс закончился!</string>
     <string name="message_emission_fake">Выброс не начинался. Ложная тревога…</string>
     <string name="message_arena_approaching">Приближается Арена! Соблюдай перемирие!</string>
     <string name="message_arena_started">Арена началась! Покажи всё, что ты можешь!</string>
     <string name="message_arena_ended">Арена завершена! Будь осторожен!</string>
     <string name="message_emission_only">Средство можно использовать только во время Выброса!</string>
     <string name="message_artifact_full">Ты не можешь использовать больше артефактов. Выброси ненужный!</string>
-    <string name="message_exp_gained">Ты получил %1$s очков опыта</string>
-    <string name="message_level_up">ПДА модернизирован. Доступны новые функции!</string>
+    <string name="message_exp_gained">Ты получил очки опыта</string>
+    <string name="message_level_1">Активирован начальный уровень ПДА. Доступен детектор радиации!</string>
+    <string name="message_level_2">Второй уровень ПДА активирован. Доступен детектор аномалий!</string>
+    <string name="message_level_3">Третий уровень ПДА активирован. Доступен детектор ментала!</string>
+    <string name="message_level_4">Четвёртый уровень ПДА активирован. Доступно обнаружение монстров!</string>
+    <string name="message_level_up">ПДА улучшен. Доступны новые функции!</string>
+    <string name="message_level_max">ПДА улучшен до максимума. Доступен детектор артефактов!</string>
     <string name="message_compass_enabled">Компас включён</string>
     <string name="message_compass_disabled">Компас выключен</string>
+    <string name="message_fraction_gamemaster">Фракция изменена на ИГРОМАСТЕР!</string>
+    <string name="message_fraction_monolith">Фракция изменена на МОНОЛИТ!</string>
+    <string name="message_fraction_stalker">Фракция изменена на СТАЛКЕР!</string>
 
     <!-- Интерфейс -->
     <string name="popup_suicide">Ты хочешь убить себя?</string>
@@ -176,6 +277,14 @@
     <string name="popup_no">Нет</string>
     <string name="popup_drop">Выбросить</string>
     <string name="popup_use">Использовать</string>
+    <string name="tray_open">ПДА Компас v.1813 GM</string>
+    <string name="tray_stop">Выкл. ПДА</string>
+    <string name="tray_settings">Настроить ПДА</string>
+    <string name="tray_vibro">Виброэффекты выкл./вкл. </string>
+    <string name="tray_compass">Встроенный компас выкл./вкл. </string>
+    <string name="tray_orientation">Положение прибора</string>
+    <string name="tray_portrait">Верт.</string>
+    <string name="tray_landscape">Гориз.</string>
 
     <!-- Ненужные -->
     <string name="toast_cant_use_dead">Ты мертв, ты не можешь этого сделать…</string>

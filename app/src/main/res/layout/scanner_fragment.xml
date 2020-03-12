@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.afterday.compass.MainActivity"
+    tools:context="net.afterday.compas.MainActivity"
     android:keepScreenOn="true">
 
     <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:background="@drawable/popup_background"
         app:layout_marginLeftPercent="5%"
         app:layout_marginRightPercent="5%"
-        app:layout_marginTopPercent="5%"
+        app:layout_marginTopPercent="10%"
         app:layout_marginBottomPercent="5%"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="100%">
@@ -19,15 +19,15 @@
             android:id="@+id/zxing_barcode_scanner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_marginPercent="5%"
+            app:layout_marginPercent="10%"
             app:zxing_use_texture_view="false"
             app:zxing_preview_scaling_strategy="centerCrop"/>
     </android.support.percent.PercentRelativeLayout>
     <ImageButton
         android:id="@+id/close"
-        app:layout_widthPercent="8.86945659%"
-        app:layout_heightPercent="12.592592593%"
-        app:layout_marginLeftPercent="86.13054341%"
-        app:layout_marginTopPercent="3%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_marginLeftPercent="87%"
+        app:layout_marginTopPercent="8%"
         android:background="@drawable/popup_close" />
 </android.support.percent.PercentRelativeLayout>

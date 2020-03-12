@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    tools:context="net.afterday.compas.MainActivity"
+    android:keepScreenOn="true">
+    <net.afterday.compas.view.Compass
+        android:id="@+id/compass"
+        app:layout_widthPercent="52.8125%"
+        app:layout_heightPercent="93.888888888888888888888888888889%"
+        app:layout_marginLeftPercent="45.0%"
+        app:layout_marginTopPercent="2.8%"
+        />
+
+    <net.afterday.compas.view.Geiger
+        android:id="@+id/geiger"
+        app:layout_widthPercent="46.99%"
+        app:layout_heightPercent="83.24%"
+        app:layout_marginLeftPercent="47.93%"
+        app:layout_marginTopPercent="8.96%" />
+
+    <net.afterday.compas.view.Tube
+        android:id="@+id/tube"
+        app:layout_widthPercent="31.895833333%"
+        app:layout_heightPercent="26.018518519%"
+        app:layout_marginLeftPercent="55.65%"
+        app:layout_marginTopPercent="58%" />
+
+    <net.afterday.compas.view.CountDownTimer
+        android:id="@+id/countdown"
+        app:layout_widthPercent="10.00%"
+        app:layout_heightPercent="7.00%"
+        app:layout_marginLeftPercent="66.40%"
+        app:layout_marginTopPercent="58.0%"/>
+
+    <net.afterday.compas.view.Indicator
+        android:id="@+id/indicator"
+        app:layout_widthPercent="30.895833333%"
+        app:layout_heightPercent="26.018518519%"
+        app:layout_marginLeftPercent="57.0%"
+        app:layout_marginTopPercent="78%" />
+
+    <net.afterday.compas.view.Bar
+        android:id="@+id/armorbar"
+        app:image="@drawable/bar_armor"
+        app:layout_heightPercent="8.5%"
+        app:layout_marginLeftPercent="2.2%"
+        app:layout_marginTopPercent="7.1%"
+        app:layout_widthPercent="38%"
+        app:measurement="horizontal"
+        app:offset_bottom="10"
+        app:offset_left="130"
+        app:scale_color="@color/armorBar"
+        app:scale_height="40"
+        app:scale_width="600"/>
+
+    <net.afterday.compas.view.Bar
+        android:id="@+id/devicebar"
+        app:image="@drawable/bar_device"
+        app:layout_heightPercent="8.5%"
+        app:layout_marginLeftPercent="2.2%"
+        app:layout_marginTopPercent="0.4%"
+        app:layout_widthPercent="38%"
+        app:measurement="horizontal"
+        app:offset_bottom="11"
+        app:offset_left="130"
+        app:scale_color="@color/deviceBar"
+        app:scale_height="40"
+        app:scale_width="600"/>
+
+    <net.afterday.compas.view.Bar
+        android:id="@+id/staminabar"
+        app:image="@drawable/bar_stamina"
+        app:layout_heightPercent="8.5%"
+        app:layout_marginLeftPercent="2.2%"
+        app:layout_marginTopPercent="15%"
+        app:layout_widthPercent="38%"
+        app:measurement="horizontal"
+        app:offset_bottom="21"
+        app:offset_left="130"
+        app:scale_color="@color/staminaBar"
+        app:scale_height="34"
+        app:scale_width="600"/>
+
+    <net.afterday.compas.view.Radbar
+        android:id="@+id/radbar"
+        app:layout_heightPercent="20.740740741%"
+        app:layout_marginLeftPercent="2.5%"
+        app:layout_marginTopPercent="23.25%"
+        app:layout_widthPercent="39.010416667%" />
+
+    <net.afterday.compas.view.Healthbar
+        android:id="@+id/healthbar"
+        app:layout_heightPercent="20.740740741%"
+        app:layout_marginLeftPercent="2.5%"
+        app:layout_marginTopPercent="44.75%"
+        app:layout_widthPercent="39.010416667%" />
+
+    <net.afterday.compas.view.LevelIndicator
+        android:id="@+id/qrbutton"
+        app:layout_widthPercent="9.8%"
+        app:layout_heightPercent="17.3%"
+        app:layout_marginLeftPercent="43.5%"
+        app:layout_marginTopPercent="4.2%"
+        android:background="@null"
+        android:contentDescription="TODO" />
+
+    <View
+        android:id="@+id/levelProgress_background"
+        app:layout_heightPercent="14.2%"
+        app:layout_marginLeftPercent="43.9%"
+        app:layout_marginTopPercent="82.0%"
+        app:layout_widthPercent="10%"
+        android:background="@drawable/exp_h"/>
+
+    <net.afterday.compas.view.LevelProgress
+        android:id="@+id/levelProgress"
+        app:layout_widthPercent="8.6%"
+        app:layout_heightPercent="6.0%"
+        app:layout_marginLeftPercent="44.4%"
+        app:layout_marginTopPercent="87.8%"
+        />
+
+    <View
+        android:id="@+id/clock_background"
+        app:layout_heightPercent="14.7%"
+        app:layout_marginLeftPercent="87.8%"
+        app:layout_marginTopPercent="2%"
+        app:layout_widthPercent="10.8%"
+        android:background="@drawable/time_h"/>
+
+    <net.afterday.compas.view.Clock
+        android:id="@+id/clock"
+        app:layout_widthPercent="10.15625%"
+        app:layout_heightPercent="9.87037037%"
+        app:layout_marginLeftPercent="87.70%"
+        app:layout_marginTopPercent="2.35%" />
+
+    <View
+        android:id="@+id/battery_background"
+        app:layout_heightPercent="20.7%"
+        app:layout_marginLeftPercent="90.8%"
+        app:layout_marginTopPercent="79.0%"
+        app:layout_widthPercent="8.5%"
+        android:background="@drawable/energy_h"/>
+
+    <net.afterday.compas.view.Battery
+        android:id="@+id/battery"
+        app:layout_widthPercent="9.15625%"
+        app:layout_heightPercent="9.87037037%"
+        app:layout_marginLeftPercent="90.5%"
+        app:layout_marginTopPercent="85.3%" />
+
+    <View
+        android:id="@+id/log_background"
+        android:background="@drawable/log_h"
+        app:layout_heightPercent="34%"
+        app:layout_marginLeftPercent="2%"
+        app:layout_marginTopPercent="63%"
+        app:layout_widthPercent="40.7%"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/log_list"
+        app:layout_widthPercent="37.7%"
+        app:layout_heightPercent="27%"
+        app:layout_marginLeftPercent="3.1%"
+        app:layout_marginTopPercent="67.5%"
+        app:stackFromEnd="true"
+        app:reverseLayout="true" />
+
+    <!--<Button-->
+        <!--app:layout_widthPercent="10.15625%"-->
+        <!--app:layout_heightPercent="7.87037037%"-->
+        <!--app:layout_marginLeftPercent="73.5%"-->
+        <!--app:layout_marginTopPercent="84.4%"-->
+        <!--android:text="Stop game service"-->
+        <!--android:onClick="stopGameService" />-->
+    <!--<Button-->
+        <!--app:layout_widthPercent="10.15625%"-->
+        <!--app:layout_heightPercent="7.87037037%"-->
+        <!--app:layout_marginLeftPercent="63.5%"-->
+        <!--app:layout_marginTopPercent="84.4%"-->
+        <!--android:text="Start game service"-->
+        <!--android:onClick="startGameService" />-->
+    <!--<Button-->
+        <!--app:layout_widthPercent="10.15625%"-->
+        <!--app:layout_heightPercent="7.87037037%"-->
+        <!--app:layout_marginLeftPercent="53.5%"-->
+        <!--app:layout_marginTopPercent="84.4%"-->
+        <!--android:text="Revive"-->
+        <!--android:onClick="revivePlayer" />-->
+    <!--<Button-->
+        <!--app:layout_widthPercent="10.15625%"-->
+        <!--app:layout_heightPercent="7.87037037%"-->
+        <!--app:layout_marginLeftPercent="53.5%"-->
+        <!--app:layout_marginTopPercent="74.4%"-->
+        <!--android:text="Kill"-->
+        <!--android:onClick="killPlayer" />-->
+
+
+</android.support.percent.PercentRelativeLayout>

@@ -12,7 +12,8 @@
         android:layout_weight="15"
         android:textColor="@color/orange"
         android:textSize="16sp"
-        android:text="00:00" />
+        android:layout_marginRight="2sp"
+        android:text="00:00"/>
 
     <TextView
         android:id="@+id/text"

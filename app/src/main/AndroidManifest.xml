@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.afterday.compass">
+    package="net.afterday.compas">
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -11,27 +12,54 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.Manifest.permission.NETWORK_SETTINGS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
+    <uses-feature android:name="android.hardware.location.gps"/>
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="PDA Compass (beta)"
+        android:label="PDA Compass v.1813 GM"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".StalkerApp">
-        <activity android:name="net.afterday.compass.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="PDA Compass (beta)"
-            android:screenOrientation="reverseLandscape">
+        android:name=".StalkerApp"
+        android:largeHeap="true"
+        android:permission="">
+        <activity android:name="net.afterday.compas.MainActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="PDA Compass v.1813 GM">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="net.afterday.compass.sensors.WiFi.WifiImpl$ScannerService" />
+        <activity android:name="net.afterday.compas.HiddenActivity"
+            android:label="HiddenActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:screenOrientation="reverseLandscape">
+        </activity>
+        <service android:name="net.afterday.compas.LocalMainService">
+            <intent-filter android:icon="@mipmap/ic_launcher">
+                <action android:name="android.net.wifi.SCAN_RESULTS">
+                </action>
+            </intent-filter>
+        </service>
+        <receiver android:name=".sensors.WiFi.WifiImpl$WifiReceiver">
+            <intent-filter android:icon="@mipmap/ic_launcher">
+                <action android:name="WifiManager.SCAN_RESULTS_AVAILABLE_ACTION"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".ActionsReceiver">
+            <intent-filter>
+                <action android:name="ServiceControlls"></action>
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="334a8225ed7cef5df63ef4c9488a130072c04ca6" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

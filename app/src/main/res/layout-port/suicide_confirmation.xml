@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.afterday.compas.MainActivity"
+    android:keepScreenOn="true">
+
+    <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/popup_background"
+        app:layout_heightPercent="70%"
+        app:layout_marginBottomPercent="5%"
+        app:layout_marginLeftPercent="1%"
+        app:layout_marginRightPercent="9%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="90%" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_marginLeftPercent="87%"
+        app:layout_marginTopPercent="6%"
+        android:background="@drawable/popup_close" />
+
+    <TextView
+        android:id="@+id/name"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="15%"
+        app:layout_marginLeftPercent="15%"
+        app:layout_marginTopPercent="15%"
+        android:text="@string/popup_suicide"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        />
+
+    <ImageView android:id="@+id/suicide_image"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="15%"
+        app:layout_marginLeftPercent="15%"
+        app:layout_marginTopPercent="35%"
+        android:background="@drawable/tube_dead_misc"
+        />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/item_image"-->
+        <!--app:layout_widthPercent="20%"-->
+        <!--app:layout_heightPercent="40%"-->
+        <!--app:layout_marginLeftPercent="10%"-->
+        <!--app:layout_marginTopPercent="30%"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:background="@color/whiteTransparent"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/name"-->
+        <!--app:layout_widthPercent="80%"-->
+        <!--app:layout_heightPercent="15%"-->
+        <!--app:layout_marginLeftPercent="10%"-->
+        <!--app:layout_marginTopPercent="15%"-->
+        <!--android:text="Hello world"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textSize="25sp"-->
+        <!--/>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/effect_holder"-->
+        <!--app:layout_widthPercent="55%"-->
+        <!--app:layout_heightPercent="30%"-->
+        <!--app:layout_marginLeftPercent="35%"-->
+        <!--app:layout_marginTopPercent="35%"-->
+        <!--android:orientation="horizontal" />-->
+
+    <Button
+        android:id="@+id/confirm_suicide"
+        app:layout_widthPercent="35%"
+        app:layout_heightPercent="7%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="62%"
+        android:text="@string/popup_yes"
+        android:background="@drawable/popup_button"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/cancel_suicide"
+        app:layout_widthPercent="35%"
+        app:layout_heightPercent="7%"
+        app:layout_marginLeftPercent="55%"
+        app:layout_marginTopPercent="62%"
+        android:text="@string/popup_no"
+        android:background="@drawable/popup_button"
+        android:textColor="#ffffff"
+        />
+
+</android.support.percent.PercentRelativeLayout>

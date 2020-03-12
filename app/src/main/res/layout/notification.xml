@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:padding="0dp">
+
+    <Button
+        android:id="@+id/open"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:layout_weight="8"
+        android:background="@drawable/popup_button"
+        android:padding="0dp"
+        android:text="@string/tray_open"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_margin="0dp"
+        android:background="@drawable/popup_button"
+        android:padding="0dp"
+        android:text="@string/tray_stop"
+        android:textColor="#FF0000" />
+
+</LinearLayout>

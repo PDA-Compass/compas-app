@@ -2,10 +2,19 @@
 <resources>
     <color name="whiteTransparent">#33ffffff</color>
     <color name="orange">#ff8000</color>
+    <color name="green">#22ff00</color>
+    <color name="red">#ff0000</color>
     <color name="positive">#1aff00</color>
     <color name="negative">#ff0000</color>
     <color name="neutral">#ffd500</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="blood">@color/red</color>
+    <color name="ok">@color/orange</color>
+    <color name="bad">@color/red</color>
+    <color name="norm">@color/orange</color>
+    <color name="armorBar">#643200ff</color>
+    <color name="deviceBar">#6400c864</color>
+    <color name="staminaBar">#64ffc864</color>
 </resources>
