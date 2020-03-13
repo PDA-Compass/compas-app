@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageButton;
 
+import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
 
 /**
@@ -118,11 +119,17 @@ public class LevelIndicator extends AppCompatImageButton
 
     private void init()
     {
+        this.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         imgPaint = new Paint();
         //imgPaint.setAlpha(180);
         paint = new Paint();
-        paint.setARGB(255,255,127,0);
-        paint.setAlpha(180);
+        if (FeatureOn.isHighTextContrast()) {
+            paint.setARGB(255, 255, 255, 0);
+        }
+        else {
+            paint.setARGB(255,255,127,0);
+            paint.setAlpha(180);
+        }
         matrix = new Matrix();
         qrImage = BitmapFactory.decodeResource(getResources(), R.drawable.qr_button);
         backgroundWidth = qrImage.getWidth();

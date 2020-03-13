@@ -1,12 +1,14 @@
 package net.afterday.compas;
 
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.app.Service;
+import android.app.*;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
@@ -76,14 +78,38 @@ public class LocalMainService extends Service
         if(!running)
         {
             Log.e(TAG, "----------------------------------------------------------------");
-            startForeground();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startMyOwnForeground();
+            }
+            else {
+                startForeground(1, new Notification());
+            }
             initGame();
         }
         running = true;
         return START_STICKY;
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private void startMyOwnForeground(){
+        String NOTIFICATION_CHANNEL_ID = "net.afterday.compas";
+        String channelName = "PDA Compass";
+        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+        chan.setLightColor(Color.BLUE);
+        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        assert manager != null;
+        manager.createNotificationChannel(chan);
 
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+        Notification notification = notificationBuilder.setOngoing(true)
+                //.setSmallIcon(R.drawable.ico)
+                .setContentTitle("PDA Compass is running in background")
+                .setPriority(NotificationManager.IMPORTANCE_MIN)
+                .setCategory(Notification.CATEGORY_SERVICE)
+                .build();
+        startForeground(2, notification);
+    }
 
 
     @Override

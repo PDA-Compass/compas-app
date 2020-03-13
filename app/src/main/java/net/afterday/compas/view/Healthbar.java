@@ -1,5 +1,6 @@
 package net.afterday.compas.view;
 
+import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +17,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import android.view.accessibility.AccessibilityManager;
+import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
 import net.afterday.compas.util.Convert;
 import net.afterday.compas.util.Log;
@@ -179,9 +182,14 @@ public class Healthbar extends View
     }
 
     protected void drawText(Canvas canvas) {
-
+        boolean isHighTextContrast = FeatureOn.isHighTextContrast();
         // Set up paint for the display
-        mPaint.setARGB(255, 255, 127, 0);
+        if (isHighTextContrast){
+            mPaint.setARGB(255, 255, 255, 0);
+        }
+        else {
+            mPaint.setARGB(255, 255, 127, 0);
+        }
         mPaint.setTextSize(100 * mScaleFactorY);
         mPaintGrey.setTextSize(100 * mScaleFactorY);
         // Paint first segment
@@ -189,10 +197,11 @@ public class Healthbar extends View
         String txt = "!!!" + fullTxt[0];
         txt = txt.substring(txt.length() - 3);
 
-        canvas.drawText("188", 220 * mScaleFactorX, 160 * mScaleFactorY, mPaintGrey);
-        canvas.drawText(txt, 220 * mScaleFactorX, 160 * mScaleFactorY, mPaint);
-
         float txtWidth = mPaint.measureText("188");
+        if (!isHighTextContrast){
+            canvas.drawText("188", 220 * mScaleFactorX, 160 * mScaleFactorY, mPaintGrey);
+        }
+        canvas.drawText(txt, 220 * mScaleFactorX, 160 * mScaleFactorY, mPaint);
 
         // Paint second segment
         mPaint.setTextSize(75 * mScaleFactorY);
@@ -200,7 +209,9 @@ public class Healthbar extends View
 
         txt = "." + fullTxt[1];
 
-        canvas.drawText("88",  220 * mScaleFactorX + txtWidth, 160 * mScaleFactorY, mPaintGrey);
+        if (!isHighTextContrast){
+            canvas.drawText("88", 220 * mScaleFactorX + txtWidth, 160 * mScaleFactorY, mPaintGrey);
+        }
         canvas.drawText(txt, 220 * mScaleFactorX + txtWidth, 160 * mScaleFactorY, mPaint);
 
         txtWidth += mPaint.measureText("88");

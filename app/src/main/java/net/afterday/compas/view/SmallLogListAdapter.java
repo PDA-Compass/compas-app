@@ -1,6 +1,7 @@
 package net.afterday.compas.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
 import net.afterday.compas.logging.LogLine;
 import net.afterday.compas.logging.LogLine;
@@ -24,6 +26,7 @@ public class SmallLogListAdapter extends RecyclerView.Adapter
     private Typeface mTypeface;
     private TimeZone mTimezone;
     private Context context;
+    private boolean isHighTextContrast;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -46,6 +49,7 @@ public class SmallLogListAdapter extends RecyclerView.Adapter
             //Log.e("SmallLogListAdapter", "Cannot create typeface");
         }
 
+        isHighTextContrast = FeatureOn.isHighTextContrast();
         mTimezone = TimeZone.getTimeZone("GMT+02:00");
     }
 
@@ -77,7 +81,8 @@ public class SmallLogListAdapter extends RecyclerView.Adapter
         vh.mTime.setText(line.getDate());
         vh.mText.setText(line.getText());
         //vh.mText.setText(line.getText());
-        int color = line.getColor();
+
+        int color = isHighTextContrast ? Color.WHITE : line.getColor();
         vh.mTime.setTextColor(color);
         vh.mText.setTextColor(color);
     }

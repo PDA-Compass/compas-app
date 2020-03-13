@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
+import net.afterday.compas.FeatureOn;
 
 
 public class Clock extends View
@@ -111,11 +112,18 @@ public class Clock extends View
     protected void init() {
         ticks = Observable.interval(0,1, TimeUnit.SECONDS);
         mPaint = new Paint();
-        mPaint.setARGB(255,255,127,0);
+        if (FeatureOn.isHighTextContrast()) {
+            mPaint.setARGB(255, 255, 255, 0);
+        }
+        else
+        {
+            mPaint.setARGB(255, 255, 127, 0);
+        }
 
         try {
             mTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/console.ttf");
             mPaint.setTypeface(mTypeface);
+            mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         }
         catch (RuntimeException e) {
             Log.e(TAG, "Cannot create typeface");
