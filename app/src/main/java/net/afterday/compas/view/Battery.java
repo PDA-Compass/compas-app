@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import net.afterday.compas.FeatureOn;
 import net.afterday.compas.sensors.Battery.BatteryStatus;
 import net.afterday.compas.util.Fonts;
 
@@ -31,6 +32,7 @@ public class Battery extends View
     private static final int WIDGET_HEIGHT = 85;
     private static final int GREEN = 0xff22ff00;
     private static final int RED = 0xffff0019;
+
     // Input stuff
     private String mText = "0%";
     private int color = GREEN;
@@ -87,12 +89,15 @@ public class Battery extends View
         energy = batteryStatus.getEnergyLevel();
 //        energy = 14;
         mText = energy + "%";
-        if(energy > 15)
-        {
-            mPaint = Fonts.instance().setDefaultColor(mPaint);
-        }else
-        {
-            mPaint.setColor(RED);
+        if(FeatureOn.isHighTextContrast()){
+            mPaint.setColor(Color.WHITE);
+        }
+        else {
+            if (energy > 15) {
+                mPaint = Fonts.instance().setDefaultColor(mPaint);
+            } else {
+                mPaint.setColor(RED);
+            }
         }
         
         if(batteryStatus.isCharging())

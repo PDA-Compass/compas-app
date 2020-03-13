@@ -1,9 +1,13 @@
 package net.afterday.compas;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Intent;
 
 //import com.crashlytics.android.Crashlytics;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import io.fabric.sdk.android.Fabric;
 import net.afterday.compas.core.Game;
 import net.afterday.compas.core.gameState.Frame;
@@ -45,6 +49,7 @@ public class StalkerApp extends Application
     @Override
     public void onCreate()
     {
+        FeatureOn.setContext(this.getBaseContext());
         super.onCreate();
 
         //android.util.Log.d(TAG, "onCreate " + Thread.currentThread().getName());
@@ -68,6 +73,7 @@ public class StalkerApp extends Application
 //        battery.start();
 //        framesStream = engine.getFramesStream();
 //        engine.start();
+
         settings = Settings.instance(this);
         fonts = Fonts.instance(this.getAssets());
         startService(new Intent(StalkerApp.this, LocalMainService.class));

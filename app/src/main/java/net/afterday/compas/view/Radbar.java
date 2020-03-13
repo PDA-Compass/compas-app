@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
 import net.afterday.compas.util.Convert;
 
@@ -188,9 +189,15 @@ public class Radbar extends View
     }
 
     protected void drawText(Canvas canvas) {
-
+        boolean isHighTextContrast = FeatureOn.isHighTextContrast();
         // Set up paint for the display
-        mPaint.setARGB(255, 255, 127, 0);
+        if (isHighTextContrast) {
+            mPaint.setARGB(255, 255, 255, 0);
+        }
+        else {
+            mPaint.setARGB(255, 255, 127, 0);
+        }
+
         mPaint.setTextSize(90 * mScaleFactorY);
         mPaintGrey.setTextSize(90 * mScaleFactorY);
 
@@ -205,17 +212,22 @@ public class Radbar extends View
             mPaintMore.setARGB(255,35,35,35);
         }
 
-        canvas.drawText(">", 270 * mScaleFactorX, 135 * mScaleFactorY, mPaintMore);
+
+        float txtWidth = mPaint.measureText("18");
+
+        if (!isHighTextContrast) {
+            canvas.drawText(">", 270 * mScaleFactorX, 135 * mScaleFactorY, mPaintMore);
+            canvas.drawText("18", 270 * mScaleFactorX, 155 * mScaleFactorY, mPaintGrey);
+        }
 
         // Paint first segment
         String[] fullTxt = String.format(Locale.US, "%.3f", rad).split("\\.");
         String txt = "!!" + fullTxt[0];
         txt = txt.substring(txt.length() - 2);
 
-        canvas.drawText("18", 270 * mScaleFactorX, 155 * mScaleFactorY, mPaintGrey);
+
         canvas.drawText(txt, 270 * mScaleFactorX, 155 * mScaleFactorY, mPaint);
 
-        float txtWidth = mPaint.measureText("18");
 
         // Paint second segment
         mPaint.setTextSize(65 * mScaleFactorY);
@@ -223,7 +235,9 @@ public class Radbar extends View
 
         txt = "." + fullTxt[1];
 
-        canvas.drawText("888",  270 * mScaleFactorX + txtWidth, 155 * mScaleFactorY, mPaintGrey);
+        if (!isHighTextContrast) {
+            canvas.drawText("888", 270 * mScaleFactorX + txtWidth, 155 * mScaleFactorY, mPaintGrey);
+        }
         canvas.drawText(txt, 270 * mScaleFactorX + txtWidth, 155 * mScaleFactorY, mPaint);
 
         txtWidth += mPaint.measureText("888");
