@@ -79,38 +79,16 @@ public class LocalMainService extends Service
         {
             Log.e(TAG, "----------------------------------------------------------------");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startMyOwnForeground();
+                startForegroundForSdk25();
             }
             else {
-                startForeground(1, new Notification());
+                startForeground();
             }
             initGame();
         }
         running = true;
         return START_STICKY;
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private void startMyOwnForeground(){
-        String NOTIFICATION_CHANNEL_ID = "net.afterday.compas";
-        String channelName = "PDA Compass";
-        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        assert manager != null;
-        manager.createNotificationChannel(chan);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        Notification notification = notificationBuilder.setOngoing(true)
-                //.setSmallIcon(R.drawable.ico)
-                .setContentTitle("PDA Compass is running in background")
-                .setPriority(NotificationManager.IMPORTANCE_MIN)
-                .setCategory(Notification.CATEGORY_SERVICE)
-                .build();
-        startForeground(2, notification);
-    }
-
 
     @Override
     public void onDestroy()
@@ -137,8 +115,7 @@ public class LocalMainService extends Service
         return super.onUnbind(intent);
     }
 
-    private void startForeground()
-    {
+    private Notification getNotification() {
         Intent resultIntent = new Intent(this, MainActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);
@@ -150,19 +127,48 @@ public class LocalMainService extends Service
         collapsed.setOnClickPendingIntent(R.id.open, pIntent);
         collapsed.setOnClickPendingIntent(R.id.stop, stopServiceIntent);
 
-
         Notification n = new NotificationCompat.Builder(this)
-                            .setContent(collapsed)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            //.setStyle(new android.support.v7.app.NotificationCompat.DecoratedCustomViewStyle())
-                            .build();
-//        Notification n = new NotificationCompat.Builder(this)
-//                            .setSmallIcon(R.mipmap.ic_launcher)
-//                            .addAction(R.drawable.leak_canary_icon, "OPEN", pIntent)
-//                            .addAction(R.drawable.leak_canary_icon, "Stop PDA", stopServiceIntent)
-//                            .build();
+                .setContent(collapsed)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                //.setStyle(new android.support.v7.app.NotificationCompat.DecoratedCustomViewStyle())
+                .build();
+        return n;
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private void startForegroundForSdk25(){
+        String NOTIFICATION_CHANNEL_ID = "net.afterday.compas";
+        String channelName = "PDA Compass";
+        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+        chan.setLightColor(Color.BLUE);
+        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        assert manager != null;
+        manager.createNotificationChannel(chan);
 
-        startForeground(Constants.MAIN_SERVICE, n);
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+        PendingIntent pIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        RemoteViews collapsed = new RemoteViews(getPackageName(), R.layout.notification);
+        Intent intentAction = new Intent(this, ActionsReceiver.class);
+        intentAction.putExtra("ServiceControlls","STOP");
+        PendingIntent stopServiceIntent = PendingIntent.getBroadcast(this, 1, intentAction, PendingIntent.FLAG_UPDATE_CURRENT);
+        collapsed.setOnClickPendingIntent(R.id.open, pIntent);
+        collapsed.setOnClickPendingIntent(R.id.stop, stopServiceIntent);
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+        Notification notification = notificationBuilder.setOngoing(true)
+                .setContent(collapsed)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setPriority(NotificationManager.IMPORTANCE_MIN)
+                .setCategory(Notification.CATEGORY_SERVICE)
+                .build();
+        startForeground(2, notification);
+    }
+
+    private void startForeground()
+    {
+        startForeground(Constants.MAIN_SERVICE, getNotification());
     }
 
     private void initGame()
