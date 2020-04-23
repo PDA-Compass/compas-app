@@ -1,5 +1,7 @@
 package net.afterday.compas.app;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,10 +10,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +29,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.Subject;
+import net.afterday.compas.app.util.PermissionsManager;
 import net.afterday.compas.engine.core.gameState.Frame;
 import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.inventory.items.Events.ItemAdded;
@@ -38,13 +50,6 @@ import net.afterday.compas.app.settings.Constants;
 import net.afterday.compas.app.view.*;
 
 import java.util.ArrayList;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.Subject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     private Disposable framesSubscribtion,
             userActionsSubscribtion,
             impactsSubsciption;
-    private CompositeDisposable disposables = new CompositeDisposable();
+    private final CompositeDisposable disposables = new CompositeDisposable();
     private Observable<Frame> framesStream;
     private Observable<Long> countDownStream;
     private Observable<Integer> playerLevelStream;
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     private long devicePressTime = 0;
     private long armorPressTime = 0;
     private long rBarPressTime = 0;
+    private long rClockPressTime = 0;
     private long lastTick = 0;
     private long duration = 0;
     private SmallLogListAdapter logAdapter;
@@ -102,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean active = false;
     private SettingsListener settingsListener;
     ////////////////////////////////////////////////////////
-    private Subject<Integer> orientationChanges = BehaviorSubject.create();
-    private ServiceConnection serviceConnection = new ServiceConnection()
+    private final Subject<Integer> orientationChanges = BehaviorSubject.create();
+    private final ServiceConnection serviceConnection = new ServiceConnection()
     {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder)
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("SourceLockedOrientationActivity")
     private void setOrientation(int o)
     {
         Log.e(TAG, "SET ORIENTATION: " + (o == Constants.ORIENTATION_PORTRAIT ? "PORTRAIT" : (o == Constants.ORIENTATION_LANDSCAPE ? "LANDSCAPE" : "UNKNOWN")));
@@ -211,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
+        PermissionsManager.check(this);
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         try {
@@ -373,68 +381,76 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        mRadbar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        rBarPressTime = System.currentTimeMillis();
-                        break;
+        mRadbar.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    rBarPressTime = System.currentTimeMillis();
+                    break;
 
-                    case MotionEvent.ACTION_UP:
-                        if(System.currentTimeMillis() - rBarPressTime > PRESS_DELAY && isAlive())
-                        {
-                            openInventory(Item.ALL);
-                        }
-                        break;
+                case MotionEvent.ACTION_UP:
+                    if(System.currentTimeMillis() - rBarPressTime > PRESS_DELAY && isAlive())
+                    {
+                        openInventory(Item.ALL);
+                    }
+                    break;
 
-                }
-                return true;
             }
+            return true;
         });
-        mHealthbar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        hBarPressTime = System.currentTimeMillis();
-                        break;
+        mHealthbar.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    hBarPressTime = System.currentTimeMillis();
+                    break;
 
-                    case MotionEvent.ACTION_UP:
-                        if(System.currentTimeMillis() - hBarPressTime > PRESS_DELAY && isAlive())
-                        {
-                            openInventory(Item.ALL);
-                        }
-                        break;
+                case MotionEvent.ACTION_UP:
+                    if(System.currentTimeMillis() - hBarPressTime > PRESS_DELAY && isAlive())
+                    {
+                        openInventory(Item.ALL);
+                    }
+                    break;
 
-                }
-                return true;
             }
+            return true;
         });
 
-        mTube.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        tubePressTime = System.currentTimeMillis();
-                        break;
+        mTube.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    tubePressTime = System.currentTimeMillis();
+                    break;
 
-                    case MotionEvent.ACTION_UP:
-                        if(currentState != null && currentState.getSuicideType() != Player.SUICIDE_NOT_ALLOWED && System.currentTimeMillis() - tubePressTime > PRESS_SUICIDE)
+                case MotionEvent.ACTION_UP:
+                    if(currentState != null && currentState.getSuicideType() != Player.SUICIDE_NOT_ALLOWED && System.currentTimeMillis() - tubePressTime > PRESS_SUICIDE)
+                    {
+                        if(currentState == Player.STATE.W_ABDUCTED)
                         {
-                            if(currentState == Player.STATE.W_ABDUCTED)
-                            {
-                                PlayerEventBus.instance().suicide();
-                                return true;
-                            }
-                            openSuicideConfirmation();
+                            PlayerEventBus.instance().suicide();
+                            return true;
                         }
-                        break;
+                        openSuicideConfirmation();
+                    }
+                    break;
 
-                }
-                return true;
             }
+            return true;
+        });
+
+        mClock.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    rClockPressTime = System.currentTimeMillis();
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    if(System.currentTimeMillis() - rClockPressTime > PRESS_DELAY && isAlive())
+                    {
+                        openDebug();
+                    }
+                    break;
+
+            }
+            return true;
         });
 
     }
@@ -471,22 +487,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void bindViews()
     {
-        mGeiger = (Geiger) findViewById(R.id.geiger);
-        mCompass = (Compass) findViewById(R.id.compass);
-        mRadbar = (Radbar) findViewById(R.id.radbar);
-        mHealthbar = (Healthbar) findViewById(R.id.healthbar);
-        mArmorBar = (Bar) findViewById(R.id.armorbar);
-        mStaminaBar = (Bar) findViewById(R.id.staminabar);
-        mDeviceBar = (Bar) findViewById(R.id.devicebar);
-        //mClock = (Clock) findViewById(R.id.clock);
-        mBattery = (Battery) findViewById(R.id.battery);
-        mTube = (Tube) findViewById(R.id.tube);
-        mQrButton = (ImageButton) findViewById(R.id.qrbutton);
-        logList = (RecyclerView) findViewById(R.id.log_list);
-        mIndicator = (Indicator) findViewById(R.id.indicator);
-        countDownTimer = (CountDownTimer) findViewById(R.id.countdown);
-        levelProgress = (LevelProgress) findViewById(R.id.levelProgress);
-        layout = (ViewGroup) findViewById(R.id.activity_main);
+        mGeiger = findViewById(R.id.geiger);
+        mCompass = findViewById(R.id.compass);
+        mRadbar = findViewById(R.id.radbar);
+        mHealthbar = findViewById(R.id.healthbar);
+        mArmorBar = findViewById(R.id.armorbar);
+        mStaminaBar = findViewById(R.id.staminabar);
+        mDeviceBar = findViewById(R.id.devicebar);
+        mClock = findViewById(R.id.clock);
+        mBattery = findViewById(R.id.battery);
+        mTube = findViewById(R.id.tube);
+        mQrButton = findViewById(R.id.qrbutton);
+        logList = findViewById(R.id.log_list);
+        mIndicator = findViewById(R.id.indicator);
+        countDownTimer = findViewById(R.id.countdown);
+        levelProgress = findViewById(R.id.levelProgress);
+        layout = findViewById(R.id.activity_main);
         if(Settings.instance().getBoolSetting(Constants.COMPASS))
         {
             mCompass.compassOn();
@@ -511,6 +527,19 @@ public class MainActivity extends AppCompatActivity {
             case DARKEN: return orientation == Constants.ORIENTATION_LANDSCAPE ? R.drawable.background_h_darken : R.drawable.background_v_darken;
             default: return -1;
         }
+    }
+
+    private void openDebug() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("debug");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dia//Log.
+        DialogFragment newFragment = new DebugFragment();
+        newFragment.show(ft, "debug");
     }
 
     private void openInventory(int type) {

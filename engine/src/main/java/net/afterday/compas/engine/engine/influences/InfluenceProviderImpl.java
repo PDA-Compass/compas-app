@@ -1,5 +1,10 @@
 package net.afterday.compas.engine.engine.influences;
 
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 
@@ -11,51 +16,28 @@ import net.afterday.compas.engine.engine.influences.WifiInfluences.WiFiInfluence
 import net.afterday.compas.engine.engine.influences.WifiInfluences.WifiInfluenceProviderImpl;
 import net.afterday.compas.engine.persistency.influences.InfluencesPersistency;
 import net.afterday.compas.engine.sensors.Sensor;
+import net.afterday.compas.engine.sensors.SensorResult;
 import net.afterday.compas.engine.sensors.SensorsProvider;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.Subject;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
-
 public class InfluenceProviderImpl implements InfluencesController
 {
-    private Sensor<List<WifiScanResult>> wifiSensor;
-    private Observable<InfluencesPack> influences = PublishSubject.create();
+    private Observable<SensorResult> influences = PublishSubject.create();
     private static final String TAG = "InfluenceProviderImpl";
     private Subject<Boolean> emissionRunning = PublishSubject.create();
-//    public InfluenceProviderImpl(final WiFi wifi, final List<String> wifiInfls)
-//    {
-//        this.wifiSensor = wifi;
-//        this.influences = wifiSensor.getSensorResultsStream().
-//                <InfluencesPack>map((List<ScanResult> scans) ->{
-//                    InflPack infls = new InflPack();
-//                    for(ScanResult r : scans)
-//                    {
-//                        if(wifiInfls.contains(r.BSSID))
-//                        {
-//                            infls.addInfluence(new WifiInfluence(r));
-//                        }
-//                    }
-//                    log(infls);
-//                    return infls;
-//                } );
-//    }
     private InfluencesPersistency ip;
     private SensorsProvider sp;
     private WiFiInfluenceProvider wip;
     private BluetoothInfluenceProvider bip;
     private GpsInfluenceProvider gip;
 
-    private Observable<Double> blInfls;
+    private Observable<SensorResult> blInfls;
     private Observable<InfluencesPack> wifiInfls;
     private Observable<Integer> gpsInfls;
     private CompositeDisposable cd = new CompositeDisposable();
     private Subject<Integer> influencesState = BehaviorSubject.createDefault(0);
     private boolean emission = false;
+    private Subject<SensorResult> sensorStream = BehaviorSubject.create();
 
     public InfluenceProviderImpl(final SensorsProvider sp, final InfluencesPersistency ip, Observable<Long> ticks)
     {
@@ -63,7 +45,8 @@ public class InfluenceProviderImpl implements InfluencesController
         this.ip = ip;
         wip = new WifiInfluenceProviderImpl(sp.getWifiSensor(), ip);
         bip = new BluetoothInfluenceProviderImpl(sp.getBluetoothSensor(), ip);
-        gip = new GpsInfluenceProviderImpl(sp.getGpsSensor());
+
+        gip = new GpsInfluenceProviderImpl(sp.getGpsSensor(), ip);
 
         blInfls = bip.getInfluenceStream();
         wifiInfls = wip.getInfluenceStream();
@@ -73,7 +56,7 @@ public class InfluenceProviderImpl implements InfluencesController
 //        Observable<Long> ticks = Observable.interval(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS);
 //        Observable<Integer> running = Observable.combineLatest(state, ticks, (r, t) -> r);
 //        running.
-        ticks.withLatestFrom(wifiInfls, blInfls, gpsInfls, (t, w, b, g) -> combineInfls(w, b, g)).subscribe((inflP) -> ((Subject<InfluencesPack>)influences).onNext(inflP));
+        //ticks.withLatestFrom(wifiInfls, blInfls, gpsInfls, (t, w, b, g) -> combineInfls(w, b, g)).subscribe((inflP) -> ((Subject<InfluencesPack>)influences).onNext(inflP));
 //        cd.add(
 //                Observable
 //                .<Double, InfluencesPack, Integer, InfluencesPack>combineLatest(blInfls, wifiInfls, gpsInfls (b, w) -> combineInfls(b, w))
@@ -83,7 +66,7 @@ public class InfluenceProviderImpl implements InfluencesController
     }
 
     @Override
-    public Observable<InfluencesPack> getInfluenceStream()
+    public Observable<SensorResult> getInfluenceStream()
     {
         return this.influences;
     }
@@ -91,7 +74,7 @@ public class InfluenceProviderImpl implements InfluencesController
     @Override
     public void start()
     {
-//        bip.start();
+        bip.start();
         wip.start();
 //        gip.start();
     }
@@ -99,7 +82,7 @@ public class InfluenceProviderImpl implements InfluencesController
     @Override
     public void stop()
     {
-//        bip.stop();
+        bip.stop();
         wip.stop();
 //        gip.stop();
     }
@@ -160,22 +143,6 @@ public class InfluenceProviderImpl implements InfluencesController
         emission = false;
         gip.stop();
     }
-
-//    private void log(InflPack inflPack)
-//    {
-//        List<Influence> infls = inflPack.getInfluences();
-//        if(infls.size() < 1)
-//        {
-//            ////Log.e("NO INFLUENCES");
-//        }else
-//        {
-//            String i = "";
-//            for(Influence infl : infls)
-//            {
-//                i += infl.getName() + "\n";
-//            }
-//        }
-//    }
 
     private InfluencesPack combineInfls(InfluencesPack infls, Double blStrength, Integer satelites)
     {

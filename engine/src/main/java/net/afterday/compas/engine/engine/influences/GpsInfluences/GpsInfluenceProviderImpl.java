@@ -1,13 +1,13 @@
 package net.afterday.compas.engine.engine.influences.GpsInfluences;
 
+import io.reactivex.rxjava3.core.Observable;
+import net.afterday.compas.engine.persistency.influences.InfluencesPersistency;
 import net.afterday.compas.engine.sensors.Gps.Gps;
-
-import io.reactivex.Observable;
 
 public class GpsInfluenceProviderImpl implements GpsInfluenceProvider
 {
     private Gps gps;
-    public GpsInfluenceProviderImpl(Gps gps)
+    public GpsInfluenceProviderImpl(Gps gps,  InfluencesPersistency ip)
     {
         this.gps = gps;
     }

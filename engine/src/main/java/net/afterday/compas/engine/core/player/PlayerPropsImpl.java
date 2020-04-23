@@ -28,6 +28,7 @@ public class PlayerPropsImpl implements PlayerProps
 
     public PlayerPropsImpl(Player.STATE state)
     {
+        hits = new boolean[Influence.INFLUENCE_COUNT];
         this.state = state;
     }
 
@@ -46,7 +47,7 @@ public class PlayerPropsImpl implements PlayerProps
     
     public PlayerPropsImpl(Jsonable jsonable)
     {
-        
+        hits = new boolean[Influence.INFLUENCE_COUNT];
     }
 
     //region Health

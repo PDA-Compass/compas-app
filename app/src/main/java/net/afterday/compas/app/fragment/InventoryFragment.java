@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import net.afterday.compas.app.R;
 import net.afterday.compas.engine.core.inventory.items.Item;
 import net.afterday.compas.engine.core.player.Player;
@@ -20,10 +23,6 @@ import net.afterday.compas.app.LocalMainService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 
 public class InventoryFragment extends DialogFragment
 {

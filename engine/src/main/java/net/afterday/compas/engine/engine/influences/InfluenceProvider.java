@@ -1,6 +1,6 @@
 package net.afterday.compas.engine.engine.influences;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 
 public interface InfluenceProvider<T>
 {

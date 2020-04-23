@@ -1,23 +1,21 @@
 package net.afterday.compas.engine.engine.influences.BluetoothInfluences;
 
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.core.log.Log;
-import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.engine.influences.InfluenceExtractionStrategy;
 import net.afterday.compas.engine.persistency.influences.InfluencesPersistency;
 import net.afterday.compas.engine.sensors.Bluetooth.Bluetooth;
-import net.afterday.compas.engine.sensors.Bluetooth.BluetoothScanResult;
+import net.afterday.compas.engine.sensors.SensorResult;
 import net.afterday.compas.engine.util.Pair;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.Subject;
 
 public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvider
 {
@@ -26,15 +24,10 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
     private static final String RUNNING = "R";
     private static final String STOPPED = "S";
     private final Bluetooth bluetooth;
-    private final Observable<Double> blScans = BehaviorSubject.createDefault(Influence.NULL);
-    private static final InfluenceExtractionStrategy<List<BluetoothScanResult>, Double> extractionStrategy;
+    private final Subject<SensorResult> blScans = BehaviorSubject.create();
     private final Subject<String> providerState = BehaviorSubject.createDefault(STOPPED);
     private final Observable<Long> providerRunning;
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
-
-    static {
-        extractionStrategy = new BluetoothExtractionStrategy();
-    }
 
     public BluetoothInfluenceProviderImpl(Bluetooth bluetooth, InfluencesPersistency ip)
     {
@@ -47,7 +40,7 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
                         Log.e(TAG, "AAAAAAAAAAAAA ---- " + e);
         })
                      //.map((sr) -> extractionStrategy.makeInfluences(sr))
-                     .subscribe(((Subject<Double>) blScans)::onNext);
+                     .subscribe(blScans::onNext);
 //        bluetooth.getSensorResultsStream().withLatestFrom(providerState, (res, ps) -> new Pair<Pair<String, Integer>, Boolean>(res, ps == RUNNING))
 //                    .filter((o) -> o.second)
 //                    .map()
@@ -63,7 +56,7 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
     }
 
     @Override
-    public Observable<Double> getInfluenceStream()
+    public Observable<SensorResult> getInfluenceStream()
     {
         return blScans;
     }

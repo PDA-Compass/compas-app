@@ -4,7 +4,6 @@ import net.afterday.compas.engine.core.influences.Influence;
 
 public class WifiConverter
 {
-
     public static double convert(int type, int signal)
     {
         switch (type)

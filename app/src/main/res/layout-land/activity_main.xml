@@ -7,9 +7,9 @@
                                                android:layout_height="match_parent"
                                                android:padding="0dp"
                                                android:layout_margin="0dp"
-                                               tools:context="net.afterday.compas.MainActivity"
+                                               tools:context="net.afterday.compas.app.MainActivity"
                                                android:keepScreenOn="true" tools:ignore="MissingDefaultResource">
-    <net.afterday.compas.view.Compass
+    <net.afterday.compas.app.view.Compass
         android:id="@+id/compass"
         app:layout_widthPercent="52.8125%"
         app:layout_heightPercent="93.888888888888888888888888888889%"
@@ -17,35 +17,35 @@
         app:layout_marginTopPercent="2.8%"
         />
 
-    <net.afterday.compas.view.Geiger
+    <net.afterday.compas.app.view.Geiger
         android:id="@+id/geiger"
         app:layout_widthPercent="46.99%"
         app:layout_heightPercent="83.24%"
         app:layout_marginLeftPercent="47.93%"
         app:layout_marginTopPercent="8.96%" />
 
-    <net.afterday.compas.view.Tube
+    <net.afterday.compas.app.view.Tube
         android:id="@+id/tube"
         app:layout_widthPercent="31.895833333%"
         app:layout_heightPercent="26.018518519%"
         app:layout_marginLeftPercent="55.65%"
         app:layout_marginTopPercent="58%" />
 
-    <net.afterday.compas.view.CountDownTimer
+    <net.afterday.compas.app.view.CountDownTimer
         android:id="@+id/countdown"
         app:layout_widthPercent="10.00%"
         app:layout_heightPercent="7.00%"
         app:layout_marginLeftPercent="66.40%"
         app:layout_marginTopPercent="58.0%"/>
 
-    <net.afterday.compas.view.Indicator
+    <net.afterday.compas.app.view.Indicator
         android:id="@+id/indicator"
         app:layout_widthPercent="30.895833333%"
         app:layout_heightPercent="26.018518519%"
         app:layout_marginLeftPercent="57.0%"
         app:layout_marginTopPercent="78%" />
 
-    <net.afterday.compas.view.Bar
+    <net.afterday.compas.app.view.Bar
         android:id="@+id/armorbar"
         app:image="@drawable/bar_armor"
         app:layout_heightPercent="8.5%"
@@ -59,7 +59,7 @@
         app:scale_height="40"
         app:scale_width="600"/>
 
-    <net.afterday.compas.view.Bar
+    <net.afterday.compas.app.view.Bar
         android:id="@+id/devicebar"
         app:image="@drawable/bar_device"
         app:layout_heightPercent="8.5%"
@@ -73,7 +73,7 @@
         app:scale_height="40"
         app:scale_width="600"/>
 
-    <net.afterday.compas.view.Bar
+    <net.afterday.compas.app.view.Bar
         android:id="@+id/staminabar"
         app:image="@drawable/bar_stamina"
         app:layout_heightPercent="8.5%"
@@ -87,21 +87,21 @@
         app:scale_height="34"
         app:scale_width="600"/>
 
-    <net.afterday.compas.view.Radbar
+    <net.afterday.compas.app.view.Radbar
         android:id="@+id/radbar"
         app:layout_heightPercent="20.740740741%"
         app:layout_marginLeftPercent="2.5%"
         app:layout_marginTopPercent="23.25%"
         app:layout_widthPercent="39.010416667%" />
 
-    <net.afterday.compas.view.Healthbar
+    <net.afterday.compas.app.view.Healthbar
         android:id="@+id/healthbar"
         app:layout_heightPercent="20.740740741%"
         app:layout_marginLeftPercent="2.5%"
         app:layout_marginTopPercent="44.75%"
         app:layout_widthPercent="39.010416667%" />
 
-    <net.afterday.compas.view.LevelIndicator
+    <net.afterday.compas.app.view.LevelIndicator
         android:id="@+id/qrbutton"
         app:layout_widthPercent="9.8%"
         app:layout_heightPercent="17.3%"
@@ -118,7 +118,7 @@
         app:layout_widthPercent="10%"
         android:background="@drawable/exp_h"/>
 
-    <net.afterday.compas.view.LevelProgress
+    <net.afterday.compas.app.view.LevelProgress
         android:id="@+id/levelProgress"
         app:layout_widthPercent="8.6%"
         app:layout_heightPercent="6.0%"
@@ -134,7 +134,7 @@
         app:layout_widthPercent="10.8%"
         android:background="@drawable/time_h"/>
 
-    <net.afterday.compas.view.Clock
+    <net.afterday.compas.app.view.Clock
         android:id="@+id/clock"
         app:layout_widthPercent="10.15625%"
         app:layout_heightPercent="9.87037037%"
@@ -149,7 +149,7 @@
         app:layout_widthPercent="8.5%"
         android:background="@drawable/energy_h"/>
 
-    <net.afterday.compas.view.Battery
+    <net.afterday.compas.app.view.Battery
         android:id="@+id/battery"
         app:layout_widthPercent="9.15625%"
         app:layout_heightPercent="9.87037037%"

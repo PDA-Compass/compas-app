@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import net.afterday.compas.app.R;
 import net.afterday.compas.engine.core.inventory.items.Item;
 import net.afterday.compas.engine.core.player.Player;
@@ -25,11 +28,6 @@ import net.afterday.compas.engine.engine.events.PlayerEventBus;
 import net.afterday.compas.app.util.Fonts;
 
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 
 public class ItemInfoFragment extends DialogFragment
 {

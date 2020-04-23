@@ -11,13 +11,12 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import net.afterday.compas.engine.sensors.Battery.BatteryStatus;
 import net.afterday.compas.app.util.Fonts;
 
 import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
 public class Battery extends View
 {

@@ -48,11 +48,29 @@ internal class EquipmentImpl() : Equipment {
     }
 
     override val armorPercents: Double
-        get() {return armor?.percentsLeft as Double}
+        get() {
+            return if (armor != null) {
+                armor!!.percentsLeft.toDouble()
+            } else {
+                0.0
+            }
+        }
 
     override val boosterPercents: Double
-        get() {return booster?.percentsLeft as Double}
+        get() {
+            return if (booster != null) {
+                booster!!.percentsLeft.toDouble()
+            } else {
+                0.0
+            }
+        }
 
     override val devicePercents: Double
-        get() {return device?.percentsLeft as Double}
+        get() {
+            return if (device != null) {
+                device!!.percentsLeft.toDouble()
+            } else {
+                0.0
+            }
+        }
 }

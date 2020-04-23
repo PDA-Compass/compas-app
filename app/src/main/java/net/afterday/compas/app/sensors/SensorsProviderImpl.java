@@ -1,6 +1,8 @@
 package net.afterday.compas.app.sensors;
 
 import android.content.Context;
+import io.reactivex.rxjava3.core.Observable;
+import net.afterday.compas.engine.sensors.SensorResult;
 import net.afterday.compas.engine.sensors.SensorsProvider;
 import net.afterday.compas.engine.sensors.Battery.Battery;
 import net.afterday.compas.app.sensors.Battery.BatteryImpl;
@@ -13,35 +15,22 @@ import net.afterday.compas.app.sensors.WiFi.WifiImpl;
 
 public class SensorsProviderImpl implements SensorsProvider
 {
-    private static SensorsProvider instance;
     private Context context;
-    private SensorsProviderImpl(Context context)
+    private Bluetooth bluetooth;
+    private WiFi wifi;
+
+    public SensorsProviderImpl(Context context)
     {
         this.context = context;
-    }
-
-    public static SensorsProvider initialize(Context context)
-    {
-        if(instance == null)
-        {
-            instance = new SensorsProviderImpl(context);
-        }
-        return instance;
-    }
-
-    public static SensorsProvider instance()
-    {
-        if(instance == null)
-        {
-            throw new IllegalStateException("Sensors provider not initialized");
-        }
-        return instance;
+        wifi = new WifiImpl(context);
+        bluetooth = new BluetoothImpl(context);
+        new GpsImpl(context);
     }
 
     @Override
     public WiFi getWifiSensor()
     {
-        return new WifiImpl(context);
+        return wifi;
     }
 
     @Override
@@ -53,13 +42,13 @@ public class SensorsProviderImpl implements SensorsProvider
     @Override
     public Bluetooth getBluetoothSensor()
     {
-        return new BluetoothImpl(context);
+        return bluetooth;
     }
 
     @Override
     public Gps getGpsSensor()
     {
-        return new GpsImpl(context);
+        return null;
     }
 
 }

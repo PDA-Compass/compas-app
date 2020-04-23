@@ -1,5 +1,6 @@
 package net.afterday.compas.app.sensors.Bluetooth;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -7,26 +8,30 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.wifi.ScanResult;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.Subject;
+import net.afterday.compas.engine.sensors.Bluetooth.Bluetooth;
+import net.afterday.compas.engine.sensors.Sensor;
+import net.afterday.compas.engine.sensors.SensorResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.Subject;
-import net.afterday.compas.engine.sensors.Bluetooth.Bluetooth;
-
-@TargetApi(18)
-public class BluetoothImpl implements Bluetooth
-{
+@TargetApi(19)
+public class BluetoothImpl implements Bluetooth {
     private static final String TAG = "BluetoothImpl";
     private Context context;
     private IntentFilter intentFilter;
-    private Observable<Double> resultStream = PublishSubject.create();
+    private Subject<SensorResult> resultStream = PublishSubject.create();
     private BluetoothAdapter bla;
     private AtomicBoolean isRunning = new AtomicBoolean(false);
     private BluetoothReceiver br = new BluetoothReceiver();
@@ -47,9 +52,8 @@ public class BluetoothImpl implements Bluetooth
 
     private void setup()
     {
-
         //Afterday Project
-        registeredMacs.add("FF:FF:3E:F4:03:09");
+        registeredMacs.add("24:0A:C4:82:E7:16");
         registeredMacs.add("FF:FF:3D:F9:15:7E");
         registeredMacs.add("FF:FF:3C:FA:C6:B3");
         registeredMacs.add("FF:FF:3B:FE:9F:38");
@@ -69,7 +73,6 @@ public class BluetoothImpl implements Bluetooth
         registeredMacs.add("FF:FF:3E:F3:97:32");
         registeredMacs.add("FF:FF:39:F3:95:0E");
         registeredMacs.add("FF:FF:3E:F3:F4:EC");
-
         //
     }
 
@@ -78,7 +81,9 @@ public class BluetoothImpl implements Bluetooth
     {
         //context.registerReceiver(br, intentFilter);
         isRunning.set(true);
-        bla.startLeScan(callback);
+        if (bla != null) {
+            bla.startLeScan(callback);
+        }
     }
 
     @Override
@@ -88,7 +93,7 @@ public class BluetoothImpl implements Bluetooth
     }
 
     @Override
-    public Observable<Double> getSensorResultsStream()
+    public Observable<SensorResult> getSensorResultsStream()
     {
         return resultStream;
     }
@@ -98,6 +103,7 @@ public class BluetoothImpl implements Bluetooth
         @Override
         public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes)
         {
+            //TODO:  filter bluetooth Device
             long now = System.currentTimeMillis();
             if(registeredMacs.contains(bluetoothDevice.getAddress()))
             {
@@ -105,15 +111,28 @@ public class BluetoothImpl implements Bluetooth
                 {
                     resetter.dispose();
                 }
-                ((Subject<Double>)resultStream).onNext(new Double(i + 100));
-                resetter = Observable.timer(3, TimeUnit.SECONDS).subscribe((x) -> ((Subject<Double>)resultStream).onNext(0d));
+                resultStream.onNext(new SensorResult(
+                        bluetoothDevice.getAddress(),
+                        bluetoothDevice.getName(),
+                        i * 100,
+                        now));
+
+                //TODO: понять что это? //resetter = Observable.timer(3, TimeUnit.SECONDS).subscribe((x) -> ((Subject<Double>)resultStream).onNext(0d));
                 //((Subject<BluetoothScanResult>)resultStream).onNext(new BluetoothScanResultImpl(bluetoothDevice.getAddress(), i, now));
+            }
+            else
+            {
+                resultStream.onNext(new SensorResult(
+                        bluetoothDevice.getAddress(),
+                        bluetoothDevice.getName(),
+                        i * 100,
+                        now));
             }
             if(!isRunning.get())
             {
                 bla.stopLeScan(callback);
             }
-            //Log.e(TAG, "SCANNED!!!!!!" + bluetoothDevice.getAddress() + " " + bluetoothDevice.getName() + " " + i + " " + bytes);
+            Log.d(TAG, "SCANNED!!!!!!" + bluetoothDevice.getAddress() + " " + bluetoothDevice.getName() + " " + i + " " + bytes);
         }
     }
 

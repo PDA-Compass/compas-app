@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.application")
     kotlin("android")
+    //id("kotlin-kapt")
 }
 
 android {
@@ -12,7 +15,6 @@ android {
         targetSdkVersion(28)
         versionCode = 1813
         versionName = "1813"
-        multiDexEnabled = true
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +40,8 @@ dependencies {
     //})
     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+
     implementation(project(":engine"))
     implementation(project(":games"))
     implementation("com.google.code.gson:gson:2.8.5")
@@ -47,9 +51,15 @@ dependencies {
     implementation("com.android.support:recyclerview-v7:28.0.0")
     implementation("com.journeyapps:zxing-android-embedded:3.6.0")
     implementation("com.android.support:support-v4:28.0.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.1.1")
-    implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.1")
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("net.sourceforge.streamsupport:streamsupport:1.5.3")
+
+    implementation("com.google.dagger:dagger:2.5")
+    compileOnly("javax.annotation:jsr250-api:1.0")
+
+    //kapt("com.google.dagger:dagger-compiler:2.5")
 
 
     //testImplementation 'junit:junit:4.12'

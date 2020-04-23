@@ -1,26 +1,26 @@
 package net.afterday.compas.app.sensors.WiFi;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.util.Log;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.app.StalkerApp;
+import net.afterday.compas.engine.sensors.SensorResult;
+import net.afterday.compas.engine.sensors.WiFi.WiFi;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.Subject;
-import net.afterday.compas.engine.sensors.WiFi.WiFi;
 
 public class WifiImpl implements WiFi
 {
@@ -31,22 +31,29 @@ public class WifiImpl implements WiFi
     private Context appContext;
     private StalkerApp app;
     private AtomicBoolean isRunning = new AtomicBoolean(false);
-    private Observable<List<WifiScanResult>> wifiScans = PublishSubject.create();
+    private Subject<SensorResult> wifiScans = PublishSubject.create();
     private long dangerousScans = 0;
     private long delayedScans = 0;
     private Subject<Boolean> isRunningSubj = BehaviorSubject.createDefault(false);
-    @SuppressLint("CheckResult")
-    public WifiImpl(Context context)
+    public WifiImpl(Context context )
     {
         mWifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-//        {
-//            context.registerReceiver(new WifiReceiver(), new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-//        }else
-//        {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            context.registerReceiver(new WifiReceiver(), new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+
+            isRunningSubj.switchMap((isRunning) -> isRunning ? Observable.interval(30, TimeUnit.SECONDS) : Observable.empty()).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((t) -> {
+                        boolean hasError =  mWifi.startScan();
+                        Log.d(TAG, "hasError:" + (hasError ? "tue": "false"));
+                    });
+
+        } else
+        {
             isRunningSubj.switchMap((isRunning) -> isRunning ? Observable.interval(1, TimeUnit.SECONDS) : Observable.empty()).observeOn(AndroidSchedulers.mainThread())
             .subscribe((t) -> {
-                mWifi.startScan();
+                boolean hasError =  mWifi.startScan();
+
                 List<ScanResult> results = mWifi.getScanResults();
                 if(wifiScans == null)
                 {
@@ -56,11 +63,10 @@ public class WifiImpl implements WiFi
                 for (ScanResult sr : results)
                 {
                     Log.e(TAG, "Result: " + sr.SSID);
+                    wifiScans.onNext(new SensorResult(sr.BSSID, sr.SSID, sr.level, sr.timestamp));
                 }
-                //Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
-                ((Subject) wifiScans).onNext(results);
             });
-//        }
+        }
     }
 
     public void start()
@@ -79,13 +85,14 @@ public class WifiImpl implements WiFi
     }
 
     @Override
-    public Observable<List<WifiScanResult>> getSensorResultsStream()
+    public Observable<SensorResult> getSensorResultsStream()
     {
         return wifiScans;
     }
 
     public class WifiReceiver extends BroadcastReceiver
     {
+
         @Override
         public void onReceive(Context context, Intent intent)
         {
@@ -101,8 +108,10 @@ public class WifiImpl implements WiFi
                 Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
                 if (isRunning.get())
                 {
-                    ((Subject) wifiScans).onNext(results);
-                    mWifi.startScan();
+                    for (ScanResult sr : results) {
+                        wifiScans.onNext(new SensorResult(sr.BSSID, sr.SSID, sr.level, sr.timestamp));
+                    }
+                    //mWifi.startScan();
                 }
             }
         }
@@ -165,7 +174,9 @@ public class WifiImpl implements WiFi
                     Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
                     if (isRunning.get())
                     {
-                        ((Subject) wifiScans).onNext(results);
+                        for (ScanResult sr : results) {
+                            wifiScans.onNext(new SensorResult(sr.BSSID, sr.SSID, sr.level, sr.timestamp));
+                        }
                         mWifi.startScan();
                     }
                 }

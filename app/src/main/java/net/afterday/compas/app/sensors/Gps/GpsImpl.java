@@ -11,11 +11,11 @@ import android.os.Bundle;
 import java.util.concurrent.TimeUnit;
 
 import android.support.v4.app.ActivityCompat;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.Subject;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.sensors.Gps.Gps;
 
 public class GpsImpl implements Gps {

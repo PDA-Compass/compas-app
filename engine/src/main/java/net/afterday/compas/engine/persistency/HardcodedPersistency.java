@@ -1,13 +1,13 @@
 package net.afterday.compas.engine.persistency;
 
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.core.SingleOnSubscribe;
 import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.inventory.items.Item;
 import net.afterday.compas.engine.core.player.Player;
 
 import java.util.List;
 
-import io.reactivex.Single;
-import io.reactivex.SingleOnSubscribe;
 import java.util.Optional;
 
 public class HardcodedPersistency implements Persistency

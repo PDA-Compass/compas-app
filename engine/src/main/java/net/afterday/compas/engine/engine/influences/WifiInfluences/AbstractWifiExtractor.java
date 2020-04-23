@@ -3,7 +3,6 @@ package net.afterday.compas.engine.engine.influences.WifiInfluences;
 import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.engine.influences.InflPack;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,15 +10,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractWifiExtractor
+//TODO: implement extractor
+/*public abstract class AbstractWifiExtractor
 {
     private Pattern regex = Pattern.compile("(.*?([RAMBCHFZ])((\\d+)))");
 
     protected static Map<String, Integer> types = new HashMap<>();
 
     static {
-        //android.util.Log.d(TAG, "Static block");
-
         types.put("R", Influence.RADIATION);
         types.put("H", Influence.HEALTH);
         types.put("A", Influence.ANOMALY);
@@ -35,13 +33,11 @@ public abstract class AbstractWifiExtractor
 
     protected InfluencesPack extract(List<WifiScanResult> scanResults)
     {
-        //android.util.Log.d("Extract!!", scanResults + "");
         InflPack ip = new InflPack();
         for (WifiScanResult sr : scanResults)
         {
             if(isValid(sr))
             {
-                //android.util.Log.d("Extract!! ---------", sr + "");
                 Matcher matcher = regex.matcher(sr.getSsid());
                 while (matcher.find()) {
                     if(matcher.groupCount() < 4)
@@ -73,4 +69,4 @@ public abstract class AbstractWifiExtractor
         }
         return ip;
     }
-}
+}*/

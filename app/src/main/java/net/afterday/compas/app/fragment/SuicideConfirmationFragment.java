@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import io.reactivex.rxjava3.core.Observable;
 import net.afterday.compas.app.R;
 import net.afterday.compas.engine.engine.events.PlayerEventBus;
 import net.afterday.compas.app.util.Fonts;
 
 import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
 
 public class SuicideConfirmationFragment extends DialogFragment
 {

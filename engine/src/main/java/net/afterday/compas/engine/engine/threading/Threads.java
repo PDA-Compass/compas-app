@@ -1,9 +1,9 @@
 package net.afterday.compas.engine.engine.threading;
 
-import java.util.concurrent.Executors;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
-import io.reactivex.Scheduler;
-import io.reactivex.schedulers.Schedulers;
+import java.util.concurrent.Executors;
 
 public class Threads
 {

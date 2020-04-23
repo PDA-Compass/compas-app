@@ -1,50 +1,40 @@
 package net.afterday.compas.engine.engine;
 
-import net.afterday.compas.engine.core.log.Audit;
-import net.afterday.compas.engine.core.log.Log;
-
-import net.afterday.compas.engine.util.Pair;
 import com.google.gson.JsonObject;
-
-import net.afterday.compas.engine.core.Controls;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.core.Game;
 import net.afterday.compas.engine.core.GameImpl;
 import net.afterday.compas.engine.core.events.PlayerEventsListener;
 import net.afterday.compas.engine.core.gameState.Frame;
 import net.afterday.compas.engine.core.gameState.State;
-import net.afterday.compas.engine.core.influences.Emission;
-import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.core.inventory.items.Events.ItemAdded;
 import net.afterday.compas.engine.core.inventory.items.Item;
+import net.afterday.compas.engine.core.log.Audit;
+import net.afterday.compas.engine.core.log.Log;
 import net.afterday.compas.engine.core.player.Impacts;
 import net.afterday.compas.engine.core.player.Player;
 import net.afterday.compas.engine.core.serialization.Jsonable;
 import net.afterday.compas.engine.core.serialization.Serializer;
 import net.afterday.compas.engine.effects.Effects;
-import net.afterday.compas.engine.engine.actions.Action;
-import net.afterday.compas.engine.engine.actions.ActionsExecutor;
 import net.afterday.compas.engine.engine.events.CodeInputEventBus;
 import net.afterday.compas.engine.engine.events.EmissionEventBus;
 import net.afterday.compas.engine.engine.events.ItemEventsBus;
 import net.afterday.compas.engine.engine.events.PlayerEventBus;
-import net.afterday.compas.engine.engine.influences.InfluenceProviderImpl;
-import net.afterday.compas.engine.engine.influences.InfluencesController;
-import net.afterday.compas.engine.engine.threading.Threads;
+import net.afterday.compas.engine.engine.system.DamageSystem;
+import net.afterday.compas.engine.engine.system.InfluenceSystem;
 import net.afterday.compas.engine.persistency.PersistencyProvider;
 import net.afterday.compas.engine.sensors.SensorsProvider;
 import net.afterday.compas.engine.util.Triple;
 
-import java.util.Calendar;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.Subject;
 
 public class Engine implements Jsonable
 {
@@ -55,10 +45,8 @@ public class Engine implements Jsonable
 
     private Observable<Long> ticks;
     private Observable<Long> secondsLeft = BehaviorSubject.createDefault((long) -1);
-    private SensorsProvider sensorsProvider;
     private PersistencyProvider persistencyProvider;
 
-    private Subject<Boolean> acceptsInfluences = BehaviorSubject.create();
     private Subject<Integer> playerLevel = BehaviorSubject.create();
     private Subject<ItemAdded> itemAdded = PublishSubject.create();
     private Subject<Player.STATE> currentPlayerState = PlayerEventBus.instance().getPlayerStateStream();
@@ -70,32 +58,25 @@ public class Engine implements Jsonable
     private Observable<String> startCommands;
     private Game game;
     private Scheduler computation;
-    private InfluencesController influenceProvider;
-    private Observable<InfluencesPack> influencesStream;
+
     private Subject<State> gameStates = BehaviorSubject.<State>create();
     private Observable<Long> gameRunning;
     private ItemEventsBus itemEventsBus;
     private Effects effects;
-    private Controls controls;
+    private InfluenceSystem influenceSystem;
+    private DamageSystem damageSystem;
     private Serializer serializer;
     private JsonObject o;
-    private CompositeDisposable currentEmission = new CompositeDisposable();
-    private ActionsExecutor executor;
 
-    private Subject<Boolean> influencesRunning = BehaviorSubject.createDefault(false);
 
-    public Engine(Serializer serializer, Effects effects)
+    public Engine(Serializer serializer)
     {
         this.serializer = serializer; //SharedPrefsSerializer.instance();
-        this.effects = effects;
-
-        controls = new ControlsImpl();
         itemEventsBus = ItemEventsBus.instance();
         gameStates.onNext(State.NOT_STARTED);
-        computation = Threads.computation();
+        computation = Schedulers.computation();
         ticks = Observable.interval(0, TICK_MILLISECONDS, TimeUnit.MILLISECONDS);
         gameRunning = gameStates.filter((gs) -> gs == State.STARTED).switchMap((st) -> st == State.NOT_STARTED ? Observable.empty() : ticks);//.subscribe((l) -> {//Log.d(TAG, "Wooooorks");});
-        executor = ActionsExecutor.instance(gameRunning);
         startCommands = this.commands.filter((cmd) -> cmd == START);
         startCommands
                 .observeOn(computation)
@@ -103,16 +84,17 @@ public class Engine implements Jsonable
                 .map((cmd) -> this.initializeGame())
                 .subscribe(this::startGame);
 
+        influenceSystem = new InfluenceSystem(playerLevel, gameRunning);
+        damageSystem = new DamageSystem();
+    }
+
+    public void setEffects(Effects effects){
+        this.effects = effects;
     }
 
     public void start()
     {
-        //Log.d(TAG, "start " + Thread.currentThread().getName());
         String errorMsg = null;
-        if (sensorsProvider == null)
-        {
-            errorMsg = "SensorsProvider not set.";
-        }
         if (persistencyProvider == null)
         {
             errorMsg = "Persistency provider not set.";
@@ -171,21 +153,7 @@ public class Engine implements Jsonable
             }
         });
 
-        influenceProvider = new InfluenceProviderImpl(sensorsProvider, this.persistencyProvider.getInfluencesPersistency(), gameRunning);
-        influencesStream = influenceProvider.getInfluenceStream();
 
-
-        Observable.combineLatest(influencesRunning, playerLevel, Pair::new)
-                .subscribe((p) ->
-                {
-                    if (p.first)
-                    {
-                        influenceProvider.start(p.second);
-                    } else
-                    {
-                        influenceProvider.stop(p.second);
-                    }
-                });
 
         effects.setPlayerStatesStream(currentPlayerState);
         effects.setPlayerLevelStream(playerLevel);
@@ -196,10 +164,12 @@ public class Engine implements Jsonable
 
     private void startGame(Game game)
     {
-        influencesStream
+        //TODO: Move out
+        //TODO: uncomented
+        /*this.influenceSystem.getInfluencesStream()
                 .observeOn(computation)
                 .subscribe((inf) -> this.framesStream.onNext(game.acceptInfluences(inf)));
-
+        */
         CodeInputEventBus.getCodeScans().observeOn(computation).subscribe((code) -> CodeInputEventBus.codeAccepted(game.acceptCode(code)));
         //itemEventsBus.getAddItemEvents().observeOn(computation).subscribe((code) -> game.getPlayer().addItem(code));//.map((c) -> itemsProvider.getItemByCode(c).orElse(new NonExistingItem()));
         itemEventsBus.getDropItemEvents().observeOn(computation).subscribe((item) ->
@@ -215,12 +185,14 @@ public class Engine implements Jsonable
             framesStream.onNext(game.useItem(r));
         });
         setupSuicides();
-        setupEmissions();
+
+        //TODO: Move to InfluenceSystem
         Observable.combineLatest(EmissionEventBus.instance().getEmissionStateStream(), currentPlayerState, PlayerEventBus.instance().getPlayerFractionStream(), (e, p, f) -> new Triple<>(e, p, f)).subscribe((pr) ->
         {
             if (pr.first && pr.second.getCode() == Player.ALIVE && pr.third != Player.FRACTION.MONOLITH)
             {
-                influenceProvider.startEmission();
+                //TODO: uncommented
+                //influenceSystem.getInfluenceProvider().startEmission();
             }
         });
         ItemEventsBus.instance().getItemUsedEvents()
@@ -229,13 +201,13 @@ public class Engine implements Jsonable
                 .filter((e) -> e)
                 .subscribe((e) ->
                 {
-                    emissionEnded();
+                    influenceSystem.emissionEnded();
                 });
+
         Disposable stateTimers = setupStateTimers();
 
         framesStream.onNext(game.start());
-        controls.startInfluences();
-        acceptsInfluences.onNext(true);
+        influenceSystem.isStarted(true);
         this.gameStates.onNext(State.STARTED);
     }
 
@@ -274,119 +246,6 @@ public class Engine implements Jsonable
             ((Subject<Long>) secondsLeft).onNext(time1 - t);
         }));
         return cd;
-    }
-
-    private void setupEmissions()
-    {
-        Disposable d = new CompositeDisposable();
-        List<Emission> emissions = persistencyProvider.getInfluencesPersistency().getEmissions();
-        long now = System.currentTimeMillis();
-        for (Emission e : emissions)
-        {
-            Calendar strtAt = e.getStartTime();
-            if (strtAt.getTimeInMillis() + (e.getDuration() * 1000 * 60) < now || (e.getFake() && strtAt.getTimeInMillis() < now))
-            {
-                continue;
-            }
-            if (now < (strtAt.getTimeInMillis() - e.getNotifyBefore() * 1000 * 60))
-            {
-                executor.postAction(new Action()
-                {
-                    @Override
-                    public long startTime()
-                    {
-                        return strtAt.getTimeInMillis() - e.getNotifyBefore() * 1000 * 60;
-                    }
-
-                    @Override
-                    public void execute()
-                    {
-                        notifyEmission(e.getNotifyBefore());
-                    }
-
-                    @Override
-                    public String toString()
-                    {
-                        return "Notify emission action: " + calToStr(strtAt);
-                    }
-                });
-            }
-
-            executor.postAction(new Action()
-            {
-                @Override
-                public long startTime()
-                {
-                    return e.getStartTime().getTimeInMillis();
-                }
-
-                @Override
-                public void execute()
-                {
-                    if (e.getFake())
-                    {
-                        notifyFakeEmission();
-                        return;
-                    }
-                    if (strtAt.getTimeInMillis() < now)
-                    {
-                        startEmission((int)(e.getDuration() - (now - strtAt.getTimeInMillis()) / 1000 / 60));
-                    } else
-                    {
-                        startEmission(e.getDuration());
-                    }
-                }
-
-                @Override
-                public String toString()
-                {
-                    return "Start emission action: " + calToStr(strtAt);
-                }
-            });
-        }
-    }
-
-    private String calToStr(Calendar c)
-    {
-        return "Year: " + c.get(Calendar.YEAR) + " Month: " + c.get(Calendar.MONTH) + " Day: " + c.get(Calendar.DAY_OF_MONTH) + " Hour: " + c.get(Calendar.HOUR_OF_DAY) + " Min: " + c.get(Calendar.MINUTE) + " Sec: " + c.get(Calendar.SECOND) + " Milis: " + c.getTimeInMillis();
-    }
-
-    private void notifyFakeEmission()
-    {
-        Log.e(TAG, "EMISSION FAKE");
-        Audit.d("R.string.message_emission_fake");
-        EmissionEventBus.instance().fakeEmission();
-    }
-
-    private void notifyEmission(int emissionStartAfter)
-    {
-        Log.e(TAG, "EMISSION WILL START");
-        Audit.e("R.string.message_emission_approaching");
-        EmissionEventBus.instance().emissionWillStart(emissionStartAfter);
-    }
-
-    private void startEmission(int endAfter)
-    {
-        Log.e(TAG, "EMISSION STARTED");
-        Audit.e("R.string.message_emission_started");
-        EmissionEventBus.instance().setEmissionActive(true);
-        if(currentEmission == null)
-        {
-            currentEmission = new CompositeDisposable();
-        }
-        currentEmission.add(Observable.timer(endAfter, TimeUnit.MINUTES).take(1).subscribe((t) -> emissionEnded()));
-    }
-
-    private void emissionEnded()
-    {
-        if(currentEmission != null && !currentEmission.isDisposed())
-        {
-            currentEmission.dispose();
-            currentEmission = null;
-        }
-        Audit.d("R.string.message_emission_ended");
-        influenceProvider.stopEmission();
-        EmissionEventBus.instance().setEmissionActive(false);
     }
 
     private Disposable setupSuicides()
@@ -464,11 +323,6 @@ public class Engine implements Jsonable
         this.game = game;
     }
 
-    public void setSensorsProvider(SensorsProvider sensorsProvider)
-    {
-        this.sensorsProvider = sensorsProvider;
-    }
-
     public void setPersistencyProvider(PersistencyProvider provider)
     {
         this.persistencyProvider = provider;
@@ -478,7 +332,6 @@ public class Engine implements Jsonable
     {
         return currentPlayerState;
     }
-
     public Observable<ItemAdded> getItemAddedStream()
     {
         return itemAdded;
@@ -498,25 +351,7 @@ public class Engine implements Jsonable
         return o;
     }
 
-    private class ControlsImpl implements Controls
-    {
-
-        @Override
-        public void stopInfluences()
-        {
-            acceptsInfluences.onNext(false);
-            influencesRunning.onNext(false);
-        }
-
-        @Override
-        public void startInfluences()
-        {
-            acceptsInfluences.onNext(true);
-            influencesRunning.onNext(true);
-        }
-    }
-
-    private class PlayerEventsListenerImpl implements PlayerEventsListener
+    public class PlayerEventsListenerImpl implements PlayerEventsListener
     {
         @Override
         public void onPlayerStateChanged(Player.STATE oldState, Player.STATE newState)
@@ -527,16 +362,15 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_suicide");
                 currentPlayerState.onNext(newState);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.DEAD_BURER)
             {
                 ((Subject<Long>)secondsLeft).onNext((long)-1);
                 Audit.e("R.string.message_dead");
-                //countdownStarted.onNext(System.currentTimeMillis());
                 currentPlayerState.onNext(newState);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.W_CONTROLLED)
@@ -544,7 +378,7 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_controller_trans");
                 currentPlayerState.onNext(newState);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.CONTROLLED)
@@ -552,7 +386,7 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.e("R.string.message_controller_undercontrol");
                 currentPlayerState.onNext(newState);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.DEAD_CONTROLLER)
@@ -560,7 +394,7 @@ public class Engine implements Jsonable
                 ((Subject<Long>)secondsLeft).onNext((long)-1);
                 Audit.e("R.string.message_dead_controller");
                 currentPlayerState.onNext(Player.STATE.DEAD_CONTROLLER);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.W_MENTALLED)
@@ -568,7 +402,7 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_mental_trans");
                 currentPlayerState.onNext(newState);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.MENTALLED)
@@ -576,14 +410,14 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.e("R.string.message_mental_zombified");
                 currentPlayerState.onNext(newState);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.DEAD_MENTAL)
             {
                 Audit.e("R.string.message_dead_mental");
                 currentPlayerState.onNext(Player.STATE.DEAD_MENTAL);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.W_DEAD_ANOMALY)
@@ -591,14 +425,14 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_suicide");
                 currentPlayerState.onNext(Player.STATE.W_DEAD_ANOMALY);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.DEAD_ANOMALY)
             {
                 Audit.e("R.string.message_dead_anomaly");
                 currentPlayerState.onNext(Player.STATE.DEAD_ANOMALY);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.ALIVE)
@@ -606,7 +440,7 @@ public class Engine implements Jsonable
                 Audit.d("R.string.message_revive");
                 currentPlayerState.onNext(Player.STATE.ALIVE);
                 ((Subject<Long>)secondsLeft).onNext((long)-1);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.W_DEAD_RADIATION)
@@ -614,14 +448,14 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_suicide");
                 currentPlayerState.onNext(Player.STATE.W_DEAD_RADIATION);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.DEAD_RADIATION)
             {
                 Audit.e("R.string.message_dead_radiation");
                 currentPlayerState.onNext(Player.STATE.DEAD_RADIATION);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.W_ABDUCTED)
@@ -629,7 +463,7 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.d("R.string.message_suicide");
                 currentPlayerState.onNext(Player.STATE.W_ABDUCTED);
-                controls.stopInfluences();
+                influenceSystem.isStarted(false);
                 return;
             }
             if(newState == Player.STATE.ABDUCTED)
@@ -638,7 +472,7 @@ public class Engine implements Jsonable
                 countdownStarted.onNext(System.currentTimeMillis());
                 Audit.e("R.string.message_abducted");
                 currentPlayerState.onNext(Player.STATE.ABDUCTED);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
             if(newState == Player.STATE.DEAD_EMISSION)
@@ -647,7 +481,7 @@ public class Engine implements Jsonable
                 Audit.e("R.string.message_dead_emission");
                 //countdownStarted.onNext(System.currentTimeMillis());
                 currentPlayerState.onNext(newState);
-                controls.startInfluences();
+                influenceSystem.isStarted(true);
                 return;
             }
         }

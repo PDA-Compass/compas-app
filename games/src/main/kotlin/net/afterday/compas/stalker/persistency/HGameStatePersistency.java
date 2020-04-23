@@ -1,4 +1,4 @@
-package net.afterday.compas.engine.persistency.hardcoded;
+package net.afterday.compas.stalker.persistency;
 
 import net.afterday.compas.engine.core.gameState.GameState;
 import net.afterday.compas.engine.persistency.initialState.GameStatePersistency;

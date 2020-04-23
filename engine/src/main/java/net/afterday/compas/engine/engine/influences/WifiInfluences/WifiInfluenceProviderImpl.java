@@ -1,29 +1,25 @@
 package net.afterday.compas.engine.engine.influences.WifiInfluences;
 
-
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.core.influences.Influence;
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.engine.influences.InflPack;
 import net.afterday.compas.engine.engine.influences.InfluenceExtractionStrategy;
-import net.afterday.compas.engine.engine.threading.Threads;
 import net.afterday.compas.engine.persistency.influences.InfluencesPersistency;
 import net.afterday.compas.engine.sensors.WiFi.WiFi;
 
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.Subject;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
 
 public class WifiInfluenceProviderImpl implements WiFiInfluenceProvider
 {
     private static final String TAG = "WifiInflProvider";
     private WiFi wifi;
     private InfluencesPersistency ip;
-    private Observable<List<WifiScanResult>> scanResults;
+    //private Observable<List<WifiScanResult>> scanResults;
     private Observable<InfluencesPack> wifiInfluence = BehaviorSubject.createDefault(new InflPack());
-    private InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack> ies;
+    //private InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack> ies;
     private boolean wasHealing = false;
     private int noHealing = 0;
     private double lastHealingStrength;
@@ -34,13 +30,16 @@ public class WifiInfluenceProviderImpl implements WiFiInfluenceProvider
         this.wifi = wifi;
         this.ip = ip;
         //ies = new ByMacExtractionStrategy(ip.getRegisteredWifiModules());
-        ies = new MacIgnoringStrategy();
+        //ies = new MacIgnoringStrategy();
 
-        wifi.getSensorResultsStream()
-                .observeOn(Threads.computation())
+        //TODO: uncommented
+        /*wifi.getSensorResultsStream()
+                .observeOn(Schedulers.computation())
                 .map(this.ies::makeInfluences)
                 .map(this::verifyHealing)
-                .subscribe((i) -> ((Subject<InfluencesPack>)wifiInfluence).onNext(i));//.doOnNext((i) -> Log.d(TAG, "WifiEmitted: " + i.toString()));
+                .subscribe((i) -> ((Subject<InfluencesPack>)wifiInfluence).onNext(i));
+        */
+        //.doOnNext((i) -> Log.d(TAG, "WifiEmitted: " + i.toString()));
     }
 
     @Override

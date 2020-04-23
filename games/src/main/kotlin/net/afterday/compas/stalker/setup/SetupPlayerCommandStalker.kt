@@ -4,6 +4,6 @@ import net.afterday.compas.engine.setup.SetupPlayerCommand
 
 class SetupPlayerCommandStalker : SetupPlayerCommand() {
     override fun setup() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 }

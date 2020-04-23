@@ -2,10 +2,11 @@ package net.afterday.compas.engine.engine.influences.WifiInfluences;
 
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.engine.influences.InfluenceExtractionStrategy;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
+
 import java.util.List;
 
-public class MacIgnoringStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack>
+//TODO: implement extract
+/*public class MacIgnoringStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack>
 {
 
     @Override
@@ -19,4 +20,4 @@ public class MacIgnoringStrategy extends AbstractWifiExtractor implements Influe
     {
         return extract(i);
     }
-}
+}*/

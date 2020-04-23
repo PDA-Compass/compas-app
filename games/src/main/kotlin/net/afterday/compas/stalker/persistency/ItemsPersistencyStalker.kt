@@ -9,14 +9,14 @@ class ItemsPersistencyStalker : ItemsPersistency {
     private val items: SetupItems = SetupItemsStalker()
 
     override fun getItemsAddeWithLevel(): Map<Int, List<ItemDescriptor>>? {
-        return null;
+        return HashMap()
     }
 
     override fun getItemsByCode(): Map<String, ItemDescriptor> {
-        return items.items;
+        return items.items
     }
 
     override fun getItemForCode(code: String): ItemDescriptor? {
-        return items.items[code];
+        return items.items[code]
     }
 }

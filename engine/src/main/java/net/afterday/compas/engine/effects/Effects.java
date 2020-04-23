@@ -1,6 +1,6 @@
 package net.afterday.compas.engine.effects;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import net.afterday.compas.engine.core.player.Impacts;
 import net.afterday.compas.engine.core.player.Player;
 

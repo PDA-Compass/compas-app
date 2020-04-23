@@ -1,8 +1,8 @@
 package net.afterday.compas.engine.engine.influences;
 
-import net.afterday.compas.engine.core.influences.InfluencesPack;
+import net.afterday.compas.engine.sensors.SensorResult;
 
-public interface InfluencesController extends InfluenceProvider<InfluencesPack>
+public interface InfluencesController extends InfluenceProvider<SensorResult>
 {
     void start(int type);
     void stop(int type);

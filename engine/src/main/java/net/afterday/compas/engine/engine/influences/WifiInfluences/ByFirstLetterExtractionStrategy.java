@@ -3,13 +3,13 @@ package net.afterday.compas.engine.engine.influences.WifiInfluences;
 import net.afterday.compas.engine.core.influences.InfluencesPack;
 import net.afterday.compas.engine.engine.influences.InflPack;
 import net.afterday.compas.engine.engine.influences.InfluenceExtractionStrategy;
-import net.afterday.compas.engine.sensors.WiFi.WifiScanResult;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ByFirstLetterExtractionStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack>
+//TODO: implement extract
+/*public class ByFirstLetterExtractionStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<WifiScanResult>, InfluencesPack>
 {
     @Override
     public InfluencesPack makeInfluences(List<WifiScanResult> i)
@@ -38,4 +38,4 @@ public class ByFirstLetterExtractionStrategy extends AbstractWifiExtractor imple
     {
         return true;
     }
-}
+}*/

@@ -2,19 +2,16 @@ package net.afterday.compas.app;
 
 import android.app.Application;
 import android.content.Intent;
-
 import android.os.Build;
-import net.afterday.compas.app.LocalMainService;
+import io.reactivex.rxjava3.core.Observable;
+import net.afterday.compas.app.settings.Settings;
+import net.afterday.compas.app.util.Fonts;
 import net.afterday.compas.engine.core.Game;
 import net.afterday.compas.engine.core.gameState.Frame;
 import net.afterday.compas.engine.core.serialization.Serializer;
 import net.afterday.compas.engine.engine.Engine;
 import net.afterday.compas.engine.sensors.Battery.Battery;
-import net.afterday.compas.app.settings.Settings;
-import net.afterday.compas.app.util.Fonts;
 
-import io.reactivex.Observable;
-import io.reactivex.subjects.PublishSubject;
 
 public class StalkerApp extends Application
 {

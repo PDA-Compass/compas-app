@@ -5,6 +5,10 @@ import android.os.HandlerThread;
 import android.support.v4.util.Pair;
 import android.view.animation.LinearInterpolator;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.disposables.Disposable;
 import net.afterday.compas.app.R;
 import net.afterday.compas.app.logging.Logger;
 import net.afterday.compas.engine.core.gameState.Frame;
@@ -25,11 +29,6 @@ import net.afterday.compas.engine.engine.events.PlayerEventBus;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 
 
 public class EffectsImpl implements Effects
