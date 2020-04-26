@@ -20,9 +20,9 @@ class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
 
         firstLetterExtraction = ByFirstLetterExtractionStrategy(anomalyContainer.getLetterMap())
 
-        anomalyStream.subscribe {
+        /*anomalyStream.subscribe {
             anomalyProcess(it)
-        }
+        }*/
     }
 
     override fun filter(value: SensorResult): Boolean {
@@ -45,8 +45,10 @@ class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
     }
 
     override fun anomalyProcess(value: AnomalyEvent) {
+        if (value.type == 0) {
 
-        TODO("Not yet implemented")
+        }
+        //TODO("Not yet implemented")
     }
 
 

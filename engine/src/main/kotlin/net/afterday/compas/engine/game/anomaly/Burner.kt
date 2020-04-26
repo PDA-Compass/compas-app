@@ -5,7 +5,7 @@ import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyHandler
 
 open class Burner : AnomalyHandler() {
     override fun getLetter(): String {
-        return "B"
+        return "K"
     }
 
     override fun handle(anomaly: AnomalyEvent) {

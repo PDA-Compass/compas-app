@@ -51,9 +51,11 @@ dependencies {
     implementation("com.android.support:recyclerview-v7:28.0.0")
     implementation("com.journeyapps:zxing-android-embedded:3.6.0")
     implementation("com.android.support:support-v4:28.0.0")
+
     implementation("io.reactivex.rxjava3:rxjava:3.0.1")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+
     implementation("net.sourceforge.streamsupport:streamsupport:1.5.3")
 
     implementation("com.google.dagger:dagger:2.5")

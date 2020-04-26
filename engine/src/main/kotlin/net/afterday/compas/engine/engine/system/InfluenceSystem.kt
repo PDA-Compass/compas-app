@@ -60,8 +60,8 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
     }
 
     private fun initAnomaly(){
-        anomalyStream.subscribe {
-        }
+        /*anomalyStream.subscribe {
+        }*/
     }
 
     init {
