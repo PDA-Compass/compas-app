@@ -55,10 +55,14 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:3.0.1")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
-
     implementation("net.sourceforge.streamsupport:streamsupport:1.5.3")
-
     implementation("com.google.dagger:dagger:2.5")
+
+    implementation("com.squareup.retrofit2:converter-gson:2.8.1")
+    implementation("com.squareup.retrofit2:retrofit:2.8.1")
+
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+
     compileOnly("javax.annotation:jsr250-api:1.0")
 
     //kapt("com.google.dagger:dagger-compiler:2.5")

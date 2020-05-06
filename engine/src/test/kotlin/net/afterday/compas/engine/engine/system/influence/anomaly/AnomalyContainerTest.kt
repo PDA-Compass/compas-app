@@ -9,18 +9,18 @@ open class AnomalyContainerTest {
         val container = AnomalyContainer()
 
         class AnomalyTest : AnomalyHandler() {
-            override fun getLetter(): String {
-                return "b"
-            }
+            override val code = "01"
+            override val letter = "b"
+            override val name = "anom"
 
             override fun handle(anomaly: AnomalyEvent) {
                 TODO("Not yet implemented")
             }
         }
         class AnomalyTest1 : AnomalyHandler() {
-            override fun getLetter(): String {
-                return "t"
-            }
+            override val code = "02"
+            override val letter = "t"
+            override val name = "anom1"
 
             override fun handle(anomaly: AnomalyEvent) {
                 TODO("Not yet implemented")

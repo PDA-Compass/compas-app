@@ -28,22 +28,6 @@
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@+id/tableLayout"
                     app:layout_constraintHorizontal_bias="0.0"/>
         </TableRow>
-        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView
-                    android:text="Жарка"
-                    android:padding="3dip"/>
-            <TextView
-                    android:text="07:71:88:66:70:3A"
-                    android:padding="3dip" android:textSize="8sp"/>
-            <TextView
-                    android:text="-23.34"
-                    android:gravity="right"
-                    android:padding="3dip"/>
-            <TextView
-                    android:text="10s"
-                    android:gravity="right"
-                    android:padding="3dip"/>
-        </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
     </TableLayout>

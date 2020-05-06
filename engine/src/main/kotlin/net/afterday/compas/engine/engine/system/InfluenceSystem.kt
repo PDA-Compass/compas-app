@@ -57,6 +57,16 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
                     anomalyProcess.process(it)
                 }
         wifiSensor.start()
+
+        //Watch
+        val watchSensor = sensorsProvider.watchSensor
+        watchSensor
+                .sensorResultsStream
+                .filter {anomalyProcess.filter(it)}
+                .subscribe {
+                    anomalyProcess.process(it)
+                }
+        watchSensor.start()
     }
 
     private fun initAnomaly(){

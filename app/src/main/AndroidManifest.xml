@@ -29,6 +29,8 @@
         android:theme="@style/AppTheme"
         android:name=".StalkerApp"
         android:largeHeap="true"
+        android:allowClearUserData="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:permission="">
         <activity android:name="net.afterday.compas.app.MainActivity"
             android:configChanges="keyboardHidden|screenSize"

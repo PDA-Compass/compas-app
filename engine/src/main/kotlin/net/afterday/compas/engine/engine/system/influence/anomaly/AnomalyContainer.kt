@@ -2,7 +2,6 @@ package net.afterday.compas.engine.engine.system.influence.anomaly
 
 open class AnomalyContainer {
     private val handlers: MutableList<AnomalyHandler> = mutableListOf()
-
     init {
 
     }
@@ -14,7 +13,15 @@ open class AnomalyContainer {
     fun getLetterMap(): HashMap<String, Int> {
         val map = HashMap<String, Int>()
         for (i in handlers.indices){
-            map[handlers[i].getLetter()] = i
+            map[handlers[i].letter] = i
+        }
+        return map
+    }
+
+    fun getCodeMap(): HashMap<String, Int> {
+        val map = HashMap<String, Int>()
+        for (i in handlers.indices){
+            map[handlers[i].code] = i
         }
         return map
     }

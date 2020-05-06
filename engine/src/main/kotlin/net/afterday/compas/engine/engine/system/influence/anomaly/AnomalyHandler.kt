@@ -1,6 +1,8 @@
 package net.afterday.compas.engine.engine.system.influence.anomaly
 
 abstract class AnomalyHandler {
-    abstract fun getLetter(): String
+    abstract val name: String
+    abstract val letter: String
+    abstract val code: String
     abstract fun handle(anomaly: AnomalyEvent)
 }

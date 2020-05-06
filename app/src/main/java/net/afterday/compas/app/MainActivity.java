@@ -35,6 +35,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import io.reactivex.rxjava3.subjects.Subject;
+import net.afterday.compas.app.logging.RemoveLogger;
 import net.afterday.compas.app.util.PermissionsManager;
 import net.afterday.compas.engine.core.gameState.Frame;
 import net.afterday.compas.engine.core.influences.Influence;
@@ -245,6 +246,8 @@ public class MainActivity extends AppCompatActivity {
         logList.setAdapter(logAdapter);
         disposables.add(stalkerApp.getLogStream().subscribe((log) -> {logAdapter.setDataset(log); logListManager.scrollToPosition(log.size() - 1);}));
 //        stalkerApp.registerLogAdapter(logAdapter);
+
+        new RemoveLogger();
     }
 
 
