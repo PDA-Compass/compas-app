@@ -14,3 +14,6 @@ developers russian [closed commutiny](https://vk.com/pda.compass) (rus)<br>
 
 ## main repository
 [https://github.com/PDA-Compass/compas-app](https://github.com/PDA-Compass/compas-app)
+
+## author of the main source code
+great thanks for open sources to [https://vk.com/afterday.project](https://vk.com/afterday.project) the person who created PDA Compass project and shared it with community
