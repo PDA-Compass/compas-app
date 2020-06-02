@@ -1,6 +1,5 @@
 package net.afterday.compas.app.sensors.Bluetooth;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -8,22 +7,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.net.wifi.ScanResult;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.engine.sensors.Bluetooth.Bluetooth;
-import net.afterday.compas.engine.sensors.Sensor;
 import net.afterday.compas.engine.sensors.SensorResult;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @TargetApi(19)
@@ -114,7 +106,7 @@ public class BluetoothImpl implements Bluetooth {
                 resultStream.onNext(new SensorResult(
                         bluetoothDevice.getAddress(),
                         bluetoothDevice.getName(),
-                        i * 100,
+                        i,
                         now));
 
                 //TODO: понять что это? //resetter = Observable.timer(3, TimeUnit.SECONDS).subscribe((x) -> ((Subject<Double>)resultStream).onNext(0d));
@@ -125,7 +117,7 @@ public class BluetoothImpl implements Bluetooth {
                 resultStream.onNext(new SensorResult(
                         bluetoothDevice.getAddress(),
                         bluetoothDevice.getName(),
-                        i * 100,
+                        i,
                         now));
             }
             if(!isRunning.get())
@@ -143,7 +135,6 @@ public class BluetoothImpl implements Bluetooth {
         {
             if(BluetoothDevice.ACTION_FOUND.equals(intent.getAction()))
             {
-
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.d("BLUETOOTH RECEIVED!", "" + intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
             }

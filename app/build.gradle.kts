@@ -13,8 +13,8 @@ android {
         applicationId = "net.afterday.compas"
         minSdkVersion(19)
         targetSdkVersion(28)
-        versionCode = 1813
-        versionName = "1813"
+        versionCode = 1906
+        versionName = "1906.0.0-alpha1"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 

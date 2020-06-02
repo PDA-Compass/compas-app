@@ -1,14 +1,19 @@
 package net.afterday.compas.engine.game.anomaly
 
-import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent
-import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyHandler
+import net.afterday.compas.engine.engine.system.damage.*
+import net.afterday.compas.engine.engine.system.influence.anomaly.*
 
 open class Radiation: AnomalyHandler() {
     override val name = "Radiation"
     override val letter = "R"
-    override val code = "02"
+    override val code = "0C"
 
     override fun handle(anomaly: AnomalyEvent) {
-        TODO("Not yet implemented")
+        damageStream.onNext(
+                DamageEvent(
+                        DamageType.RADIATION,
+                        10,
+                        null
+                ))
     }
 }

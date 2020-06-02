@@ -247,7 +247,8 @@ public class MainActivity extends AppCompatActivity {
         disposables.add(stalkerApp.getLogStream().subscribe((log) -> {logAdapter.setDataset(log); logListManager.scrollToPosition(log.size() - 1);}));
 //        stalkerApp.registerLogAdapter(logAdapter);
 
-        new RemoveLogger();
+        RemoveLogger l = new RemoveLogger();
+        l.SendInfo();
     }
 
 

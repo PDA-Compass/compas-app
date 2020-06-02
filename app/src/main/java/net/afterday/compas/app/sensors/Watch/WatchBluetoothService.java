@@ -2,7 +2,6 @@ package net.afterday.compas.app.sensors.Watch;
 
 import android.bluetooth.BluetoothSocket;
 import io.reactivex.rxjava3.subjects.Subject;
-import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent;
 import net.afterday.compas.engine.sensors.SensorResult;
 
 import java.io.IOException;

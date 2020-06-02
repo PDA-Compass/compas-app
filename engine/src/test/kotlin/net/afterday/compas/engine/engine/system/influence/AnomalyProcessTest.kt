@@ -42,7 +42,7 @@ open class AnomalyProcessTest {
         Mockito.`when`(wifi.sensorResultsStream).thenReturn(wifiStream)
 
         influenceSystem = InfluenceSystem(playerLevel, gameRunning)
-        influenceSystem!!.anomalyStream.onNext(AnomalyEvent("", 50,0, null))
+        influenceSystem!!.anomalyStream.onNext(AnomalyEvent("", 50,0, null, 10))
     }
 
     @Test fun `anomaly bluethooth tests`() {

@@ -1,14 +1,19 @@
 package net.afterday.compas.engine.game.anomaly
 
-import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent
-import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyHandler
+import net.afterday.compas.engine.engine.system.damage.*
+import net.afterday.compas.engine.engine.system.influence.anomaly.*
 
 open class Vortex : AnomalyHandler() {
     override val name = "Vortex"
-    override val letter = "M"
+    override val letter = "V"
     override val code = "01"
 
     override fun handle(anomaly: AnomalyEvent) {
-        TODO("Not yet implemented")
+        damageStream.onNext(
+                DamageEvent(
+                        DamageType.PHISICAL,
+                        10,
+                        null
+                ))
     }
 }

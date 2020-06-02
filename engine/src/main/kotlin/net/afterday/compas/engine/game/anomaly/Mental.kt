@@ -3,15 +3,15 @@ package net.afterday.compas.engine.game.anomaly
 import net.afterday.compas.engine.engine.system.damage.*
 import net.afterday.compas.engine.engine.system.influence.anomaly.*
 
-open class Burner : AnomalyHandler() {
-    override val name = "Burner"
-    override val letter = "B"
-    override val code = "0A"
+open class Mental : AnomalyHandler() {
+    override val name = "Mental"
+    override val letter = "M"
+    override val code = "0B"
 
     override fun handle(anomaly: AnomalyEvent) {
         damageStream.onNext(
                 DamageEvent(
-                        DamageType.FIRE,
+                        DamageType.MENTAL,
                         10,
                         null
                 ))

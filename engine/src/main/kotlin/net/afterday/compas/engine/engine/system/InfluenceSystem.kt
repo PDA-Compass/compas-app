@@ -60,13 +60,15 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
 
         //Watch
         val watchSensor = sensorsProvider.watchSensor
-        watchSensor
-                .sensorResultsStream
-                .filter {anomalyProcess.filter(it)}
-                .subscribe {
-                    anomalyProcess.process(it)
-                }
-        watchSensor.start()
+        if (watchSensor != null) {
+            watchSensor
+                    .sensorResultsStream
+                    .filter { anomalyProcess.filter(it) }
+                    .subscribe {
+                        anomalyProcess.process(it)
+                    }
+            watchSensor.start()
+        }
     }
 
     private fun initAnomaly(){

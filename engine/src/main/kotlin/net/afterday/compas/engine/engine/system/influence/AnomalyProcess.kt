@@ -5,8 +5,7 @@ import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyContain
 import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent
 import net.afterday.compas.engine.engine.system.influence.extractor.ByFirstLetterExtractionStrategy
 import net.afterday.compas.engine.engine.system.influence.extractor.ByMacExtractionStrategy
-import net.afterday.compas.engine.game.anomaly.Burner
-import net.afterday.compas.engine.game.anomaly.Vortex
+import net.afterday.compas.engine.game.anomaly.*
 import net.afterday.compas.engine.sensors.SensorResult
 
 class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
@@ -19,13 +18,13 @@ class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
     init {
         anomalyContainer.registerHandler(Burner())
         anomalyContainer.registerHandler(Vortex())
+        anomalyContainer.registerHandler(Radiation())
+        anomalyContainer.registerHandler(Mental())
+        anomalyContainer.registerHandler(Oasis())
+        anomalyContainer.registerHandler(Test())
 
         firstLetterExtraction = ByFirstLetterExtractionStrategy(anomalyContainer.getLetterMap())
         macExtractionStrategy = ByMacExtractionStrategy(anomalyContainer.getCodeMap())
-
-        /*anomalyStream.subscribe {
-            anomalyProcess(it)
-        }*/
     }
 
     override fun filter(value: SensorResult): Boolean {
@@ -38,9 +37,9 @@ class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
         if (value.name != null && value.name != "") {
             event = firstLetterExtraction.extract(value)
         }
-        /*if (event == null) {
+        if (event == null) {
             event = macExtractionStrategy.extract(value)
-        }*/
+        }
 
         if (event != null) {
             anomalyStream.onNext(event)
@@ -48,11 +47,6 @@ class AnomalyProcess(stream: Subject<AnomalyEvent>) : Process {
     }
 
     override fun anomalyProcess(value: AnomalyEvent) {
-        if (value.type == 0) {
-
-        }
-        //TODO("Not yet implemented")
+        anomalyContainer.handle(value)
     }
-
-
 }
