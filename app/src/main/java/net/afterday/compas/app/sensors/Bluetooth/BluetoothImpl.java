@@ -124,7 +124,7 @@ public class BluetoothImpl implements Bluetooth {
             {
                 bla.stopLeScan(callback);
             }
-            Log.d(TAG, "SCANNED!!!!!!" + bluetoothDevice.getAddress() + " " + bluetoothDevice.getName() + " " + i + " " + bytes);
+            //Log.d(TAG, "SCANNED!!!!!!" + bluetoothDevice.getAddress() + " " + bluetoothDevice.getName() + " " + i + " " + bytes);
         }
     }
 

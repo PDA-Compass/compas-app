@@ -20,7 +20,7 @@ public class UtilTest{
                 acum += value;
             }
 
-            var parts = acum.split("\\|");
+            String[] parts = acum.split("\\|");
             char last = acum.charAt(acum.length() - 1);
             int count = 0;
             if (last == '|') {
@@ -33,9 +33,9 @@ public class UtilTest{
                 count = parts.length - 1;
             }
 
-            for (var i = 0; i < count; i++) {
+            for (Integer i = 0; i < count; i++) {
                 String line = parts[i];
-                var lines = line.split("\\.");
+                String[] lines = line.split("\\.");
                 if (lines.length == 3) {
                     result.add(parts[i]);
                 }

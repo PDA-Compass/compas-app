@@ -10,6 +10,13 @@ object DamageType {
     const val POISON: Byte = 4
     const val RADIATION: Byte = 5
     const val HEALTH: Byte = 6
+    const val MONOLITH: Byte = 7
 }
 
-open class DamageEvent(val type: Byte, val value: Int, val setting: Dictionary<String, String>?)
+open class DamageEvent(
+        val id: String,
+        val type: Byte,
+        val value: Float,
+        val at: Long,
+        val setting: Dictionary<String, String>?
+)

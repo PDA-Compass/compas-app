@@ -1,7 +1,6 @@
 package net.afterday.compas.engine.devices.sound;
 
 public interface Sound {
-    void playRadClick();
     void playGlassBreak();
     void playBulbBreak();
     void playLevelUp();

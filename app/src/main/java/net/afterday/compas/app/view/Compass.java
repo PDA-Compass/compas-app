@@ -168,24 +168,17 @@ public class Compass extends View implements SensorListener, SensorEventListener
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // Get sizes
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int widthSize = Math.min(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
 
 
         int finalMeasureSpecX = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY);
-        int finalMeasureSpecY = MeasureSpec.makeMeasureSpec(heightSize, MeasureSpec.EXACTLY);
+        int finalMeasureSpecY = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY);
         super.onMeasure(finalMeasureSpecX, finalMeasureSpecY);
 
         mWidth = widthSize;
-        mHeight = heightSize;
 
         mScaleFactorX = (float) mWidth / WIDGET_WIDTH;
-        mScaleFactorY = (float) mHeight / WIDGET_HEIGHT;
-//        //Log.d(TAG, "widthSize: " + widthSize + " heightSize:" + heightSize
-//                    + " finalMeasureSpecX:" + finalMeasureSpecX  + " finalMeasureSpecY:" + finalMeasureSpecY
-//                    + " mWidth:" + mWidth  + " mHeight:" + mHeight
-//                    + " mScaleFactorX:" + mScaleFactorX  + " finalMeasureSpecY:" + finalMeasureSpecY
-//                    + " finalMeasureSpecX:" + finalMeasureSpecX  + " mScaleFactorY:" + mScaleFactorY);
+        mScaleFactorY = mScaleFactorX;
     }
 
     @Override

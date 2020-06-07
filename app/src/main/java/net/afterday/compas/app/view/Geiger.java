@@ -17,7 +17,7 @@ import android.view.animation.AnticipateOvershootInterpolator;
 import net.afterday.compas.app.R;
 import net.afterday.compas.engine.util.Convert;
 
-public class Geiger extends View
+/*public class Geiger extends View
 {
     private static final String TAG = "Geiger";
 
@@ -339,4 +339,4 @@ public class Geiger extends View
                 (top + height) * mScaleFactorY
         );
     }
-}
+}*/

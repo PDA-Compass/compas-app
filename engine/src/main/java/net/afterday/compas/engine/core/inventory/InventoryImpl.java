@@ -167,7 +167,7 @@ public class InventoryImpl implements Inventory
     {
         if(i.hasModifier(modifierId))
         {
-            var modifier = i.getModifier(modifierId);
+            double modifier = i.getModifier(modifierId);
             if(modifierId == Item.RADIATION_EMMITER)
             {
                 artifacts[modifierId] += modifier;
@@ -183,7 +183,7 @@ public class InventoryImpl implements Inventory
     {
         if(i.hasModifier(modifierId))
         {
-            var modifier = i.getModifier(modifierId);
+            double modifier = i.getModifier(modifierId);
             if(modifierId == Item.RADIATION_EMMITER)
             {
                 artifacts[modifierId] -= modifier;

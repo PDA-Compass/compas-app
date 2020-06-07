@@ -69,7 +69,6 @@ public class SoundImpl implements Sound {
         preparePlayer(controllerPlayer, R.raw.controller_presence, (s) -> {controllerPlaying = false;});
 
         // Load samples
-        mRadTick = mSoundPool.load(ctx, R.raw.rad_click, 1);
         mAnomalyTick = mSoundPool.load(ctx, R.raw.anomaly, 1);
         mMental = mSoundPool.load(ctx, R.raw.mental, 1);
         mEmissionStarts = mSoundPool.load(ctx, R.raw.pda_emission_begins, 1);
@@ -106,19 +105,6 @@ public class SoundImpl implements Sound {
         mItemScanned = mSoundPool.load(ctx, R.raw.pda_qr_scanned, 1);
         mArtefact = mSoundPool.load(ctx, R.raw.pda_artefact, 1);
 
-    }
-
-    public void playRadClick() {
-        float vol = (float) Math.random() * 0.1f + 0.5f; // From 0.5 to 0.6
-        float freq = (float) Math.random() * 0.2f + 0.9f; // From 0.9 to 1.1
-        int soundStream = mSoundPool.play(
-                mRadTick, // Sound
-                vol, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
-                vol, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
-                2, // Priority
-                0, // Loop
-                freq // Frequency
-        );
     }
 
     public void playGlassBreak()

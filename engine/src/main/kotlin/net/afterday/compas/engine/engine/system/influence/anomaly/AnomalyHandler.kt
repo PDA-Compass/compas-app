@@ -9,4 +9,8 @@ abstract class AnomalyHandler {
     abstract fun handle(anomaly: AnomalyEvent)
 
     val damageStream = EventBus.damage()
+
+    protected fun map(value: Float, sFrom: Int, sTo: Int, dFrom: Int, dTo: Int): Float {
+        return (((value - sFrom) / (sTo - sFrom) * (dTo - dFrom) + dFrom))
+    }
 }

@@ -62,7 +62,7 @@ public class WifiImpl implements WiFi
                 //Log.d(TAG, "WIFI Scanned. (THROTTLING RECEIVER)" + Thread.currentThread().getName());
                 for (ScanResult sr : results)
                 {
-                    Log.e(TAG, "Result: " + sr.SSID);
+                    Log.d(TAG, "Result: " + sr.SSID);
                     wifiScans.onNext(new SensorResult(sr.BSSID, sr.SSID, sr.level, sr.timestamp));
                 }
             });
@@ -103,9 +103,9 @@ public class WifiImpl implements WiFi
                 Log.d(TAG, "WIFI Scanned." + Thread.currentThread().getName());
                 for (ScanResult sr : results)
                 {
-                    Log.e(TAG, "Result: " + sr.SSID);
+                    Log.d(TAG, "Result: " + sr.SSID);
                 }
-                Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
+                Log.d(TAG, "--------------------------- " + Thread.currentThread().getName());
                 if (isRunning.get())
                 {
                     for (ScanResult sr : results) {
@@ -169,9 +169,9 @@ public class WifiImpl implements WiFi
                     Log.d(TAG, "WIFI Scanned. (THROTTLING RECEIVER)" + Thread.currentThread().getName());
                     for (ScanResult sr : results)
                     {
-                        Log.e(TAG, "Result: " + sr.SSID);
+                        Log.d(TAG, "Result: " + sr.SSID);
                     }
-                    Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
+                    Log.d(TAG, "--------------------------- " + Thread.currentThread().getName());
                     if (isRunning.get())
                     {
                         for (ScanResult sr : results) {

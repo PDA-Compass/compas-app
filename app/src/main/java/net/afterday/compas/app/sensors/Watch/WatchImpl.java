@@ -54,17 +54,19 @@ public class WatchImpl implements Watch {
 
     @Override
     public void start() {
-        // Cancel discovery because it otherwise slows down the connection.
-        bluetoothAdapter.cancelDiscovery();
+        if(bluetoothAdapter != null) {
+            // Cancel discovery because it otherwise slows down the connection.
+            bluetoothAdapter.cancelDiscovery();
 
-        // Connect to the remote device through the socket. This call blocks
-        // until it succeeds or throws an exception.
-        watchBluetoothService.start();
-        //socket.connect();
+            // Connect to the remote device through the socket. This call blocks
+            // until it succeeds or throws an exception.
+            watchBluetoothService.start();
+            //socket.connect();
 
 
-        // The connection attempt succeeded. Perform work associated with
-        // the connection in a separate thread.
+            // The connection attempt succeeded. Perform work associated with
+            // the connection in a separate thread.
+        }
 
     }
 

@@ -325,7 +325,7 @@ public class EffectsImpl implements Effects
             double rand = Math.random();
             double probability = Math.min(strength / 17d, 0.9d);
             if (rand <= probability) {
-                sound.playRadClick();
+                //sound.playRadClick(); //TODO (Mikhail)
             }
         });
         soundAnimator.start();

@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Battery extends View
 {
-    private static final String TAG = "Clock";
+    private static final String TAG = "Battery";
 
     private static final int WIDGET_WIDTH = 195;
     private static final int WIDGET_HEIGHT = 85;

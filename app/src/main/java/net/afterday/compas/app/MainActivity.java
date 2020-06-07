@@ -1,6 +1,5 @@
 package net.afterday.compas.app;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -10,13 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +32,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.app.logging.RemoveLogger;
+import net.afterday.compas.app.pda.geiger.Geiger;
 import net.afterday.compas.app.util.PermissionsManager;
 import net.afterday.compas.engine.core.gameState.Frame;
 import net.afterday.compas.engine.core.influences.Influence;
@@ -128,18 +125,17 @@ public class MainActivity extends AppCompatActivity {
             playerStateStream = stalkerApp.getPlayerStateStream();
             disposables.add(playerLevelStream.observeOn(AndroidSchedulers.mainThread()).subscribe((pl) -> {
 
-                //((LevelIndicator)mQrButton).setLevel(pl);
                 mTube.setLevel(pl);
-                mGeiger.setLevel(pl);
+                //mGeiger.setLevel(pl);
                 mIndicator.setLevel(pl);
                 if(pl >= 4)
                 {
-                    mGeiger.setFingerPrint(true);
+                    //mGeiger.setFingerPrint(true);
                 }
                 if(pl == 5)
                 {
                     mIndicator.setVisibility(View.VISIBLE);
-                    mGeiger.setBrokenGlass(true);
+                    //mGeiger.setBrokenGlass(true);
                 }
             }));
             disposables.add(playerStateStream.observeOn(AndroidSchedulers.mainThread()).subscribe((s) -> {
@@ -190,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                                             mTube.setEmission(s.first);
                                         }
                                     }));
+
             //Orientation
             Log.d(TAG, "SERVICE CONNECTED!!!!");
             setupLog();
@@ -235,6 +232,13 @@ public class MainActivity extends AppCompatActivity {
         setViewListeners();
         disposables.add(Observable.combineLatest(PlayerEventBus.instance().getPlayerFractionStream(), orientationChanges, (pf, x) -> new Pair<Player.FRACTION, Integer>(pf, x)).observeOn(AndroidSchedulers.mainThread()).subscribe((p) -> setBackground(p.first, p.second)));
         bindService(new Intent(MainActivity.this, LocalMainService.class), serviceConnection, Context.BIND_ABOVE_CLIENT);
+
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     private void setupLog()
@@ -251,7 +255,6 @@ public class MainActivity extends AppCompatActivity {
         l.SendInfo();
     }
 
-
     private void updateViews(Frame frame)
     {
         PlayerProps pProps = frame.getPlayerProps();
@@ -267,7 +270,8 @@ public class MainActivity extends AppCompatActivity {
                 showBlood();
             }
         }
-        if(pProps.getState().getCode() == Player.ALIVE && pProps.getHealthImpact() <= 0)
+
+        /*if(pProps.getState().getCode() == Player.ALIVE && pProps.getHealthImpact() <= 0)
         {
             mGeiger.setAnomaly((float) pProps.getAnomalyImpact());
             mGeiger.setMental((float) pProps.getMentalImpact());
@@ -280,7 +284,8 @@ public class MainActivity extends AppCompatActivity {
             mGeiger.setMental(0f);
             mGeiger.setMonolith(0f);
             mGeiger.toSvh(0f, 750);
-        }
+        }*/
+
         mTube.setParameters(
                 pProps.getRadiationImpact(),
                 pProps.getAnomalyImpact(),
@@ -658,6 +663,13 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onResume();
         active = true;
+
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     @Override

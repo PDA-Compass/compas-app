@@ -32,12 +32,11 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
     private var sensorsProvider: SensorsProvider = Services.sensorsProvider
     private var persistencyProvider: PersistencyProvider = Services.persistencyProvider
     private val gameRunning: Observable<Long> = gameRunning
+    private val anomalyProcess : AnomalyProcess
 
     val anomalyStream: Subject<AnomalyEvent> = EventBus.anomaly();
 
     private fun initSensor() {
-        val anomalyProcess = AnomalyProcess(anomalyStream)
-
         //Bluetooth
         val bluetoothSensor = sensorsProvider.bluetoothSensor
         bluetoothSensor
@@ -72,11 +71,13 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
     }
 
     private fun initAnomaly(){
-        /*anomalyStream.subscribe {
-        }*/
+        anomalyStream.subscribe {
+            anomalyProcess.anomalyProcess(it)
+        }
     }
 
     init {
+        anomalyProcess = AnomalyProcess(anomalyStream)
         initSensor()
         initAnomaly()
 

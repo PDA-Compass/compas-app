@@ -17,7 +17,7 @@
         app:layout_marginTopPercent="1.08%"
         />
 
-    <net.afterday.compas.app.view.Geiger
+    <net.afterday.compas.app.pda.geiger.Geiger
         android:id="@+id/geiger"
         app:layout_heightPercent="46.50%"
         app:layout_marginLeftPercent="8.96%"

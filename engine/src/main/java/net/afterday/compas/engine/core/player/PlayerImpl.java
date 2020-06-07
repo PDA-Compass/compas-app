@@ -271,7 +271,7 @@ public class PlayerImpl implements Player
     @Override
     public Frame useItem(Item item)
     {
-        var isUsed = false;
+        Boolean isUsed = false;
         isUsed = mEquipment.useItem(item);
 
         if (!isUsed){

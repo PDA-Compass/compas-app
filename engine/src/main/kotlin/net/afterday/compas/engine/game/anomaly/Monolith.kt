@@ -6,16 +6,16 @@ import net.afterday.compas.engine.engine.system.damage.DamageType
 import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent
 import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyHandler
 
-open class Test : AnomalyHandler() {
-    override val name = "Test"
-    override val letter = "K"
-    override val code = "0A"
+open class Monolith: AnomalyHandler() {
+    override val name = "Monolith"
+    override val letter = "O"
+    override val code = "0C"
 
     override fun handle(anomaly: AnomalyEvent) {
         damageStream.onNext(
                 DamageEvent(
                         anomaly.id,
-                        DamageType.FIRE,
+                        DamageType.MONOLITH,
                         10.0f,
                         Time.now,
                         null

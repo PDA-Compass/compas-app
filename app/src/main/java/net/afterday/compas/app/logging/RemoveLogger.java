@@ -4,6 +4,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import net.afterday.compas.engine.core.EventBus;
+import net.afterday.compas.engine.engine.system.damage.DamageEvent;
 import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent;
 import okhttp3.*;
 import org.json.JSONArray;
@@ -23,12 +24,40 @@ public class RemoveLogger {
 
     OkHttpClient client = new OkHttpClient();
 
-    private String ToString(List<AnomalyEvent> events) {
+    private String AnomalyToString(List<AnomalyEvent> events) {
         JSONObject result = new JSONObject();
 
 
         JSONArray list = new JSONArray();
         for (AnomalyEvent event : events) {
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("aid", event.getId());
+                jsonObject.put("type", event.getType());
+                jsonObject.put("time", event.getAt());
+                jsonObject.put("value", event.getValue());
+                list.put(jsonObject);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            result.put("device", device);
+            result.put("data", list);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return result.toString();
+    }
+
+    private String DamageToString(List<DamageEvent> events) {
+        JSONObject result = new JSONObject();
+
+        JSONArray list = new JSONArray();
+        for (DamageEvent event : events) {
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("aid", event.getId());
@@ -103,26 +132,29 @@ public class RemoveLogger {
     }
 
     private Disposable subscribe;
-    public RemoveLogger(){
+    public RemoveLogger() {
         subscribe = EventBus.INSTANCE.anomaly()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .buffer(15, TimeUnit.SECONDS, 50)
-                .doOnNext((s)->{
-                    RequestBody body = RequestBody.create(ToString(s), JSON);
+                .doOnNext((s) -> {
+                    RequestBody body = RequestBody.create(AnomalyToString(s), JSON);
                     Request request = new Request.Builder()
                             .url("http://188.242.194.9:9090/events/anomaly/bucket")
                             .post(body)
                             .build();
 
                     client.newCall(request).enqueue(new Callback() {
-                        @Override public void onFailure(Call call, IOException e) {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
                             e.printStackTrace();
                         }
 
-                        @Override public void onResponse(Call call, Response response) throws IOException {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
                             try (ResponseBody responseBody = response.body()) {
-                                if (!response.isSuccessful()) return;  //throw new IOException("Unexpected code " + response);
+                                if (!response.isSuccessful())
+                                    return;  //throw new IOException("Unexpected code " + response);
 
                                 Headers responseHeaders = response.headers();
                                 for (int i = 0, size = responseHeaders.size(); i < size; i++) {
@@ -136,5 +168,39 @@ public class RemoveLogger {
 
                 })
                 .subscribe();
+
+        EventBus.INSTANCE.damage()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .buffer(15, TimeUnit.SECONDS, 100)
+                .doOnNext((s) -> {
+                    RequestBody body = RequestBody.create(DamageToString(s), JSON);
+                    Request request = new Request.Builder()
+                            .url("http://188.242.194.9:9090/events/damage/bucket")
+                            .post(body)
+                            .build();
+
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            try (ResponseBody responseBody = response.body()) {
+                                if (!response.isSuccessful())
+                                    return;  //throw new IOException("Unexpected code " + response);
+
+                                Headers responseHeaders = response.headers();
+                                for (int i = 0, size = responseHeaders.size(); i < size; i++) {
+                                    System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
+                                }
+
+                                System.out.println(responseBody.string());
+                            }
+                        }
+                    });
+                }).subscribe();
     }
 }
