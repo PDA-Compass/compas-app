@@ -10,7 +10,7 @@ import kotlin.math.roundToInt
 
 open class Radiation: AnomalyHandler() {
     override val name = "Radiation"
-    override val letter = "H"
+    override val letter = "R"
     override val code = "24"
 
     private fun mapSignal(signal: Int) : Float {

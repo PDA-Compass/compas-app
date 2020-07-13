@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import net.afterday.compas.app.R;
+import net.afterday.compas.app.pda.radbar.RadBarService;
 import net.afterday.compas.engine.util.Convert;
 
 import java.util.Locale;
@@ -24,6 +25,8 @@ import java.util.Locale;
 public class Radbar extends View
 {
     private static final String TAG = "Radbar";
+
+    private RadBarService service;
 
     private static final int WIDGET_WIDTH = 749;
     private static final int WIDGET_HEIGHT = 224;
@@ -58,8 +61,8 @@ public class Radbar extends View
 
     private OnTouchListener listener;
     private boolean isPressed;
-    private PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
-    private OnTouchListener clicker = (v, t) -> {
+    private final PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+    private final OnTouchListener clicker = (v, t) -> {
         if(listener != null)
         {
             listener.onTouch(v, t);
@@ -139,7 +142,7 @@ public class Radbar extends View
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // Get sizes
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int widthSize =  MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
         int finalMeasureSpecX = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY);
@@ -149,8 +152,7 @@ public class Radbar extends View
         mWidth = widthSize;
         mHeight = heightSize;
 
-        mScaleFactorX = (float) mWidth / WIDGET_WIDTH;
-        mScaleFactorY = (float) mHeight / WIDGET_HEIGHT;
+        mScaleFactorY = mScaleFactorX = Math.min((float) mWidth / WIDGET_WIDTH, (float) mHeight / WIDGET_HEIGHT);
 
         drawRect(185, 185, 44, 19, mRect);
         mPaintSymbol.setTextSize(50 * mScaleFactorY);
@@ -240,6 +242,8 @@ public class Radbar extends View
     }
 
     protected void init() {
+        service = new RadBarService(this);
+
         super.setOnTouchListener(clicker);
         //mBackImage = BitmapFactory.decodeResource(getResources(), R.drawable.seg_back_rad);
         mBackImage = BitmapFactory.decodeResource(getResources(), R.drawable.seg_back);

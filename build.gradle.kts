@@ -2,6 +2,7 @@
 plugins {
     base
     kotlin("jvm") version "1.3.61" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.10.0"
 }
 
 allprojects {
@@ -11,6 +12,23 @@ allprojects {
         jcenter()
         google()
         mavenCentral()
+    }
+}
+
+subprojects {
+    apply {
+        plugin("io.gitlab.arturbosch.detekt")
+    }
+
+    detekt {
+        ignoreFailures = true
+        config = rootProject.files("config/detekt/detekt.yml")
+        reports {
+            html {
+                enabled = true
+                destination = file("build/reports/detekt.html")
+            }
+        }
     }
 }
 

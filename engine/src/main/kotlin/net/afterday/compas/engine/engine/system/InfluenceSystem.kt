@@ -16,6 +16,7 @@ import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyEvent
 import net.afterday.compas.engine.engine.system.influence.AnomalyProcess
 import net.afterday.compas.engine.persistency.PersistencyProvider
 import net.afterday.compas.engine.sensors.SensorsProvider
+import net.afterday.compas.engine.sensors.TestSensor
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -58,7 +59,7 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
         wifiSensor.start()
 
         //Watch
-        val watchSensor = sensorsProvider.watchSensor
+        /*val watchSensor = sensorsProvider.watchSensor
         if (watchSensor != null) {
             watchSensor
                     .sensorResultsStream
@@ -67,7 +68,16 @@ open class InfluenceSystem public constructor(playerLevel: Subject<Integer>,
                         anomalyProcess.process(it)
                     }
             watchSensor.start()
-        }
+        }*/
+
+        //Test
+        val testSensor  = TestSensor();
+        testSensor.sensorResultsStream.
+                filter {anomalyProcess.filter(it)}
+                .subscribe {
+                    anomalyProcess.process(it)
+                }
+        testSensor.start();
     }
 
     private fun initAnomaly(){

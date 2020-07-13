@@ -9,27 +9,14 @@
                                                android:layout_margin="0dp"
                                                tools:context="net.afterday.compas.app.MainActivity"
                                                android:keepScreenOn="true" tools:ignore="MissingDefaultResource">
-    <net.afterday.compas.app.view.Compass
+
+    <net.afterday.compas.app.pda.geiger.GeigerFrame
         android:id="@+id/compass"
         app:layout_widthPercent="93.888888888888888888888888888889%"
         app:layout_heightPercent="52.8125%"
         app:layout_marginLeftPercent="3.05%"
         app:layout_marginTopPercent="1.08%"
         />
-
-    <net.afterday.compas.app.pda.geiger.Geiger
-        android:id="@+id/geiger"
-        app:layout_heightPercent="46.50%"
-        app:layout_marginLeftPercent="8.96%"
-        app:layout_marginTopPercent="4.5%"
-        app:layout_widthPercent="83.24%" />
-
-    <net.afterday.compas.app.view.Tube
-        android:id="@+id/tube"
-        app:layout_heightPercent="15.1%"
-        app:layout_marginLeftPercent="20.6%"
-        app:layout_marginTopPercent="31.8%"
-        app:layout_widthPercent="60%" />
 
     <net.afterday.compas.app.view.CountDownTimer
         android:id="@+id/countdown"

@@ -6,9 +6,10 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.OvershootInterpolator
 import net.afterday.compas.app.R
+import net.afterday.compas.app.logging.Logger
 import net.afterday.compas.engine.util.Convert
-import kotlin.math.max
 
 open class Geiger : View {
     private val TAG = "Geiger"
@@ -54,10 +55,8 @@ open class Geiger : View {
     // Animation stuff
     private var mSvhAnimator: ValueAnimator
 
-    private val isBroken = false
+    var isBroken = false
     private val hasFingerPrint = false
-
-    private val geigerService = GeigerService(this, context)
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -84,6 +83,7 @@ open class Geiger : View {
     }
 
     fun mental(mental:Float) {
+
         if (mental == mMental) {
             return;
         }
@@ -111,7 +111,7 @@ open class Geiger : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         // Get sizes
-        val widthSize =  Math.min(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec))
+        val widthSize =  Math.min(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec)) - 150
 
         val finalMeasureSpecX = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY)
         val finalMeasureSpecY = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY)
@@ -135,12 +135,16 @@ open class Geiger : View {
             return
         }
         tSvh = svh
+        var tension = if (svh > 1) 1.0f else 0.1f
+        Logger.e(mSvh.toString())
+        Logger.e(tSvh.toString())
         mSvhAnimator.cancel()
         mSvhAnimator = ValueAnimator.ofFloat(mSvh, svh.toFloat())
-        mSvhAnimator.interpolator = AnticipateOvershootInterpolator()
+        mSvhAnimator.interpolator = AnticipateOvershootInterpolator(tension)
         mSvhAnimator.duration = duration
         mSvhAnimator.addUpdateListener {
             mSvh = mSvhAnimator.animatedValue as Float
+
             postInvalidate()
         }
         mSvhAnimator.start()

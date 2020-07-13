@@ -8,7 +8,7 @@ import net.afterday.compas.engine.engine.system.influence.anomaly.AnomalyHandler
 
 open class Oasis : AnomalyHandler() {
     override val name = "Oasis"
-    override val letter = "R"
+    override val letter = "H"
     override val code = "04"
 
     override fun handle(anomaly: AnomalyEvent) {

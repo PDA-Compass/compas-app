@@ -138,8 +138,7 @@ public class Healthbar extends View
         mWidth = widthSize;
         mHeight = heightSize;
 
-        mScaleFactorX = (float) mWidth / WIDGET_WIDTH;
-        mScaleFactorY = (float) mHeight / WIDGET_HEIGHT;
+        mScaleFactorY = mScaleFactorX = Math.min((float) mWidth / WIDGET_WIDTH, (float) mHeight / WIDGET_HEIGHT);
 
         drawRect(185, 185, 44, 19, mRect);
     }

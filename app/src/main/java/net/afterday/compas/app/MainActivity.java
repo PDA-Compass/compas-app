@@ -32,6 +32,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import io.reactivex.rxjava3.subjects.Subject;
 import net.afterday.compas.app.logging.RemoveLogger;
+import net.afterday.compas.app.pda.geiger.Compass;
 import net.afterday.compas.app.pda.geiger.Geiger;
 import net.afterday.compas.app.util.PermissionsManager;
 import net.afterday.compas.engine.core.gameState.Frame;
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     private Bar mDeviceBar;
     private Clock mClock;
     private Battery mBattery;
-    private Tube mTube;
     private ImageButton mQrButton;
     private RecyclerView logList;
     private Indicator mIndicator;
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean showArtifactsSignal = true;
     private boolean active = false;
     private SettingsListener settingsListener;
+
     ////////////////////////////////////////////////////////
     private final Subject<Integer> orientationChanges = BehaviorSubject.create();
     private final ServiceConnection serviceConnection = new ServiceConnection()
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             // Hide top bar
             setVolumeControlStream(AudioManager.STREAM_MUSIC);
             setupListeners();
-            mIndicator.setVisibility(View.GONE);
+            //mIndicator.setVisibility(View.GONE);
             stalkerApp = ((LocalMainService.MainBinder)iBinder).getService();
             framesStream = stalkerApp.getFramesStream();
             countDownStream = stalkerApp.getCountDownStream();
@@ -125,29 +126,29 @@ public class MainActivity extends AppCompatActivity {
             playerStateStream = stalkerApp.getPlayerStateStream();
             disposables.add(playerLevelStream.observeOn(AndroidSchedulers.mainThread()).subscribe((pl) -> {
 
-                mTube.setLevel(pl);
+                //mTube.setLevel(pl);
                 //mGeiger.setLevel(pl);
-                mIndicator.setLevel(pl);
+                //mIndicator.setLevel(pl);
                 if(pl >= 4)
                 {
                     //mGeiger.setFingerPrint(true);
                 }
                 if(pl == 5)
                 {
-                    mIndicator.setVisibility(View.VISIBLE);
+                    //mIndicator.setVisibility(View.VISIBLE);
                     //mGeiger.setBrokenGlass(true);
                 }
             }));
             disposables.add(playerStateStream.observeOn(AndroidSchedulers.mainThread()).subscribe((s) -> {
                 currentState = s;
-                mTube.setState(s);
+                //mTube.setState(s);
                 showArtifactsSignal = s.getCode() == Player.ALIVE;
                 if(!showArtifactsSignal)
                 {
-                    mIndicator.setStrength(0);
+                    //mIndicator.setStrength(0);
                 }
             }));
-            disposables.add(countDownStream.observeOn(AndroidSchedulers.mainThread()).subscribe((t) -> countDownTimer.setSecondsLeft(t)));
+            //disposables.add(countDownStream.observeOn(AndroidSchedulers.mainThread()).subscribe((t) -> countDownTimer.setSecondsLeft(t)));
             disposables.add(framesStream
                     //.doOnNext((i) -> {//Log.d(TAG, "ImpactsStream: " + Thread.currentThread().getName()); updateViews(null, null);})
                     .observeOn(AndroidSchedulers.mainThread())
@@ -177,14 +178,14 @@ public class MainActivity extends AppCompatActivity {
             disposables.add(Observable.combineLatest(EmissionEventBus.instance().getEmissionStateStream(), PlayerEventBus.instance().getPlayerFractionStream(), (e, f) -> new Pair<Boolean, Player.FRACTION>(e, f))
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe((s) -> {
-                                        mTube.setFraction(s.second);
+                                        /*mTube.setFraction(s.second);
                                         if(s.second == Player.FRACTION.MONOLITH)
                                         {
                                             mTube.setEmission(false);
                                         }else
                                         {
                                             mTube.setEmission(s.first);
-                                        }
+                                        }*/
                                     }));
 
             //Orientation
@@ -234,8 +235,7 @@ public class MainActivity extends AppCompatActivity {
         bindService(new Intent(MainActivity.this, LocalMainService.class), serviceConnection, Context.BIND_ABOVE_CLIENT);
 
         View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             mGeiger.toSvh(0f, 750);
         }*/
 
-        mTube.setParameters(
+        /*mTube.setParameters(
                 pProps.getRadiationImpact(),
                 pProps.getAnomalyImpact(),
                 pProps.getMentalImpact(),
@@ -295,15 +295,16 @@ public class MainActivity extends AppCompatActivity {
                 pProps.getBurerImpact(),
                 pProps.getHealthImpact(),
                 pProps.getState()
-        );
+        );*/
         // Radbar
-        mRadbar.setInfo(
+
+        /*mRadbar.setInfo(
                 pProps.getHealth(),
                 pProps.getRadiation(),
                 pProps.getHealthImpact(),
                 pProps.getController(),
                 pProps.hasRadiationInstant()
-        );
+        );*/
 
         mHealthbar.setInfo(
                 pProps.getHealth(),
@@ -316,10 +317,10 @@ public class MainActivity extends AppCompatActivity {
         {
             if(frame.getPlayerProps().getHealthImpact() > 0)
             {
-                mIndicator.setStrength(0);
+                //mIndicator.setStrength(0);
             }else
             {
-                mIndicator.setStrength((float) pProps.getArtefactImpact());
+                //mIndicator.setStrength((float) pProps.getArtefactImpact());
             }
         }
         mStaminaBar.setPercents(equipment.getBoosterPercents());
@@ -423,7 +424,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        mTube.setOnTouchListener((v, event) -> {
+        /*mTube.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     tubePressTime = System.currentTimeMillis();
@@ -443,7 +444,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             return true;
-        });
+        });*/
 
         mClock.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
@@ -496,8 +497,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void bindViews()
     {
-        mGeiger = findViewById(R.id.geiger);
-        mCompass = findViewById(R.id.compass);
         mRadbar = findViewById(R.id.radbar);
         mHealthbar = findViewById(R.id.healthbar);
         mArmorBar = findViewById(R.id.armorbar);
@@ -505,20 +504,12 @@ public class MainActivity extends AppCompatActivity {
         mDeviceBar = findViewById(R.id.devicebar);
         mClock = findViewById(R.id.clock);
         mBattery = findViewById(R.id.battery);
-        mTube = findViewById(R.id.tube);
         mQrButton = findViewById(R.id.qrbutton);
         logList = findViewById(R.id.log_list);
-        mIndicator = findViewById(R.id.indicator);
-        countDownTimer = findViewById(R.id.countdown);
+        //mIndicator = findViewById(R.id.indicator);
+        //countDownTimer = findViewById(R.id.countdown);
         levelProgress = findViewById(R.id.levelProgress);
         layout = findViewById(R.id.activity_main);
-        if(Settings.instance().getBoolSetting(Constants.COMPASS))
-        {
-            mCompass.compassOn();
-        }else
-        {
-            mCompass.compassOff();
-        }
     }
 
     private void setBackground(Player.FRACTION pf, int orientation)

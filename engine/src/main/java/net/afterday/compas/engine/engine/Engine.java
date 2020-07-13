@@ -152,9 +152,6 @@ public class Engine implements Jsonable
                 serializer.serialize(COUNTDOWN, this);
             }
         });
-
-
-
         effects.setPlayerStatesStream(currentPlayerState);
         effects.setPlayerLevelStream(playerLevel);
         effects.setImpactsStatesStream(impactsStatesStream);
