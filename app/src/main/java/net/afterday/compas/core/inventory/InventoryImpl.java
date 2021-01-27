@@ -165,6 +165,19 @@ public class InventoryImpl implements Inventory
             applyArtifactModifier(item, Item.RADIATION_MODIFIER);
             applyArtifactModifier(item, Item.RADIATION_EMMITER);
             applyArtifactModifier(item, Item.ANOMALY_MODIFIER);
+            applyArtifactModifier(item, Item.SPRINGBOARD_MODIFIER);
+            applyArtifactModifier(item, Item.FUNNEL_MODIFIER);
+            applyArtifactModifier(item, Item.CAROUSEL_MODIFIER);
+            applyArtifactModifier(item, Item.ELEVATOR_MODIFIER);
+            applyArtifactModifier(item, Item.FRYING_MODIFIER);
+            applyArtifactModifier(item, Item.ELECTRA_MODIFIER);
+            applyArtifactModifier(item, Item.MEATGRINDER_MODIFIER);
+            applyArtifactModifier(item, Item.KISSEL_MODIFIER);
+            applyArtifactModifier(item, Item.SODA_MODIFIER);
+            applyArtifactModifier(item, Item.ACIDFOG_MODIFIER);
+            applyArtifactModifier(item, Item.BURNINGFLUFF_MODIFIER);
+            applyArtifactModifier(item, Item.RUSTYHAIR_MODIFIER);
+            applyArtifactModifier(item, Item.SPATIALBUBBLE_MODIFIER);
             applyArtifactModifier(item, Item.HEALTH_MODIFIER);
             applyArtifactModifier(item, Item.BURER_MODIFIER);
             applyArtifactModifier(item, Item.CONTROLLER_MODIFIER);
@@ -424,6 +437,71 @@ public class InventoryImpl implements Inventory
             {
                 artifacts[Item.ANOMALY_MODIFIER] /= item.getModifier(Item.ANOMALY_MODIFIER);
                 artifactsO.set(Item.ANOMALY_MODIFIER, new JsonPrimitive(artifacts[Item.ANOMALY_MODIFIER]));
+            }
+            if(item.hasModifier(Item.SPRINGBOARD_MODIFIER))
+            {
+                artifacts[Item.SPRINGBOARD_MODIFIER] /= item.getModifier(Item.SPRINGBOARD_MODIFIER);
+                artifactsO.set(Item.SPRINGBOARD_MODIFIER, new JsonPrimitive(artifacts[Item.SPRINGBOARD_MODIFIER]));
+            }
+            if(item.hasModifier(Item.FUNNEL_MODIFIER))
+            {
+                artifacts[Item.FUNNEL_MODIFIER] /= item.getModifier(Item.FUNNEL_MODIFIER);
+                artifactsO.set(Item.FUNNEL_MODIFIER, new JsonPrimitive(artifacts[Item.FUNNEL_MODIFIER]));
+            }
+            if(item.hasModifier(Item.CAROUSEL_MODIFIER))
+            {
+                artifacts[Item.CAROUSEL_MODIFIER] /= item.getModifier(Item.CAROUSEL_MODIFIER);
+                artifactsO.set(Item.CAROUSEL_MODIFIER, new JsonPrimitive(artifacts[Item.CAROUSEL_MODIFIER]));
+            }
+            if(item.hasModifier(Item.ELEVATOR_MODIFIER))
+            {
+                artifacts[Item.ELEVATOR_MODIFIER] /= item.getModifier(Item.ELEVATOR_MODIFIER);
+                artifactsO.set(Item.ELEVATOR_MODIFIER, new JsonPrimitive(artifacts[Item.ELEVATOR_MODIFIER]));
+            }
+            if(item.hasModifier(Item.FRYING_MODIFIER))
+            {
+                artifacts[Item.FRYING_MODIFIER] /= item.getModifier(Item.FRYING_MODIFIER);
+                artifactsO.set(Item.FRYING_MODIFIER, new JsonPrimitive(artifacts[Item.FRYING_MODIFIER]));
+            }
+            if(item.hasModifier(Item.ELECTRA_MODIFIER))
+            {
+                artifacts[Item.ELECTRA_MODIFIER] /= item.getModifier(Item.ELECTRA_MODIFIER);
+                artifactsO.set(Item.ELECTRA_MODIFIER, new JsonPrimitive(artifacts[Item.ELECTRA_MODIFIER]));
+            }
+            if(item.hasModifier(Item.MEATGRINDER_MODIFIER))
+            {
+                artifacts[Item.MEATGRINDER_MODIFIER] /= item.getModifier(Item.MEATGRINDER_MODIFIER);
+                artifactsO.set(Item.MEATGRINDER_MODIFIER, new JsonPrimitive(artifacts[Item.MEATGRINDER_MODIFIER]));
+            }
+            if(item.hasModifier(Item.KISSEL_MODIFIER))
+            {
+                artifacts[Item.KISSEL_MODIFIER] /= item.getModifier(Item.KISSEL_MODIFIER);
+                artifactsO.set(Item.KISSEL_MODIFIER, new JsonPrimitive(artifacts[Item.KISSEL_MODIFIER]));
+            }
+            if(item.hasModifier(Item.SODA_MODIFIER))
+            {
+                artifacts[Item.SODA_MODIFIER] /= item.getModifier(Item.SODA_MODIFIER);
+                artifactsO.set(Item.SODA_MODIFIER, new JsonPrimitive(artifacts[Item.SODA_MODIFIER]));
+            }
+            if(item.hasModifier(Item.ACIDFOG_MODIFIER))
+            {
+                artifacts[Item.ACIDFOG_MODIFIER] /= item.getModifier(Item.ACIDFOG_MODIFIER);
+                artifactsO.set(Item.ACIDFOG_MODIFIER, new JsonPrimitive(artifacts[Item.ACIDFOG_MODIFIER]));
+            }
+            if(item.hasModifier(Item.BURNINGFLUFF_MODIFIER))
+            {
+                artifacts[Item.BURNINGFLUFF_MODIFIER] /= item.getModifier(Item.BURNINGFLUFF_MODIFIER);
+                artifactsO.set(Item.BURNINGFLUFF_MODIFIER, new JsonPrimitive(artifacts[Item.BURNINGFLUFF_MODIFIER]));
+            }
+            if(item.hasModifier(Item.RUSTYHAIR_MODIFIER))
+            {
+                artifacts[Item.RUSTYHAIR_MODIFIER] /= item.getModifier(Item.RUSTYHAIR_MODIFIER);
+                artifactsO.set(Item.RUSTYHAIR_MODIFIER, new JsonPrimitive(artifacts[Item.RUSTYHAIR_MODIFIER]));
+            }
+            if(item.hasModifier(Item.SPATIALBUBBLE_MODIFIER))
+            {
+                artifacts[Item.SPATIALBUBBLE_MODIFIER] /= item.getModifier(Item.SPATIALBUBBLE_MODIFIER);
+                artifactsO.set(Item.SPATIALBUBBLE_MODIFIER, new JsonPrimitive(artifacts[Item.SPATIALBUBBLE_MODIFIER]));
             }
             if(item.hasModifier(Item.BURER_MODIFIER))
             {

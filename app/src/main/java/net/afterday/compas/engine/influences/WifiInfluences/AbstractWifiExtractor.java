@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractWifiExtractor
 {
-    private Pattern regex = Pattern.compile("(.*?([RAMBCHFZ])((\\d+)))");
+    private Pattern regex = Pattern.compile("(.*?([RHAOVKLGEISYXJWPMBCFZ])((\\d+)))");
 
     protected static Map<String, Integer> types = new HashMap();
 
@@ -30,6 +30,19 @@ public abstract class AbstractWifiExtractor
         types.put("R", Influence.RADIATION);
         types.put("H", Influence.HEALTH);
         types.put("A", Influence.ANOMALY);
+        types.put("O", Influence.SPRINGBOARD);
+        types.put("V", Influence.FUNNEL);
+        types.put("K", Influence.CAROUSEL);
+        types.put("L", Influence.ELEVATOR);
+        types.put("G", Influence.FRYING);
+        types.put("E", Influence.ELECTRA);
+        types.put("I", Influence.MEATGRINDER);
+        types.put("S", Influence.KISSEL);
+        types.put("Y", Influence.SODA);
+        types.put("X", Influence.ACIDFOG);
+        types.put("J", Influence.BURNINGFLUFF);
+        types.put("W", Influence.RUSTYHAIR);
+        types.put("P", Influence.SPATIALBUBBLE);
         types.put("M", Influence.MENTAL);
         types.put("B", Influence.BURER);
         types.put("C", Influence.CONTROLLER);

@@ -26,6 +26,19 @@ public class PlayerPropsImpl implements PlayerProps
     private boolean burerHit;
     private boolean controllerHit;
     private boolean anomalyHit;
+    private boolean springboardHit;
+    private boolean funnelHit;
+    private boolean carouselHit;
+    private boolean elevatorHit;
+    private boolean fryingHit;
+    private boolean electraHit;
+    private boolean meatgrinderHit;
+    private boolean kisselHit;
+    private boolean sodaHit;
+    private boolean acidfogHit;
+    private boolean burningfluffHit;
+    private boolean rustyhairHit;
+    private boolean spatialbubbleHit;
     private boolean mentalHit;
     private boolean monolithHit;
     private boolean emissionHit;
@@ -183,6 +196,136 @@ public class PlayerPropsImpl implements PlayerProps
     }
 
     @Override
+    public double getSpringboardImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.SPRINGBOARD)
+        {
+            return impacts[Influence.SPRINGBOARD];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getFunnelImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.FUNNEL)
+        {
+            return impacts[Influence.FUNNEL];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getCarouselImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.CAROUSEL)
+        {
+            return impacts[Influence.CAROUSEL];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getElevatorImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.ELEVATOR)
+        {
+            return impacts[Influence.ELEVATOR];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getFryingImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.FRYING)
+        {
+            return impacts[Influence.FRYING];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getElectraImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.ELECTRA)
+        {
+            return impacts[Influence.ELECTRA];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getMeatgrinderImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.MEATGRINDER)
+        {
+            return impacts[Influence.MEATGRINDER];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getKisselImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.KISSEL)
+        {
+            return impacts[Influence.KISSEL];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getSodaImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.SODA)
+        {
+            return impacts[Influence.SODA];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getAcidfogImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.ACIDFOG)
+        {
+            return impacts[Influence.ACIDFOG];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getBurningfluffImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.BURNINGFLUFF)
+        {
+            return impacts[Influence.BURNINGFLUFF];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getRustyhairImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.RUSTYHAIR)
+        {
+            return impacts[Influence.RUSTYHAIR];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getSpatialbubbleImpact()
+    {
+        if (impacts != null && impacts.length >= Influence.SPATIALBUBBLE)
+        {
+            return impacts[Influence.SPATIALBUBBLE];
+        }
+        return 0;
+    }
+
+    @Override
     public double getBoosterPercents()
     {
         //return 100;
@@ -320,6 +463,59 @@ public class PlayerPropsImpl implements PlayerProps
         this.anomalyHit = anomalyHit;
     }
 
+    public void setSpringboardHit(boolean springboardHit)
+    {
+        this.springboardHit = springboardHit;
+    }
+    public void setFunnelHit(boolean funnelHit)
+    {
+        this.funnelHit = funnelHit;
+    }
+    public void setCarouselHit(boolean carouselHit)
+    {
+        this.carouselHit = carouselHit;
+    }
+    public void setElevatorHit(boolean elevatorHit)
+    {
+        this.elevatorHit = elevatorHit;
+    }
+    public void setFryingHit(boolean fryingHit)
+    {
+        this.fryingHit = fryingHit;
+    }
+    public void setElectraHit(boolean electraHit)
+    {
+        this.electraHit = electraHit;
+    }
+    public void setMeatgrinderHit(boolean meatgrinderHit)
+    {
+        this.meatgrinderHit = meatgrinderHit;
+    }
+    public void setKisselHit(boolean kisselHit)
+    {
+        this.kisselHit = kisselHit;
+    }
+    public void setSodaHit(boolean sodaHit)
+    {
+        this.sodaHit = sodaHit;
+    }
+    public void setAcidfogHit(boolean acidfogHit)
+    {
+        this.acidfogHit = acidfogHit;
+    }
+    public void setBurningfluffHit(boolean burningfluffHit)
+    {
+        this.burningfluffHit = burningfluffHit;
+    }
+    public void setRustyhairHit(boolean rustyhairHit)
+    {
+        this.rustyhairHit = rustyhairHit;
+    }
+    public void setSpatialbubbleHit(boolean spatialbubbleHit)
+    {
+        this.spatialbubbleHit = spatialbubbleHit;
+    }
+
     public void setRadiationImpact(double radiationImpact)
     {
         this.radiationImpact = radiationImpact;
@@ -383,6 +579,72 @@ public class PlayerPropsImpl implements PlayerProps
     public boolean anomalyHit()
     {
         return anomalyHit;
+    }
+
+    @Override
+    public boolean springboardHit()
+    {
+        return springboardHit;
+    }
+    @Override
+    public boolean funnelHit()
+    {
+        return funnelHit;
+    }
+    @Override
+    public boolean carouselHit()
+    {
+        return carouselHit;
+    }
+    @Override
+    public boolean elevatorHit()
+    {
+        return elevatorHit;
+    }
+    @Override
+    public boolean fryingHit()
+    {
+        return fryingHit;
+    }
+    @Override
+    public boolean electraHit()
+    {
+        return electraHit;
+    }
+    @Override
+    public boolean meatgrinderHit()
+    {
+        return meatgrinderHit;
+    }
+    @Override
+    public boolean kisselHit()
+    {
+        return kisselHit;
+    }
+    @Override
+    public boolean sodaHit()
+    {
+        return sodaHit;
+    }
+    @Override
+    public boolean acidfogHit()
+    {
+        return acidfogHit;
+    }
+    @Override
+    public boolean burningfluffHit()
+    {
+        return burningfluffHit;
+    }
+    @Override
+    public boolean rustyhairHit()
+    {
+        return rustyhairHit;
+    }
+    @Override
+    public boolean spatialbubbleHit()
+    {
+        return spatialbubbleHit;
     }
 
     @Override

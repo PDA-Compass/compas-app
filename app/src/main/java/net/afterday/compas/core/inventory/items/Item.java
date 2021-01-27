@@ -59,6 +59,19 @@ public interface Item extends Jsonable
     int HEALTH_INSTANT = 7;
     int RADIATION_INSTANT = 8;
     int MONOLITH_MODIFIER = 9;
+    int SPRINGBOARD_MODIFIER = 10;
+    int FUNNEL_MODIFIER = 11;
+    int CAROUSEL_MODIFIER = 12;
+    int ELEVATOR_MODIFIER = 13;
+    int FRYING_MODIFIER = 14;
+    int ELECTRA_MODIFIER = 15;
+    int MEATGRINDER_MODIFIER = 16;
+    int KISSEL_MODIFIER = 17;
+    int SODA_MODIFIER = 18;
+    int ACIDFOG_MODIFIER = 19;
+    int BURNINGFLUFF_MODIFIER = 20;
+    int RUSTYHAIR_MODIFIER = 21;
+    int SPATIALBUBBLE_MODIFIER = 22;
 
     public static final int MODIFIERS_COUNT = 10;
     public static final int ARTIFACT_MODIFIERS_COUNT = 10;

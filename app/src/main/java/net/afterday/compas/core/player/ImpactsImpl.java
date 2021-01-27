@@ -24,6 +24,19 @@ public class ImpactsImpl implements Impacts
     private static final int CONTROLLER_COOLDOWN = 10 * 1000; //Контролёр
     private static final int MENTAL_COOLDOWN = 10 * 1000; //Ментальное излучение
     private static final int ANOMALY_COOLDOWN = 10 * 1000; //Аномалия
+    private static final int SPRINGBOARD_COOLDOWN = 10 * 1000; //Трамплин
+    private static final int FUNNEL_COOLDOWN = 10 * 1000; //Воронка
+    private static final int CAROUSEL_COOLDOWN = 10 * 1000; //Карусель
+    private static final int ELEVATOR_COOLDOWN = 10 * 1000; //Лифт
+    private static final int FRYING_COOLDOWN = 10 * 1000; //Жарка
+    private static final int ELECTRA_COOLDOWN = 10 * 1000; //Электра
+    private static final int MEATGRINDER_COOLDOWN = 10 * 1000; //Мясорубка
+    private static final int KISSEL_COOLDOWN = 10 * 1000; //Кисель
+    private static final int SODA_COOLDOWN = 10 * 1000; //Газировка
+    private static final int ACIDFOG_COOLDOWN = 10 * 1000; //Кислотный туман
+    private static final int BURNINGFLUFF_COOLDOWN = 10 * 1000; //Жгучий пух
+    private static final int RUSTYHAIR_COOLDOWN = 10 * 1000; //Ржавые волосы
+    private static final int SPATIALBUBBLE_COOLDOWN = 10 * 1000; //Пространственный пузырь
     private static final int MONOLITH_COOLDOWN = 15 * 1000; //Зов Монолита
     private static final int EMISSION_COOLDOWN = 15 * 1000; //Выброс
 
@@ -36,6 +49,19 @@ public class ImpactsImpl implements Impacts
     private long accumulatedBurer = 0;
     private long accumulatedController = 0;
     private long accumulatedAnomaly = 0;
+    private long accumulatedSpringboard = 0;
+    private long accumulatedFunnel = 0;
+    private long accumulatedCarousel = 0;
+    private long accumulatedElevator = 0;
+    private long accumulatedFrying = 0;
+    private long accumulatedElectra = 0;
+    private long accumulatedMeatgrinder = 0;
+    private long accumulatedKissel = 0;
+    private long accumulatedSoda = 0;
+    private long accumulatedAcidfog = 0;
+    private long accumulatedBurningfluff = 0;
+    private long accumulatedRustyhair = 0;
+    private long accumulatedSpatialbubble = 0;
     private long accumulatedMental = 0;
     private long accumulatedMonolith = 0;
     private long accumulatedEmission = 0;
@@ -192,6 +218,188 @@ public class ImpactsImpl implements Impacts
                     return true;
                 }
                 return false;
+            case Influence.SPRINGBOARD:
+                accumulatedSpringboard += delta;
+                if(accumulatedSpringboard >= SPRINGBOARD_COOLDOWN)
+                {
+                    accumulatedSpringboard = 0;
+                    newProps.subtractHealth(30); //Трамплин
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_SPRINGBOARD);
+                    }
+                    newProps.setSpringboardHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.FUNNEL:
+                accumulatedFunnel += delta;
+                if(accumulatedFunnel >= FUNNEL_COOLDOWN)
+                {
+                    accumulatedFunnel = 0;
+                    newProps.subtractHealth(30); //Воронка
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_FUNNEL);
+                    }
+                    newProps.setFunnelHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.CAROUSEL:
+                accumulatedCarousel += delta;
+                if(accumulatedCarousel >= CAROUSEL_COOLDOWN)
+                {
+                    accumulatedCarousel = 0;
+                    newProps.subtractHealth(30); //Карусель
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_CAROUSEL);
+                    }
+                    newProps.setCarouselHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.ELEVATOR:
+                accumulatedElevator += delta;
+                if(accumulatedElevator >= ELEVATOR_COOLDOWN)
+                {
+                    accumulatedElevator = 0;
+                    newProps.subtractHealth(30); //Лифт
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_ELEVATOR);
+                    }
+                    newProps.setElevatorHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.FRYING:
+                accumulatedFrying += delta;
+                if(accumulatedFrying >= FRYING_COOLDOWN)
+                {
+                    accumulatedFrying = 0;
+                    newProps.subtractHealth(30); //Жарка
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_FRYING);
+                    }
+                    newProps.setFryingHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.ELECTRA:
+                accumulatedElectra += delta;
+                if(accumulatedElectra >= ELECTRA_COOLDOWN)
+                {
+                    accumulatedElectra = 0;
+                    newProps.subtractHealth(30); //Электра
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_ELECTRA);
+                    }
+                    newProps.setElectraHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.MEATGRINDER:
+                accumulatedMeatgrinder += delta;
+                if(accumulatedMeatgrinder >= MEATGRINDER_COOLDOWN)
+                {
+                    accumulatedMeatgrinder = 0;
+                    newProps.subtractHealth(30); //Мясорубка
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_MEATGRINDER);
+                    }
+                    newProps.setMeatgrinderHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.KISSEL:
+                accumulatedKissel += delta;
+                if(accumulatedKissel >= KISSEL_COOLDOWN)
+                {
+                    accumulatedKissel = 0;
+                    newProps.subtractHealth(30); //Кисель
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_KISSEL);
+                    }
+                    newProps.setKisselHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.SODA:
+                accumulatedSoda += delta;
+                if(accumulatedSoda >= SODA_COOLDOWN)
+                {
+                    accumulatedSoda = 0;
+                    newProps.subtractHealth(30); //Газировка
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_SODA);
+                    }
+                    newProps.setSodaHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.ACIDFOG:
+                accumulatedAcidfog += delta;
+                if(accumulatedAcidfog >= ACIDFOG_COOLDOWN)
+                {
+                    accumulatedAcidfog = 0;
+                    newProps.subtractHealth(30); //Кислотный туман
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_ACIDFOG);
+                    }
+                    newProps.setAcidfogHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.BURNINGFLUFF:
+                accumulatedBurningfluff += delta;
+                if(accumulatedBurningfluff >= BURNINGFLUFF_COOLDOWN)
+                {
+                    accumulatedBurningfluff = 0;
+                    newProps.subtractHealth(30); //Жгучий пух
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_BURNINGFLUFF);
+                    }
+                    newProps.setBurningfluffHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.RUSTYHAIR:
+                accumulatedRustyhair += delta;
+                if(accumulatedRustyhair >= RUSTYHAIR_COOLDOWN)
+                {
+                    accumulatedRustyhair = 0;
+                    newProps.subtractHealth(30); //Ржавые волосы
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_RUSTYHAIR);
+                    }
+                    newProps.setRustyhairHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.SPATIALBUBBLE:
+                accumulatedSpatialbubble += delta;
+                if(accumulatedSpatialbubble >= SPATIALBUBBLE_COOLDOWN)
+                {
+                    accumulatedSpatialbubble = 0;
+                    newProps.subtractHealth(30); //Пространственный пузырь
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_DEAD_SPATIALBUBBLE);
+                    }
+                    newProps.setSpatialbubbleHit(true);
+                    return true;
+                }
+                return false;
             case Influence.MENTAL:
                 if(newProps.getFraction() == Player.FRACTION.MONOLITH)
                 {
@@ -257,6 +465,19 @@ public class ImpactsImpl implements Impacts
         switch (infl)
         {
             case Influence.ANOMALY: return Player.STATE.W_DEAD_ANOMALY;
+            case Influence.SPRINGBOARD: return Player.STATE.W_DEAD_SPRINGBOARD;
+            case Influence.FUNNEL: return Player.STATE.W_DEAD_FUNNEL;
+            case Influence.CAROUSEL: return Player.STATE.W_DEAD_CAROUSEL;
+            case Influence.ELEVATOR: return Player.STATE.W_DEAD_ELEVATOR;
+            case Influence.FRYING: return Player.STATE.W_DEAD_FRYING;
+            case Influence.ELECTRA: return Player.STATE.W_DEAD_ELECTRA;
+            case Influence.MEATGRINDER: return Player.STATE.W_DEAD_MEATGRINDER;
+            case Influence.KISSEL: return Player.STATE.W_DEAD_KISSEL;
+            case Influence.SODA: return Player.STATE.W_DEAD_SODA;
+            case Influence.ACIDFOG: return Player.STATE.W_DEAD_ACIDFOG;
+            case Influence.BURNINGFLUFF: return Player.STATE.W_DEAD_BURNINGFLUFF;
+            case Influence.RUSTYHAIR: return Player.STATE.W_DEAD_RUSTYHAIR;
+            case Influence.SPATIALBUBBLE: return Player.STATE.W_DEAD_SPATIALBUBBLE;
             case Influence.BURER: return Player.STATE.W_DEAD_BURER;
             case Influence.CONTROLLER: return Player.STATE.W_CONTROLLED;
             case Influence.MENTAL: return Player.STATE.W_MENTALLED;
@@ -344,6 +565,19 @@ public class ImpactsImpl implements Impacts
         mImpacts[Influence.RADIATION] += artifacts[Item.RADIATION_EMMITER];
         mImpacts[Influence.RADIATION] *= artifacts[Item.RADIATION_MODIFIER];
         mImpacts[Influence.ANOMALY] *= artifacts[Item.ANOMALY_MODIFIER];
+        mImpacts[Influence.SPRINGBOARD] *= artifacts[Item.SPRINGBOARD_MODIFIER];
+        mImpacts[Influence.FUNNEL] *= artifacts[Item.FUNNEL_MODIFIER];
+        mImpacts[Influence.CAROUSEL] *= artifacts[Item.CAROUSEL_MODIFIER];
+        mImpacts[Influence.ELEVATOR] *= artifacts[Item.ELEVATOR_MODIFIER];
+        mImpacts[Influence.FRYING] *= artifacts[Item.FRYING_MODIFIER];
+        mImpacts[Influence.ELECTRA] *= artifacts[Item.ELECTRA_MODIFIER];
+        mImpacts[Influence.MEATGRINDER] *= artifacts[Item.MEATGRINDER_MODIFIER];
+        mImpacts[Influence.KISSEL] *= artifacts[Item.KISSEL_MODIFIER];
+        mImpacts[Influence.SODA] *= artifacts[Item.SODA_MODIFIER];
+        mImpacts[Influence.ACIDFOG] *= artifacts[Item.ACIDFOG_MODIFIER];
+        mImpacts[Influence.BURNINGFLUFF] *= artifacts[Item.BURNINGFLUFF_MODIFIER];
+        mImpacts[Influence.RUSTYHAIR] *= artifacts[Item.RUSTYHAIR_MODIFIER];
+        mImpacts[Influence.SPATIALBUBBLE] *= artifacts[Item.SPATIALBUBBLE_MODIFIER];
         mImpacts[Influence.BURER] *= artifacts[Item.BURER_MODIFIER];
         mImpacts[Influence.CONTROLLER] *= artifacts[Item.CONTROLLER_MODIFIER];
         mImpacts[Influence.MENTAL] *= artifacts[Item.MENTAL_MODIFIER];
@@ -369,6 +603,58 @@ public class ImpactsImpl implements Impacts
         if(item.hasModifier(Item.ANOMALY_MODIFIER))
         {
             mImpacts[Influence.ANOMALY] *= item.getModifier(Item.ANOMALY_MODIFIER);
+        }
+        if(item.hasModifier(Item.SPRINGBOARD_MODIFIER))
+        {
+            mImpacts[Influence.SPRINGBOARD] *= item.getModifier(Item.SPRINGBOARD_MODIFIER);
+        }
+        if(item.hasModifier(Item.FUNNEL_MODIFIER))
+        {
+            mImpacts[Influence.FUNNEL] *= item.getModifier(Item.FUNNEL_MODIFIER);
+        }
+        if(item.hasModifier(Item.CAROUSEL_MODIFIER))
+        {
+            mImpacts[Influence.CAROUSEL] *= item.getModifier(Item.CAROUSEL_MODIFIER);
+        }
+        if(item.hasModifier(Item.ELEVATOR_MODIFIER))
+        {
+            mImpacts[Influence.ELEVATOR] *= item.getModifier(Item.ELEVATOR_MODIFIER);
+        }
+        if(item.hasModifier(Item.FRYING_MODIFIER))
+        {
+            mImpacts[Influence.FRYING] *= item.getModifier(Item.FRYING_MODIFIER);
+        }
+        if(item.hasModifier(Item.ELECTRA_MODIFIER))
+        {
+            mImpacts[Influence.ELECTRA] *= item.getModifier(Item.ELECTRA_MODIFIER);
+        }
+        if(item.hasModifier(Item.MEATGRINDER_MODIFIER))
+        {
+            mImpacts[Influence.MEATGRINDER] *= item.getModifier(Item.MEATGRINDER_MODIFIER);
+        }
+        if(item.hasModifier(Item.KISSEL_MODIFIER))
+        {
+            mImpacts[Influence.KISSEL] *= item.getModifier(Item.KISSEL_MODIFIER);
+        }
+        if(item.hasModifier(Item.SODA_MODIFIER))
+        {
+            mImpacts[Influence.SODA] *= item.getModifier(Item.SODA_MODIFIER);
+        }
+        if(item.hasModifier(Item.ACIDFOG_MODIFIER))
+        {
+            mImpacts[Influence.ACIDFOG] *= item.getModifier(Item.ACIDFOG_MODIFIER);
+        }
+        if(item.hasModifier(Item.BURNINGFLUFF_MODIFIER))
+        {
+            mImpacts[Influence.BURNINGFLUFF] *= item.getModifier(Item.BURNINGFLUFF_MODIFIER);
+        }
+        if(item.hasModifier(Item.RUSTYHAIR_MODIFIER))
+        {
+            mImpacts[Influence.RUSTYHAIR] *= item.getModifier(Item.RUSTYHAIR_MODIFIER);
+        }
+        if(item.hasModifier(Item.SPATIALBUBBLE_MODIFIER))
+        {
+            mImpacts[Influence.SPATIALBUBBLE] *= item.getModifier(Item.SPATIALBUBBLE_MODIFIER);
         }
         if(item.hasModifier(Item.MENTAL_MODIFIER))
         {
@@ -458,6 +744,19 @@ public class ImpactsImpl implements Impacts
                 mImpacts[Influence.MONOLITH] > 0d ||
            mImpacts[Influence.CONTROLLER] > 0d ||
            mImpacts[Influence.ANOMALY] > 0d ||
+                mImpacts[Influence.SPRINGBOARD] > 0d ||
+                mImpacts[Influence.FUNNEL] > 0d ||
+                mImpacts[Influence.CAROUSEL] > 0d ||
+                mImpacts[Influence.ELEVATOR] > 0d ||
+                mImpacts[Influence.FRYING] > 0d ||
+                mImpacts[Influence.ELECTRA] > 0d ||
+                mImpacts[Influence.MEATGRINDER] > 0d ||
+                mImpacts[Influence.KISSEL] > 0d ||
+                mImpacts[Influence.SODA] > 0d ||
+                mImpacts[Influence.ACIDFOG] > 0d ||
+                mImpacts[Influence.BURNINGFLUFF] > 0d ||
+                mImpacts[Influence.RUSTYHAIR] > 0d ||
+                mImpacts[Influence.SPATIALBUBBLE] > 0d ||
            mImpacts[Influence.BURER] > 0d ||
                 mImpacts[Influence.EMISSION] > Influence.MAX_SATELLITES
                 )
@@ -483,6 +782,19 @@ public class ImpactsImpl implements Impacts
         Log.e(TAG, "MENTAL: " + mImpacts[Influence.MENTAL]);
         Log.e(TAG, "CONTROLLER: " + mImpacts[Influence.CONTROLLER]);
         Log.e(TAG, "ANOMALY: " + mImpacts[Influence.ANOMALY]);
+        Log.e(TAG, "SPRINGBOARD: " + mImpacts[Influence.SPRINGBOARD]);
+        Log.e(TAG, "FUNNEL: " + mImpacts[Influence.FUNNEL]);
+        Log.e(TAG, "CAROUSEL: " + mImpacts[Influence.CAROUSEL]);
+        Log.e(TAG, "ELEVATOR: " + mImpacts[Influence.ELEVATOR]);
+        Log.e(TAG, "FRYING: " + mImpacts[Influence.FRYING]);
+        Log.e(TAG, "ELECTRA: " + mImpacts[Influence.ELECTRA]);
+        Log.e(TAG, "MEATGRINDER: " + mImpacts[Influence.MEATGRINDER]);
+        Log.e(TAG, "KISSEL: " + mImpacts[Influence.KISSEL]);
+        Log.e(TAG, "SODA: " + mImpacts[Influence.SODA]);
+        Log.e(TAG, "ACIDFOG: " + mImpacts[Influence.ACIDFOG]);
+        Log.e(TAG, "BURNINGFLUFF: " + mImpacts[Influence.BURNINGFLUFF]);
+        Log.e(TAG, "RUSTYHAIR: " + mImpacts[Influence.RUSTYHAIR]);
+        Log.e(TAG, "SPATIALBUBBLE: " + mImpacts[Influence.SPATIALBUBBLE]);
         Log.e(TAG, "BURER: " + mImpacts[Influence.BURER]);
         Log.e(TAG, "ARTEFACT: " + mImpacts[Influence.ARTEFACT]);
         Log.e(TAG, "MONOLITH: " + mImpacts[Influence.MONOLITH]);

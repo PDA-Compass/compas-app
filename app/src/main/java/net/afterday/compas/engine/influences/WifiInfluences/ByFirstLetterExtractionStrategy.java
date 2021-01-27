@@ -17,8 +17,8 @@ public class ByFirstLetterExtractionStrategy extends AbstractWifiExtractor imple
     public InfluencesPack makeInfluences(List<ScanResult> i)
     {
         InfluencesPack ip = new InflPack();
-        Pattern regex = Pattern.compile("(.*?)(R|A|M|B|C|H|F|Z)");
-//        Pattern regex = Pattern.compile("(?i)(.*?)(R|A|M|B|C|H|F|Z)");
+        Pattern regex = Pattern.compile("(.*?)(R|H|A|O|V|K|L|G|E|I|S|Y|X|J|W|P|M|B|C|F|Z)");
+//        Pattern regex = Pattern.compile("(?i)(.*?)(R|H|A|O|V|K|L|G|E|I|S|Y|X|J|W|P|M|B|C|F|Z)");
         for(ScanResult sr : i)
         {
             Matcher matcher = regex.matcher(sr.SSID);

@@ -38,6 +38,19 @@ public interface Player extends Jsonable
         ALIVE(Player.ALIVE, Player.W_ABDUCTED),   //+
         DEAD_CONTROLLER(Player.DEAD),  //-
         DEAD_ANOMALY(Player.DEAD),  //-
+        DEAD_SPRINGBOARD(Player.DEAD),  //-
+        DEAD_FUNNEL(Player.DEAD),  //-
+        DEAD_CAROUSEL(Player.DEAD),  //-
+        DEAD_ELEVATOR(Player.DEAD),  //-
+        DEAD_FRYING(Player.DEAD),  //-
+        DEAD_ELECTRA(Player.DEAD),  //-
+        DEAD_MEATGRINDER(Player.DEAD),  //-
+        DEAD_KISSEL(Player.DEAD),  //-
+        DEAD_SODA(Player.DEAD),  //-
+        DEAD_ACIDFOG(Player.DEAD),  //-
+        DEAD_BURNINGFLUFF(Player.DEAD),  //-
+        DEAD_RUSTYHAIR(Player.DEAD),  //-
+        DEAD_SPATIALBUBBLE(Player.DEAD),  //-
         DEAD_RADIATION(Player.DEAD),  //-
         DEAD_EMISSION(Player.DEAD),  //+ Staigi mirtis
         DEAD_BURER(Player.DEAD),  //-
@@ -49,6 +62,19 @@ public interface Player extends Jsonable
         W_DEAD_BURER(Player.DEAD),  //-
         W_DEAD_RADIATION(Player.DEAD),  //-
         W_DEAD_ANOMALY(Player.DEAD),  //-
+        W_DEAD_SPRINGBOARD(Player.DEAD),  //-
+        W_DEAD_FUNNEL(Player.DEAD),  //-
+        W_DEAD_CAROUSEL(Player.DEAD),  //-
+        W_DEAD_ELEVATOR(Player.DEAD),  //-
+        W_DEAD_FRYING(Player.DEAD),  //-
+        W_DEAD_ELECTRA(Player.DEAD),  //-
+        W_DEAD_MEATGRINDER(Player.DEAD),  //-
+        W_DEAD_KISSEL(Player.DEAD),  //-
+        W_DEAD_SODA(Player.DEAD),  //-
+        W_DEAD_ACIDFOG(Player.DEAD),  //-
+        W_DEAD_BURNINGFLUFF(Player.DEAD),  //-
+        W_DEAD_RUSTYHAIR(Player.DEAD),  //-
+        W_DEAD_SPATIALBUBBLE(Player.DEAD),  //-
         W_ABDUCTED(Player.DEAD, Player.ABDUCTED),  //+ Jei paspaudzia kolba, pereina i abducted
         ABDUCTED(Player.ALIVE, Player.INSTANT_DEATH);  //+ Staigi mirtis
 
@@ -84,6 +110,19 @@ public interface Player extends Jsonable
                 case ALIVE: return 0l;
                 case DEAD_CONTROLLER: return 01; //
                 case DEAD_ANOMALY: return MIN1;
+                case DEAD_SPRINGBOARD: return MIN1;
+                case DEAD_FUNNEL: return MIN1;
+                case DEAD_CAROUSEL: return MIN1;
+                case DEAD_ELEVATOR: return MIN1;
+                case DEAD_FRYING: return MIN1;
+                case DEAD_ELECTRA: return MIN1;
+                case DEAD_MEATGRINDER: return MIN1;
+                case DEAD_KISSEL: return MIN1;
+                case DEAD_SODA: return MIN1;
+                case DEAD_ACIDFOG: return MIN1;
+                case DEAD_BURNINGFLUFF: return MIN1;
+                case DEAD_RUSTYHAIR: return MIN1;
+                case DEAD_SPATIALBUBBLE: return MIN1;
                 case DEAD_RADIATION: return 0l;
                 case DEAD_BURER: return 0l;
                 case DEAD_MENTAL: return MIN1;
@@ -94,6 +133,19 @@ public interface Player extends Jsonable
                 case W_DEAD_BURER: return MIN5; //Агония
                 case W_DEAD_RADIATION: return MIN5; // Агония
                 case W_DEAD_ANOMALY: return MIN5; // Агония
+                case W_DEAD_SPRINGBOARD: return MIN5; // Агония
+                case W_DEAD_FUNNEL: return MIN5; // Агония
+                case W_DEAD_CAROUSEL: return MIN5; // Агония
+                case W_DEAD_ELEVATOR: return MIN5; // Агония
+                case W_DEAD_FRYING: return MIN5; // Агония
+                case W_DEAD_ELECTRA: return MIN5; // Агония
+                case W_DEAD_MEATGRINDER: return MIN5; // Агония
+                case W_DEAD_KISSEL: return MIN5; // Агония
+                case W_DEAD_SODA: return MIN5; // Агония
+                case W_DEAD_ACIDFOG: return MIN5; // Агония
+                case W_DEAD_BURNINGFLUFF: return MIN5; // Агония
+                case W_DEAD_RUSTYHAIR: return MIN5; // Агония
+                case W_DEAD_SPATIALBUBBLE: return MIN5; // Агония
                 case W_ABDUCTED: return MIN5; // Агония
                 case ABDUCTED: return MIN60; //Плен
                 case DEAD_EMISSION: return MIN1;
@@ -109,6 +161,19 @@ public interface Player extends Jsonable
                 case ALIVE: return "ALIVE";
                 case DEAD_CONTROLLER: return "DEAD_CONTROLLER";
                 case DEAD_ANOMALY: return "DEAD_ANOMALY";
+                case DEAD_SPRINGBOARD: return "DEAD_SPRINGBOARD";
+                case DEAD_FUNNEL: return "DEAD_FUNNEL";
+                case DEAD_CAROUSEL: return "DEAD_CAROUSEL";
+                case DEAD_ELEVATOR: return "DEAD_ELEVATOR";
+                case DEAD_FRYING: return "DEAD_FRYING";
+                case DEAD_ELECTRA: return "DEAD_ELECTRA";
+                case DEAD_MEATGRINDER: return "DEAD_MEATGRINDER";
+                case DEAD_KISSEL: return "DEAD_KISSEL";
+                case DEAD_SODA: return "DEAD_SODA";
+                case DEAD_ACIDFOG: return "DEAD_ACIDFOG";
+                case DEAD_BURNINGFLUFF: return "DEAD_BURNINGFLUFF";
+                case DEAD_RUSTYHAIR: return "DEAD_RUSTYHAIR";
+                case DEAD_SPATIALBUBBLE: return "DEAD_SPATIALBUBBLE";
                 case DEAD_RADIATION: return "DEAD_RADIATION";
                 case DEAD_BURER: return "DEAD_BURER";
                 case DEAD_MENTAL: return "DEAD_MENTAL";
@@ -119,6 +184,19 @@ public interface Player extends Jsonable
                 case W_DEAD_BURER: return "W_DEAD_BURER";
                 case W_DEAD_RADIATION: return "W_DEAD_RADIATION";
                 case W_DEAD_ANOMALY: return "W_DEAD_ANOMALY";
+                case W_DEAD_SPRINGBOARD: return "W_DEAD_SPRINGBOARD";
+                case W_DEAD_FUNNEL: return "W_DEAD_FUNNEL";
+                case W_DEAD_CAROUSEL: return "W_DEAD_CAROUSEL";
+                case W_DEAD_ELEVATOR: return "W_DEAD_ELEVATOR";
+                case W_DEAD_FRYING: return "W_DEAD_FRYING";
+                case W_DEAD_ELECTRA: return "W_DEAD_ELECTRA";
+                case W_DEAD_MEATGRINDER: return "W_DEAD_MEATGRINDER";
+                case W_DEAD_KISSEL: return "W_DEAD_KISSEL";
+                case W_DEAD_SODA: return "W_DEAD_SODA";
+                case W_DEAD_ACIDFOG: return "W_DEAD_ACIDFOG";
+                case W_DEAD_BURNINGFLUFF: return "W_DEAD_BURNINGFLUFF";
+                case W_DEAD_RUSTYHAIR: return "W_DEAD_RUSTYHAIR";
+                case W_DEAD_SPATIALBUBBLE: return "W_DEAD_SPATIALBUBBLE";
                 case W_ABDUCTED: return "W_ABDUCTED";
                 case ABDUCTED: return "ABDUCTED";
                 case DEAD_EMISSION: return "DEAD_EMISSION";
@@ -133,6 +211,19 @@ public interface Player extends Jsonable
                 case "ALIVE": return Player.STATE.ALIVE;
                 case "DEAD_CONTROLLER": return Player.STATE.DEAD_CONTROLLER;
                 case "DEAD_ANOMALY": return Player.STATE.DEAD_ANOMALY;
+                case "DEAD_SPRINGBOARD": return Player.STATE.DEAD_SPRINGBOARD;
+                case "DEAD_FUNNEL": return Player.STATE.DEAD_FUNNEL;
+                case "DEAD_CAROUSEL": return Player.STATE.DEAD_CAROUSEL;
+                case "DEAD_ELEVATOR": return Player.STATE.DEAD_ELEVATOR;
+                case "DEAD_FRYING": return Player.STATE.DEAD_FRYING;
+                case "DEAD_ELECTRA": return Player.STATE.DEAD_ELECTRA;
+                case "DEAD_MEATGRINDER": return Player.STATE.DEAD_MEATGRINDER;
+                case "DEAD_KISSEL": return Player.STATE.DEAD_KISSEL;
+                case "DEAD_SODA": return Player.STATE.DEAD_SODA;
+                case "DEAD_ACIDFOG": return Player.STATE.DEAD_ACIDFOG;
+                case "DEAD_BURNINGFLUFF": return Player.STATE.DEAD_BURNINGFLUFF;
+                case "DEAD_RUSTYHAIR": return Player.STATE.DEAD_RUSTYHAIR;
+                case "DEAD_SPATIALBUBBLE": return Player.STATE.DEAD_SPATIALBUBBLE;
                 case "DEAD_RADIATION": return Player.STATE.DEAD_RADIATION;
                 case "DEAD_EMISSION": return STATE.DEAD_EMISSION;
                 case "DEAD_BURER": return Player.STATE.DEAD_BURER;
@@ -144,6 +235,19 @@ public interface Player extends Jsonable
                 case "W_DEAD_BURER": return Player.STATE.W_DEAD_BURER;
                 case "W_DEAD_RADIATION": return Player.STATE.W_DEAD_RADIATION;
                 case "W_DEAD_ANOMALY": return Player.STATE.W_DEAD_ANOMALY;
+                case "W_DEAD_SPRINGBOARD": return Player.STATE.W_DEAD_SPRINGBOARD;
+                case "W_DEAD_FUNNEL": return Player.STATE.W_DEAD_FUNNEL;
+                case "W_DEAD_CAROUSEL": return Player.STATE.W_DEAD_CAROUSEL;
+                case "W_DEAD_ELEVATOR": return Player.STATE.W_DEAD_ELEVATOR;
+                case "W_DEAD_FRYING": return Player.STATE.W_DEAD_FRYING;
+                case "W_DEAD_ELECTRA": return Player.STATE.W_DEAD_ELECTRA;
+                case "W_DEAD_MEATGRINDER": return Player.STATE.W_DEAD_MEATGRINDER;
+                case "W_DEAD_KISSEL": return Player.STATE.W_DEAD_KISSEL;
+                case "W_DEAD_SODA": return Player.STATE.W_DEAD_SODA;
+                case "W_DEAD_ACIDFOG": return Player.STATE.W_DEAD_ACIDFOG;
+                case "W_DEAD_BURNINGFLUFF": return Player.STATE.W_DEAD_BURNINGFLUFF;
+                case "W_DEAD_RUSTYHAIR": return Player.STATE.W_DEAD_RUSTYHAIR;
+                case "W_DEAD_SPATIALBUBBLE": return Player.STATE.W_DEAD_SPATIALBUBBLE;
                 case "W_ABDUCTED": return Player.STATE.W_ABDUCTED;
                 case "ABDUCTED": return Player.STATE.ABDUCTED;
             }

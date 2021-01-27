@@ -30,6 +30,19 @@ public class Geiger extends View
     private float mMental;
     private float mMonolith;
     private float mAnomaly;
+    private float mSpringboard;
+    private float mFunnel;
+    private float mCarousel;
+    private float mElevator;
+    private float mFrying;
+    private float mElectra;
+    private float mMeatgrinder;
+    private float mKissel;
+    private float mSoda;
+    private float mAcidfog;
+    private float mBurningfluff;
+    private float mRustyhair;
+    private float mSpatialbubble;
 
     // Dimension stuff
     private int mWidth;
@@ -57,6 +70,19 @@ public class Geiger extends View
 
     private Bitmap mBulbBack;
     private Bitmap mBulbAnomaly;
+    private Bitmap mBulbSpringboard;
+    private Bitmap mBulbFunnel;
+    private Bitmap mBulbCarousel;
+    private Bitmap mBulbElevator;
+    private Bitmap mBulbFrying;
+    private Bitmap mBulbElectra;
+    private Bitmap mBulbMeatgrinder;
+    private Bitmap mBulbKissel;
+    private Bitmap mBulbSoda;
+    private Bitmap mBulbAcidfog;
+    private Bitmap mBulbBurningfluff;
+    private Bitmap mBulbRustyhair;
+    private Bitmap mBulbSpatialbubble;
     private Bitmap mBulbMental;
 
     private boolean isBroken;
@@ -86,6 +112,111 @@ public class Geiger extends View
         }
 
         mAnomaly = anomaly;
+        invalidate();
+    }
+
+    public void setSpringboard(float springboard) {
+        if (springboard == mSpringboard) {
+            return;
+        }
+
+        mSpringboard = springboard;
+        invalidate();
+    }
+    public void setFunnel(float funnel) {
+        if (funnel == mFunnel) {
+            return;
+        }
+
+        mFunnel = funnel;
+        invalidate();
+    }
+    public void setCarousel(float carousel) {
+        if (carousel == mCarousel) {
+            return;
+        }
+
+        mCarousel = carousel;
+        invalidate();
+    }
+    public void setElevator(float elevator) {
+        if (elevator == mElevator) {
+            return;
+        }
+
+        mElevator = elevator;
+        invalidate();
+    }
+    public void setFrying(float frying) {
+        if (frying == mFrying) {
+            return;
+        }
+
+        mFrying = frying;
+        invalidate();
+    }
+    public void setElectra(float electra) {
+        if (electra == mElectra) {
+            return;
+        }
+
+        mElectra = electra;
+        invalidate();
+    }
+    public void setMeatgrinder(float meatgrinder) {
+        if (meatgrinder == mMeatgrinder) {
+            return;
+        }
+
+        mMeatgrinder = meatgrinder;
+        invalidate();
+    }
+    public void setKissel(float kissel) {
+        if (kissel == mKissel) {
+            return;
+        }
+
+        mKissel = kissel;
+        invalidate();
+    }
+    public void setSoda(float soda) {
+        if (soda == mSoda) {
+            return;
+        }
+
+        mSoda = soda;
+        invalidate();
+    }
+    public void setAcidfog(float acidfog) {
+        if (acidfog == mAcidfog) {
+            return;
+        }
+
+        mAcidfog = acidfog;
+        invalidate();
+    }
+    public void setBurningfluff(float burningfluff) {
+        if (burningfluff == mBurningfluff) {
+            return;
+        }
+
+        mBurningfluff = burningfluff;
+        invalidate();
+    }
+    public void setRustyhair(float rustyhair) {
+        if (rustyhair == mRustyhair) {
+            return;
+        }
+
+        mRustyhair = rustyhair;
+        invalidate();
+    }
+    public void setSpatialbubble(float spatialbubble) {
+        if (spatialbubble == mSpatialbubble) {
+            return;
+        }
+
+        mSpatialbubble = spatialbubble;
         invalidate();
     }
 
@@ -213,6 +344,19 @@ public class Geiger extends View
 
         mBulbBack = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_back);
         mBulbAnomaly = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbSpringboard = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbFunnel = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbCarousel = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbElevator = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbFrying = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbElectra = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbMeatgrinder = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbKissel = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbSoda = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbAcidfog = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbBurningfluff = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbRustyhair = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
+        mBulbSpatialbubble = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_anomaly);
         mBulbMental = BitmapFactory.decodeResource(getResources(), R.drawable.bulb_mental);
 
         mMatrix = new Matrix();
@@ -229,6 +373,19 @@ public class Geiger extends View
         //canvas.drawBitmap(scaleLvl5, mMatrix, null);
         if(level >= 2)
             drawAnomaly(canvas);
+        drawSpringboard(canvas);
+        drawFunnel(canvas);
+        drawCarousel(canvas);
+        drawElevator(canvas);
+        drawFrying(canvas);
+        drawElectra(canvas);
+        drawMeatgrinder(canvas);
+        drawKissel(canvas);
+        drawSoda(canvas);
+        drawAcidfog(canvas);
+        drawBurningfluff(canvas);
+        drawRustyhair(canvas);
+        drawSpatialbubble(canvas);
         if(level >= 3)
             drawMental(canvas);
         if(hasFingerPrint)
@@ -272,6 +429,241 @@ public class Geiger extends View
 
         convertRect(161, 161, 281, 115, mMatrix);
         canvas.drawBitmap(mBulbAnomaly, mMatrix, null);
+    }
+
+    protected void drawSpringboard(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mSpringboard <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mSpringboard, 0f, 15f, 100f, 0f));
+        if(mSpringboard >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbSpringboard, mMatrix, null);
+    }
+    protected void drawFunnel(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mFunnel <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mFunnel, 0f, 15f, 100f, 0f));
+        if(mFunnel >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbFunnel, mMatrix, null);
+    }
+    protected void drawCarousel(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mCarousel <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mCarousel, 0f, 15f, 100f, 0f));
+        if(mCarousel >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbCarousel, mMatrix, null);
+    }
+    protected void drawElevator(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mElevator <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mElevator, 0f, 15f, 100f, 0f));
+        if(mElevator >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbElevator, mMatrix, null);
+    }
+    protected void drawFrying(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mFrying <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mFrying, 0f, 15f, 100f, 0f));
+        if(mFrying >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbFrying, mMatrix, null);
+    }
+    protected void drawElectra(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mElectra <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mElectra, 0f, 15f, 100f, 0f));
+        if(mElectra >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbElectra, mMatrix, null);
+    }
+    protected void drawMeatgrinder(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mMeatgrinder <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mMeatgrinder, 0f, 15f, 100f, 0f));
+        if(mMeatgrinder >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbMeatgrinder, mMatrix, null);
+    }
+    protected void drawKissel(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mKissel <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mKissel, 0f, 15f, 100f, 0f));
+        if(mKissel >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbKissel, mMatrix, null);
+    }
+    protected void drawSoda(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mSoda <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mSoda, 0f, 15f, 100f, 0f));
+        if(mSoda >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbSoda, mMatrix, null);
+    }
+    protected void drawAcidfog(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mAcidfog <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mAcidfog, 0f, 15f, 100f, 0f));
+        if(mAcidfog >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbAcidfog, mMatrix, null);
+    }
+    protected void drawBurningfluff(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mBurningfluff <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mBurningfluff, 0f, 15f, 100f, 0f));
+        if(mBurningfluff >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBurningfluff, mMatrix, null);
+    }
+    protected void drawRustyhair(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mRustyhair <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mRustyhair, 0f, 15f, 100f, 0f));
+        if(mRustyhair >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbRustyhair, mMatrix, null);
+    }
+    protected void drawSpatialbubble(Canvas canvas) {
+        convertRect(mBulbBack.getWidth(), mBulbBack.getHeight(), 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbBack, mMatrix, null);
+
+        drawRect(151, 151, 286, 120, mRect);
+        int color[] = mSpatialbubble <= 0f ? Convert.numberToRGB(Convert.RGB_GREY) : Convert.numberToRGB(Convert.map(mSpatialbubble, 0f, 15f, 100f, 0f));
+        if(mSpatialbubble >= 15f) {
+            color[1] = 255;
+            color[2] = 0;
+            color[3] = 0;
+        }
+        mPaint.setARGB(255, 255, 255, 255);
+        mPaint.setARGB(255, color[1], color[2], color[3]);
+        canvas.drawOval(mRect, mPaint);
+
+        convertRect(161, 161, 281, 115, mMatrix);
+        canvas.drawBitmap(mBulbSpatialbubble, mMatrix, null);
     }
 
     protected void drawMental(Canvas canvas) {

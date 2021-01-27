@@ -267,6 +267,19 @@ public class Engine implements Jsonable
         cd.add(makeCountDownForStates(Player.STATE.W_CONTROLLED, Player.STATE.CONTROLLED, Player.STATE.DEAD_CONTROLLER));
         cd.add(makeCountDownForStates(Player.STATE.W_MENTALLED, Player.STATE.MENTALLED, Player.STATE.DEAD_MENTAL));
         cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ANOMALY, Player.STATE.DEAD_ANOMALY));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_SPRINGBOARD, Player.STATE.DEAD_SPRINGBOARD));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_FUNNEL, Player.STATE.DEAD_FUNNEL));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_CAROUSEL, Player.STATE.DEAD_CAROUSEL));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ELEVATOR, Player.STATE.DEAD_ELEVATOR));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_FRYING, Player.STATE.DEAD_FRYING));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ELECTRA, Player.STATE.DEAD_ELECTRA));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_MEATGRINDER, Player.STATE.DEAD_MEATGRINDER));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_KISSEL, Player.STATE.DEAD_KISSEL));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_SODA, Player.STATE.DEAD_SODA));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_ACIDFOG, Player.STATE.DEAD_ACIDFOG));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_BURNINGFLUFF, Player.STATE.DEAD_BURNINGFLUFF));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_RUSTYHAIR, Player.STATE.DEAD_RUSTYHAIR));
+        cd.add(makeCountDownForStates(Player.STATE.W_DEAD_SPATIALBUBBLE, Player.STATE.DEAD_SPATIALBUBBLE));
         cd.add(makeCountDownForStates(Player.STATE.W_DEAD_BURER, Player.STATE.DEAD_BURER));
         cd.add(makeCountDownForStates(Player.STATE.W_DEAD_RADIATION, Player.STATE.DEAD_RADIATION));
         cd.add(makeCountDownForStates(Player.STATE.W_ABDUCTED, Player.STATE.DEAD_BURER));
@@ -643,6 +656,201 @@ public class Engine implements Jsonable
             {
                 net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
                 currentPlayerState.onNext(Player.STATE.DEAD_ANOMALY);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_SPRINGBOARD)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_SPRINGBOARD);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_SPRINGBOARD)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
+                currentPlayerState.onNext(Player.STATE.DEAD_SPRINGBOARD);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_FUNNEL)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_FUNNEL);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_FUNNEL)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
+                currentPlayerState.onNext(Player.STATE.DEAD_FUNNEL);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_CAROUSEL)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_CAROUSEL);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_CAROUSEL)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
+                currentPlayerState.onNext(Player.STATE.DEAD_CAROUSEL);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_ELEVATOR)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_ELEVATOR);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_ELEVATOR)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
+                currentPlayerState.onNext(Player.STATE.DEAD_ELEVATOR);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_FRYING)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_FRYING);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_FRYING)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_frying);
+                currentPlayerState.onNext(Player.STATE.DEAD_FRYING);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_ELECTRA)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_ELECTRA);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_ELECTRA)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_electra);
+                currentPlayerState.onNext(Player.STATE.DEAD_ELECTRA);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_MEATGRINDER)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_MEATGRINDER);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_MEATGRINDER)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_meatgrinder);
+                currentPlayerState.onNext(Player.STATE.DEAD_MEATGRINDER);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_KISSEL)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_KISSEL);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_KISSEL)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_kissel);
+                currentPlayerState.onNext(Player.STATE.DEAD_KISSEL);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_SODA)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_SODA);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_SODA)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_soda);
+                currentPlayerState.onNext(Player.STATE.DEAD_SODA);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_ACIDFOG)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_ACIDFOG);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_ACIDFOG)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_acidfog);
+                currentPlayerState.onNext(Player.STATE.DEAD_ACIDFOG);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_BURNINGFLUFF)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_BURNINGFLUFF);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_BURNINGFLUFF)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_burningfluff);
+                currentPlayerState.onNext(Player.STATE.DEAD_BURNINGFLUFF);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_RUSTYHAIR)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_RUSTYHAIR);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_RUSTYHAIR)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_rustyhair);
+                currentPlayerState.onNext(Player.STATE.DEAD_RUSTYHAIR);
+                controls.startInfluences();
+                return;
+            }
+            if(newState == Player.STATE.W_DEAD_SPATIALBUBBLE)
+            {
+                countdownStarted.onNext(System.currentTimeMillis());
+                net.afterday.compas.logging.Logger.d(R.string.message_suicide);
+                currentPlayerState.onNext(Player.STATE.W_DEAD_SPATIALBUBBLE);
+                controls.stopInfluences();
+                return;
+            }
+            if(newState == Player.STATE.DEAD_SPATIALBUBBLE)
+            {
+                net.afterday.compas.logging.Logger.e(R.string.message_dead_anomaly);
+                currentPlayerState.onNext(Player.STATE.DEAD_SPATIALBUBBLE);
                 controls.startInfluences();
                 return;
             }

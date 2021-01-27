@@ -274,6 +274,32 @@ public class ItemInfoFragment extends DialogFragment
             switch (type) {
                 case Item.ANOMALY_MODIFIER:
                     return R.drawable.info_anomaly_negative;
+                case Item.SPRINGBOARD_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.FUNNEL_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.CAROUSEL_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.ELEVATOR_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.FRYING_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.ELECTRA_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.MEATGRINDER_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.KISSEL_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.SODA_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.ACIDFOG_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.BURNINGFLUFF_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.RUSTYHAIR_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
+                case Item.SPATIALBUBBLE_MODIFIER:
+                    return R.drawable.info_anomaly_negative;
                 case Item.BURER_MODIFIER:
                     return R.drawable.info_burer_negative;
                 case Item.CONTROLLER_MODIFIER:
@@ -296,6 +322,32 @@ public class ItemInfoFragment extends DialogFragment
         } else {
             switch (type) {
                 case Item.ANOMALY_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.SPRINGBOARD_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.FUNNEL_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.CAROUSEL_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.ELEVATOR_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.FRYING_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.ELECTRA_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.MEATGRINDER_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.KISSEL_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.SODA_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.ACIDFOG_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.BURNINGFLUFF_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.RUSTYHAIR_MODIFIER:
+                    return R.drawable.info_anomaly;
+                case Item.SPATIALBUBBLE_MODIFIER:
                     return R.drawable.info_anomaly;
                 case Item.BURER_MODIFIER:
                     return R.drawable.info_burer;
@@ -345,6 +397,19 @@ public class ItemInfoFragment extends DialogFragment
 
         switch (type) {
             case Item.ANOMALY_MODIFIER:
+            case Item.SPRINGBOARD_MODIFIER:
+            case Item.FUNNEL_MODIFIER:
+            case Item.CAROUSEL_MODIFIER:
+            case Item.ELEVATOR_MODIFIER:
+            case Item.FRYING_MODIFIER:
+            case Item.ELECTRA_MODIFIER:
+            case Item.MEATGRINDER_MODIFIER:
+            case Item.KISSEL_MODIFIER:
+            case Item.SODA_MODIFIER:
+            case Item.ACIDFOG_MODIFIER:
+            case Item.BURNINGFLUFF_MODIFIER:
+            case Item.RUSTYHAIR_MODIFIER:
+            case Item.SPATIALBUBBLE_MODIFIER:
             case Item.BURER_MODIFIER:
             case Item.CONTROLLER_MODIFIER:
             case Item.MENTAL_MODIFIER:

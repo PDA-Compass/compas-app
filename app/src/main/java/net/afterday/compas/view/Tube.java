@@ -36,6 +36,19 @@ public class Tube extends View {
     // Input stuff
     private double mRadiation;
     private double mAnomaly;
+    private double mSpringboard;
+    private double mFunnel;
+    private double mCarousel;
+    private double mElevator;
+    private double mFrying;
+    private double mElectra;
+    private double mMeatgrinder;
+    private double mKissel;
+    private double mSoda;
+    private double mAcidfog;
+    private double mBurningfluff;
+    private double mRustyhair;
+    private double mSpatialbubble;
     private double mMental;
     private double mMonolith;
     private double mController;
@@ -66,6 +79,19 @@ public class Tube extends View {
     private Bitmap mTubeDeadMisc;
     private Bitmap mTubeDeadRad;
     private Bitmap mTubeAnomaly;
+    private Bitmap mTubeSpringboard;
+    private Bitmap mTubeFunnel;
+    private Bitmap mTubeCarousel;
+    private Bitmap mTubeElevator;
+    private Bitmap mTubeFrying;
+    private Bitmap mTubeElectra;
+    private Bitmap mTubeMeatgrinder;
+    private Bitmap mTubeKissel;
+    private Bitmap mTubeSoda;
+    private Bitmap mTubeAcidfog;
+    private Bitmap mTubeBurningfluff;
+    private Bitmap mTubeRustyhair;
+    private Bitmap mTubeSpatialbubble;
     private Bitmap mTubeBomb;
     private Bitmap mTubeBurer;
     private Bitmap mTubeClear;
@@ -109,6 +135,19 @@ public class Tube extends View {
     public void setParameters(
             double radiation,
             double anomaly,
+            double springboard,
+            double funnel,
+            double carousel,
+            double elevator,
+            double frying,
+            double electra,
+            double meatgrinder,
+            double kissel,
+            double soda,
+            double acidfog,
+            double burningfluff,
+            double rustyhair,
+            double spatialbubble,
             double mental,
             double monolith,
             double controller,
@@ -118,6 +157,19 @@ public class Tube extends View {
     ) {
         mRadiation = radiation;
         mAnomaly = anomaly;
+        mSpringboard = springboard;
+        mFunnel = funnel;
+        mCarousel = carousel;
+        mElevator = elevator;
+        mFrying = frying;
+        mElectra = electra;
+        mMeatgrinder = meatgrinder;
+        mKissel = kissel;
+        mSoda = soda;
+        mAcidfog = acidfog;
+        mBurningfluff = burningfluff;
+        mRustyhair = rustyhair;
+        mSpatialbubble = spatialbubble;
         mMental = mental;
         mMonolith = monolith;
         mController = controller;
@@ -209,6 +261,19 @@ public class Tube extends View {
         mTubeDeadMisc = BitmapFactory.decodeResource(getResources(), R.drawable.tube_dead_misc);
         mTubeDeadRad = BitmapFactory.decodeResource(getResources(), R.drawable.tube_dead_rad);
         mTubeAnomaly = BitmapFactory.decodeResource(getResources(), R.drawable.tube_anomaly);
+        mTubeSpringboard = BitmapFactory.decodeResource(getResources(), R.drawable.tube_springboard);
+        mTubeFunnel = BitmapFactory.decodeResource(getResources(), R.drawable.tube_funnel);
+        mTubeCarousel = BitmapFactory.decodeResource(getResources(), R.drawable.tube_carousel);
+        mTubeElevator = BitmapFactory.decodeResource(getResources(), R.drawable.tube_elevator);
+        mTubeFrying = BitmapFactory.decodeResource(getResources(), R.drawable.tube_frying);
+        mTubeElectra = BitmapFactory.decodeResource(getResources(), R.drawable.tube_electra);
+        mTubeMeatgrinder = BitmapFactory.decodeResource(getResources(), R.drawable.tube_meatgrinder);
+        mTubeKissel = BitmapFactory.decodeResource(getResources(), R.drawable.tube_kissel);
+        mTubeSoda = BitmapFactory.decodeResource(getResources(), R.drawable.tube_soda);
+        mTubeAcidfog = BitmapFactory.decodeResource(getResources(), R.drawable.tube_acidfog);
+        mTubeBurningfluff = BitmapFactory.decodeResource(getResources(), R.drawable.tube_burningfluff);
+        mTubeRustyhair = BitmapFactory.decodeResource(getResources(), R.drawable.tube_rustyhair);
+        mTubeSpatialbubble = BitmapFactory.decodeResource(getResources(), R.drawable.tube_spatialbubble);
         //mTubeBomb = BitmapFactory.decodeResource(getResources(), R.drawable.tube_bomb);
         mTubeBurer = BitmapFactory.decodeResource(getResources(), R.drawable.tube_burer);
         mTubeClear = BitmapFactory.decodeResource(getResources(), R.drawable.tube_clear);
@@ -236,6 +301,32 @@ public class Tube extends View {
         bitmapsByState = new HashMap<>();
         bitmapsByState.put(STATE.W_CONTROLLED, mTubeTransmutation);
         bitmapsByState.put(STATE.W_DEAD_ANOMALY, mTubeDying);
+        bitmapsByState.put(STATE.W_DEAD_SPRINGBOARD, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_SPRINGBOARD, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_FUNNEL, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_FUNNEL, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_CAROUSEL, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_CAROUSEL, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_ELEVATOR, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_ELEVATOR, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_FRYING, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_FRYING, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_ELECTRA, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_ELECTRA, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_MEATGRINDER, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_MEATGRINDER, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_KISSEL, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_KISSEL, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_SODA, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_SODA, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_ACIDFOG, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_ACIDFOG, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_BURNINGFLUFF, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_BURNINGFLUFF, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_RUSTYHAIR, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_RUSTYHAIR, mTubeDeadAno);
+        bitmapsByState.put(STATE.W_DEAD_SPATIALBUBBLE, mTubeDying);
+        bitmapsByState.put(STATE.DEAD_SPATIALBUBBLE, mTubeDeadAno);
         bitmapsByState.put(STATE.W_DEAD_BURER, mTubeDying);
         bitmapsByState.put(STATE.W_MENTALLED, mTubeTransmutation);
         bitmapsByState.put(STATE.W_DEAD_RADIATION, mTubeDying);
@@ -306,6 +397,19 @@ public class Tube extends View {
                 mRadiation < 0.01d
                         && mAnomaly < 0.01d
                         && mMental < 0.01d
+                        && mSpringboard < 0.01d
+                        && mFunnel < 0.01d
+                        && mCarousel < 0.01d
+                        && mElevator < 0.01d
+                        && mFrying < 0.01d
+                        && mElectra < 0.01d
+                        && mMeatgrinder < 0.01d
+                        && mKissel < 0.01d
+                        && mSoda < 0.01d
+                        && mAcidfog < 0.01d
+                        && mBurningfluff < 0.01d
+                        && mRustyhair < 0.01d
+                        && mSpatialbubble < 0.01d
                         && mMonolith < 0.01d
                         && mController < 0.01d
                         && mBurer < 0.01d
@@ -329,15 +433,54 @@ public class Tube extends View {
             case 1: // Anomaly
                 //canvas.drawBitmap(mTubeAnomaly, mMatrix, null);
                 return level >= 2 ? mTubeAnomaly : mTubeUnknown;
-            case 2: // Mental
+            case 2: // Springboard
+                //canvas.drawBitmap(mTubeSpringboard, mMatrix, null);
+                return level >= 2 ? mTubeSpringboard : mTubeUnknown;
+            case 3: // Funnel
+                //canvas.drawBitmap(mFunnel, mMatrix, null);
+                return level >= 2 ? mTubeFunnel : mTubeUnknown;
+            case 4: // Carousel
+                //canvas.drawBitmap(mTubeCarousel, mMatrix, null);
+                return level >= 2 ? mTubeCarousel : mTubeUnknown;
+            case 5: // Elevator
+                //canvas.drawBitmap(mTubeElevator, mMatrix, null);
+                return level >= 2 ? mTubeElevator : mTubeUnknown;
+            case 6: // Frying
+                //canvas.drawBitmap(mTubeFrying, mMatrix, null);
+                return level >= 2 ? mTubeFrying : mTubeUnknown;
+            case 7: // Electra
+                //canvas.drawBitmap(mTubeElectra, mMatrix, null);
+                return level >= 2 ? mTubeElectra : mTubeUnknown;
+            case 8: // Meatgrinder
+                //canvas.drawBitmap(mTubeMeatgrinder, mMatrix, null);
+                return level >= 2 ? mTubeMeatgrinder : mTubeUnknown;
+            case 9: // Kissel
+                //canvas.drawBitmap(mTubeKissel, mMatrix, null);
+                return level >= 2 ? mTubeKissel : mTubeUnknown;
+            case 10: // Soda
+                //canvas.drawBitmap(mTubeSoda, mMatrix, null);
+                return level >= 2 ? mTubeSoda : mTubeUnknown;
+            case 11: // Acidfog
+                //canvas.drawBitmap(mTubeAcidfog, mMatrix, null);
+                return level >= 2 ? mTubeAcidfog : mTubeUnknown;
+            case 12: // Burningfluff
+                //canvas.drawBitmap(mTubeBurningfluff, mMatrix, null);
+                return level >= 2 ? mTubeBurningfluff : mTubeUnknown;
+            case 13: // Rustyhair
+                //canvas.drawBitmap(mTubeRustyhair, mMatrix, null);
+                return level >= 2 ? mTubeRustyhair : mTubeUnknown;
+            case 14: // Spatialbubble
+                //canvas.drawBitmap(mTubeSpatialbubble, mMatrix, null);
+                return level >= 2 ? mTubeSpatialbubble : mTubeUnknown;
+            case 15: // Mental
                 return level >= 3 ? mTubeMental : mTubeUnknown;
-            case 3: // Controller
+            case 16: // Controller
                 //canvas.drawBitmap(mTubeController, mMatrix, null);
                 return level >= 4 ? mTubeController : mTubeUnknown;
-            case 4: // Burer
+            case 17: // Burer
                 //canvas.drawBitmap(mTubeBurer, mMatrix, null);
                 return level >= 4 ? mTubeBurer : mTubeUnknown;
-            case 5: // Monolith
+            case 18: // Monolith
                 return mTubeMonolith;
         }
         return mTubeOff;
@@ -354,6 +497,58 @@ public class Tube extends View {
         if (mAnomaly > max) {
             inf = 1;
             max = mAnomaly;
+        }
+        if (mSpringboard > max) {
+            inf = 1;
+            max = mSpringboard;
+        }
+        if (mFunnel > max) {
+            inf = 1;
+            max = mFunnel;
+        }
+        if (mCarousel > max) {
+            inf = 1;
+            max = mCarousel;
+        }
+        if (mElevator > max) {
+            inf = 1;
+            max = mElevator;
+        }
+        if (mFrying > max) {
+            inf = 1;
+            max = mFrying;
+        }
+        if (mElectra > max) {
+            inf = 1;
+            max = mElectra;
+        }
+        if (mMeatgrinder > max) {
+            inf = 1;
+            max = mMeatgrinder;
+        }
+        if (mKissel > max) {
+            inf = 1;
+            max = mKissel;
+        }
+        if (mSoda > max) {
+            inf = 1;
+            max = mSoda;
+        }
+        if (mAcidfog > max) {
+            inf = 1;
+            max = mAcidfog;
+        }
+        if (mBurningfluff > max) {
+            inf = 1;
+            max = mBurningfluff;
+        }
+        if (mRustyhair > max) {
+            inf = 1;
+            max = mRustyhair;
+        }
+        if (mSpatialbubble > max) {
+            inf = 1;
+            max = mSpatialbubble;
         }
         if (mMental > max) {
             inf = 2;

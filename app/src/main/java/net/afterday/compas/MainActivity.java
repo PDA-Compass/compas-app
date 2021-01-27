@@ -1,6 +1,5 @@
 package net.afterday.compas;
 
-import android.Manifest;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -9,12 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -272,7 +269,15 @@ public class MainActivity extends AppCompatActivity {
         PlayerProps pProps = frame.getPlayerProps();
         if(pProps.getState().getCode() == Player.ALIVE)
         {
-            if(pProps.emissionHit() || pProps.anomalyHit() || pProps.burerHit() || pProps.controllerHit() || pProps.mentalHit())
+            if(pProps.emissionHit() || pProps.anomalyHit() ||
+                    pProps.springboardHit() || pProps.funnelHit() ||
+                    pProps.carouselHit() || pProps.elevatorHit() ||
+                    pProps.fryingHit() || pProps.electraHit() ||
+                    pProps.meatgrinderHit() || pProps.kisselHit() ||
+                    pProps.sodaHit() || pProps.acidfogHit() ||
+                    pProps.burningfluffHit() || pProps.rustyhairHit() ||
+                    pProps.spatialbubbleHit() || pProps.burerHit() ||
+                    pProps.controllerHit() || pProps.mentalHit())
             {
                 showBlood();
             }
@@ -280,6 +285,19 @@ public class MainActivity extends AppCompatActivity {
         if(pProps.getState().getCode() == Player.ALIVE && pProps.getHealthImpact() <= 0)
         {
             mGeiger.setAnomaly((float) pProps.getAnomalyImpact());
+            mGeiger.setSpringboard((float) pProps.getSpringboardImpact());
+            mGeiger.setFunnel((float) pProps.getFunnelImpact());
+            mGeiger.setCarousel((float) pProps.getCarouselImpact());
+            mGeiger.setElevator((float) pProps.getElevatorImpact());
+            mGeiger.setFrying((float) pProps.getFryingImpact());
+            mGeiger.setElectra((float) pProps.getElectraImpact());
+            mGeiger.setMeatgrinder((float) pProps.getMeatgrinderImpact());
+            mGeiger.setKissel((float) pProps.getKisselImpact());
+            mGeiger.setSoda((float) pProps.getSodaImpact());
+            mGeiger.setAcidfog((float) pProps.getAcidfogImpact());
+            mGeiger.setBurningfluff((float) pProps.getBurningfluffImpact());
+            mGeiger.setRustyhair((float) pProps.getRustyhairImpact());
+            mGeiger.setSpatialbubble((float) pProps.getSpatialbubbleImpact());
             mGeiger.setMental((float) pProps.getMentalImpact());
             mGeiger.setMonolith((float) pProps.getMonolithImpact());
             ////Log.d(TAG, "UPDATE VIEWS: Impacts - radiation: " + impacts[Influence.RADIATION]);
@@ -287,6 +305,19 @@ public class MainActivity extends AppCompatActivity {
 
         }else {
             mGeiger.setAnomaly(0f);
+            mGeiger.setSpringboard(0f);
+            mGeiger.setFunnel(0f);
+            mGeiger.setCarousel(0f);
+            mGeiger.setElevator(0f);
+            mGeiger.setFrying(0f);
+            mGeiger.setElectra(0f);
+            mGeiger.setMeatgrinder(0f);
+            mGeiger.setKissel(0f);
+            mGeiger.setSoda(0f);
+            mGeiger.setAcidfog(0f);
+            mGeiger.setBurningfluff(0f);
+            mGeiger.setRustyhair(0f);
+            mGeiger.setSpatialbubble(0f);
             mGeiger.setMental(0f);
             mGeiger.setMonolith(0f);
             mGeiger.toSvh(0f, 750);
@@ -294,6 +325,19 @@ public class MainActivity extends AppCompatActivity {
         mTube.setParameters(
                 pProps.getRadiationImpact(),
                 pProps.getAnomalyImpact(),
+                pProps.getSpringboardImpact(),
+                pProps.getFunnelImpact(),
+                pProps.getCarouselImpact(),
+                pProps.getElevatorImpact(),
+                pProps.getFryingImpact(),
+                pProps.getElectraImpact(),
+                pProps.getMeatgrinderImpact(),
+                pProps.getKisselImpact(),
+                pProps.getSodaImpact(),
+                pProps.getAcidfogImpact(),
+                pProps.getBurningfluffImpact(),
+                pProps.getRustyhairImpact(),
+                pProps.getSpatialbubbleImpact(),
                 pProps.getMentalImpact(),
                 pProps.getMonolithImpact(),
                 pProps.getControllerImpact(),
@@ -584,12 +628,6 @@ public class MainActivity extends AppCompatActivity {
     private void openScanner()
     {
 //        android.util.//Log.e(TAG, "OPEN SCANNER");
-        if (ContextCompat.checkSelfPermission(this.getBaseContext(), Manifest.permission.CAMERA) !=
-                PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA},
-                    50); }
-
-
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("scanner");
         if (prev != null) {

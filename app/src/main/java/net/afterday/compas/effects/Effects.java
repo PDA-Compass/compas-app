@@ -40,7 +40,33 @@ public class Effects
     private Sound sound;
     private ValueAnimator soundAnimator;
     private Timer anomalyTimer = new Timer(true);
+    private Timer springboardTimer = new Timer(true);
+    private Timer funnelTimer = new Timer(true);
+    private Timer carouselTimer = new Timer(true);
+    private Timer elevatorTimer = new Timer(true);
+    private Timer fryingTimer = new Timer(true);
+    private Timer electraTimer = new Timer(true);
+    private Timer meatgrinderTimer = new Timer(true);
+    private Timer kisselTimer = new Timer(true);
+    private Timer sodaTimer = new Timer(true);
+    private Timer acidfogTimer = new Timer(true);
+    private Timer burningfluffTimer = new Timer(true);
+    private Timer rustyhairTimer = new Timer(true);
+    private Timer spatialbubbleTimer = new Timer(true);
     private Disposable anomalySubsciption;
+    private Disposable springboardSubsciption;
+    private Disposable funnelSubsciption;
+    private Disposable carouselSubsciption;
+    private Disposable elevatorSubsciption;
+    private Disposable fryingSubsciption;
+    private Disposable electraSubsciption;
+    private Disposable meatgrinderSubsciption;
+    private Disposable kisselSubsciption;
+    private Disposable sodaSubsciption;
+    private Disposable acidfogSubsciption;
+    private Disposable burningfluffSubsciption;
+    private Disposable rustyhairSubsciption;
+    private Disposable spatialbubbleSubsciption;
     private Disposable artefactSubsciption;
     private TimerTask playAnomalyClick = new TimerTask() {
         @Override
@@ -48,8 +74,86 @@ public class Effects
             sound.playAnomalyClick();
         }
     };
+    private TimerTask playSpringboardClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playSpringboardClick();
+        }
+    };
+    private TimerTask playFunnelClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playFunnelClick();
+        }
+    };
+    private TimerTask playCarouselClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playCarouselClick();
+        }
+    };
+    private TimerTask playElevatorClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playElevatorClick();
+        }
+    };
+    private TimerTask playFryingClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playFryingClick();
+        }
+    };
+    private TimerTask playElectraClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playElectraClick();
+        }
+    };
+    private TimerTask playMeatgrinderClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playMeatgrinderClick();
+        }
+    };
+    private TimerTask playKisselClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playKisselClick();
+        }
+    };
+    private TimerTask playSodaClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playSodaClick();
+        }
+    };
+    private TimerTask playAcidfogClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playAcidfogClick();
+        }
+    };
+    private TimerTask playBurningfluffClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playBurningfluffClick();
+        }
+    };
+    private TimerTask playRustyhairClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playRustyhairClick();
+        }
+    };
+    private TimerTask playSpatialbubbleClick = new TimerTask() {
+        @Override
+        public void run() {
+            sound.playSpatialbubbleClick();
+        }
+    };
 
-   // protected final Handler handler;
+    // protected final Handler handler;
 
     protected Runnable radPlayer;
     private Scheduler scheduler;
@@ -162,6 +266,136 @@ public class Effects
                     sound.playDeath();
                     vibro.vibrateDeath();
                     break;
+                case W_DEAD_SPRINGBOARD:
+                    sound.playSpringboardDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_SPRINGBOARD:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_FUNNEL:
+                    sound.playFunnelDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_FUNNEL:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_CAROUSEL:
+                    sound.playCarouselDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_CAROUSEL:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_ELEVATOR:
+                    sound.playElevatorDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_ELEVATOR:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_FRYING:
+                    sound.playFryingDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_FRYING:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_ELECTRA:
+                    sound.playElectraDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_ELECTRA:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_MEATGRINDER:
+                    sound.playMeatgrinderDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_MEATGRINDER:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_KISSEL:
+                    sound.playKisselDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_KISSEL:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_SODA:
+                    sound.playSodaDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_SODA:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_ACIDFOG:
+                    sound.playAcidfogDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_ACIDFOG:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_BURNINGFLUFF:
+                    sound.playBurningfluffDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_BURNINGFLUFF:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_RUSTYHAIR:
+                    sound.playRustyhairDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_RUSTYHAIR:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
+                case W_DEAD_SPATIALBUBBLE:
+                    sound.playSpatialbubbleDeath();
+                    sound.playWTimer();
+                    vibro.vibrateW();
+                    break;
+                case DEAD_SPATIALBUBBLE:
+                    sound.playBulbBreak();
+                    sound.playDeath();
+                    vibro.vibrateDeath();
+                    break;
                 case W_CONTROLLED:
                     sound.playController();
                     sound.playTransmutating();
@@ -261,6 +495,19 @@ public class Effects
         playRad(playerProps);
         playController(playerProps);
         playAnomaly(playerProps);
+        playSpringboard(playerProps);
+        playFunnel(playerProps);
+        playCarousel(playerProps);
+        playElevator(playerProps);
+        playFrying(playerProps);
+        playElectra(playerProps);
+        playMeatgrinder(playerProps);
+        playKissel(playerProps);
+        playSoda(playerProps);
+        playAcidfog(playerProps);
+        playBurningfluff(playerProps);
+        playRustyhair(playerProps);
+        playSpatialbubble(playerProps);
         playArtefact(playerProps);
         playMental(playerProps);
         playBurer(playerProps);
@@ -272,6 +519,45 @@ public class Effects
 //                break;
 //            case Influence.ANOMALY:
 //                playAnomaly(playerProps);
+//                break;
+//           case Influence.SPRINGBOARD:
+//                playSpringboard(playerProps);
+//                break;
+//           case Influence.FUNNEL:
+//                playFunnel(playerProps);
+//                break;
+//           case Influence.CAROUSEL:
+//                playCarousel(playerProps);
+//                break;
+//           case Influence.ELEVATOR:
+//                playElevator(playerProps);
+//                break;
+//           case Influence.FRYING:
+//                playFrying(playerProps);
+//                break;
+//           case Influence.ELECTRA:
+//                playElectra(playerProps);
+//                break;
+//           case Influence.MEATGRINDER:
+//                playMeatgrinder(playerProps);
+//                break;
+//           case Influence.KISSEL:
+//                playKissel(playerProps);
+//                break;
+//           case Influence.SODA:
+//                playSoda(playerProps);
+//                break;
+//           case Influence.ACIDFOG:
+//                playAcidfog(playerProps);
+//                break;
+//           case Influence.BURNINGFLUFF:
+//                playBurningfluff(playerProps);
+//                break;
+//           case Influence.RUSTYHAIR:
+//                playRustyhair(playerProps);
+//                break;
+//           case Influence.SPATIALBUBBLE:
+//                playSpatialbubble(playerProps);
 //                break;
 //            case Influence.MENTAL:
 //                playMental(playerProps);
@@ -293,6 +579,84 @@ public class Effects
             hasHit = true;
             sound.playAnomalyDeath();
             net.afterday.compas.logging.Logger.e(R.string.message_anomaly_hit);
+        }
+        if(playerProps.springboardHit())
+        {
+            hasHit = true;
+            sound.playSpringboardDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_springboard_hit);
+        }
+        if(playerProps.funnelHit())
+        {
+            hasHit = true;
+            sound.playFunnelDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_funnel_hit);
+        }
+        if(playerProps.carouselHit())
+        {
+            hasHit = true;
+            sound.playCarouselDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_carousel_hit);
+        }
+        if(playerProps.elevatorHit())
+        {
+            hasHit = true;
+            sound.playElevatorDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_elevator_hit);
+        }
+        if(playerProps.fryingHit())
+        {
+            hasHit = true;
+            sound.playFryingDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_frying_hit);
+        }
+        if(playerProps.electraHit())
+        {
+            hasHit = true;
+            sound.playElectraDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_electra_hit);
+        }
+        if(playerProps.meatgrinderHit())
+        {
+            hasHit = true;
+            sound.playMeatgrinderDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_meatgrinder_hit);
+        }
+        if(playerProps.kisselHit())
+        {
+            hasHit = true;
+            sound.playKisselDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_kissel_hit);
+        }
+        if(playerProps.sodaHit())
+        {
+            hasHit = true;
+            sound.playSodaDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_soda_hit);
+        }
+        if(playerProps.acidfogHit())
+        {
+            hasHit = true;
+            sound.playAcidfogDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_acidfog_hit);
+        }
+        if(playerProps.burningfluffHit())
+        {
+            hasHit = true;
+            sound.playBurningfluffDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_burningfluff_hit);
+        }
+        if(playerProps.rustyhairHit())
+        {
+            hasHit = true;
+            sound.playRustyhairDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_rustyhair_hit);
+        }
+        if(playerProps.spatialbubbleHit())
+        {
+            hasHit = true;
+            sound.playSpatialbubbleDeath();
+            net.afterday.compas.logging.Logger.e(R.string.message_spatialbubble_hit);
         }
         if(playerProps.burerHit())
         {
@@ -421,6 +785,306 @@ public class Effects
             int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
             anomalySubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playAnomalyClick());
             //anomalyTimer.scheduleAtFixedRate(playAnomalyClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+
+    private void playSpringboard(PlayerProps playerProps)
+    {
+        if(playerProps.getSpringboardImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getSpringboardImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(springboardSubsciption != null && !springboardSubsciption.isDisposed())
+            {
+                springboardSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            springboardSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playSpringboardClick());
+            //springboardTimer.scheduleAtFixedRate(playSpringboardClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playFunnel(PlayerProps playerProps)
+    {
+        if(playerProps.getFunnelImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getFunnelImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(funnelSubsciption != null && !funnelSubsciption.isDisposed())
+            {
+                funnelSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            funnelSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playFunnelClick());
+            //funnelTimer.scheduleAtFixedRate(playFunnelClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playCarousel(PlayerProps playerProps)
+    {
+        if(playerProps.getCarouselImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getCarouselImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(carouselSubsciption != null && !carouselSubsciption.isDisposed())
+            {
+                carouselSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            carouselSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playCarouselClick());
+            //carouselTimer.scheduleAtFixedRate(playCarouselClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playElevator(PlayerProps playerProps)
+    {
+        if(playerProps.getElevatorImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getElevatorImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(elevatorSubsciption != null && !elevatorSubsciption.isDisposed())
+            {
+                elevatorSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            elevatorSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playElevatorClick());
+            //elevatorTimer.scheduleAtFixedRate(playElevatorClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playFrying(PlayerProps playerProps)
+    {
+        if(playerProps.getFryingImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getFryingImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(fryingSubsciption != null && !fryingSubsciption.isDisposed())
+            {
+                fryingSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            fryingSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playFryingClick());
+            //fryingTimer.scheduleAtFixedRate(playFryingClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playElectra(PlayerProps playerProps)
+    {
+        if(playerProps.getElectraImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getElectraImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(electraSubsciption != null && !electraSubsciption.isDisposed())
+            {
+                electraSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            electraSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playElectraClick());
+            //electraTimer.scheduleAtFixedRate(playElectraClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playMeatgrinder(PlayerProps playerProps)
+    {
+        if(playerProps.getMeatgrinderImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getMeatgrinderImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(meatgrinderSubsciption != null && !meatgrinderSubsciption.isDisposed())
+            {
+                meatgrinderSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            meatgrinderSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playMeatgrinderClick());
+            //meatgrinderTimer.scheduleAtFixedRate(playMeatgrinderClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playKissel(PlayerProps playerProps)
+    {
+        if(playerProps.getKisselImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getKisselImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(kisselSubsciption != null && !kisselSubsciption.isDisposed())
+            {
+                kisselSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            kisselSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playKisselClick());
+            //kisselTimer.scheduleAtFixedRate(playKisselClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playSoda(PlayerProps playerProps)
+    {
+        if(playerProps.getSodaImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getSodaImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(sodaSubsciption != null && !sodaSubsciption.isDisposed())
+            {
+                sodaSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            sodaSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playSodaClick());
+            //sodaTimer.scheduleAtFixedRate(playSodaClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playAcidfog(PlayerProps playerProps)
+    {
+        if(playerProps.getAcidfogImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getAcidfogImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(acidfogSubsciption != null && !acidfogSubsciption.isDisposed())
+            {
+                acidfogSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            acidfogSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playAcidfogClick());
+            //acidfogTimer.scheduleAtFixedRate(playAcidfogClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playBurningfluff(PlayerProps playerProps)
+    {
+        if(playerProps.getBurningfluffImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getBurningfluffImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(burningfluffSubsciption != null && !burningfluffSubsciption.isDisposed())
+            {
+                burningfluffSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            burningfluffSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playBurningfluffClick());
+            //burningfluffTimer.scheduleAtFixedRate(playBurningfluffClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playRustyhair(PlayerProps playerProps)
+    {
+        if(playerProps.getRustyhairImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getRustyhairImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(rustyhairSubsciption != null && !rustyhairSubsciption.isDisposed())
+            {
+                rustyhairSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            rustyhairSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playRustyhairClick());
+            //rustyhairTimer.scheduleAtFixedRate(playRustyhairClick, to, to);
+        }else
+        {
+            playUnknown(playerProps);
+        }
+    }
+    private void playSpatialbubble(PlayerProps playerProps)
+    {
+        if(playerProps.getSpatialbubbleImpact() <= 0)
+        {
+            return;
+        }
+
+        int level = playerProps.getLevel();
+        double strength = playerProps.getSpatialbubbleImpact();
+        if(level >= 2 && playerProps.getState().getCode() == Player.ALIVE)
+        {
+            if(spatialbubbleSubsciption != null && !spatialbubbleSubsciption.isDisposed())
+            {
+                spatialbubbleSubsciption.dispose();
+            }
+            int to = Math.max(100, Engine.TICK_MILLISECONDS / (int) Math.ceil(strength));
+            spatialbubbleSubsciption = Observable.interval(to, TimeUnit.MILLISECONDS).take(Engine.TICK_MILLISECONDS, TimeUnit.MILLISECONDS).subscribe((t) -> sound.playSpatialbubbleClick());
+            //spatialbubbleTimer.scheduleAtFixedRate(playSpatialbubbleClick, to, to);
         }else
         {
             playUnknown(playerProps);

@@ -4,47 +4,57 @@
 
     <!-- Drugs -->
     <string name="item_bandage">Bandage</string>
-    <string name="desc_bandage">Instant health restore 10%</string>
+    <string name="desc_bandage">Instant health restore 10%.</string>
     <string name="item_medkit">Medkit</string>
-    <string name="desc_medkit">Instant health restore 20%</string>
+    <string name="desc_medkit">Instant health restore 20%.</string>
     <string name="item_army_medkit">Army Medkit</string>
-    <string name="desc_army_medkit">Instant health restore 20%</string>
+    <string name="desc_army_medkit">Instant health restore 20%.</string>
     <string name="item_vinca">Vinca</string>
-    <string name="desc_vinca">Instant health restore 40%, removes 1 Sv of obtained radiation</string>
+    <string name="desc_vinca">Instant health restore 40%, removes 1 Sv of obtained radiation.
+    </string>
     <string name="item_scientific_medkit">Scientific Medkit</string>
-    <string name="desc_scientific_medkit">Instant health restore 50%, removes 3 Sv of obtained radiation</string>
+    <string name="desc_scientific_medkit">Instant health restore 50%,
+        removes 3 Sv of obtained radiation.</string>
     <string name="item_vodka">Vodka Cossacks</string>
-    <string name="desc_vodka">Removes 1 Sv of obtained radiation, drops 10% of health</string>
+    <string name="desc_vodka">Removes 1 Sv of obtained radiation, drops 10% of health.</string>
     <string name="item_antirad">Anti-rad</string>
-    <string name="desc_antirad">Removes 7 Sv of obtained radiation, drops 20% of health</string>
+    <string name="desc_antirad">Removes 7 Sv of obtained radiation, drops 20% of health.</string>
     <string name="item_anabiotic">Anabiotic</string>
-    <string name="desc_anabiotic">Eleminates emission effect, drops 30% of health</string>
+    <string name="desc_anabiotic">Eleminates emission effect, drops 30% of health.</string>
 
     <!-- Boosters -->
     <string name="item_b190">B190 Radioprotectant</string>
-    <string name="desc_b190">Eliminates radiation effect for 1 minute</string>
+    <string name="desc_b190">Eliminates radiation effect for 1 minute.</string>
     <string name="item_psyblock">Psy-block</string>
-    <string name="desc_psyblock">Eliminates mental effect for 1 minute</string>
+    <string name="desc_psyblock">Eliminates mental effect for 1 minute.</string>
     <string name="item_ip2">IP2 antidote</string>
-    <string name="desc_ip2">Eliminates anomaly effect for 1 minute</string>
+    <string name="desc_ip2">Eliminates anomaly effect for 1 minute.</string>
     <string name="item_hercules">Hercules</string>
-    <string name="desc_hercules">Health restores 50% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="desc_hercules">Health restores 50% faster in clear locations,
+        if less than 1 Sv is obtained. Lasts for 30 minutes.</string>
     <string name="item_energy_drink">Energy Drink Stalker</string>
-    <string name="desc_energy_drink">Health restores 100% faster in clear locations, if less than 1 Sv is obtained. Lasts for 30 minutes</string>
+    <string name="desc_energy_drink">Health restores 100% faster in clear locations,
+        if less than 1 Sv is obtained. Lasts for 30 minutes.</string>
     <string name="item_green_svoboda">Green Svoboda serum</string>
-    <string name="desc_green_svoboda">Radiation obtains 90% slower for 2 hours</string>
+    <string name="desc_green_svoboda">Radiation obtains 90% slower for 2 hours.</string>
     <string name="item_yellow_svoboda">Yellow Svoboda serum</string>
-    <string name="desc_yellow_svoboda">Mental strength 90% lower for 2 hours</string>
+    <string name="desc_yellow_svoboda">Mental strength 90% lower for 2 hours.</string>
 
     <!-- Upgrades -->
     <string name="item_binocl">Binoculars</string>
     <string name="desc_binocl">Unlocked: binoculars of any type.</string>
-    <string name="item_optics">Optics</string>
+    <string name="item_modulemonsterboy">Module for killing monsters (Monsterboy)</string>
+    <string name="desc_modulemonsterboy">Unlocked:
+        a device that gives any shotgun the ability to destroy any mutant.
+        It remains to find a technician, a lot of money and fasten it to the shotgun.
+    </string>
+    <string name="item_optics">Optical sight</string>
     <string name="desc_optics">Unlocked: any optics for any weapon.</string>
     <string name="item_collimator">Collimator</string>
     <string name="desc_collimator">Unlocked: any collimator for any weapon.</string>
     <string name="item_night_vision">Night Vision</string>
-    <string name="desc_night_vision">Unlocked: any night vision device or optics for any weapon.</string>
+    <string name="desc_night_vision">Unlocked: any night vision device or optics for any weapon.
+    </string>
     <string name="item_walkie_talkie">Walkie Talkie</string>
     <string name="desc_walkie_talkie">Unlocked: any portable radio station.</string>
     <string name="item_grenade_launcher">Grenade launcher</string>
@@ -52,9 +62,11 @@
 
     <!-- Devices -->
     <string name="item_shlem1">Psionic helmet Mark 1</string>
-    <string name="desc_shlem1">Mental strength 99% lower, Controller is 30% weaker for 30 minutes.</string>
+    <string name="desc_shlem1">Mental strength 99% lower, Controller is 30% weaker for 30 minutes.
+    </string>
     <string name="item_shlem2">Psionic helmet Mark 2</string>
-    <string name="desc_shlem2">Mental strength 99% lower, Call of monolith strength 99% weaker, Controller is 60% weaker for 1 hour.</string>
+    <string name="desc_shlem2">Mental strength 99% lower, Call of monolith strength 99% weaker,
+        Controller is 60% weaker for 1 hour.</string>
     <string name="item_respirator">Respirator</string>
     <string name="desc_respirator">Radiation obtains 40% slower for 30 minutes.</string>
     <string name="item_gasmask">Gasmask</string>
@@ -70,19 +82,23 @@
     <string name="item_shotgun">Shotgun</string>
     <string name="desc_shotgun">Unlocked: any shotgun, only buckshot ammo can be used with.</string>
     <string name="item_submachinegun">Submachinegun</string>
-    <string name="desc_submachinegun">Unlocked: any submachinegun, only pistol ammo can be used with.</string>
+    <string name="desc_submachinegun">Unlocked: any submachinegun,
+        only pistol ammo can be used with.</string>
     <string name="item_ak">Assault AK type gun</string>
     <string name="desc_ak">Unlocked: any AK assault gun, only AK ammo can be used with.</string>
     <string name="item_m4">Assault NATO type gun</string>
     <string name="desc_m4">Unlocked: any NATO assault gun, only NATO ammo can be used with.</string>
     <string name="item_val">Silenced gun</string>
-    <string name="desc_val">Unlocked: any silenced gun, only silenced ammo can be used with.</string>
+    <string name="desc_val">Unlocked: any silenced gun, only silenced ammo can be used with.
+    </string>
     <string name="item_sniper">Sniper gun</string>
     <string name="desc_sniper">Unlocked: any sniper gun, only sniper ammo can be used with.</string>
     <string name="item_machinegun">Machinegun</string>
-    <string name="desc_machinegun">Unlocked: any machinegun, only assault ammo can be used with. NOT APPLICABLE FOR LONERS.</string>
+    <string name="desc_machinegun">Unlocked: any machinegun, only assault ammo can be used with.
+        NOT APPLICABLE FOR LONERS.</string>
     <string name="item_gauss_gun">Gauss gun</string>
-    <string name="desc_gauss_gun">Unlocked: any gauss gun, only gauss ammo can be used with.</string>
+    <string name="desc_gauss_gun">Unlocked: any gauss gun, only gauss ammo can be used with.
+    </string>
 
     <!-- Food -->
     <string name="item_dead_rat">Dead rat</string>
@@ -115,11 +131,11 @@
     <string name="desc_762">For sniper rifles of any type.</string>
     <string name="item_atom">Bullets for gauss rifles</string>
     <string name="desc_atom">For gauss rifles of any type. Can be radioactive.</string>
-    <string name="item_bigbk">Big box with ammo</string>
+    <string name="item_bigbk">Big box with ammo.</string>
     <string name="desc_bigbk">Many things inside. Can be very useful.</string>
-    <string name="item_f1">F1 grenade</string>
+    <string name="item_f1">F1 grenade.</string>
     <string name="desc_f1">Good against other stalkers.</string>
-    <string name="item_limonka">HE grenade</string>
+    <string name="item_limonka">HE grenade.</string>
     <string name="desc_limonka">Good in any unclear situations.</string>
     <string name="item_incend">Incendiary grenade</string>
     <string name="desc_incend">Good for burn some enemies.</string>
@@ -146,83 +162,237 @@
 
     <!-- Suits -->
     <string name="item_leather_jacket">Leather jacket</string>
-    <string name="desc_leather_jacket">Radiation obtains 10% slower for 1 hour of any damage</string>
+    <string name="desc_leather_jacket">Radiation obtains 10% slower for 1 hour of any damage.
+    </string>
     <string name="item_stalker_suit">Stalker suit</string>
-    <string name="desc_stalker_suit">Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less for 2 hours of any damage</string>
+    <string name="desc_stalker_suit">Radiation obtains 30% slower, anomaly effect 20% less,
+        mental effect 10% less for 2 hours of any damage.</string>
     <string name="item_seva_suit">SEVA suit</string>
-    <string name="desc_seva_suit">Radiation obtains 50% slower, anomaly effect 40% less, mental effect 30% less for 2 hours of any damage</string>
+    <string name="desc_seva_suit">Radiation obtains 50% slower, anomaly effect 40% less,
+        mental effect 30% less for 2 hours of any damage.</string>
     <string name="item_exoskeleton">Exoskeleton</string>
-    <string name="desc_exoskeleton">Health restores 100% faster in clear locations, when less than 1 Sv of radiation is obtained, radiation obtains 30% slower, anomaly effect 40% less, mental effect 20% less for 2 hours of any damage</string>
+    <string name="desc_exoskeleton">Health restores 100% faster in clear locations,
+        when less than 1 Sv of radiation is obtained, radiation obtains 30% slower,
+        anomaly effect 40% less, mental effect 20% less for 2 hours of any damage.</string>
     <string name="item_ssp99">SSP-99 Ecologist</string>
-    <string name="desc_ssp99">Radiation obtains 80% slower, anomaly effect 60% less, mental effect 40% less for 1 hour of any damage</string>
+    <string name="desc_ssp99">Radiation obtains 80% slower, anomaly effect 60% less,
+        mental effect 40% less for 1 hour of any damage.</string>
 
     <!-- Fraction suits -->
     <string name="item_merc_suit">Merc suit</string>
-    <string name="desc_merc_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_merc_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less.</string>
     <string name="item_monolith_suit">Monolith suit</string>
-    <string name="desc_monolith_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, resist to mental 99%</string>
+    <string name="desc_monolith_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, resist to mental 99%.</string>
     <string name="item_bandit_suit">Bandit suit</string>
-    <string name="desc_bandit_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_bandit_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less.</string>
     <string name="item_duty_suit">Duty suit</string>
-    <string name="desc_duty_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_duty_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less.</string>
     <string name="item_freedom_suit">Freedom suit</string>
-    <string name="desc_freedom_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_freedom_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less.</string>
     <string name="item_berill_suit">Berill suit</string>
-    <string name="desc_berill_suit">Fractional: Worn off after 3 hours of any damage. Health restores 200% faster in clear locations, when less than 1 Sv of radiation is obtained. Radiation obtain, anomaly and mental 20% less</string>
+    <string name="desc_berill_suit">Fractional: Worn off after 3 hours of any damage.
+        Health restores 200% faster in clear locations,
+        when less than 1 Sv of radiation is obtained. Radiation obtain,
+        anomaly and mental 20% less.</string>
     <string name="item_clearsky_suit">Clear Sky suit</string>
-    <string name="desc_clearsky_suit">Fractional: Worn off after 3 hours of any damage. Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less</string>
+    <string name="desc_clearsky_suit">Fractional: Worn off after 3 hours of any damage.
+        Radiation obtains 30% slower, anomaly effect 20% less, mental effect 10% less.</string>
 
     <!-- Artefacts -->
-    <string name="item_jellyfish">Jellyfish</string>
-    <string name="desc_jellyfish">Health restores 50% faster in clear locations, when obtained les than 1 Sv of radiation. Gives 1 point of expirience.</string>
-    <string name="item_stone_flower">Stone Flower</string>
-    <string name="desc_stone_flower">Mental effect 20% less, but radiation obtains 20% faster. Gives 5 points of expirience.</string>
-    <string name="item_droplets">Droplets</string>
-    <string name="desc_droplets">Radiation obtains 10% slower. Gives 2 points of expirience.</string>
-    <string name="item_eye">Eye</string>
-    <string name="desc_eye">Health restores 100% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 2 points of expirience.</string>
-    <string name="item_night_star">Night Star</string>
-    <string name="desc_night_star">Mental effect 60% less, but radiation obtains 60% faster. Gives 15 points of expirience.</string>
-    <string name="item_kolobok">Kolobok</string>
-    <string name="desc_kolobok">Health restores 200% faster in clear locations, when less than 1 Sv of radiation is obtained. Gives 5 points of expirience.</string>
-    <string name="item_thorn">Thorn</string>
-    <string name="desc_thorn">Radiation obtains 50% slower, anomaly and mental effect 25% more. Gives 10 points of expirience.</string>
+    <string name="item_jellyfish">Medusa</string>
+    <string name="desc_jellyfish">Common artifact. Reduces current radiation exposure by 5%.
+        Gives you 1 experience point.</string>
+    <string name="item_stone_flower">The stone flower</string>
+    <string name="desc_stone_flower">Common artifact.
+        Reduces current exposure to mental radiation and Controllers mental attacks by 10%,
+        but reduces resistance to radiation by 10%. Gives 4 experience points.</string>
+    <string name="item_night_star">Night star</string>
+    <string name="desc_night_star">The average rarity of the artifact.
+        Increases health recovery by 50%, but reduces radiation resistance by 5%.
+        Gives 5 experience points.</string>
+    <string name="item_quirk">Invert</string>
+    <string name="desc_quirk">The average rarity of the artifact.
+        Reduces current exposure to radiation by 15%
+        and provides protection from Buhrers telekinetic attacks by 10%. Gives 10 experience points.
+    </string>
+    <string name="item_gravi">Gravi</string>
+    <string name="desc_gravi">Rare artifact.
+        Gives protection from Buhrers telekinetic attacks by 30%,
+        but reduces resistance to radiation by 10%. Gives 10 experience points.</string>
+    <string name="item_goldfish">goldfish</string>
+    <string name="desc_goldfish">Very rare artifact. Gives protection from Buhrers telekinetic
+        attacks by 60%, but reduces resistance to radiation by 30%. Gives 15 experience points.
+    </string>
+    <string name="item_pellicle">Film</string>
+    <string name="desc_pellicle">Very rare artifact.
+        Increases resistance to chemical anomalies by 30%. Gives 15 experience points.</string>
+    <string name="item_droplets">Drops</string>
+    <string name="desc_droplets">Common artifact. Reduces current radiation exposure by 10%.
+        Gives you 1 experience point.</string>
     <string name="item_fireball">Fireball</string>
-    <string name="desc_fireball">Radiation obtains 30% slower. Gives 10 points of expirience.</string>
-    <string name="item_bubble">Bubble</string>
-    <string name="desc_bubble">Radiation obtains 20% slower. Gives 5 points of expirience.</string>
-    <string name="item_mamas_beads">Mamas Beads</string>
-    <string name="desc_mamas_beads">Health restores 400% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Burer telekinetic attack 90%. Gives 15 points of expirience.</string>
-    <string name="item_moonlight">Moonlight</string>
-    <string name="desc_moonlight">Resist to anomaly effect 50%, but radiation obtains 20% faster. Gives 10 points of expirience.</string>
-    <string name="item_spring">Spring</string>
-    <string name="desc_spring">Resist to anomaly effect 25%, but radiation obtains 10% faster. Gives 5 points of expirience.</string>
-    <string name="item_pellicle">Pellicle</string>
-    <string name="desc_pellicle">Mental effect 40% less, but radiation obtains 40% faster. Gives 10 points of expirience.</string>
-    <string name="item_mica">Mica</string>
-    <string name="desc_mica">Health restores 500% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Burer and Controller distant attacks 90%. but radiation, anomaly  and mental 25% strongest. Gives 20 points of expirience.</string>
-    <string name="item_compass">Compass</string>
-    <string name="desc_compass">Anomalies is detectable, but can\'t hurt, Mental effect 60% less, but radiation obtains 100% faster. Gives 30 points of expirience.</string>
+    <string name="desc_fireball">The average rarity of the artifact.
+        Resistance to thermal anomalies by 15%, but reduces resistance to radiation by 20%.
+        Gives 10 experience points.</string>
     <string name="item_crystal">Crystal</string>
-    <string name="desc_crystal">Radiation obtains 40% slower. Gives 10 points of expirience.</string>
-    <string name="item_goldfish">Goldfish</string>
-    <string name="desc_goldfish">Health restores 300% faster in clear locations, when less than 1 Sv of radiation is obtained. Resist to Controller psionic attack 90%. Gives 15 points of expirience.</string>
-    <string name="item_altered_insulator">Altered Insulator</string>
-    <string name="desc_altered_insulator">Emits 7 Sv of radiation permanently, when in inventory.</string>
-    <string name="item_shell">Shell</string>
-    <string name="desc_shell">Emits 1 Sv of radiation permanently, when in inventory.</string>
+    <string name="desc_crystal">The average rarity of the artifact.
+        Resistance to thermal anomalies by 20% and reduces current radiation exposure by 10%.
+        Gives 10 experience points.</string>
+    <string name="item_eye">Eye</string>
+    <string name="desc_eye">Rare artifact. Increases health recovery in clean locations by 150%,
+        but reduces radiation resistance by 10%. Gives 10 experience points.</string>
+    <string name="item_mamas_beads">Moms beads</string>
+    <string name="desc_mamas_beads">The average rarity of the artifact.
+        Increases health recovery in clean locations by 100%,
+        but reduces radiation resistance by 5%. Gives 10 experience points.</string>
+    <string name="item_flame">Flame</string>
+    <string name="desc_flame">A very rare artifact. Increases health recovery by 300%,
+        but reduces radiation resistance by 30%. Gives 15 experience points.</string>
+    <string name="item_sparkler">Sparkler</string>
+    <string name="desc_sparkler">Common artifact.
+        Reduces current exposure to electrical anomalies by 10%,
+        but reduces resistance to radiation by 10%. Gives 2 experience points.</string>
+    <string name="item_flash">Flash</string>
+    <string name="desc_flash">The average rarity of the artifact.
+        Reduces current exposure to electrical anomalies by 15%,
+        but reduces resistance to radiation by 15%. Gives 5 experience points.</string>
+    <string name="item_moonlight">Moonlight</string>
+    <string name="desc_moonlight">The average rarity of the artifact.
+        Reduces current exposure to mental radiation and Controllers mental attacks by 20%,
+        but reduces resistance to radiation by 10% and to electrical anomalies by 10%.
+        Gives 10 experience points.</string>
+    <string name="item_small_battery">Battery</string>
+    <string name="desc_small_battery">The average rarity of the artifact.
+        Increases health recovery in clean locations by 200%,
+        gives protection to electrical anomalies by 10%, but reduces resistance to radiation by 10%.
+        Gives 10 experience points.</string>
+    <string name="item_shell">Dummy</string>
+    <string name="desc_shell">Rare artifact. Increases health recovery in clean locations by 250%,
+        gives protection to thermal anomalies by 20%, but reduces resistance to radiation by 20%.
+        Gives 10 experience points.</string>
+    <string name="item_snowflake">Snowflake</string>
+    <string name="desc_snowflake">A very rare artifact.
+        Increases health recovery in clean locations by 500%,
+        but reduces radiation resistance by 30%. Gives 15 experience points.</string>
+    <string name="item_mercury_ball">Mercury ball</string>
+    <string name="desc_mercury_ball">Rare artifact.
+        Increases health recovery in clean locations by 400%,
+        but reduces radiation resistance by 99%. Gives you 20 experience points.</string>
+    <string name="item_electric_ball">Electric ball</string>
+    <string name="desc_electric_ball"> Common artifact.
+        Increases health recovery in clean locations by 50%,
+        but reduces radiation resistance by 99%. Gives 5 experience points.</string>
+    <string name="item_disintegrator">Disintegrator</string>
+    <string name="desc_disintegrator">Very rare artifact.
+        Increases health recovery in clean locations by 600%. Gives you 20 experience points.
+    </string>
+    <string name="item_mucus">Slime</string>
+    <string name="desc_mucus">Common artifact.
+        Increases health recovery in clean locations by 100%,
+        but reduces resistance to thermal and chemical anomalies by 10%. Gives 4 experience points.
+    </string>
+    <string name="item_slug">Slug</string>
+    <string name="desc_slug">The average rarity of the artifact.
+        Increases health recovery in clean locations by 150%,
+        but reduces resistance to chemical anomalies by 10%. Gives 6 experience points.</string>
+    <string name="item_mica">Mica</string>
+    <string name="desc_mica">Rare artifact.
+        Increases health recovery in clean locations by 200%,
+        but reduces resistance to thermal and chemical anomalies by 10%. Gives 10 experience points.
+    </string>
+    <string name="item_bubble">Bubble</string>
+    <string name="desc_bubble">Rare artifact. Reduces current radiation exposure by 40%.
+        Gives 10 experience points.</string>
+    <string name="item_soul"> Soul</string>
+    <string name="desc_soul">The average rarity of the artifact.
+        Increases health recovery in clean locations by 600%,
+        but reduces resistance to Buhrers telekinetic attacks,
+        “Springboard” and “Carousel” anomalies, and radiation by 20%.
+        Gives you 20 experience points.</string>
+    <string name="item_blood_of_stone">Blood of stone</string>
+    <string name="desc_blood_of_stone">Common artifact.
+        Increases resistance to chemical anomalies by 30%.
+        Reduces resistance to Buhrers telekinetic attacks,
+        to the “Springboard” and “Carousel" anomalies, and to radiation by 10%.
+        Gives 10 experience points.</string>
+    <string name="item_hunk_of_meat">Hunk of meat</string>
+    <string name="desc_hunk_of_meat">The average rarity of the artifact.
+        Increases resistance to chemical anomalies by 40%.
+        Reduces resistance to Buhrers telekinetic attacks,
+        to the “Springboard” and “Carousel" anomalies by 10%, and to radiation by 20%.
+        Gives 10 experience points.</string>
+    <string name="item_kolobok">Gingerbread man</string>
+    <string name="desc_kolobok">Rare artifact.
+        Increases health regeneration in clean locations by 400%,
+        resistance to Buhrers telekinetic attacks by 40%,
+        but reduces resistance to radiation by 30%. Gives 10 experience points.</string>
+    <string name="item_firefly">Firefly</string>
+    <string name="desc_firefly">A very rare artifact.
+        Increases health regeneration in clean locations by 300%,
+        but reduces radiation resistance by 30%. Gives 10 experience points.</string>
+    <string name="item_thorn">Barb</string>
+    <string name="desc_thorn">Common artifact.
+        Increases resistance to radiation by 10%. Gives 5 experience points.</string>
+    <string name="item_crystal_thorn">Crystal barb</string>
+    <string name="desc_crystal_thorn">The average rarity of the artifact.
+        Increases resistance to radiation by 20%. Gives 10 experience points.</string>
+    <string name="item_sea_urchin">Sea urchin</string>
+    <string name="desc_sea_urchin">Rare artifact. Increases resistance to radiation by 30%.
+        Gives 15 experience points.</string>
+    <string name="item_compass">Compass</string>
+    <string name="desc_compass">A very rare artifact, almost a legend.
+        Increases resistance to chemical, thermal, electrical anomalies, mental radiation,
+        and mental attacks of the Controller by 30%.
+        Provides 100% protection against spatial anomalies.
+        Increases health regeneration in clean locations by 400%.
+        Reduces radiation protection by 40%. Gives 100 experience points.</string>
+    <string name="item_heart_of_the_oasis">Heart of the oasis</string>
+    <string name="desc_heart_of_the_oasis">A very rare artifact, almost a legend.
+        Increases health recovery in clean locations by 900%,
+        but reduces radiation protection by 40%.</string>
+    <string name="item_spring">Spring</string>
+    <string name="desc_spring">A very rare artifact. The anomaly that generates it is still unknown.
+        Increases resistance to “Springboard” and “Carousel”
+        anomalies and Buhrers telekinetic attacks by 30%. Gives 50 experience points.</string>
+    <string name="item_scarlet_flower">Scarlet flower</string>
+    <string name= "desc_scarlet_flower">Mysterious artifact of unknown origin.
+        It emits virtually no radiation and exposure.
+        Only its magical effect on women is known for certain.</string>
+    <string name="item_abnormal_plant">Abnormal plant</string>
+    <string name="desc_abnormal_plant">A Plant that was part of an abnormally altered grove.
+        The trees reacted quite aggressively to the invasion,
+        but the plant itself has not yet shown any dangerous properties.</string>
+    <string name="item_altered_insulator">Modified insulator</string>
+    <string name="desc_altered_insulator">This item was once an electrical insulator.
+        Now it has almost formed into an artifact with unstable properties.
+        It was the source of variable mental radiation. Medium-level radioactive artifact.
+        Emits 6 Sievert radiation per hour while in inventory.</string>
+    <string name="item_modified_steering_wheel">Modified steering wheel</string>
+    <string name="desc_modified_steering_wheel">Once it was the wheel of a dredger,
+        but now it is about a half-formed artifact. The artifact is quite unusual:
+        it glows intensely, radiates a little, and thats it. A very radioactive artifact.
+        Emits 14 Sievert radiation per hour while in inventory.</string>
     <string name="item_black_energy">Black energy</string>
-    <string name="desc_black_energy">Emits 14 Sv of radiation permanently, when in inventory.</string>
+    <string name="desc_black_energy">A very radioactive artifact.
+        Emits 14 Sievert radiation per hour while in inventory.</string>
 
     <!-- Calibrating -->
     <string name="item_calibrating_10">Calibrating -10%</string>
-    <string name="desc_calibrating_10">Mastercode: All threats -10% less. Using 1 artefact slot.</string>
+    <string name="desc_calibrating_10">Mastercode: All threats -10% less. Using 1 artefact slot.
+    </string>
     <string name="item_calibrating_25">Calibrating -25%</string>
-    <string name="desc_calibrating_25">Mastercode: All threats -25% less. Using 1 artefact slot.</string>
+    <string name="desc_calibrating_25">Mastercode: All threats -25% less. Using 1 artefact slot.
+    </string>
     <string name="item_calibrating_50">Calibrating -50%</string>
-    <string name="desc_calibrating_50">Mastercode: All threats -50% less. Using 1 artefact slot.</string>
+    <string name="desc_calibrating_50">Mastercode: All threats -50% less. Using 1 artefact slot.
+    </string>
     <string name="item_calibrating_75">Calibrating -75%</string>
-    <string name="desc_calibrating_75">Mastercode: All threats -75% less. Using 1 artefact slot.</string>
+    <string name="desc_calibrating_75">Mastercode: All threats -75% less. Using 1 artefact slot.
+    </string>
 
     <!-- Log messages -->
     <string name="message_revive">You are in action again!</string>
@@ -230,6 +400,37 @@
     <string name="message_dead">You are dead!</string>
     <string name="message_dead_radiation">Radiation killed you!</string>
     <string name="message_dead_anomaly">Anomaly killed you!</string>
+    <string name="message_dead_springboard">Нou were torn apart by the Springboard anomaly!</string>
+    <string name="message_dead_funnel">You were torn apart by the Funnel anomaly!</string>
+    <string name="message_dead_carousel">You were torn apart by the Carousel anomaly!</string>
+    <string name="message_dead_elevator" >you were torn apart by an Elevator anomaly!</string>
+    <string name="message_dead_frying">You were burned in the Roasting anomaly!</string>
+    <string name="message_dead_electra">You were electrocuted in the Electra anomaly!</string>
+    <string name="message_dead_meatgrinder">You were electrocuted in the Meat grinder anomaly!
+    </string>
+    <string name="message_dead_kissel">You were dissolved by the Kissel anomaly!</string>
+    <string name="message_dead_soda">you were dissolved by the Soda anomaly!</string>
+    <string name="message_dead_acidfog">You were poisoned and dissolved by the Acid mist anomaly!
+    </string>
+    <string name="message_dead_burningfluff">You were burned by the Burning fluff anomaly!
+    </string>
+    <string name="message_dead_rustyhair">you were burned by the Rusty hair anomaly!</string>
+    <string name="message_dead_spatialbubble">You starting to get lost in a Spatial bubble!</string>
+    <string name="message_springboard_hit">You are torn apart by the Springboard anomaly!</string>
+    <string name="message_funnel_hit">You are torn apart by the Funnel anomaly!</string>
+    <string name="message_elevator_hit">You are torn apart by the Elevator anomaly!</string>
+    <string name="message_carousel_hit">You are being torn apart by the Сarousel anomaly!</string>
+    <string name="message_frying_hit">You are burned in the anomaly of Frying!</string>
+    <string name="message_electra_hit">You got electrocuted by the Electra anomaly!</string>
+    <string name="message_meatgrinder_hit">You got electrocuted by the Meat grinder anomaly!
+    </string>
+    <string name="message_kissel_hit">You are dissolved in an anomaly of Jelly!</string>
+    <string name="message_soda_hit">You are dissolved in an anomaly by Soda!</string>
+    <string name="message_acidfog_hit">You are poisoned and dissolved in an anomaly by Acid fog!
+    </string>
+    <string name="message_burningfluff_hit">You are burned in the anomaly by Burning fluff!</string>
+    <string name="message_rustyhair_hit">You are burned in the anomaly of Rusty hair!</string>
+    <string name="message_spatialbubble_hit">You are lost in a Spatial bubble anomaly!</string>
     <string name="message_dead_mental">Mental killed you!</string>
     <string name="message_dead_burer">Burer killed you!</string>
     <string name="message_dead_controller">Controller let you go!</string>
@@ -262,9 +463,11 @@
     <string name="message_level_1">Novice PDA is activated. Geiger counter is online!</string>
     <string name="message_level_2">PDA level 2 is activated. Anomaly detector is available!</string>
     <string name="message_level_3">PDA level 3 is activated. Mental detector is available!</string>
-    <string name="message_level_4">PDA level 4 is activated. Monster anticipating is available!</string>
+    <string name="message_level_4">PDA level 4 is activated. Monster anticipating is available!
+    </string>
     <string name="message_level_up">PDA is upgraded. New functionality is available!</string>
-    <string name="message_level_max">PDA is reached maximum level. Artefacts detector is available!</string>
+    <string name="message_level_max">PDA is reached maximum level. Artefacts detector is available!
+    </string>
     <string name="message_compass_enabled">Compass is enabled</string>
     <string name="message_compass_disabled">Compass is disabled</string>
     <string name="message_fraction_gamemaster">Faction changed to GAMEMASTER!</string>

@@ -202,6 +202,19 @@ public class VibroImpl implements Vibro
                 {
                     case Influence.RADIATION: if(s > max){max = s; infl = i;} break;
                     case Influence.ANOMALY: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.SPRINGBOARD: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.FUNNEL: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.CAROUSEL: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.ELEVATOR: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.FRYING: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.ELECTRA: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.MEATGRINDER: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.KISSEL: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.SODA: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.ACIDFOG: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.BURNINGFLUFF: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.RUSTYHAIR: if(s > max && level >= 2){max = s; infl = i;} break;
+                    case Influence.SPATIALBUBBLE: if(s > max && level >= 2){max = s; infl = i;} break;
                     case Influence.MENTAL: if(s > max && level >= 3){max = s; infl = i;} break;
                     case Influence.CONTROLLER:
                     case Influence.BURER: if(s > max && level >= 4){max = s; infl = i;} break;

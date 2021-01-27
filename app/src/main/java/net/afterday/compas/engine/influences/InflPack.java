@@ -21,6 +21,19 @@ public class InflPack implements InfluencesPack
 
     private boolean mInfRad = false;
     private boolean mInflAno = false;
+    private boolean mInflSpr = false;
+    private boolean mInflFun = false;
+    private boolean mInflCar = false;
+    private boolean mInflElev = false;
+    private boolean mInflFry = false;
+    private boolean mInflElec = false;
+    private boolean mInflMea = false;
+    private boolean mInflKis = false;
+    private boolean mInflSod = false;
+    private boolean mInflAci = false;
+    private boolean mInflBurn = false;
+    private boolean mInflRus = false;
+    private boolean mInflSpa = false;
     private boolean mInflMen = false;
     private boolean mInflBur = false;
     private boolean mInflCon = false;
@@ -54,6 +67,19 @@ public class InflPack implements InfluencesPack
         {
             case Influence.RADIATION: mInfRad = true; break;
             case Influence.ANOMALY: mInflAno = true; break;
+            case Influence.SPRINGBOARD: mInflSpr = true; break;
+            case Influence.FUNNEL: mInflFun = true; break;
+            case Influence.CAROUSEL: mInflCar = true; break;
+            case Influence.ELEVATOR: mInflElev = true; break;
+            case Influence.FRYING: mInflFry = true; break;
+            case Influence.ELECTRA: mInflElec = true; break;
+            case Influence.MEATGRINDER: mInflMea = true; break;
+            case Influence.KISSEL: mInflKis = true; break;
+            case Influence.SODA: mInflSod = true; break;
+            case Influence.ACIDFOG: mInflAci = true; break;
+            case Influence.BURNINGFLUFF: mInflBurn = true; break;
+            case Influence.RUSTYHAIR: mInflRus = true; break;
+            case Influence.SPATIALBUBBLE: mInflSpa = true; break;
             case Influence.CONTROLLER: mInflCon = true; break;
             case Influence.MENTAL: mInflMen = true; break;
             case Influence.BURER: mInflBur = true; break;
@@ -85,13 +111,21 @@ public class InflPack implements InfluencesPack
 
     public boolean inDanger()
     {
-        return mInfRad || mInflBur || mInflMen || mInflCon || mInflAno|| mInflMon ;
+        return mInfRad || mInflBur || mInflMen || mInflCon ||
+                mInflAno || mInflMon || mInflSpr || mInflFun ||
+                mInflCar || mInflElev || mInflFry || mInflElec ||
+                mInflMea || mInflKis || mInflSod || mInflAci ||
+                mInflBurn || mInflRus || mInflSpa;
     }
 
     @Override
     public boolean isClear()
     {
-        return !(mInfRad || mInflBur || mInflMen || mInflCon || mInflAno || mInflHel|| mInflMon );
+        return !(mInfRad || mInflBur || mInflMen || mInflCon ||
+                mInflAno || mInflHel|| mInflMon || mInflSpr ||
+                mInflFun || mInflCar || mInflElev || mInflFry ||
+                mInflElec || mInflMea || mInflKis || mInflSod ||
+                mInflAci || mInflBurn || mInflRus || mInflSpa);
     }
 
     @Override
@@ -101,6 +135,19 @@ public class InflPack implements InfluencesPack
         {
             case Influence.RADIATION: return mInfRad;
             case Influence.ANOMALY: return mInflAno;
+            case Influence.SPRINGBOARD: return mInflSpr;
+            case Influence.FUNNEL: return mInflFun;
+            case Influence.CAROUSEL: return mInflCar;
+            case Influence.ELEVATOR: return mInflElev;
+            case Influence.FRYING: return mInflFry;
+            case Influence.ELECTRA: return mInflElec;
+            case Influence.MEATGRINDER: return mInflMea;
+            case Influence.KISSEL: return mInflKis;
+            case Influence.SODA: return mInflSod;
+            case Influence.ACIDFOG: return mInflAci;
+            case Influence.BURNINGFLUFF: return mInflBurn;
+            case Influence.RUSTYHAIR: return mInflRus;
+            case Influence.SPATIALBUBBLE: return mInflSpa;
             case Influence.CONTROLLER: return mInflCon;
             case Influence.MENTAL: return mInflMen;
             case Influence.BURER: return mInflBur;
@@ -142,6 +189,19 @@ public class InflPack implements InfluencesPack
         {
             case Influence.RADIATION: return "Radiation";
             case Influence.ANOMALY: return "Anomaly";
+            case Influence.SPRINGBOARD: return "Springboard";
+            case Influence.FUNNEL: return "Funnel";
+            case Influence.CAROUSEL: return "Carousel";
+            case Influence.ELEVATOR: return "Elevator";
+            case Influence.FRYING: return "Frying";
+            case Influence.ELECTRA: return "Electra";
+            case Influence.MEATGRINDER: return "Meatgrinder";
+            case Influence.KISSEL: return "Kissel";
+            case Influence.SODA: return "Soda";
+            case Influence.ACIDFOG: return "Acidfog";
+            case Influence.BURNINGFLUFF: return "Burningfluff";
+            case Influence.RUSTYHAIR: return "Rustyhair";
+            case Influence.SPATIALBUBBLE: return "Spatialbubble";
             case Influence.CONTROLLER: return "Controller";
             case Influence.MENTAL: return "Mental";
             case Influence.BURER: return "Burer";

@@ -26,6 +26,32 @@ public class Sound {
     private int mEmissionPeriodical;
     private int mEmissionEnds;
     private int mAnomalyTick;
+    private int mSpringboardTick;
+    private int mSpringboardDeath;
+    private int mFunnelTick;
+    private int mFunnelDeath;
+    private int mCarouselTick;
+    private int mCarouselDeath;
+    private int mElevatorTick;
+    private int mElevatorDeath;
+    private int mFryingTick;
+    private int mFryingDeath;
+    private int mElectraTick;
+    private int mElectraDeath;
+    private int mMeatgrinderTick;
+    private int mMeatgrinderDeath;
+    private int mKisselTick;
+    private int mKisselDeath;
+    private int mSodaTick;
+    private int mSodaDeath;
+    private int mAcidfogTick;
+    private int mAcidfogDeath;
+    private int mBurningfluffTick;
+    private int mBurningfluffDeath;
+    private int mRustyhairTick;
+    private int mRustyhairDeath;
+    private int mSpatialbubbleTick;
+    private int mSpatialbubbleDeath;
     private int mMental;
     private int mAnomalyDeath;
     private int mDie;
@@ -87,6 +113,32 @@ public class Sound {
         mEmissionPeriodical = mSoundPool.load(ctx, R.raw.emission_periodical, 1);
         mEmissionEnds = mSoundPool.load(ctx, R.raw.pda_emission_ends, 1);
         mAnomalyDeath = mSoundPool.load(ctx, R.raw.ano_kill, 1);
+        mSpringboardTick = mSoundPool.load(ctx, R.raw.springboard, 1);
+        mSpringboardDeath = mSoundPool.load(ctx, R.raw.springboard_kill, 1);
+        mFunnelTick = mSoundPool.load(ctx, R.raw.funnel, 1);
+        mFunnelDeath = mSoundPool.load(ctx, R.raw.funnel_kill, 1);
+        mCarouselTick = mSoundPool.load(ctx, R.raw.carousel, 1);
+        mCarouselDeath = mSoundPool.load(ctx, R.raw.carousel_kill, 1);
+        mElevatorTick = mSoundPool.load(ctx, R.raw.elevator, 1);
+        mElevatorDeath = mSoundPool.load(ctx, R.raw.elevator_kill, 1);
+        mFryingTick = mSoundPool.load(ctx, R.raw.frying, 1);
+        mFryingDeath = mSoundPool.load(ctx, R.raw.frying_kill, 1);
+        mElectraTick = mSoundPool.load(ctx, R.raw.electra, 1);
+        mElectraDeath = mSoundPool.load(ctx, R.raw.electra_kill, 1);
+        mMeatgrinderTick = mSoundPool.load(ctx, R.raw.meatgrinder, 1);
+        mMeatgrinderDeath = mSoundPool.load(ctx, R.raw.meatgrinder_kill, 1);
+        mKisselTick = mSoundPool.load(ctx, R.raw.kissel, 1);
+        mKisselDeath = mSoundPool.load(ctx, R.raw.kissel_kill, 1);
+        mSodaTick = mSoundPool.load(ctx, R.raw.soda, 1);
+        mSodaDeath = mSoundPool.load(ctx, R.raw.soda_kill, 1);
+        mAcidfogTick = mSoundPool.load(ctx, R.raw.acidfog, 1);
+        mAcidfogDeath = mSoundPool.load(ctx, R.raw.acidfog_kill, 1);
+        mBurningfluffTick = mSoundPool.load(ctx, R.raw.burningfluff, 1);
+        mBurningfluffDeath = mSoundPool.load(ctx, R.raw.burningfluff_kill, 1);
+        mRustyhairTick = mSoundPool.load(ctx, R.raw.rustyhair, 1);
+        mRustyhairDeath = mSoundPool.load(ctx, R.raw.rustyhair_kill, 1);
+        mSpatialbubbleTick = mSoundPool.load(ctx, R.raw.spatialbubble, 1);
+        mSpatialbubbleDeath = mSoundPool.load(ctx, R.raw.spatialbubble_kill, 1);
         mDie = mSoundPool.load(ctx, R.raw.die, 1);
         mZombify = mSoundPool.load(ctx, R.raw.zombified, 1);
         mControl = mSoundPool.load(ctx, R.raw.controlled, 1);
@@ -163,6 +215,267 @@ public class Sound {
     public void playAnomalyClick() {
        mSoundPool.play(
                 mAnomalyTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+
+    public void playSpringboardClick() {
+        mSoundPool.play(
+                mSpringboardTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playSpringboardDeath() {
+        mSoundPool.play(
+                mSpringboardDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playFunnelClick() {
+        mSoundPool.play(
+                mFunnelTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playFunnelDeath() {
+        mSoundPool.play(
+                mFunnelDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playCarouselClick() {
+        mSoundPool.play(
+                mCarouselTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playCarouselDeath() {
+        mSoundPool.play(
+                mCarouselDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playElevatorClick() {
+        mSoundPool.play(
+                mElevatorTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playElevatorDeath() {
+        mSoundPool.play(
+                mElevatorDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playFryingClick() {
+        mSoundPool.play(
+                mFryingTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playFryingDeath() {
+        mSoundPool.play(
+                mFryingDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playElectraClick() {
+        mSoundPool.play(
+                mElectraTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playElectraDeath() {
+        mSoundPool.play(
+                mElectraDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playMeatgrinderClick() {
+        mSoundPool.play(
+                mMeatgrinderTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playMeatgrinderDeath() {
+        mSoundPool.play(
+                mMeatgrinderDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playKisselClick() {
+        mSoundPool.play(
+                mKisselTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playKisselDeath() {
+        mSoundPool.play(
+                mKisselDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playSodaClick() {
+        mSoundPool.play(
+                mSodaTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playSodaDeath() {
+        mSoundPool.play(
+                mSodaDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playAcidfogClick() {
+        mSoundPool.play(
+                mAcidfogTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playAcidfogDeath() {
+        mSoundPool.play(
+                mAcidfogDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playBurningfluffClick() {
+        mSoundPool.play(
+                mBurningfluffTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playBurningfluffDeath() {
+        mSoundPool.play(
+                mBurningfluffDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playRustyhairClick() {
+        mSoundPool.play(
+                mRustyhairTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playRustyhairDeath() {
+        mSoundPool.play(
+                mRustyhairDeath, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playSpatialbubbleClick() {
+        mSoundPool.play(
+                mSpatialbubbleTick, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                2, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+    public void playSpatialbubbleDeath() {
+        mSoundPool.play(
+                mSpatialbubbleDeath, // Sound
                 1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
                 1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
                 2, // Priority
