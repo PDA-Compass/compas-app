@@ -73,8 +73,8 @@ public interface Item extends Jsonable
     int RUSTYHAIR_MODIFIER = 21;
     int SPATIALBUBBLE_MODIFIER = 22;
 
-    public static final int MODIFIERS_COUNT = 10;
-    public static final int ARTIFACT_MODIFIERS_COUNT = 10;
+    public static final int MODIFIERS_COUNT = 23;
+    public static final int ARTIFACT_MODIFIERS_COUNT = 23;
     boolean hasModifier(int modifierType);
     double getModifier(int modifierType);
     boolean isActive();

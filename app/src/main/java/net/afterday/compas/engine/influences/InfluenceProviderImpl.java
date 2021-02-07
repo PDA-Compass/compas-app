@@ -117,7 +117,7 @@ public class InfluenceProviderImpl implements InfluencesController
     public void start(int level)
     {
         wip.start();
-        bip.start();
+        //bip.start();
         if(level >= 5)
         {
             bip.start();

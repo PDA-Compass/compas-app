@@ -38,7 +38,7 @@ public interface Influence extends Event
 
     int MAX_SATELLITES = 8;
 
-    int INFLUENCE_COUNT = 9;
+    int INFLUENCE_COUNT = 22;
     double NULL = -99999999999.9999d;
 
     double ANOMALY_PEAK = 16;
