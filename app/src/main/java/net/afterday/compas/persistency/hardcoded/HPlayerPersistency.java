@@ -51,6 +51,7 @@ public class HPlayerPersistency implements PlayerPersistency
     {
         commands.put("KILL492", Player.COMMAND.KILL); //Убить игрока
         commands.put("REVIVE856", Player.COMMAND.REVIVE); //Оживить игрока
+        commands.put("ZOMBI", Player.COMMAND.ZOMBI); //Зомбирует игрока
     }
 
 }

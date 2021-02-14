@@ -74,6 +74,7 @@ public class GameImpl implements Game
             {
                 case KILL: mPlayer.setState(Player.STATE.DEAD_BURER); return true;
                 case REVIVE: mPlayer.reborn(); return true;
+                case ZOMBI: mPlayer.setState(Player.STATE.MENTALLED); return true;
             }
         }
         return false;

@@ -295,7 +295,8 @@ public interface Player extends Jsonable
 
     enum COMMAND {
         REVIVE,
-        KILL
+        KILL,
+        ZOMBI;
     }
 
     PlayerProps getPlayerProps();
