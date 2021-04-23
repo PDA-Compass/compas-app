@@ -2,7 +2,7 @@ package net.afterday.compas.devices.vibro;
 
 import android.content.Context;
 import android.os.Vibrator;
-import android.support.v4.util.Pair;
+import androidx.core.util.Pair;
 
 import net.afterday.compas.core.influences.Influence;
 import net.afterday.compas.core.player.Player;
@@ -11,12 +11,7 @@ import net.afterday.compas.settings.Constants;
 import net.afterday.compas.settings.Settings;
 import net.afterday.compas.settings.SettingsListener;
 
-import org.reactivestreams.Subscription;
-
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;

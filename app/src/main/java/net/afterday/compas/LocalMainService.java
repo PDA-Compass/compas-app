@@ -7,10 +7,10 @@ import android.graphics.Color;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.TaskStackBuilder;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -31,13 +31,10 @@ import net.afterday.compas.persistency.PersistencyProviderImpl;
 import net.afterday.compas.sensors.Battery.Battery;
 import net.afterday.compas.sensors.Battery.BatteryStatus;
 import net.afterday.compas.sensors.SensorsProviderImpl;
-import net.afterday.compas.sensors.WiFi.WifiImpl;
 import net.afterday.compas.serialization.SharedPrefsSerializer;
 import net.afterday.compas.util.Fonts;
-import net.afterday.compas.view.Compass;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;

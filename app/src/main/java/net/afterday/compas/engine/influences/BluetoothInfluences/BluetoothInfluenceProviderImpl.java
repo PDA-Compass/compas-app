@@ -1,15 +1,13 @@
 package net.afterday.compas.engine.influences.BluetoothInfluences;
 
-import android.support.v4.util.Pair;
+import androidx.core.util.Pair;
 
 import net.afterday.compas.core.influences.Influence;
 import net.afterday.compas.core.influences.InfluencesPack;
-import net.afterday.compas.engine.influences.InflPack;
 import net.afterday.compas.engine.influences.InfluenceExtractionStrategy;
 import net.afterday.compas.persistency.influences.InfluencesPersistency;
 import net.afterday.compas.sensors.Bluetooth.Bluetooth;
 import net.afterday.compas.sensors.Bluetooth.BluetoothScanResult;
-import net.afterday.compas.util.Log;
 
 import java.util.List;
 import java.util.Map;

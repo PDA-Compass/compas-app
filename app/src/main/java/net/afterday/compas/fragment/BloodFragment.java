@@ -2,32 +2,17 @@ package net.afterday.compas.fragment;
 
 import android.animation.ValueAnimator;
 import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import net.afterday.compas.R;
-import net.afterday.compas.core.inventory.Inventory;
-import net.afterday.compas.core.inventory.items.Item;
-import net.afterday.compas.core.player.Player;
-import net.afterday.compas.engine.events.ItemEventsBus;
-import net.afterday.compas.engine.events.PlayerEventBus;
-import net.afterday.compas.logging.Logger;
-import net.afterday.compas.LocalMainService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class BloodFragment extends DialogFragment

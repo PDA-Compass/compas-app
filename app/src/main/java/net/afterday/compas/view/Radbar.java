@@ -10,7 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -215,7 +215,7 @@ public class Radbar extends View
 
         float txtWidth = mPaint.measureText("18");
 
-        if (!isHighTextContrast) {
+        if (isHighTextContrast) {
             canvas.drawText(">", 270 * mScaleFactorX, 135 * mScaleFactorY, mPaintMore);
             canvas.drawText("18", 270 * mScaleFactorX, 155 * mScaleFactorY, mPaintGrey);
         }
@@ -263,7 +263,7 @@ public class Radbar extends View
         mRect = new RectF();
         mPaint = new Paint();
         mPaintGrey = new Paint();
-        mPaintGrey.setARGB(255,35,35,35);
+        mPaintGrey.setARGB(0,35,35,35);
         mPaintSymbol = new Paint();
         mPaintSymbol.setARGB(255,255,127,0);
         mPaintMore = new Paint();

@@ -4,15 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageButton;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.ImageButton;
 
 import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;

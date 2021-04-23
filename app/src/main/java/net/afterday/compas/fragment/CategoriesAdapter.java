@@ -1,7 +1,7 @@
 package net.afterday.compas.fragment;
 
 import android.content.Context;
-import android.support.v4.util.Pair;
+import androidx.core.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;

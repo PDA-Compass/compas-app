@@ -1,10 +1,9 @@
 package net.afterday.compas.logging;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 import net.afterday.compas.R;
-import net.afterday.compas.core.inventory.items.Events.AddItem;
 import net.afterday.compas.core.inventory.items.Events.ItemAdded;
 import net.afterday.compas.core.inventory.items.Item;
 import net.afterday.compas.db.DataBase;

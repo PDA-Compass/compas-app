@@ -1,31 +1,22 @@
 package net.afterday.compas;
 
-import android.Manifest;
 import android.app.Application;
 import android.content.Intent;
 
 //import com.crashlytics.android.Crashlytics;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import io.fabric.sdk.android.Fabric;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+//import io.fabric.sdk.android.Fabric;
 import net.afterday.compas.core.Game;
 import net.afterday.compas.core.gameState.Frame;
-import net.afterday.compas.core.inventory.items.Events.ItemAdded;
-import net.afterday.compas.core.player.Player;
 import net.afterday.compas.core.serialization.Serializer;
 import net.afterday.compas.core.userActions.UserActionsPack;
 import net.afterday.compas.engine.Engine;
-import net.afterday.compas.engine.events.ItemEventsBus;
-import net.afterday.compas.logging.Logger;
 import net.afterday.compas.sensors.Battery.Battery;
-import net.afterday.compas.sensors.WiFi.WifiImpl;
 import net.afterday.compas.settings.Settings;
 import net.afterday.compas.util.Fonts;
-import net.afterday.compas.view.SmallLogListAdapter;
 
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
 

@@ -3,8 +3,8 @@ package net.afterday.compas.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
-import net.afterday.compas.logging.LogLine;
 import net.afterday.compas.logging.LogLine;
 
 import java.util.ArrayList;

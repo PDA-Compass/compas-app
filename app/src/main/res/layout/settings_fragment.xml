@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout
+<androidx.percentlayout.widget.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,7 @@
     tools:context="net.afterday.compas.MainActivity"
     android:keepScreenOn="true">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="247dp"
         android:layout_centerInParent="false"
@@ -83,7 +83,7 @@
                 android:text="@string/tray_landscape" />
         </RadioGroup>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageButton
         android:id="@+id/close"
         android:layout_width="wrap_content"
@@ -93,4 +93,4 @@
         android:background="@drawable/popup_close"
         android:contentDescription="TODO" />
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>
