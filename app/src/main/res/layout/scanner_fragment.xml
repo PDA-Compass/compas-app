@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     tools:context="net.afterday.compas.MainActivity"
     android:keepScreenOn="true">
 
-    <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:background="@drawable/popup_background"
         app:layout_marginLeftPercent="5%"
         app:layout_marginRightPercent="5%"
@@ -22,7 +22,7 @@
             app:layout_marginPercent="10%"
             app:zxing_use_texture_view="false"
             app:zxing_preview_scaling_strategy="centerCrop"/>
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
     <ImageButton
         android:id="@+id/close"
         android:layout_width="wrap_content"
@@ -30,4 +30,4 @@
         app:layout_marginLeftPercent="87%"
         app:layout_marginTopPercent="8%"
         android:background="@drawable/popup_close" />
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

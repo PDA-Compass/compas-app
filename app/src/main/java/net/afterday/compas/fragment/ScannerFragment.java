@@ -1,18 +1,13 @@
 package net.afterday.compas.fragment;
 
 import android.app.DialogFragment;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
@@ -21,13 +16,9 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import net.afterday.compas.R;
 import net.afterday.compas.engine.events.CodeInputEventBus;
-import net.afterday.compas.engine.events.ItemEventsBus;
 import net.afterday.compas.util.OnSwipeTouchListener;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
 
 /**
  * Created by Justas Spakauskas on 3/24/2018.

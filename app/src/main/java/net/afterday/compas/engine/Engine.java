@@ -1,13 +1,11 @@
 package net.afterday.compas.engine;
 
 import android.util.Log;
-import android.util.Pair;
 
 import com.google.gson.JsonObject;
 
 import net.afterday.compas.R;
 import net.afterday.compas.core.Controls;
-import net.afterday.compas.core.CountDown;
 import net.afterday.compas.core.Game;
 import net.afterday.compas.core.GameImpl;
 import net.afterday.compas.core.events.PlayerEventsListener;
@@ -21,7 +19,6 @@ import net.afterday.compas.core.player.Impacts;
 import net.afterday.compas.core.player.Player;
 import net.afterday.compas.core.serialization.Jsonable;
 import net.afterday.compas.core.serialization.Serializer;
-import net.afterday.compas.core.userActions.UserActionsPack;
 import net.afterday.compas.devices.DeviceProvider;
 import net.afterday.compas.effects.Effects;
 import net.afterday.compas.engine.actions.Action;
@@ -30,12 +27,10 @@ import net.afterday.compas.engine.events.CodeInputEventBus;
 import net.afterday.compas.engine.events.EmissionEventBus;
 import net.afterday.compas.engine.events.ItemEventsBus;
 import net.afterday.compas.engine.events.PlayerEventBus;
-import net.afterday.compas.engine.influences.InfluenceProvider;
 import net.afterday.compas.engine.influences.InfluenceProviderImpl;
 import net.afterday.compas.engine.influences.InfluencesController;
 import net.afterday.compas.engine.threading.Threads;
 import net.afterday.compas.persistency.PersistencyProvider;
-import net.afterday.compas.persistency.items.ItemDescriptor;
 import net.afterday.compas.sensors.SensorsProvider;
 import net.afterday.compas.serialization.SharedPrefsSerializer;
 import net.afterday.compas.logging.Logger;
@@ -44,7 +39,6 @@ import net.afterday.compas.util.Triple;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
@@ -194,7 +188,7 @@ public class Engine implements Jsonable
         influencesStream = influenceProvider.getInfluenceStream();
 
 
-        Observable.combineLatest(influencesRunning, playerLevel, (r, l) -> new android.support.v4.util.Pair<Boolean, Integer>(r, l))
+        Observable.combineLatest(influencesRunning, playerLevel, (r, l) -> new androidx.core.util.Pair<Boolean, Integer>(r, l))
                 .subscribe((p) ->
                 {
                     if (p.first)

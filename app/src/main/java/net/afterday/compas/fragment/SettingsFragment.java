@@ -2,26 +2,16 @@ package net.afterday.compas.fragment;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.Switch;
 
 import net.afterday.compas.R;
-import net.afterday.compas.core.inventory.items.Item;
-import net.afterday.compas.core.player.Player;
-import net.afterday.compas.engine.events.ItemEventsBus;
-import net.afterday.compas.engine.events.PlayerEventBus;
 import net.afterday.compas.settings.Constants;
 import net.afterday.compas.settings.Settings;
-
-import java.util.Set;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by spaka on 7/21/2018.

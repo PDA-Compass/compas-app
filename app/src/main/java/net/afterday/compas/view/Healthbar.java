@@ -1,30 +1,24 @@
 package net.afterday.compas.view;
 
-import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import android.view.accessibility.AccessibilityManager;
 import net.afterday.compas.FeatureOn;
 import net.afterday.compas.R;
 import net.afterday.compas.util.Convert;
-import net.afterday.compas.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class Healthbar extends View
@@ -235,7 +229,7 @@ public class Healthbar extends View
         mRect = new RectF();
         mPaint = new Paint();
         mPaintGrey = new Paint();
-        mPaintGrey.setARGB(255,35,35,35);
+        mPaintGrey.setARGB(0,35,35,35);
         //mPaintGrey.setARGB(255,255,255,255);
 
         try {
