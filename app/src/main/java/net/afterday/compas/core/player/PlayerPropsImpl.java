@@ -18,6 +18,7 @@ public class PlayerPropsImpl implements PlayerProps
     private Player.STATE state;
     private double radiation;
     private double radiationImpact;
+    private double restricted;
     private double health;
     private double boosterPercents = 0;
     private double devicePercents = 0;
@@ -25,6 +26,7 @@ public class PlayerPropsImpl implements PlayerProps
     private double[] impacts;
     private boolean burerHit;
     private boolean controllerHit;
+    private boolean restrictedHit;
     private boolean anomalyHit;
     private boolean mentalHit;
     private boolean monolithHit;
@@ -44,6 +46,7 @@ public class PlayerPropsImpl implements PlayerProps
     {
         state = pProps.getState();
         radiation = pProps.getRadiation();
+        restricted = pProps.getRestricted();
         health = pProps.getHealth();
         boosterPercents = pProps.getBoosterPercents();
         devicePercents = pProps.getDevicePercents();
@@ -104,7 +107,7 @@ public class PlayerPropsImpl implements PlayerProps
     @Override
     public double getRadiationImpact()
     {
-        if(impacts != null && impacts.length >= Influence.RADIATION)
+        if(impacts != null && impacts.length > Influence.RADIATION)
         {
             return impacts[Influence.RADIATION];
         }
@@ -120,7 +123,27 @@ public class PlayerPropsImpl implements PlayerProps
             {
                 return impacts[Influence.MONOLITH];
             }
-            if(fraction == Player.FRACTION.DARKEN && impacts.length >= Influence.RADIATION)
+            if(fraction == Player.FRACTION.DARKEN && impacts.length > Influence.RADIATION)
+            {
+                return impacts[Influence.RADIATION];
+            }
+            else if(impacts.length >= Influence.HEALTH)
+            {
+                return impacts[Influence.HEALTH];
+            }
+        }
+        return 0d;
+    }
+
+    @Override
+    public double getOasisImpact() {
+        if(impacts != null)
+        {
+            if(fraction == Player.FRACTION.MONOLITH && impacts.length >= Influence.MONOLITH)
+            {
+                return impacts[Influence.MONOLITH];
+            }
+            if(fraction == Player.FRACTION.DARKEN && impacts.length > Influence.RADIATION)
             {
                 return impacts[Influence.RADIATION];
             }
@@ -158,6 +181,17 @@ public class PlayerPropsImpl implements PlayerProps
         if (impacts != null && impacts.length >= Influence.MENTAL)
         {
             return impacts[Influence.MENTAL];
+        }
+        return 0;
+    }
+
+    @Override
+    public double getRestricted(){
+        Log.e(TAG, "FO: imp");
+        if (impacts != null && impacts.length >= Influence.FORBIDDEN)
+        {
+            Log.e(TAG, "FO: imp" + impacts[Influence.FORBIDDEN]);
+            return impacts[Influence.FORBIDDEN];
         }
         return 0;
     }
@@ -372,7 +406,8 @@ public class PlayerPropsImpl implements PlayerProps
     {
         return burerHit;
     }
-
+    @Override
+    public boolean restrictedHit() {return restrictedHit;}
     @Override
     public boolean controllerHit()
     {
@@ -474,6 +509,11 @@ public class PlayerPropsImpl implements PlayerProps
 //            }
 //        }
 //        return index;
+    }
+
+    @Override
+    public void setRestrictedHit(boolean b) {
+        restrictedHit = b;
     }
 
     @Override

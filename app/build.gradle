@@ -1,27 +1,14 @@
 buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
-
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
-
 
 android {
-    compileSdkVersion 28
-        buildToolsVersion '28.0.3'
+    compileSdkVersion 30
+        buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "net.afterday.compas"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode 1813
         versionName "1813"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

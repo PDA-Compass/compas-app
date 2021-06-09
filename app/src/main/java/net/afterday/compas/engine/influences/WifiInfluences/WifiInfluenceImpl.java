@@ -54,7 +54,7 @@ public class WifiInfluenceImpl implements WifiInfluence
     @Override
     public boolean isDanger()
     {
-        return typeId != RADIATION && typeId != BURER && typeId != CONTROLLER && typeId != ANOMALY && typeId != MONOLITH;
+        return typeId != RADIATION && typeId != BURER && typeId != CONTROLLER && typeId != ANOMALY && typeId != MONOLITH && typeId != RADIOACTIVE && typeId != FORBIDDEN;
     }
 
     @Override

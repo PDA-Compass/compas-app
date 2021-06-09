@@ -205,6 +205,7 @@ public class VibroImpl implements Vibro
                     case Influence.MENTAL: if(s > max && level >= 3){max = s; infl = i;} break;
                     case Influence.CONTROLLER:
                     case Influence.BURER: if(s > max && level >= 4){max = s; infl = i;} break;
+                    case Influence.FORBIDDEN: if(s > max){max = s; infl = i;} break;
                 }
             }
             return new Pair<>(infl, max);

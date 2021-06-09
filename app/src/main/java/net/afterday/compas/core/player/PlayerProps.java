@@ -10,12 +10,14 @@ public interface PlayerProps extends Jsonable
 {
     double getHealth();
     double getRadiation();
+    double getRestricted();
     double getArtefactImpact();
     long getController();
     long getZombified();
     double getMental();
     double getRadiationImpact();
     double getHealthImpact();
+    double getOasisImpact();
     double getControllerImpact();
     double getBurerImpact();
     double getMentalImpact();
@@ -38,6 +40,7 @@ public interface PlayerProps extends Jsonable
     void setDevicePercents(double percents);
     void setArmorPercents(double percents);
     boolean burerHit();
+    boolean restrictedHit();
     boolean controllerHit();
     boolean anomalyHit();
     boolean mentalHit();
@@ -50,4 +53,6 @@ public interface PlayerProps extends Jsonable
     int getLevelXp();
     Player.STATE getState();
     double[] getImpacts();
+
+    void setRestrictedHit(boolean b);
 }

@@ -14,8 +14,11 @@ import net.afterday.compas.engine.influences.GpsInfluences.GpsInfluenceProviderI
 import net.afterday.compas.engine.influences.WifiInfluences.WiFiInfluenceProvider;
 import net.afterday.compas.engine.influences.WifiInfluences.WifiInfluenceProviderImpl;
 import net.afterday.compas.persistency.influences.InfluencesPersistency;
+import net.afterday.compas.sensors.Bluetooth.Bluetooth;
 import net.afterday.compas.sensors.Sensor;
+import net.afterday.compas.sensors.SensorResult;
 import net.afterday.compas.sensors.SensorsProvider;
+import net.afterday.compas.sensors.WiFi.WiFi;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,8 +73,11 @@ public class InfluenceProviderImpl implements InfluencesController
     {
         this.sp = sp;
         this.ip = ip;
-        wip = new WifiInfluenceProviderImpl(sp.getWifiSensor(), ip);
-        bip = new BluetoothInfluenceProviderImpl(sp.getBluetoothSensor(), ip);
+        WiFi wifiSensor = sp.getWifiSensor();
+        Bluetooth bluetooth = sp.getBluetoothSensor();
+        wip = new WifiInfluenceProviderImpl(wifiSensor, bluetooth,  ip);
+
+        bip = new BluetoothInfluenceProviderImpl(bluetooth, ip);
         gip = new GpsInfluenceProviderImpl(sp.getGpsSensor());
 
         blInfls = bip.getInfluenceStream();
@@ -118,22 +124,8 @@ public class InfluenceProviderImpl implements InfluencesController
     {
         wip.start();
         bip.start();
-        if(level >= 5)
-        {
-            bip.start();
-        }
-//        if((type & WIFI) == WIFI)
-//        {
-//            wip.start();
-//        }
-//        if((type & BLUETOOTH) == BLUETOOTH)
-//        {
-//            bip.start();
-//        }
-//        if((type & GPS) == GPS)
-//        {
-//            gip.start();
-//        }
+        bip.setLevel(level); //TODO: hack for izhevsk game
+
 
     }
 

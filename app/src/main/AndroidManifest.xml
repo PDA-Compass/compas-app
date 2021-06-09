@@ -23,7 +23,7 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="PDA Compass v.1813 GM"
+        android:label="PDA Compass 2021 Izh"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -32,7 +32,7 @@
         android:permission="">
         <activity android:name="net.afterday.compas.MainActivity"
             android:configChanges="keyboardHidden|screenSize"
-            android:label="PDA Compass v.1813 GM">
+            android:label="PDA Compass 2021 Izh">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

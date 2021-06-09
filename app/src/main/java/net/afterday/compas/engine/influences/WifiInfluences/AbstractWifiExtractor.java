@@ -2,11 +2,13 @@ package net.afterday.compas.engine.influences.WifiInfluences;
 
 import android.net.wifi.ScanResult;
 import android.support.v4.util.Pair;
+import android.util.Log;
 
 import net.afterday.compas.core.influences.Influence;
 import net.afterday.compas.core.influences.Influences;
 import net.afterday.compas.core.influences.InfluencesPack;
 import net.afterday.compas.engine.influences.InflPack;
+import net.afterday.compas.sensors.SensorResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractWifiExtractor
 {
-    private Pattern regex = Pattern.compile("(.*?([RAMBCHFZ])((\\d+)))");
+    private Pattern regex = Pattern.compile("(.*?([RAMBCHFZSDN])((\\d+)))");
 
     protected static Map<String, Integer> types = new HashMap();
 
@@ -35,21 +37,24 @@ public abstract class AbstractWifiExtractor
         types.put("C", Influence.CONTROLLER);
         types.put("F", Influence.ARTEFACT);
         types.put("Z", Influence.MONOLITH);
+        types.put("S", Influence.SHELTER);
+        types.put("D", Influence.RADIOACTIVE);
+        types.put("N", Influence.FORBIDDEN);
 
     }
 
-    abstract boolean isValid(ScanResult scanResult);
+    abstract boolean isValid(SensorResult scanResult);
 
-    protected InfluencesPack extract(List<ScanResult> scanResults)
+    protected InfluencesPack extract(List<SensorResult> scanResults)
     {
         //android.util.Log.d("Extract!!", scanResults + "");
         InflPack ip = new InflPack();
-        for (ScanResult sr : scanResults)
+        for (SensorResult sr : scanResults)
         {
             if(isValid(sr))
             {
                 //android.util.Log.d("Extract!! ---------", sr + "");
-                Matcher matcher = regex.matcher(sr.SSID);
+                Matcher matcher = regex.matcher(sr.name);
                 while (matcher.find()) {
                     if(matcher.groupCount() < 4)
                     {
@@ -69,12 +74,12 @@ public abstract class AbstractWifiExtractor
                         continue;
                     }
                     int tId = types.get(n);
-                    if(tId == Influence.HEALTH && Math.abs(sr.level) > number)
+                    if(tId == Influence.HEALTH && Math.abs(sr.value) > number)
                     {
                         continue;
                     }
                     double multiplier = number > 0 ? number / 100d : 1d;
-                    ip.addInfluence(tId, WifiConverter.convert(tId, sr.level) * multiplier);
+                    ip.addInfluence(tId, WifiConverter.convert(tId, sr.value) * multiplier);
                 }
             }
         }

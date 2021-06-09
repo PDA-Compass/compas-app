@@ -38,6 +38,7 @@ public class ImpactsImpl implements Impacts
     private long accumulatedAnomaly = 0;
     private long accumulatedMental = 0;
     private long accumulatedMonolith = 0;
+    private long accumulatedRestricted = 0;
     private long accumulatedEmission = 0;
     private Impacts.STATE state;
     public ImpactsImpl(PlayerProps playerProps, Serializer serializer)
@@ -225,6 +226,24 @@ public class ImpactsImpl implements Impacts
                         newProps.setState(Player.STATE.W_MENTALLED);
                     }
                     newProps.setMonolithHit(true);
+                    return true;
+                }
+                return false;
+            case Influence.FORBIDDEN:
+                if(newProps.getFraction() != Player.FRACTION.DARKEN)
+                {
+                    return false;
+                }
+                accumulatedRestricted += delta;
+                if(accumulatedRestricted >= MONOLITH_COOLDOWN)
+                {
+                    accumulatedRestricted = 0;
+                    newProps.subtractHealth(5);
+                    if(newProps.getHealth() <= 0)
+                    {
+                        newProps.setState(Player.STATE.W_MENTALLED);
+                    }
+                    newProps.setRestrictedHit(true);
                     return true;
                 }
                 return false;
@@ -472,7 +491,10 @@ public class ImpactsImpl implements Impacts
     private boolean isHealing(PlayerProps playerProps, InfluencesPack inflPack)
     {
         Player.FRACTION fraction = playerProps.getFraction();
-        return (fraction == Player.FRACTION.MONOLITH && inflPack.influencedBy(Influence.MONOLITH)) || (fraction != Player.FRACTION.MONOLITH && inflPack.influencedBy(Influence.HEALTH)) || (fraction == Player.FRACTION.DARKEN && inflPack.influencedBy(Influence.RADIATION)) || (fraction != Player.FRACTION.DARKEN && inflPack.influencedBy(Influence.HEALTH));
+        return (fraction == Player.FRACTION.MONOLITH && inflPack.influencedBy(Influence.MONOLITH))
+                || (fraction != Player.FRACTION.MONOLITH && inflPack.influencedBy(Influence.HEALTH))
+                || (fraction == Player.FRACTION.DARKEN && inflPack.influencedBy(Influence.RADIATION))
+                || (fraction != Player.FRACTION.DARKEN && inflPack.influencedBy(Influence.HEALTH));
     }
 
     private void printImpacts()

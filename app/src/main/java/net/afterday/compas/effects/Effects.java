@@ -300,6 +300,13 @@ public class Effects
             sound.playBurer();
             net.afterday.compas.logging.Logger.e(R.string.message_burer_hit);
         }
+
+        if(playerProps.restrictedHit()){
+            hasHit = true;
+            sound.playSirena();
+            net.afterday.compas.logging.Logger.e("Запретная зона");
+        }
+
         if(playerProps.controllerHit())
         {
             hasHit = true;

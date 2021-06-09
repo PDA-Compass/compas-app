@@ -56,6 +56,7 @@ import net.afterday.compas.view.LevelProgress;
 import net.afterday.compas.view.Radbar;
 import net.afterday.compas.view.SmallLogListAdapter;
 import net.afterday.compas.view.Tube;
+import net.afterday.compas.util.PermissionsManager;
 
 import java.util.ArrayList;
 
@@ -233,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
+        PermissionsManager.check(this);
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         try {
@@ -299,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 pProps.getControllerImpact(),
                 pProps.getBurerImpact(),
                 pProps.getHealthImpact(),
+                pProps.getRestricted(),
                 pProps.getState()
         );
         // Radbar

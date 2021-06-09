@@ -55,6 +55,7 @@ public class Sound {
     private int mAbducted;
     private int mItemScanned;
     private int mArtefact;
+    private int mSirena;
     private MediaPlayer burrerPlayer = new MediaPlayer();
     private MediaPlayer controllerPlayer = new MediaPlayer();
     private static final String TAG = "SOUND";
@@ -114,6 +115,7 @@ public class Sound {
         mAbducted = mSoundPool.load(ctx, R.raw.abducted, 1);
         mItemScanned = mSoundPool.load(ctx, R.raw.pda_qr_scanned, 1);
         mArtefact = mSoundPool.load(ctx, R.raw.pda_artefact, 1);
+        mSirena = mSoundPool.load(ctx, R.raw.siren2, 1);
 
     }
 
@@ -274,6 +276,17 @@ public class Sound {
     public void playInventoryOpen() {
         mSoundPool.play(
                 mInventoryOpen, // Sound
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
+                1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
+                1, // Priority
+                0, // Loop
+                1f // Frequency
+        );
+    }
+
+    public void playSirena() {
+        mSoundPool.play(
+                mSirena, // Sound
                 1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Left volume
                 1f, //mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC),// / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), // Right volume
                 1, // Priority

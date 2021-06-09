@@ -7,6 +7,7 @@ import net.afterday.compas.core.influences.Influence;
 import net.afterday.compas.core.influences.InfluencesPack;
 import net.afterday.compas.engine.influences.InflPack;
 import net.afterday.compas.engine.influences.InfluenceExtractionStrategy;
+import net.afterday.compas.sensors.SensorResult;
 
 import java.util.List;
 
@@ -14,17 +15,17 @@ import java.util.List;
  * Created by spaka on 4/2/2018.
  */
 
-public class MacIgnoringStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<ScanResult>, InfluencesPack>
+public class MacIgnoringStrategy extends AbstractWifiExtractor implements InfluenceExtractionStrategy<List<SensorResult>, InfluencesPack>
 {
 
     @Override
-    boolean isValid(ScanResult scanResult)
+    boolean isValid(SensorResult scanResult)
     {
         return true;
     }
 
     @Override
-    public InfluencesPack makeInfluences(List<ScanResult> i)
+    public InfluencesPack makeInfluences(List<SensorResult> i)
     {
         return extract(i);
     }

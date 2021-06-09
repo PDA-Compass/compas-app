@@ -13,15 +13,19 @@ public class WifiConverter
     {
         switch (type)
         {
-            //case Influence.RADIATION: return Math.min(rad(signal), 16);
-            case Influence.RADIATION: return rad(signal);
-            case Influence.HEALTH: return rad(signal);
+            case Influence.RADIATION:
+            case Influence.HEALTH:
+            case Influence.RADIOACTIVE:
+            case Influence.SHELTER:
+                return rad(signal);
             case Influence.ANOMALY: return ano(signal);
             case Influence.MENTAL: return men(signal);
             case Influence.BURER: return bur(signal);
             case Influence.CONTROLLER: return con(signal);
             case Influence.ARTEFACT: return art(signal);
-            case Influence.MONOLITH: return mon(signal);
+            case Influence.MONOLITH:
+            case Influence.FORBIDDEN:
+                return mon(signal);
         }
         return 0f;
     }

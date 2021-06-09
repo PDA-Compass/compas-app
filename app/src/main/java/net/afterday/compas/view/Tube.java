@@ -39,6 +39,7 @@ public class Tube extends View {
     private double mMental;
     private double mMonolith;
     private double mController;
+    private double mRestricted;
     private double mBurer;
     private double mHealing;
     //private PlayerStatus mPlayerStatus = PlayerStatus.ALIVE;
@@ -74,6 +75,8 @@ public class Tube extends View {
     private Bitmap mTubeEmission;
     private Bitmap mTubeDeadEmission;
     private Bitmap mTubeHealing;
+    private Bitmap mTubeOasis;
+    private Bitmap mTubeRestricted;
     private Bitmap mTubeMental;
     private Bitmap mTubeMonolith;
     private Bitmap mTubeRad0;
@@ -114,6 +117,7 @@ public class Tube extends View {
             double controller,
             double burer,
             double healing,
+            double restricted,
             STATE playerState
     ) {
         mRadiation = radiation;
@@ -123,6 +127,7 @@ public class Tube extends View {
         mController = controller;
         mBurer = burer;
         mHealing = healing;
+        mRestricted = restricted;
         currentState = playerState;
         //Log.d(TAG, "Radiation: " + mRadiation + " Healing: " + mHealing);
         repaintIfNeed();
@@ -210,6 +215,7 @@ public class Tube extends View {
         mTubeDeadRad = BitmapFactory.decodeResource(getResources(), R.drawable.tube_dead_rad);
         mTubeAnomaly = BitmapFactory.decodeResource(getResources(), R.drawable.tube_anomaly);
         //mTubeBomb = BitmapFactory.decodeResource(getResources(), R.drawable.tube_bomb);
+        mTubeRestricted = BitmapFactory.decodeResource(getResources(), R.drawable.tube_restricted);
         mTubeBurer = BitmapFactory.decodeResource(getResources(), R.drawable.tube_burer);
         mTubeClear = BitmapFactory.decodeResource(getResources(), R.drawable.tube_clear);
         mTubeControlled = BitmapFactory.decodeResource(getResources(), R.drawable.tube_controlled);
@@ -217,6 +223,7 @@ public class Tube extends View {
         mTubeEmission = BitmapFactory.decodeResource(getResources(), R.drawable.tube_emission);
         mTubeDeadEmission = BitmapFactory.decodeResource(getResources(), R.drawable.tube_dead_emi);
         mTubeHealing = BitmapFactory.decodeResource(getResources(), R.drawable.tube_healing);
+        mTubeOasis = BitmapFactory.decodeResource(getResources(), R.drawable.tube_oasis);
         mTubeMental = BitmapFactory.decodeResource(getResources(), R.drawable.tube_mental);
         mTubeMonolith = BitmapFactory.decodeResource(getResources(), R.drawable.tube_monolith);
         mTubeRad0 = BitmapFactory.decodeResource(getResources(), R.drawable.tube_rad0);
@@ -263,6 +270,9 @@ public class Tube extends View {
 
     private Bitmap getCurrentTube()
     {
+        if (fraction == Player.FRACTION.DARKEN && mRestricted > 0d){
+            return mTubeRestricted;
+        }
 
         if(fraction == Player.FRACTION.MONOLITH && mMonolith > 0d)
         {
@@ -346,6 +356,11 @@ public class Tube extends View {
     private int maxInfluence() {
         double max = 0d;
         int inf = -1;
+
+        if (mRestricted > max) {
+            inf = 6;
+            max = mRestricted;
+        }
 
         if (mRadiation > max) {
             inf = 0;

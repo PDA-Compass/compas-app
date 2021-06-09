@@ -89,15 +89,6 @@ public class HInfluencesPersistency implements InfluencesPersistency
         emissions.add(emission(at(5, 1, 18, 0), 2, 30));
         emissions.add(emission(at(5, 14, 20, 0), 2, 30));
         emissions.add(emission(at(5, 28, 22, 0), 2, 0, true));
-        emissions.add(emission(at(6, 1, 13, 0), 2, 30));
-        emissions.add(emission(at(6, 14, 18, 0), 2, 30));
-        emissions.add(emission(at(6, 28, 22, 0), 2, 30));
-        emissions.add(emission(at(7, 1, 10, 0), 2, 0, true));
-        emissions.add(emission(at(7, 14, 13, 0), 2, 30));
-        emissions.add(emission(at(7, 28, 18, 0), 2, 30));
-        emissions.add(emission(at(8, 1, 16, 0), 2, 30));
-        emissions.add(emission(at(8, 14, 19, 0), 2, 0, true));
-        emissions.add(emission(at(8, 28, 21, 0), 2, 30));
         emissions.add(emission(at(9, 1, 18, 0), 2, 30));
         emissions.add(emission(at(9, 14, 20, 0), 2, 30));
         emissions.add(emission(at(9, 28, 22, 0), 2, 0, true));

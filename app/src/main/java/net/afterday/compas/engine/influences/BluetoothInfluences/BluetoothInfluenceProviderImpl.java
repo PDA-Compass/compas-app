@@ -31,6 +31,7 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
     private static final String TAG = "BluetoothInflProvider";
     private static final String RUNNING = "R";
     private static final String STOPPED = "S";
+    private int level;
     private final Bluetooth bluetooth;
     private final Observable<Double> blScans = BehaviorSubject.createDefault(Influence.NULL);
     private static final InfluenceExtractionStrategy<List<BluetoothScanResult>, Double> extractionStrategy;
@@ -47,7 +48,7 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
         //providerRunning = Observable.empty();
         providerRunning = providerState.switchMap((s) -> s == RUNNING ? Observable.interval(EMITTING_INTERVAL, TimeUnit.MILLISECONDS) : Observable.empty());
         providerState.filter((ps) -> ps == RUNNING)
-                     .switchMap((ps) -> bluetooth.getSensorResultsStream())
+                     .switchMap((ps) -> bluetooth.getDetectorStream())
                      //.buffer(providerRunning)
                      .observeOn(Schedulers.computation()).doOnNext((e) -> {
             android.util.Log.e(TAG, "AAAAAAAAAAAAA ---- " + e);
@@ -90,6 +91,12 @@ public class BluetoothInfluenceProviderImpl implements BluetoothInfluenceProvide
         isRunning.set(false);
         providerState.onNext(STOPPED);
         bluetooth.stop();
+    }
+
+    @Override
+    public void setLevel(int level) {
+        this.level = level;
+        bluetooth.setLevel(level);
     }
 
     private static class BluetoothResultsScanner

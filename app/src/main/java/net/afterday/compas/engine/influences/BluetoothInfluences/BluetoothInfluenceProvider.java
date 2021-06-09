@@ -9,5 +9,5 @@ import net.afterday.compas.engine.influences.InfluenceProvider;
 
 public interface BluetoothInfluenceProvider extends InfluenceProvider<Double>
 {
-
+    void setLevel(int level);
 }

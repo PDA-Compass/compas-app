@@ -41,16 +41,16 @@ public class HPlayerPersistency implements PlayerPersistency
 
     private void setupFractions()
     {
-        fractions.put("MONOLITH953", Player.FRACTION.MONOLITH); //Режим монолитовца
-        fractions.put("GAMEMASTER751", Player.FRACTION.GAMEMASTER); //Режим игромастера
-        fractions.put("STALKER982", Player.FRACTION.STALKER); //Режим обычного игрока
-        fractions.put("DARKEN256", Player.FRACTION.DARKEN); //Режим Тёмного
+        fractions.put("MONOLITH345", Player.FRACTION.MONOLITH); //Режим монолитовца
+        fractions.put("GAMEMASTER345", Player.FRACTION.GAMEMASTER); //Режим игромастера
+        fractions.put("STALKER345", Player.FRACTION.STALKER); //Режим обычного игрока
+        fractions.put("DARKEN345", Player.FRACTION.DARKEN); //Режим Тёмного
 
     }
     private void setupCommands()
     {
-        commands.put("KILL492", Player.COMMAND.KILL); //Убить игрока
-        commands.put("REVIVE856", Player.COMMAND.REVIVE); //Оживить игрока
+        commands.put("KILL345", Player.COMMAND.KILL); //Убить игрока
+        commands.put("REVIVE345", Player.COMMAND.REVIVE); //Оживить игрока
     }
 
 }

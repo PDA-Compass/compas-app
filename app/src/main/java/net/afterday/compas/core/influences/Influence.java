@@ -17,6 +17,9 @@ public interface Influence extends Event
     int ARTEFACT = 6;
     int MONOLITH = 7;
     int EMISSION = 8;
+    int SHELTER = 9;
+    int RADIOACTIVE = 10;
+    int FORBIDDEN = 11;
 
     double MIN = 0.1d;
     double MED = 1d;
@@ -25,7 +28,7 @@ public interface Influence extends Event
 
     int MAX_SATELLITES = 8;
 
-    int INFLUENCE_COUNT = 9;
+    int INFLUENCE_COUNT = 12;
     double NULL = -99999999999.9999d;
 
     double ANOMALY_PEAK = 16;

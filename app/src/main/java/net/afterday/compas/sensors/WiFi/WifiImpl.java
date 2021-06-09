@@ -21,6 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
+import net.afterday.compas.sensors.SensorResult;
 
 public class WifiImpl implements WiFi
 {
@@ -31,35 +32,41 @@ public class WifiImpl implements WiFi
     private Context appContext;
     private StalkerApp app;
     private AtomicBoolean isRunning = new AtomicBoolean(false);
-    private Observable<List<ScanResult>> wifiScans = PublishSubject.create();
+    private Observable<List<SensorResult>> wifiScans = PublishSubject.create();
     private long dangerousScans = 0;
     private long delayedScans = 0;
     private Subject<Boolean> isRunningSubj = BehaviorSubject.createDefault(false);
     public WifiImpl(Context context)
     {
         mWifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-//        {
-//            context.registerReceiver(new WifiReceiver(), new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-//        }else
-//        {
-            isRunningSubj.switchMap((isRunning) -> isRunning ? Observable.interval(1, TimeUnit.SECONDS) : Observable.empty()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe((t) -> {
-                mWifi.startScan();
-                List<ScanResult> results = mWifi.getScanResults();
-                if(wifiScans == null)
-                {
-                    return;
-                }
-                //Log.d(TAG, "WIFI Scanned. (THROTTLING RECEIVER)" + Thread.currentThread().getName());
-                for (ScanResult sr : results)
-                {
-                    Log.e(TAG, "Result: " + sr.SSID);
-                }
-                //Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
-                ((Subject) wifiScans).onNext(results);
-            });
-//        }
+        final long period = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)? 30 : 1;
+
+        isRunningSubj.switchMap((isRunning) -> isRunning ? Observable.interval(period, TimeUnit.SECONDS) : Observable.empty()).observeOn(AndroidSchedulers.mainThread())
+        .subscribe((t) -> {
+            Boolean b = mWifi.startScan();
+            if (!b) {
+                Log.e(TAG, "Wifi not started (in)");
+            }
+            List<ScanResult> results = mWifi.getScanResults();
+            ArrayList<SensorResult> ss = new ArrayList<>(results.size());
+            if(wifiScans == null)
+            {
+                return;
+            }
+            //Log.d(TAG, "WIFI Scanned. (THROTTLING RECEIVER)" + Thread.currentThread().getName());
+            for (ScanResult sr : results)
+            {
+                SensorResult srr = new SensorResult();
+                srr.id = sr.BSSID;
+                srr.name = sr.SSID;
+                srr.value = sr.level;
+                srr.time = sr.timestamp;
+                ss.add(srr);
+                Log.e(TAG, "Result: " + sr.SSID);
+            }
+            //Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
+            ((Subject) wifiScans).onNext(ss);
+        });
     }
 
     public void start()
@@ -67,7 +74,10 @@ public class WifiImpl implements WiFi
         Log.d(TAG, "WIFI Sensor started " + Thread.currentThread().getName());
         this.isRunning.set(true);
         this.isRunningSubj.onNext(true);
-        mWifi.startScan();
+        Boolean b = mWifi.startScan();
+        if (!b) {
+            Log.e(TAG, "Wifi not started");
+        }
     }
 
     public void stop()
@@ -78,30 +88,35 @@ public class WifiImpl implements WiFi
     }
 
     @Override
-    public Observable<List<ScanResult>> getSensorResultsStream()
+    public Observable<List<SensorResult>> getSensorResultsStream()
     {
         return wifiScans;
     }
 
     public class WifiReceiver extends BroadcastReceiver
     {
-
         @Override
         public void onReceive(Context context, Intent intent)
         {
-
             if (intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION) && intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false))
             {
                 List<ScanResult> results = mWifi.getScanResults();
+                ArrayList<SensorResult> ss = new ArrayList<>(results.size());
                 Log.d(TAG, "WIFI Scanned." + Thread.currentThread().getName());
                 for (ScanResult sr : results)
                 {
+                    SensorResult srr = new SensorResult();
+                    srr.id = sr.BSSID;
+                    srr.name = sr.SSID;
+                    srr.value = sr.level;
+                    srr.time = sr.timestamp;
+                    ss.add(srr);
                     Log.e(TAG, "Result: " + sr.SSID);
                 }
                 Log.e(TAG, "--------------------------- " + Thread.currentThread().getName());
                 if (isRunning.get())
                 {
-                    ((Subject) wifiScans).onNext(results);
+                    ((Subject) wifiScans).onNext(ss);
                     mWifi.startScan();
                 }
             }

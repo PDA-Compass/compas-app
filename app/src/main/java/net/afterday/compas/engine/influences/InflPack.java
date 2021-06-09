@@ -29,6 +29,7 @@ public class InflPack implements InfluencesPack
     private boolean mInflMon = false;
     private boolean mInflEm = false;
     private boolean isEmission = false;
+    private boolean mrestricted = false;
     private double[] mInfluences = new double[Influence.INFLUENCE_COUNT];
 
     public InflPack()
@@ -60,6 +61,7 @@ public class InflPack implements InfluencesPack
             case Influence.HEALTH: mInflHel = true; break;
             case Influence.ARTEFACT: mInflArt = true; break;
             case Influence.MONOLITH: mInflMon = true; break;
+            case Influence.FORBIDDEN: mrestricted = true; break;
             case Influence.EMISSION: mInflEm = true; break;
         }
 //        Log.d(TAG, "Added " + influence.getTypeId() + " " + mInfRad + " " + Thread.currentThread().getName());
@@ -85,13 +87,13 @@ public class InflPack implements InfluencesPack
 
     public boolean inDanger()
     {
-        return mInfRad || mInflBur || mInflMen || mInflCon || mInflAno|| mInflMon ;
+        return mInfRad || mInflBur || mInflMen || mInflCon || mInflAno|| mInflMon || mrestricted ;
     }
 
     @Override
     public boolean isClear()
     {
-        return !(mInfRad || mInflBur || mInflMen || mInflCon || mInflAno || mInflHel|| mInflMon );
+        return !(mInfRad || mInflBur || mInflMen || mInflCon || mInflAno || mInflHel|| mInflMon || mrestricted );
     }
 
     @Override
@@ -108,6 +110,8 @@ public class InflPack implements InfluencesPack
             case Influence.ARTEFACT: return mInflArt;
             case Influence.MONOLITH: return mInflMon;
             case Influence.EMISSION: return mInflEm;
+            case Influence.FORBIDDEN: return mrestricted;
+
         }
         return false;
     }
@@ -148,6 +152,7 @@ public class InflPack implements InfluencesPack
             case Influence.HEALTH: return "Health";
             case Influence.ARTEFACT: return "Artefact";
             case Influence.MONOLITH: return "Monolith";
+            case Influence.FORBIDDEN: return  "FORBIDDEN";
         }
         return "Unknown";
     }
